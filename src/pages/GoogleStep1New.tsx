@@ -5,7 +5,7 @@ import GoogleStep1Content from '../content/google/step-1.mdx'
 
 export default function GoogleStep1() {
   return (
-    <StepPageLayout vendor="google" step="1">
+    <StepPageLayout vendor="google" step="beginner">
       <MDXProvider components={mdxComponents}>
         <GoogleStep1Content />
       </MDXProvider>
