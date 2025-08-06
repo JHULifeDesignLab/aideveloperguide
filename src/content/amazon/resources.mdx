@@ -1,0 +1,28 @@
+---
+title: "Appendices & Extra Resources"
+vendor: "amazon"
+ordinal: 4
+slug: "/aws/resources"
+lastReviewed: "2025-08-06"
+---
+
+## Appendix A · Sample project ideas
+
+* **Text summarizer** – Use Amazon Bedrock foundation models (e.g., Anthropic Claude or Amazon Titan) with LangChain to summarise long documents.  The *architecture patterns* module demonstrates text summarization with Bedrock models and LangChain:contentReference[oaicite:40]{index=40}.  Build a serverless API (e.g., AWS Lambda) that takes a PDF or web page and returns a concise summary.
+* **Question‑answering with RAG** – Implement a retrieval‑augmented generative (RAG) system by creating a knowledge base of your course notes.  The Bedrock application‑components module shows how to work with datasets, embeddings and RAG:contentReference[oaicite:41]{index=41}, while the architecture patterns module includes a question‑answering example:contentReference[oaicite:42]{index=42}.  Use LangChain’s retrievers and Bedrock’s Knowledge Bases to answer questions about the material.
+* **Chatbot with memory and agents** – Combine Bedrock with LangChain to create a conversational interface that can remember context and call external tools.  The LangChain module teaches how to construct prompts, sequence chains, manage memory and use agents:contentReference[oaicite:43]{index=43}.  Extend the example chat‑bot demonstration with additional features like persona prompts or integration with Slack.
+* **Code‑generation assistant** – Experiment with Bedrock models capable of code generation.  The architecture patterns module lists code‑generation examples and shows how to use Bedrock models for programming tasks:contentReference[oaicite:44]{index=44}.  Build an agent that generates boilerplate code, then use guardrails to filter unsafe output.
+* **Guardrail experimentation** – Set up a guardrail using Amazon Bedrock Guardrails and test the different policies.  Follow the steps described in the AWS “AI safety controls at scale” article: create a guardrail, configure content‑filter and prompt‑attack policies, define denied topics and word filters, and test with sample prompts:contentReference[oaicite:45]{index=45}.  Document the impact on the model’s responses and share your findings.
+
+## Appendix B · Courses, tools & communities
+
+| Category | Highlights & links |
+|---------|-------------------|
+| **Core training** | *Developing Generative AI Applications on AWS* – a two‑day workshop that introduces generative‑AI fundamentals, planning projects, Amazon Bedrock basics, prompt engineering and architecture patterns such as text summarization, question answering, chatbots and code generation:contentReference[oaicite:46]{index=46}:contentReference[oaicite:47]{index=47}:contentReference[oaicite:48]{index=48}. |
+| | **AWS Generative AI for Developers Professional Certificate** – three‑course Coursera program (~22 h) covering Bedrock fundamentals, knowledge‑base development, agent orchestration, RAG workflows and model customisation. |
+| **Short courses** | **Planning a Generative AI Project** – 1‑hour Coursera micro‑course that discusses technical foundations and key terminology, then walks through the steps for planning a generative‑AI project:contentReference[oaicite:51]{index=51}. |
+| **Documentation & safety** | **Amazon Bedrock Guardrails** – A set of configurable safeguards for generative‑AI applications, supporting policies like multimodal content filters, denied topics, sensitive information filters, word filters, contextual grounding checks and automated reasoning:contentReference[oaicite:52]{index=52}. See the Dev.to article for a developer walkthrough:contentReference[oaicite:53]{index=53} and check out the [Bedrock Guardrails GitHub samples](https://github.com/aws-samples/amazon-bedrock-guardrails-examples). |
+| **Prompt tooling** | **LangChain for Bedrock** – Open‑source framework for building LLM workflows.  Learn how to create prompt templates, chains, memory and agents; see the dedicated module in the AFI workshop:contentReference[oaicite:54]{index=54}. |
+| **Communities & blogs** | **AWS ML Blogs** – Stay current with new foundation models, best practices and responsible‑AI updates; the Dev.to article recommends reading the official Guardrails posts for deeper dives:contentReference[oaicite:55]{index=55}:contentReference[oaicite:56]{index=56}.  Join the **AWS Developers Slack** and **AWS Re:Post** forums to get help and share projects. |
+
+> **Portfolio tip** – Document each project clearly, including architecture diagrams, code samples, prompt design notes and guardrail configurations.  A well‑written README demonstrates both technical skill and awareness of responsible AI.
