@@ -4,12 +4,27 @@ export default function HomePage() {
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="text-center">
+        <div className="flex justify-center mb-8">
+          <img 
+            src="/developerguide/jhu-shield.png" 
+            alt="Johns Hopkins University" 
+            className="h-16 w-auto"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+              const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+              if (fallback) fallback.style.display = 'block';
+            }}
+          />
+          <div className="hidden bg-blue-900 text-white px-6 py-3 rounded-lg font-bold text-xl">
+            Johns Hopkins University
+          </div>
+        </div>
         <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-          Developer Guide
+          Life Design Lab Developer Guide
         </h1>
         <p className="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
-          A comprehensive guide to getting started with AWS, Google, and Microsoft developer certificates, 
-          provided by the JHU Life Design Lab.
+          A comprehensive guide to getting started with cloud developer certifications, 
+          provided by the Johns Hopkins University Life Design Lab.
         </p>
       </div>
 
@@ -21,9 +36,11 @@ export default function HomePage() {
           >
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">G</span>
-                </div>
+                <img 
+                  src="https://www.google.com/favicon.ico" 
+                  alt="Google" 
+                  className="h-12 w-12"
+                />
               </div>
               <div className="ml-4">
                 <h3 className="text-lg font-medium text-gray-900">Google Cloud</h3>
@@ -43,9 +60,11 @@ export default function HomePage() {
           >
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">A</span>
-                </div>
+                <img 
+                  src="https://www.amazon.com/favicon.ico" 
+                  alt="Amazon" 
+                  className="h-12 w-12"
+                />
               </div>
               <div className="ml-4">
                 <h3 className="text-lg font-medium text-gray-900">Amazon AWS</h3>
@@ -65,9 +84,11 @@ export default function HomePage() {
           >
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">M</span>
-                </div>
+                <img 
+                  src="https://www.microsoft.com/favicon.ico" 
+                  alt="Microsoft" 
+                  className="h-12 w-12"
+                />
               </div>
               <div className="ml-4">
                 <h3 className="text-lg font-medium text-gray-900">Microsoft Azure</h3>

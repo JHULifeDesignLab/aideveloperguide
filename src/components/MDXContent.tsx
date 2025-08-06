@@ -73,6 +73,18 @@ const MDXBlockquote = ({ children, ...props }: any) => (
   </blockquote>
 )
 
+const MDXLink = ({ children, href, ...props }: any) => (
+  <a 
+    href={href} 
+    className="text-blue-600 hover:text-blue-800 underline hover:no-underline transition-colors" 
+    target={href?.startsWith('http') ? '_blank' : undefined}
+    rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+    {...props}
+  >
+    {children}
+  </a>
+)
+
 // MDX components mapping
 export const mdxComponents: MDXComponents = {
   table: MDXTable,
@@ -89,6 +101,7 @@ export const mdxComponents: MDXComponents = {
   ol: MDXOl,
   li: MDXLi,
   blockquote: MDXBlockquote,
+  a: MDXLink,
 }
 
 export default function MDXContent({ children }: MDXContentProps) {

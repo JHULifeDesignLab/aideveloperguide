@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <!-- JHU Blue Background -->
+  <rect width="200" height="60" fill="#002D72"/>
+  
+  <!-- Johns Hopkins University Text -->
+  <text x="10" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">JOHNS HOPKINS</text>
+  <text x="10" y="40" font-family="Arial, sans-serif" font-size="12" fill="white">UNIVERSITY</text>
+  
+  <!-- Simple shield/crest shape -->
+  <path d="M160 10 L180 10 L185 25 L180 50 L160 50 L155 25 Z" fill="white" opacity="0.9"/>
+  <text x="170" y="33" font-family="serif" font-size="16" font-weight="bold" fill="#002D72" text-anchor="middle">JHU</text>
+</svg>
