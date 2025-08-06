@@ -4,10 +4,10 @@ import HomePage from './pages/HomePage'
 import GooglePage from './pages/GooglePage'
 import AmazonPage from './pages/AmazonPage'
 import MicrosoftPage from './pages/MicrosoftPage'
-import GoogleStep1 from './content/google/step-1.mdx'
-import GoogleStep2 from './content/google/step-2.mdx'
-import GoogleStep3 from './content/google/step-3.mdx'
-import GoogleResources from './content/google/resources.mdx'
+import GoogleStep1 from './pages/GoogleStep1'
+import GoogleStep2 from './pages/GoogleStep2'
+import GoogleStep3 from './pages/GoogleStep3'
+import GoogleResourcesPage from './pages/GoogleResourcesPage'
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route path="/google/step-1" element={<GoogleStep1 />} />
         <Route path="/google/step-2" element={<GoogleStep2 />} />
         <Route path="/google/step-3" element={<GoogleStep3 />} />
-        <Route path="/google/resources" element={<GoogleResources />} />
+        <Route path="/google/resources" element={<GoogleResourcesPage />} />
         <Route path="/amazon" element={<AmazonPage />} />
         <Route path="/microsoft" element={<MicrosoftPage />} />
       </Routes>
