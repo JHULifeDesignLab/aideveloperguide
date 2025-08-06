@@ -1,0 +1,28 @@
+
+{
+  "google": {
+    "steps": [
+      {
+        "id": "beginner",
+        "title": "Step 1 · Beginner foundation",
+        "modules": [
+          { "title": "Introduction to Generative AI",  "duration": "45 min" },
+          { "title": "Introduction to LLMs",           "duration": "1 h"   },
+          { "title": "Introduction to Responsible AI", "duration": "30 min"}
+        ]
+      },
+      {
+        "id": "developer",
+        "title": "Step 2 · Complete Developer Path & earn skill badge",
+        "modules": 12,
+        "totalHours": 26
+      },
+      {
+        "id": "responsible-ai",
+        "title": "Step 3 · Model documentation & risk awareness"
+      }
+    ]
+  },
+  "amazon": {  },
+  "microsoft": { }
+}
