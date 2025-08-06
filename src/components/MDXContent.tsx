@@ -5,6 +5,22 @@ interface MDXContentProps {
   children: ReactNode
 }
 
+// Custom checklist component
+const CheckList = ({ children }: { children: ReactNode }) => (
+  <ul className="space-y-2 my-4">
+    {children}
+  </ul>
+)
+
+const CheckListItem = ({ children }: { children: ReactNode }) => (
+  <li className="flex items-start space-x-3">
+    <span className="flex-shrink-0 w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold mt-0.5">
+      ✓
+    </span>
+    <span className="text-gray-700">{children}</span>
+  </li>
+)
+
 // Custom table components for MDX
 const MDXTable = ({ children, ...props }: any) => (
   <div className="overflow-x-auto my-8">
@@ -102,6 +118,8 @@ export const mdxComponents: MDXComponents = {
   li: MDXLi,
   blockquote: MDXBlockquote,
   a: MDXLink,
+  CheckList,
+  CheckListItem,
 }
 
 export default function MDXContent({ children }: MDXContentProps) {
