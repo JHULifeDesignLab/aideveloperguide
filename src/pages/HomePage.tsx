@@ -17,11 +17,11 @@ export default function HomePage() {
         <div className="relative group">
           <Link
             to="/google"
-            className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-google-blue"
+            className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-500"
           >
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-google-blue rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-xl">G</span>
                 </div>
               </div>
@@ -39,11 +39,11 @@ export default function HomePage() {
         <div className="relative group">
           <Link
             to="/amazon"
-            className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-amazon-orange"
+            className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-orange-500"
           >
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-amazon-orange rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-xl">A</span>
                 </div>
               </div>
@@ -61,11 +61,11 @@ export default function HomePage() {
         <div className="relative group">
           <Link
             to="/microsoft"
-            className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-microsoft-blue"
+            className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
           >
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-microsoft-blue rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-xl">M</span>
                 </div>
               </div>

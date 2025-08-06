@@ -23,8 +23,8 @@ export default function Layout({ children }: LayoutProps) {
                 to="/google"
                 className={`px-3 py-2 rounded-md text-sm font-medium ${
                   location.pathname.startsWith('/google')
-                    ? 'bg-google-blue text-white'
-                    : 'text-gray-700 hover:text-google-blue'
+                    ? 'bg-blue-500 text-white'
+                    : 'text-gray-700 hover:text-blue-500'
                 }`}
               >
                 Google
@@ -33,8 +33,8 @@ export default function Layout({ children }: LayoutProps) {
                 to="/amazon"
                 className={`px-3 py-2 rounded-md text-sm font-medium ${
                   location.pathname.startsWith('/amazon')
-                    ? 'bg-amazon-orange text-white'
-                    : 'text-gray-700 hover:text-amazon-orange'
+                    ? 'bg-orange-500 text-white'
+                    : 'text-gray-700 hover:text-orange-500'
                 }`}
               >
                 Amazon
@@ -43,8 +43,8 @@ export default function Layout({ children }: LayoutProps) {
                 to="/microsoft"
                 className={`px-3 py-2 rounded-md text-sm font-medium ${
                   location.pathname.startsWith('/microsoft')
-                    ? 'bg-microsoft-blue text-white'
-                    : 'text-gray-700 hover:text-microsoft-blue'
+                    ? 'bg-blue-600 text-white'
+                    : 'text-gray-700 hover:text-blue-600'
                 }`}
               >
                 Microsoft

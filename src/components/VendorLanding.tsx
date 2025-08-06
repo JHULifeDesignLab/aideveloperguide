@@ -12,24 +12,21 @@ export default function VendorLanding({ vendor }: VendorLandingProps) {
   const vendorConfig = {
     google: {
       name: 'Google Cloud',
-      color: 'google-blue',
-      bgColor: 'bg-google-blue',
-      textColor: 'text-google-blue',
-      borderColor: 'border-google-blue'
+      bgColor: 'bg-blue-500',
+      textColor: 'text-blue-500',
+      borderColor: 'border-blue-500'
     },
     amazon: {
       name: 'Amazon AWS',
-      color: 'amazon-orange',
-      bgColor: 'bg-amazon-orange',
-      textColor: 'text-amazon-orange',
-      borderColor: 'border-amazon-orange'
+      bgColor: 'bg-orange-500',
+      textColor: 'text-orange-500',
+      borderColor: 'border-orange-500'
     },
     microsoft: {
       name: 'Microsoft Azure',
-      color: 'microsoft-blue',
-      bgColor: 'bg-microsoft-blue',
-      textColor: 'text-microsoft-blue',
-      borderColor: 'border-microsoft-blue'
+      bgColor: 'bg-blue-600',
+      textColor: 'text-blue-600',
+      borderColor: 'border-blue-600'
     }
   }
 
@@ -44,50 +41,83 @@ export default function VendorLanding({ vendor }: VendorLandingProps) {
   }
 
   return (
-    <div className="mb-8">
-      <div className={`${config.bgColor} text-white px-6 py-4 rounded-t-lg`}>
-        <h2 className="text-xl font-semibold">{config.name} Learning Path</h2>
+    <div className="mb-12">
+      {/* Header Section */}
+      <div className={`${config.bgColor} text-white px-8 py-12 rounded-2xl mb-8 shadow-xl`}>
+        <div className="text-center">
+          <div className="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span className="text-2xl font-bold">📚</span>
+          </div>
+          <h2 className="text-3xl font-bold mb-2">{config.name}</h2>
+          <p className="text-xl text-white text-opacity-90">Complete Learning Path</p>
+        </div>
       </div>
       
-      <div className="bg-white border border-gray-200 border-t-0 rounded-b-lg p-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {vendorData.steps.map((step: any, index: number) => (
-            <Link
-              key={step.id}
-              to={`/${vendor}/step-${index + 1}`}
-              className={`block p-4 border-2 ${config.borderColor} border-opacity-20 rounded-lg hover:border-opacity-100 hover:shadow-md transition-all`}
-            >
-              <div className="text-center">
-                <div className={`w-12 h-12 ${config.bgColor} text-white rounded-full flex items-center justify-center mx-auto mb-2 font-bold text-lg`}>
-                  {index + 1}
-                </div>
-                <h3 className={`font-semibold ${config.textColor} mb-2`}>
-                  {step.title}
-                </h3>
+      {/* Steps Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        {vendorData.steps.map((step: any, index: number) => (
+          <Link
+            key={step.id}
+            to={`/${vendor}/step-${index + 1}`}
+            className="group relative bg-white rounded-2xl border border-gray-200 hover:border-gray-300 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
+          >
+            {/* Step number badge */}
+            <div className={`absolute top-4 left-4 w-12 h-12 ${config.bgColor} text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg z-10`}>
+              {index + 1}
+            </div>
+            
+            {/* Background decoration */}
+            <div className={`absolute top-0 right-0 w-16 h-16 ${config.bgColor} opacity-10 rounded-full transform translate-x-6 -translate-y-6 group-hover:scale-125 transition-transform duration-500`}></div>
+            
+            <div className="p-8 pt-20">
+              <h3 className={`font-bold text-xl mb-3 ${config.textColor} group-hover:text-opacity-80 transition-colors`}>
+                {step.title}
+              </h3>
+              
+              <div className="space-y-2 mb-6">
                 {step.modules && typeof step.modules === 'number' && (
-                  <p className="text-sm text-gray-600">
+                  <div className="flex items-center text-sm text-gray-600">
+                    <span className="w-4 h-4 mr-2 text-center">📚</span>
                     {step.modules} modules
-                    {step.totalHours && ` • ~${step.totalHours}h`}
-                  </p>
+                    {step.totalHours && (
+                      <>
+                        <span className="mx-2 text-gray-400">•</span>
+                        <span className="w-4 h-4 mr-1 text-center">⏰</span>
+                        ~{step.totalHours}h
+                      </>
+                    )}
+                  </div>
                 )}
                 {step.modules && Array.isArray(step.modules) && (
-                  <p className="text-sm text-gray-600">
+                  <div className="flex items-center text-sm text-gray-600">
+                    <span className="w-4 h-4 mr-2 text-center">📋</span>
                     {step.modules.length} modules
-                  </p>
+                  </div>
                 )}
               </div>
-            </Link>
-          ))}
-        </div>
-        
-        <div className="mt-6 text-center">
-          <Link
-            to={`/${vendor}/resources`}
-            className={`inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white ${config.bgColor} hover:opacity-90 transition-opacity`}
-          >
-            View Resources & Project Ideas
+              
+              {/* Call to action */}
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium text-gray-500">Start Learning</span>
+                <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-gray-200 transition-colors">
+                  <span className="text-gray-600 group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </div>
+            </div>
           </Link>
-        </div>
+        ))}
+      </div>
+      
+      {/* Resources button */}
+      <div className="text-center">
+        <Link
+          to={`/${vendor}/resources`}
+          className={`group inline-flex items-center px-8 py-4 border border-transparent text-lg font-semibold rounded-2xl text-white ${config.bgColor} hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1`}
+        >
+          <span className="mr-3">📚</span>
+          View Resources & Project Ideas
+          <span className="ml-3 group-hover:translate-x-1 transition-transform">→</span>
+        </Link>
       </div>
     </div>
   )

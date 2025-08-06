@@ -14,24 +14,21 @@ export default function StepPageLayout({ vendor, step, children }: StepPageLayou
   const vendorConfig = {
     google: {
       name: 'Google Cloud',
-      color: 'google-blue',
-      bgColor: 'bg-google-blue',
-      textColor: 'text-google-blue',
-      borderColor: 'border-google-blue'
+      bgColor: 'bg-blue-500',
+      textColor: 'text-blue-500',
+      borderColor: 'border-blue-500'
     },
     amazon: {
       name: 'Amazon AWS',
-      color: 'amazon-orange',
-      bgColor: 'bg-amazon-orange',
-      textColor: 'text-amazon-orange',
-      borderColor: 'border-amazon-orange'
+      bgColor: 'bg-orange-500',
+      textColor: 'text-orange-500',
+      borderColor: 'border-orange-500'
     },
     microsoft: {
       name: 'Microsoft Azure',
-      color: 'microsoft-blue',
-      bgColor: 'bg-microsoft-blue',
-      textColor: 'text-microsoft-blue',
-      borderColor: 'border-microsoft-blue'
+      bgColor: 'bg-blue-600',
+      textColor: 'text-blue-600',
+      borderColor: 'border-blue-600'
     }
   }
 
