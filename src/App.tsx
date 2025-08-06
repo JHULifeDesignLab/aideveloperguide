@@ -4,10 +4,10 @@ import HomePage from './pages/HomePage'
 import GooglePage from './pages/GooglePage'
 import AmazonPage from './pages/AmazonPage'
 import MicrosoftPage from './pages/MicrosoftPage'
-import GoogleStep1 from './pages/GoogleStep1'
-import GoogleStep2 from './pages/GoogleStep2'
-import GoogleStep3 from './pages/GoogleStep3'
-import GoogleResourcesPage from './pages/GoogleResourcesPage'
+import GoogleStep1 from './pages/GoogleStep1New'
+import GoogleStep2 from './pages/GoogleStep2New'
+import GoogleStep3 from './pages/GoogleStep3New'
+import GoogleResourcesPage from './pages/GoogleResourcesNew'
 
 function App() {
   return (
