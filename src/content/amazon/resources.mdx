@@ -1,28 +1,57 @@
 ---
-title: "Appendices & Extra Resources"
+title: "Amazon AWS AI Resources"
 vendor: "amazon"
 ordinal: 4
-slug: "/aws/resources"
+slug: "/amazon/resources"
 lastReviewed: "2025-08-06"
 ---
 
-## Appendix A · Sample project ideas
+## Final Tips for Success
+<CheckList>
+    <CheckListItem>**Keep projects small and impactful:** It's better to fully complete a simple generative app (and understand it end-to-end) than to half-build something overly complex. Each project should have a clear goal (e.g. "analyze customer sentiment" or "automate document processing").</CheckListItem>
+    <CheckListItem>**Showcase your work: Don't hide your projects!** Put them on GitHub, create a personal website or portfolio, and share on LinkedIn. A well-presented project can open doors – recruiters often skim GitHub profiles and LinkedIn posts to gauge passion and initiative.</CheckListItem>
+    <CheckListItem>**Document everything:** Use a README or even a simple Model Card for your projects to explain the what, why, and how. Good documentation not only reinforces your learning but also signals professionalism.</CheckListItem>
+    <CheckListItem>**Use relevant tags and keywords:** When you publish projects or posts, tag them appropriately – e.g. #AI, #AWS, #MachineLearning, #SageMaker, #Bedrock. This increases the visibility of your work.</CheckListItem>
+    <CheckListItem>**Network and ask for feedback:** Connect with peers, alumni, and professionals who work in AI/ML. Let them know you're working towards AWS certifications and ask for advice or feedback on your approach.</CheckListItem>
+</CheckList>
 
-* **Text summarizer** – Use Amazon Bedrock foundation models (e.g., Anthropic Claude or Amazon Titan) with LangChain to summarise long documents.  The *architecture patterns* module demonstrates text summarization with Bedrock models and LangChain:contentReference[oaicite:40]{index=40}.  Build a serverless API (e.g., AWS Lambda) that takes a PDF or web page and returns a concise summary.
-* **Question‑answering with RAG** – Implement a retrieval‑augmented generative (RAG) system by creating a knowledge base of your course notes.  The Bedrock application‑components module shows how to work with datasets, embeddings and RAG:contentReference[oaicite:41]{index=41}, while the architecture patterns module includes a question‑answering example:contentReference[oaicite:42]{index=42}.  Use LangChain’s retrievers and Bedrock’s Knowledge Bases to answer questions about the material.
-* **Chatbot with memory and agents** – Combine Bedrock with LangChain to create a conversational interface that can remember context and call external tools.  The LangChain module teaches how to construct prompts, sequence chains, manage memory and use agents:contentReference[oaicite:43]{index=43}.  Extend the example chat‑bot demonstration with additional features like persona prompts or integration with Slack.
-* **Code‑generation assistant** – Experiment with Bedrock models capable of code generation.  The architecture patterns module lists code‑generation examples and shows how to use Bedrock models for programming tasks:contentReference[oaicite:44]{index=44}.  Build an agent that generates boilerplate code, then use guardrails to filter unsafe output.
-* **Guardrail experimentation** – Set up a guardrail using Amazon Bedrock Guardrails and test the different policies.  Follow the steps described in the AWS “AI safety controls at scale” article: create a guardrail, configure content‑filter and prompt‑attack policies, define denied topics and word filters, and test with sample prompts:contentReference[oaicite:45]{index=45}.  Document the impact on the model’s responses and share your findings.
+> Hi ```Name```, I hope you're doing well. I saw that you're working with AWS AI services after graduating from my university. I'm a current student learning about machine learning on AWS and I recently built a small project using SageMaker. I'd love to hear any advice on breaking into the cloud AI industry or feedback on my approach to learning. Thanks and have a great day!
 
-## Appendix B · Courses, tools & communities
+Customize your message depending on the person's background and your ask. Networking can provide insights that study materials won't – perhaps tips about certifications, or ideas for improving your projects.
 
-| Category | Highlights & links |
-|---------|-------------------|
-| **Core training** | *Developing Generative AI Applications on AWS* – a two‑day workshop that introduces generative‑AI fundamentals, planning projects, Amazon Bedrock basics, prompt engineering and architecture patterns such as text summarization, question answering, chatbots and code generation:contentReference[oaicite:46]{index=46}:contentReference[oaicite:47]{index=47}:contentReference[oaicite:48]{index=48}. |
-| | **AWS Generative AI for Developers Professional Certificate** – three‑course Coursera program (~22 h) covering Bedrock fundamentals, knowledge‑base development, agent orchestration, RAG workflows and model customisation. |
-| **Short courses** | **Planning a Generative AI Project** – 1‑hour Coursera micro‑course that discusses technical foundations and key terminology, then walks through the steps for planning a generative‑AI project:contentReference[oaicite:51]{index=51}. |
-| **Documentation & safety** | **Amazon Bedrock Guardrails** – A set of configurable safeguards for generative‑AI applications, supporting policies like multimodal content filters, denied topics, sensitive information filters, word filters, contextual grounding checks and automated reasoning:contentReference[oaicite:52]{index=52}. See the Dev.to article for a developer walkthrough:contentReference[oaicite:53]{index=53} and check out the [Bedrock Guardrails GitHub samples](https://github.com/aws-samples/amazon-bedrock-guardrails-examples). |
-| **Prompt tooling** | **LangChain for Bedrock** – Open‑source framework for building LLM workflows.  Learn how to create prompt templates, chains, memory and agents; see the dedicated module in the AFI workshop:contentReference[oaicite:54]{index=54}. |
-| **Communities & blogs** | **AWS ML Blogs** – Stay current with new foundation models, best practices and responsible‑AI updates; the Dev.to article recommends reading the official Guardrails posts for deeper dives:contentReference[oaicite:55]{index=55}:contentReference[oaicite:56]{index=56}.  Join the **AWS Developers Slack** and **AWS Re:Post** forums to get help and share projects. |
+### Ready for more challenges?
+* AWS blog post series on [AI/ML best practices and case studies](https://aws.amazon.com/blogs/machine-learning/)
+* LinkedIn Learning courses are **free to JHU students**. Search for AWS Machine Learning courses at [linkedinlearning.jh.edu](https://linkedinlearning.jh.edu)
 
-> **Portfolio tip** – Document each project clearly, including architecture diagrams, code samples, prompt design notes and guardrail configurations.  A well‑written README demonstrates both technical skill and awareness of responsible AI.
+## Appendix A · AWS AI Project Ideas
+To further guide your learning, here are some sample project ideas that use AWS AI/ML services like SageMaker, Bedrock, Comprehend, and more:
+
+* **Text summarizer** – Use Amazon Bedrock foundation models (e.g., Anthropic Claude or Amazon Titan) with LangChain to summarise long documents. Build a serverless API (e.g., AWS Lambda) that takes a PDF or web page and returns a concise summary.
+* **Question‑answering with RAG** – Implement a retrieval‑augmented generative (RAG) system by creating a knowledge base of your course notes. Use LangChain's retrievers and Bedrock's Knowledge Bases to answer questions about the material.
+* **Chatbot with memory and agents** – Combine Bedrock with LangChain to create a conversational interface that can remember context and call external tools. Extend with additional features like persona prompts or integration with Slack.
+* **Code‑generation assistant** – Experiment with Bedrock models capable of code generation. Build an agent that generates boilerplate code, then use guardrails to filter unsafe output.
+* **Guardrail experimentation** – Set up a guardrail using Amazon Bedrock Guardrails and test the different policies. Create content‑filter and prompt‑attack policies, define denied topics and word filters, and test with sample prompts.
+
+<div className="bg-orange-50 rounded-lg p-6">
+    <strong>Portfolio tip</strong> – Focus on end-to-end AWS solutions that show your understanding of cloud architecture. Deploy using AWS services and document your infrastructure choices.
+</div>
+
+Each of these projects demonstrates different aspects of the AWS AI/ML ecosystem. They're excellent for learning because they expose you to various AWS services working together. As always, focus on understanding the architecture and making thoughtful service choices.
+
+**Portfolio Tip:** Document your AWS architecture decisions and cost optimizations. Include architecture diagrams and explain why you chose specific services. This shows strategic thinking that employers value.
+
+**Resume Tip:** Highlight your AWS service expertise. For example: "Built a serverless sentiment analysis pipeline using Amazon Comprehend, Lambda, and S3, processing 10K+ customer reviews with 95% accuracy."
+
+Share your AWS projects on LinkedIn and tag them with relevant AWS hashtags. The AWS community is active and supportive of students showcasing their work.
+
+---
+
+## Need More Resources?
+
+For general development tools, educational courses, GitHub best practices, and community connections beyond Amazon-specific content, check out our comprehensive [Resources section](/resources).
+
+You'll find:
+- 🎓 [Further Learning](/resources/learning) - Courses, tutorials, and educational content
+- 🐱 [GitHub & Portfolio](/resources/github) - Professional profile building and project showcase tips  
+- 🛠️ [Development Tools](/resources/tools) - Essential dev tools and frameworks
+- 👥 [Community & News](/resources/community) - Networking and staying updated with AI research

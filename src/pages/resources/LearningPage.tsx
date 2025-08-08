@@ -20,68 +20,86 @@ export default function LearningPage() {
         <div className="prose prose-lg max-w-none">
           <h2>📚 Courses & Educational Content</h2>
           
+
+
           <table>
             <thead>
-              <tr>
+                <tr>
                 <th>Category</th>
                 <th>Highlights (all free)</th>
-              </tr>
+                </tr>
             </thead>
             <tbody>
-              <tr>
+                <tr>
                 <td><strong>AI & ML Foundations</strong></td>
                 <td>
-                  <ul>
-                    <li><a href="https://learn.deeplearning.ai/">DeepLearning.AI</a>: Collection of courses and projects focused on AI</li>
-                    <li><a href="https://www.youtube.com/watch?v=5NgNicANyqM">Harvard CS50 AI with Python – Full Course</a>: 12 hours comprehensive introduction</li>
-                    <li><a href="https://www.youtube.com/@freecodecamp/featured">freeCodeCamp.org YouTube</a>: Deep Learning, Git, AI Tools and projects</li>
-                    <li><a href="https://www.youtube.com/@mitocw">MIT OpenCourseWare</a>: University-level courses in AI and computer science</li>
-                  </ul>
+                    <ul>
+                        <li><a href="https://learn.deeplearning.ai/">DeepLearning.AI:</a> Collection of courses and projects focused on the realm of AI</li>
+                        <li><a href="https://www.youtube.com/watch?v=5NgNicANyqM">Harvard CS50 AI with Python – Full Course:</a> 12 hours</li>
+                        <li><a href="https://www.youtube.com/@freecodecamp/featured">freeCodeCamp.org YouTube (Deep Learning, Git, AI Tools):</a> YouTube Channel with various AI topics and projects </li>
+                        <li><a href="https://www.youtube.com/@mitocw">MIT OpenCourseWare AI Courses:</a> Collection of MIT courses </li>
+                    </ul>
                 </td>
-              </tr>
-              <tr>
-                <td><strong>Math & Theory</strong></td>
+                </tr>
+                <tr>
+                <td><strong>AI Math & Concept Visualization </strong></td>
                 <td>
-                  <ul>
-                    <li><a href="https://www.youtube.com/@3blue1brown">3Blue1Brown</a>: Visual proofs, linear algebra, and calculus refreshers</li>
-                    <li><a href="https://www.khanacademy.org/math">Khan Academy Math</a>: Statistics, probability, and mathematical foundations</li>
-                    <li><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/">MIT Linear Algebra</a>: Gilbert Strang's legendary course</li>
-                  </ul>
+                    <ul>
+                        <li><a href="https://www.youtube.com/c/3blue1brown">3Blue1Brown YouTube Channel:</a> Videos that build intuition in mathematical concepts (a great resource for any JHU course!)</li>
+                        <li><a href="https://www.khanacademy.org/math">Khan Academy Math</a>: Statistics, probability, and mathematical foundations</li>
+                        <li><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/">MIT Linear Algebra</a>: Gilbert Strang's legendary course</li>
+                    </ul>
                 </td>
-              </tr>
-              <tr>
+                </tr>
+                <tr>
                 <td><strong>News & Research</strong></td>
                 <td>
-                  <ul>
-                    <li><a href="https://paperswithcode.com/">Papers With Code</a>: Latest AI research with implementation</li>
-                    <li><a href="https://arxiv.org/list/cs.AI/recent">arXiv AI Papers</a>: Cutting-edge research publications</li>
-                    <li><a href="https://www.technologyreview.com/topic/artificial-intelligence/">MIT Technology Review AI</a>: Industry insights and analysis</li>
-                  </ul>
+                    <ul>
+                        <li><a href="https://podcasts.apple.com/us/podcast/the-ai-daily-brief-formerly-the-ai-breakdown/id1680633614">The AI Daily Brief Podcast:</a> 20-minute daily podcasts that summarize current news in AI and deep-dive into one topic</li>
+                        <li><a href="https://paperswithcode.com/">Papers With Code:</a> recent papers in AI</li>
+                        <li><a href="https://arxiv.org/list/cs.AI/recent">arXiv AI Papers</a>: Cutting-edge research publications</li>
+                        <li><a href="https://www.technologyreview.com/topic/artificial-intelligence/">MIT Technology Review AI</a>: Industry insights and analysis</li>
+                    </ul>
                 </td>
-              </tr>
-              <tr>
-                <td><strong>Development Skills</strong></td>
+                </tr>
+                <tr>
+                <td><strong>Tools & Workflow Tutorials </strong></td>
                 <td>
-                  <ul>
-                    <li><a href="https://www.tensorflow.org/tutorials">TensorFlow Tutorials</a>: Official machine learning framework guides</li>
-                    <li><a href="https://pytorch.org/tutorials/">PyTorch Tutorials</a>: Popular deep learning framework</li>
-                    <li><a href="https://learngitbranching.js.org/">Learn Git Branching</a>: Interactive Git tutorial game</li>
-                    <li><a href="https://code.visualstudio.com/docs/editor/github-copilot">VS Code + Copilot</a>: AI-powered development environment</li>
-                  </ul>
+                    <ul>
+                        <li>Microsoft CoPilot is free for students. Go to Settings - Billing and licensing - Education Benefits.</li>
+                        <li>TensorFlow is an open source library for ML and Deep Learning (DL)</li>
+                            <ul>
+                                <li><a href="https://www.tensorflow.org/tutorials">TensorFlow Tutorials</a></li>
+                                <li><a href="https://www.youtube.com/@TensorFlow">TensorFlow YouTube Channel</a></li>
+                            </ul>
+                        <li>GitHub is a version control and collaboration tool</li>
+                            <ul>
+                                <li><a href="https://www.youtube.com/@GitHub">GitHub YouTube Channel</a></li>
+                                <li><a href="https://learngitbranching.js.org/?locale=en_US">Learn Git Branching (interactive tutorial)</a></li>
+                            </ul>
+                        <li>VSCode allows for seamless integration with GitHub Copilot (AI Code Assistant, available for free for students: Settings - Billing & Profile - Education benefits)</li>
+                            <ul>
+                                <li><a href="https://www.youtube.com/@code">Visual Studio Code YouTube Channel </a></li>
+                            </ul>
+                        <li>Linux: open source operating system</li>
+                            <ul>
+                                <li><a href="https://overthewire.org/wargames/bandit/">OverTheWire: Bandit Linux Wargame</a></li>
+                                <li><a href="https://linuxjourney.com/">Linux Journey</a>: Comprehensive Linux learning path</li>
+                                <li><a href="https://www.codecademy.com/learn/learn-the-command-line">Codecademy Command Line</a>: Interactive terminal tutorials</li>
+                            </ul>
+                    </ul>
                 </td>
-              </tr>
-              <tr>
-                <td><strong>Linux & Command Line</strong></td>
+                </tr>
+                <tr>
+                <td><strong>Inspiration & Projects </strong></td>
                 <td>
-                  <ul>
-                    <li><a href="https://overthewire.org/wargames/bandit/">OverTheWire Bandit</a>: CLI skills through security challenges</li>
-                    <li><a href="https://linuxjourney.com/">Linux Journey</a>: Comprehensive Linux learning path</li>
-                    <li><a href="https://www.codecademy.com/learn/learn-the-command-line">Codecademy Command Line</a>: Interactive terminal tutorials</li>
-                  </ul>
+                    <ul>
+                        <li><a href="https://towardsdatascience.com/">Towards Data Science on Medium:</a> Published AI, ML & data-science insights.</li>
+                    </ul>
                 </td>
-              </tr>
+                </tr>
             </tbody>
-          </table>
+            </table>
 
           <h2>🎯 JHU-Specific Resources</h2>
           

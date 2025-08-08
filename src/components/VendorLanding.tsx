@@ -73,6 +73,13 @@ export default function VendorLanding({ vendor }: VendorLandingProps) {
               <h3 className={`font-bold text-xl mb-3 ${config.textColor} group-hover:text-opacity-80 transition-colors`}>
                 {step.title}
               </h3>
+
+              {/* Description */}
+              {step.description && (
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                  {step.description}
+                </p>
+              )}
               
               <div className="space-y-2 mb-6">
                 {step.modules && typeof step.modules === 'number' && (
@@ -98,7 +105,9 @@ export default function VendorLanding({ vendor }: VendorLandingProps) {
               
               {/* Call to action */}
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-gray-500">Start Learning</span>
+                <span className="text-sm font-medium text-gray-500">
+                    {step.description ? "Get Started" : "Start Learning"}
+                </span>
                 <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-gray-200 transition-colors">
                   <span className="text-gray-600 group-hover:translate-x-1 transition-transform">→</span>
                 </div>

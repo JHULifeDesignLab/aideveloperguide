@@ -5,6 +5,7 @@
       {
         "id": "beginner",
         "title": "Step 1 · Beginner foundation",
+        "description" : "Build AI fundamentals with Google's beginner-friendly modules.",
         "modules": [
           { "title": "Introduction to Generative AI",  "duration": "45 min" },
           { "title": "Introduction to LLMs",           "duration": "1 h"   },
@@ -14,12 +15,14 @@
       {
         "id": "developer",
         "title": "Step 2 · Complete Developer Path & earn skill badge",
+        "description": "Hands-on experience with Vertex AI and Google's tools.",
         "modules": 12,
         "totalHours": 26
       },
       {
         "id": "responsible-ai",
-        "title": "Step 3 · Model documentation & risk awareness"
+        "title": "Step 3 · Model documentation & risk awareness",
+        "description": "Apply ethical AI principles and create your portfolio."
       }
     ]
   },
