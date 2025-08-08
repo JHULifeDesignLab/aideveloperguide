@@ -86,6 +86,17 @@ export default function Layout({ children }: LayoutProps) {
                 />
                 <span>Microsoft</span>
               </Link>
+              <Link
+                to="/resources"
+                className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium ${
+                  location.pathname.startsWith('/resources')
+                    ? 'bg-green-500 text-white'
+                    : 'text-gray-700 hover:text-green-500'
+                }`}
+              >
+                <span className="text-lg">📚</span>
+                <span>Resources</span>
+              </Link>
             </div>
           </div>
         </div>
