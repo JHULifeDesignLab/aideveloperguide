@@ -7,6 +7,11 @@ import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/developerguide/',
+  resolve: {
+    alias: {
+      '@': '/src'
+    }
+  },
   plugins: [
     {
       ...mdx({

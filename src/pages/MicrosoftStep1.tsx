@@ -1,12 +1,12 @@
 import { MDXProvider } from '@mdx-js/react'
 import { mdxComponents } from '../components/MDXContent'
-import AmazonIndex from '../content/amazon/_index.mdx'
+import MicrosoftStep1 from '../content/microsoft/step-1.mdx'
 
-export default function AmazonPage() {
+export default function MicrosoftStep1Page() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <MDXProvider components={mdxComponents}>
-        <AmazonIndex />
+        <MicrosoftStep1 />
       </MDXProvider>
     </div>
   )

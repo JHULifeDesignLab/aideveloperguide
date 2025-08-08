@@ -1,12 +1,12 @@
 import { MDXProvider } from '@mdx-js/react'
 import { mdxComponents } from '../components/MDXContent'
-import AmazonIndex from '../content/amazon/_index.mdx'
+import MicrosoftResources from '../content/microsoft/resources.mdx'
 
-export default function AmazonPage() {
+export default function MicrosoftResourcesPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <MDXProvider components={mdxComponents}>
-        <AmazonIndex />
+        <MicrosoftResources />
       </MDXProvider>
     </div>
   )

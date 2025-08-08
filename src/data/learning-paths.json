@@ -26,6 +26,57 @@
       }
     ]
   },
-  "amazon": {  },
-  "microsoft": { }
+  "amazon": {
+    "steps": [
+      {
+        "id": "beginner",
+        "title": "Step 1 · Beginner foundation",
+        "description": "Build a rock-solid foundation in generative AI concepts, planning and Bedrock basics.",
+        "modules": [
+          { "title": "Introduction to Generative AI", "duration": "45 min" },
+          { "title": "Planning a Generative AI Project", "duration": "1 h" },
+          { "title": "Getting Started with Amazon Bedrock", "duration": "1.5 h" },
+          { "title": "Foundations of Prompt Engineering", "duration": "1 h" }
+        ]
+      },
+      {
+        "id": "developer",
+        "title": "Step 2 · Developer Path & Certificate",
+        "description": "Complete the AWS Generative AI for Developers Professional Certificate with hands-on projects.",
+        "modules": 3,
+        "totalHours": 22
+      },
+      {
+        "id": "responsible-ai",
+        "title": "Step 3 · Responsible AI & Documentation",
+        "description": "Learn to identify risks, set up Bedrock Guardrails, and create model documentation."
+      }
+    ]
+  },
+  "microsoft": {
+    "steps": [
+      {
+        "id": "beginner",
+        "title": "Step 1 · AI Fundamentals",
+        "description": "Build foundational knowledge of AI concepts and Microsoft's AI services ecosystem.",
+        "modules": [
+          { "title": "Introduction to AI on Azure", "duration": "1 h" },
+          { "title": "Azure OpenAI Service Basics", "duration": "1.5 h" },
+          { "title": "Responsible AI Principles", "duration": "45 min" }
+        ]
+      },
+      {
+        "id": "developer",
+        "title": "Step 2 · Azure AI Development",
+        "description": "Hands-on development with Azure OpenAI, Cognitive Services, and enterprise AI solutions.",
+        "modules": 5,
+        "totalHours": 18
+      },
+      {
+        "id": "responsible-ai",
+        "title": "Step 3 · Enterprise AI & Governance",
+        "description": "Implement enterprise-grade AI solutions with proper governance and compliance frameworks."
+      }
+    ]
+  }
 }
