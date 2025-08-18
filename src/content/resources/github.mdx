@@ -8,6 +8,66 @@ lastReviewed: "2025-08-18"
 
 GitHub is more than just a place to store your code. It can serve as your personal portfolio, giving recruiters, mentors, and collaborators a window into your skills, interests, and professionalism. This guide will walk you through how to set up, polish, and share your GitHub repositories to make a lasting impression.
 
+## Step 1: Create a Polished Project Repository
+
+Each project should have its own GitHub repository. Follow these tips to make it stand out:
+
+Repository Naming:
+- Use clear, descriptive names (e.g., text-summarizer, student-scheduler, meal-recipe-generator).
+- Avoid generic names like test, project1, or final_submission.
+
+Recommended Folder Structure:
+```
+project-name/
+├── README.md
+├── requirements.txt (or environment.yml)
+├── main.py (or app.ipynb)
+├── utils/ (optional)
+├── images/ (optional)
+├── data/ (if applicable, use .gitignore for large/raw files)
+```
+Sometimes, it can be difficult to anticipate the necessary structure of a repository beforehand. Feel free to give the description of your project to ChatGPT and ask “Tell me how I should structure the repository to support the current features and also allow for later additions.”
+
+### What is a README?
+This is a file (usually written in Markdown, which is an easy way to write HTML text) that explains the purpose of a project, and how to use it. You must have one of these for every GitHub project you have.
+
+README Essentials:
+Include at minimum:
+* Project title
+* 1-2 sentence summary of what it does
+* Screenshot or demo GIF
+* Tech stack used (e.g., Python, Flask, VS Code)
+* How to run it locally
+* What you learned or next steps
+* Known limitations or future improvements
+
+Here is a [simple README template](https://gist.github.com/DomPizzie/7a5ff55ffa9081f2de27c315f5018afc): 
+If you’re curious about [learning more about Markdown](https://www.markdownguide.org/cheat-sheet/).
+
+## Step 2: Step 2: Keep Commit History Clean
+- Make regular commits with meaningful messages (e.g., added login logic, updated README with setup instructions).
+- A tip is that you should never have to use the word “and” in a commit message
+- Avoid single commits that say initial commit or final project with dozens of file changes.
+
+## Step 3: Use Your Profile README as a Portfolio
+Create a repository named exactly like your GitHub username (e.g., ```github.com/yourusername/yourusername```). GitHub will display this repo's README.md at the top of your profile. Use it to:
+- Introduce yourself
+- Showcase your best projects (with links)
+- List skills and tools
+- Mention what you're currently learning
+- Add contact info or resume link
+
+Here are some [cool example profile READMEs](https://github.com/abhisheknaiidu/awesome-github-profile-readme).
+
+You can also provide the above link to ChatGPT and attach your resume and ask to have a generated Markdown file customized to your experience (and a theme you may like)
+A fun way to develop a profile picture is to give ChatGPT your headshot and ask for a Disney-character like version.
+
+You can get [badges](https://github.com/Thinkright20/Profile-Badges) that show up on your profile. Some are easier to get than others. Having badges on your profile just shows that you've interacted frequently with GitHub. Here are some that are easier to get:
+- YOLO: merging without review
+- Quickdraw: close a pull request or issue within 5 minutes of it being opened
+
+You’ll also see that there is a part of your page that shows your commit history. This records how often you interact with GitHub. Some people make a bot that auto-commits every day (then they will have a little green square for every day). Just something to note :)
+
 
 ### Useful Badges and Stats:
 
@@ -28,13 +88,40 @@ Add these dynamic elements to your profile README:
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white)
 ```
 
-## 🚀 Advanced GitHub Tips
+## Step 4: Enhance with GitHub Features
+- Use issues or project boards to track to-do items or features
+- Add a LICENSE file (MIT is common for student projects)
+- Use GitHub Pages if your project has a web UI
+	GitHub Pages is a static site hosting service. Read more [here](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages).
+- If relevant, connect with GitHub Actions
+GitHub Actions are continuous integration and continuous delivery platforms that allow you to automate parts of your deployment pipeline. Read more [here](https://docs.github.com/en/actions/get-started/understand-github-actions).
+- Use badges (build status, license, etc.) if applicable
 
-### Professional Practices:
+## Step 5: Add to Resume and LinkedIn
+**Resume:**
+Example: "Built a class scheduler web app using Flask and JavaScript; deployed on Render and documented setup in README. [GitHub]"
+* Include the project as a bullet under “Projects” or “Experience” with the *GitHub link embedded or as a footnote.*
 
-* **Consistent commit messages:** Use conventional commit format
-* **Branch protection:** Use pull requests even for personal projects
-* **Issues and projects:** Show your project management skills
-* **Documentation:** Wiki, contributing guidelines, code of conduct
-* **CI/CD:** GitHub Actions for automated testing and deployment
+**LinkedIn:**
+- Add the repository to your "Projects" section
+- Post about the project! Include a screenshot or video, what you learned, and the link to GitHub.
+- Use hashtags: #Coding, #GitHubPortfolio, #WebDev
+You also may enjoy the course ___GitHub Career Essentials___ to learn more about Git and GitHub (and get a snazzy course certificate) You can get this course for free through [JHU LinkedIn Learning](linkedinlearning.jh.edu)!
+
+**Tips for Building Credibility**
+- Make your repos public (unless sensitive content is involved)
+- Follow other developers and star projects you're inspired by
+- Use GitHub Discussions or contribute to open-source repos
+- Link to your GitHub in your email signature, personal site, and networking messages
+
+## Bonus: Real-World Git and Collaboration
+A crucial aspect of real-world development is using version control (Git) and platforms like GitHub for team collaboration and open-source workflows. As you work on projects, adopt Git early to track changes and avoid “it works on my machine” problems. Using branches and pull requests allows multiple developers to add features or fix bugs concurrently, then merge contributions in a controlled way. In open-source projects, a solid Git workflow (feature branches, code reviews, issues) is essential for coordinating with contributors worldwide.
+
+Here is a beginner-friendly [video covering branches and collaborating with others](https://www.youtube.com/watch?v=FyAAIHHClqI). Here’s a [helpful article](https://dev.to/karanpratapsingh/my-journey-to-understanding-git-github-and-collaborative-workflow-46me).
+
+In order to get some real-world collaborative experience, you may consider contributing to open-source projects. An *open source project* is softawre or other project wose source code is made publically available, allowing anyone to use, view, modify, and distribute it. You can contribute to these sorts of projects! Consider describing something you'd like to work on, and asking an LLM of your choice to do a search for you. [Here's](https://www.firsttimersonly.com/) how to get started.
+
+*GitHub Classroom Tip:*
+If your professor uses GitHub Classroom, be sure to accept the assignment link while signed into your GitHub account. This automatically creates a private repository for your work. Treat it like a professional repo — even if it's for class. Clean up the README and consider making the repo public (once grades are finalized) if it shows off a project you're proud of.
+
 
