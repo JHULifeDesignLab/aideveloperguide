@@ -5,7 +5,7 @@ import AmazonStep1Content from '../content/amazon/step-1.mdx'
 
 export default function AmazonStep1Page() {
   return (
-    <StepPageLayout vendor="amazon" step="beginner">
+    <StepPageLayout vendor="amazon" pageKey="step-1">
       <MDXProvider components={mdxComponents}>
         <AmazonStep1Content />
       </MDXProvider>

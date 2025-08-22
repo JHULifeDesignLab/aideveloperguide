@@ -5,7 +5,7 @@ import AmazonStep3Content from '../content/amazon/step-3.mdx'
 
 export default function AmazonStep3Page() {
   return (
-    <StepPageLayout vendor="amazon" step="responsible-ai">
+    <StepPageLayout vendor="amazon" pageKey="step-3">
       <MDXProvider components={mdxComponents}>
         <AmazonStep3Content />
       </MDXProvider>

@@ -44,11 +44,11 @@ export default function HomePage() {
               </div>
               <div className="ml-4">
                 <h3 className="text-lg font-medium text-gray-900">Google Cloud</h3>
-                <p className="text-sm text-gray-500">Generative AI Developer Path</p>
+                <p className="text-sm text-gray-500">Cloud Developer Path</p>
               </div>
             </div>
             <p className="mt-4 text-gray-600">
-              Learn to build with Google's Generative AI tools and earn your developer certification.
+              Build modern applications with Google Cloud services.
             </p>
           </Link>
         </div>
@@ -72,7 +72,7 @@ export default function HomePage() {
               </div>
             </div>
             <p className="mt-4 text-gray-600">
-              Master AWS services and build scalable cloud applications.
+              Build scalable applications with AWS cloud services.
             </p>
           </Link>
         </div>
@@ -96,7 +96,7 @@ export default function HomePage() {
               </div>
             </div>
             <p className="mt-4 text-gray-600">
-              Build modern applications with Microsoft Azure services.
+              Build modern applications with Azure cloud services.
             </p>
           </Link>
         </div>

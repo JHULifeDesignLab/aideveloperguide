@@ -5,7 +5,7 @@ import GoogleResourcesContent from '../content/google/resources.mdx'
 
 export default function GoogleResources() {
   return (
-    <StepPageLayout vendor="google" step="resources">
+    <StepPageLayout vendor="google" pageKey="resources">
       <MDXProvider components={mdxComponents}>
         <GoogleResourcesContent />
       </MDXProvider>
