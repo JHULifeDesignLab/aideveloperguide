@@ -2,51 +2,51 @@
   "microsoft": {
     "index": {
       "back": {
-        "href": "/developerguide",
+        "href": "/aideveloperguide",
         "label": "Back to Home"
       },
       "forward": {
-        "href": "/developerguide/microsoft/step-1",
+        "href": "/aideveloperguide/microsoft/step-1",
         "label": "Next: Step 1"
       }
     },
     "step-1": {
       "back": {
-        "href": "/developerguide/microsoft",
+        "href": "/aideveloperguide/microsoft",
         "label": "Back to Guide"
       },
       "forward": {
-        "href": "/developerguide/microsoft/step-2",
+        "href": "/aideveloperguide/microsoft/step-2",
         "label": "Next: Step 2"
       }
     },
     "step-2": {
       "back": {
-        "href": "/developerguide/microsoft/step-1",
+        "href": "/aideveloperguide/microsoft/step-1",
         "label": "Previous: Step 1"
       },
       "forward": {
-        "href": "/developerguide/microsoft/step-3",
+        "href": "/aideveloperguide/microsoft/step-3",
         "label": "Next: Step 3"
       }
     },
     "step-3": {
       "back": {
-        "href": "/developerguide/microsoft/step-2",
+        "href": "/aideveloperguide/microsoft/step-2",
         "label": "Previous: Step 2"
       },
       "forward": {
-        "href": "/developerguide/microsoft/resources",
+        "href": "/aideveloperguide/microsoft/resources",
         "label": "Next: Resources"
       }
     },
     "resources": {
       "back": {
-        "href": "/developerguide/microsoft/step-3",
+        "href": "/aideveloperguide/microsoft/step-3",
         "label": "Previous: Step 3"
       },
       "forward": {
-        "href": "/developerguide",
+        "href": "/aideveloperguide",
         "label": "Back to Home"
       }
     }
@@ -54,51 +54,51 @@
   "google": {
     "index": {
       "back": {
-        "href": "/developerguide",
+        "href": "/aideveloperguide",
         "label": "Back to Home"
       },
       "forward": {
-        "href": "/developerguide/google/step-1",
+        "href": "/aideveloperguide/google/step-1",
         "label": "Next: Step 1"
       }
     },
     "step-1": {
       "back": {
-        "href": "/developerguide/google",
+        "href": "/aideveloperguide/google",
         "label": "Back to Guide"
       },
       "forward": {
-        "href": "/developerguide/google/step-2",
+        "href": "/aideveloperguide/google/step-2",
         "label": "Next: Step 2"
       }
     },
     "step-2": {
       "back": {
-        "href": "/developerguide/google/step-1",
+        "href": "/aideveloperguide/google/step-1",
         "label": "Previous: Step 1"
       },
       "forward": {
-        "href": "/developerguide/google/step-3",
+        "href": "/aideveloperguide/google/step-3",
         "label": "Next: Step 3"
       }
     },
     "step-3": {
       "back": {
-        "href": "/developerguide/google/step-2",
+        "href": "/aideveloperguide/google/step-2",
         "label": "Previous: Step 2"
       },
       "forward": {
-        "href": "/developerguide/google/resources",
+        "href": "/aideveloperguide/google/resources",
         "label": "Next: Resources"
       }
     },
     "resources": {
       "back": {
-        "href": "/developerguide/google/step-3",
+        "href": "/aideveloperguide/google/step-3",
         "label": "Previous: Step 3"
       },
       "forward": {
-        "href": "/developerguide",
+        "href": "/aideveloperguide",
         "label": "Back to Home"
       }
     }
@@ -106,51 +106,51 @@
   "amazon": {
     "index": {
       "back": {
-        "href": "/developerguide",
+        "href": "/aideveloperguide",
         "label": "Back to Home"
       },
       "forward": {
-        "href": "/developerguide/amazon/step-1",
+        "href": "/aideveloperguide/amazon/step-1",
         "label": "Next: Step 1"
       }
     },
     "step-1": {
       "back": {
-        "href": "/developerguide/amazon",
+        "href": "/aideveloperguide/amazon",
         "label": "Back to Guide"
       },
       "forward": {
-        "href": "/developerguide/amazon/step-2",
+        "href": "/aideveloperguide/amazon/step-2",
         "label": "Next: Step 2"
       }
     },
     "step-2": {
       "back": {
-        "href": "/developerguide/amazon/step-1",
+        "href": "/aideveloperguide/amazon/step-1",
         "label": "Previous: Step 1"
       },
       "forward": {
-        "href": "/developerguide/amazon/step-3",
+        "href": "/aideveloperguide/amazon/step-3",
         "label": "Next: Step 3"
       }
     },
     "step-3": {
       "back": {
-        "href": "/developerguide/amazon/step-2",
+        "href": "/aideveloperguide/amazon/step-2",
         "label": "Previous: Step 2"
       },
       "forward": {
-        "href": "/developerguide/amazon/resources",
+        "href": "/aideveloperguide/amazon/resources",
         "label": "Next: Resources"
       }
     },
     "resources": {
       "back": {
-        "href": "/developerguide/amazon/step-3",
+        "href": "/aideveloperguide/amazon/step-3",
         "label": "Previous: Step 3"
       },
       "forward": {
-        "href": "/developerguide",
+        "href": "/aideveloperguide",
         "label": "Back to Home"
       }
     }

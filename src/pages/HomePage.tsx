@@ -6,7 +6,7 @@ export default function HomePage() {
       <div className="text-center">
         <div className="flex justify-center mb-8">
           <img 
-            src="/developerguide/jhu-shield.png" 
+            src="/aideveloperguide/jhu-shield.png" 
             alt="Johns Hopkins University" 
             className="h-16 w-auto"
             onError={(e) => {

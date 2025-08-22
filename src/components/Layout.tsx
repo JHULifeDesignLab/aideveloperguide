@@ -17,13 +17,13 @@ export default function Layout({ children }: LayoutProps) {
               {/* Johns Hopkins Logo */}
               <div className="flex items-center">
                 <img 
-                  src="/developerguide/jhu-shield.png" 
+                  src="/aideveloperguide/jhu-shield.png" 
                   alt="Johns Hopkins University" 
                   className="h-8 w-auto"
                   onError={(e) => {
                     // Try alternative paths if the first one fails
                     const img = e.currentTarget as HTMLImageElement;
-                    if (img.src.includes('/developerguide/')) {
+                    if (img.src.includes('/aideveloperguide/')) {
                       img.src = '/jhu-shield.png';
                     } else {
                       img.style.display = 'none';
