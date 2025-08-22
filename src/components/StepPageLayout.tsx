@@ -3,12 +3,14 @@ import { ReactNode } from 'react'
 import learningPathsData from '../data/learning-paths.json'
 
 interface StepPageLayoutProps {
-  vendor: 'google' | 'amazon' | 'microsoft'
-  step: string
+  vendor: "google" | "amazon" | "microsoft";
+  step: string;
+  backHref?: string;
+  backLabel?: string;
   children: ReactNode
 }
 
-export default function StepPageLayout({ vendor, step, children }: StepPageLayoutProps) {
+export default function StepPageLayout({ vendor, step, backHref, backLabel, children }: StepPageLayoutProps) {
   const vendorData = learningPathsData[vendor]
   
   const vendorConfig = {
@@ -108,28 +110,40 @@ export default function StepPageLayout({ vendor, step, children }: StepPageLayou
           </div>
           
           <div className="flex-1 flex justify-end">
-            {currentStepIndex < vendorData.steps.length - 1 && (
-              <Link
-                to={`/${vendor}/step-${currentStepIndex + 2}`}
-                className={`group inline-flex items-center px-6 py-3 border border-transparent text-sm font-medium rounded-xl text-white ${config.bgColor} hover:opacity-90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5`}
-              >
-                Next Step
-                <svg className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            )}
-            {currentStepIndex === vendorData.steps.length - 1 && (
-              <Link
-                to={`/${vendor}/resources`}
-                className={`group inline-flex items-center px-6 py-3 border border-transparent text-sm font-medium rounded-xl text-white ${config.bgColor} hover:opacity-90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5`}
-              >
-                View Resources
-                <svg className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                </svg>
-              </Link>
-            )}
+            <div className="flex justify-between items-center mt-8">
+              {backHref && (
+                <a href={backHref} className="group inline-flex items-center px-6 py-3 border border-transparent text-sm font-medium rounded-xl text-white bg-blue-600 hover:opacity-90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 no-underline">
+                  <svg className="mr-3 h-5 w-5 text-white group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                  </svg>
+                  {backLabel || 'Back to Guide'}
+                </a>
+              )}
+              <div className="ml-auto">
+                {currentStepIndex < vendorData.steps.length - 1 && (
+                  <Link
+                    to={`/${vendor}/step-${currentStepIndex + 2}`}
+                    className={`group inline-flex items-center px-6 py-3 border border-transparent text-sm font-medium rounded-xl text-white ${config.bgColor} hover:opacity-90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5`}
+                  >
+                    Next Step
+                    <svg className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                )}
+                {currentStepIndex === vendorData.steps.length - 1 && (
+                  <Link
+                    to={`/${vendor}/resources`}
+                    className={`group inline-flex items-center px-6 py-3 border border-transparent text-sm font-medium rounded-xl text-white ${config.bgColor} hover:opacity-90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5`}
+                  >
+                    View Resources
+                    <svg className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
+                  </Link>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       )}

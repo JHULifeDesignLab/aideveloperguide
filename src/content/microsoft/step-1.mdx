@@ -8,18 +8,18 @@ lastReviewed: "2025-08-22"
 
 import StepPageLayout from "../../components/StepPageLayout"
 
-<StepPageLayout vendor="microsoft" step="beginner">
+<StepPageLayout vendor="microsoft" step="beginner" backHref="/developerguide/microsoft" backLabel="Back to Guide">
 
 # Step 1: Beginner: Introduction to Generative AI Learning Path 
 
 ## Goal  
-**Goal:** Build a strong foundation in generative AI concepts, tools, and ethics—no prior experience required.
+Build a strong foundation in generative AI concepts, tools, and ethics—no prior experience required.
 
 Microsoft Learn provides a **beginner-friendly onramp** to the Azure generative AI stack. In this step you’ll:
 <ol type="a">
     <li>understand GenAI at a practical developer level</li>
     <li>get oriented in **Azure AI Foundry** (formerly Azure AI Studio) and **Azure OpenAI**</li>
-    <li>ship two tiny but working demos (text + image). If you’re short on time, complete the core modules first; the labs and credential are optional.</li>
+    <li>become familiar with Microsoft's Content Safety framework</li>
 </ol>
 
 This path is designed for aspiring SWE/AI interns who need real, runnable artifacts. By the end, you’ll be able to deploy a model in Azure AI Foundry, call it from a simple app, and add **content safety** guardrails. You’ll also know the basic vocabulary you’ll be asked about in screens and interviews (prompting, grounding/RAG, embeddings, safety, evals).
@@ -52,26 +52,17 @@ This path is designed for aspiring SWE/AI interns who need real, runnable artifa
     - [Create a resource and deploy a model (Microsoft's step-by-step guide)](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/create-resource?pivots=web-portal)
     - [YouTube - Azure AI Foundry | Introduction & Hands-on Demo (42 minutes)](https://www.youtube.com/watch?v=d2BWayItOv4)
 
-3. Lesson 3 — Build your first app (text/chat)**  
-- Use the **Azure OpenAI** REST/SDK from a minimal Python/JS app (single endpoint call, environment variables, and logging).
+3. **Responsible AI checkpoint:** Learn about how Microsoft approaches responsible AI
+- [What is Azure AI Content Safety? (article)](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/overview)
+- Use [Azure AI Content Safety documentation](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/) throughout the rest of this guide to implement proper protocols.
+- [Responsible AI for Azume OpenAI (overview)](https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-ai/openai/overview)
 
-4. Lesson 4 — Build your second app (image)**  
-- Call the image generation endpoint (DALL·E in Azure OpenAI); render/download result; add prompt tips.
-
-5. Lesson 5 — Responsible AI checkpoint**  
-- Wire **Azure AI Content Safety** (text filter) into your app; add a short “intended use & limitations” section to your README.
+<div className="bg-blue-50 rounded-lg p-6">
+<strong>Bonus:</strong> if you already completed the Google or Amazon path, how do their responsible AI practices differ from Microsoft's?
+</div>
 
 ## Optional Labs (earn the Beginner Skill Badge, hands-on experience)
 - Do 1–2 **Applied Skills**/Learn modules tied to Azure OpenAI basics, RAG-on-your-data quickstarts, or prompt flow/evals.  
 - Screenshots + short write-ups go into your portfolio and LinkedIn.
 
 </StepPageLayout>
-
-<div className="flex justify-center mt-8">
-  <a href="/developerguide/microsoft" className="group inline-flex items-center px-6 py-3 border border-transparent text-sm font-medium rounded-xl text-white bg-blue-600 hover:opacity-90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 no-underline">
-    <svg className="mr-3 h-5 w-5 text-white group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-    </svg>
-    Back to Microsoft Guide
-  </a>
-</div>
