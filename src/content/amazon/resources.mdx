@@ -8,11 +8,11 @@ lastReviewed: "2025-08-06"
 
 ## Final Tips for Success
 <CheckList>
-    <CheckListItem>**Keep projects small and impactful:** It's better to fully complete a simple generative app (and understand it end-to-end) than to half-build something overly complex. Each project should have a clear goal (e.g. "analyze customer sentiment" or "automate document processing").</CheckListItem>
-    <CheckListItem>**Showcase your work: Don't hide your projects!** Put them on GitHub, create a personal website or portfolio, and share on LinkedIn. A well-presented project can open doors – recruiters often skim GitHub profiles and LinkedIn posts to gauge passion and initiative.</CheckListItem>
-    <CheckListItem>**Document everything:** Use a README or even a simple Model Card for your projects to explain the what, why, and how. Good documentation not only reinforces your learning but also signals professionalism.</CheckListItem>
-    <CheckListItem>**Use relevant tags and keywords:** When you publish projects or posts, tag them appropriately – e.g. #AI, #AWS, #MachineLearning, #SageMaker, #Bedrock. This increases the visibility of your work.</CheckListItem>
-    <CheckListItem>**Network and ask for feedback:** Connect with peers, alumni, and professionals who work in AI/ML. Let them know you're working towards AWS certifications and ask for advice or feedback on your approach.</CheckListItem>
+  <CheckListItem>**Keep projects small and impactful:** Pick a narrow, useful task (e.g., “answer 50 common campus questions from 3 PDFs”).</CheckListItem>
+  <CheckListItem>**Show your work publicly:** A GitHub repo + short LinkedIn post goes a long way; include a README screenshot or GIF.</CheckListItem>
+  <CheckListItem>**Document limitations:** Use a Model Card or README section to explain intended use, risks, and guardrails.</CheckListItem>
+  <CheckListItem>**Use relevant keywords:** Add “Amazon Bedrock,” “RAG,” “Guardrails,” “SageMaker Model Card,” and “Amazon Q Developer” where appropriate.</CheckListItem>
+  <CheckListItem>**Ask for feedback:** Message an alum or TA with a 2–3 sentence note and a link to your project; iterate based on their advice.</CheckListItem>
 </CheckList>
 
 > Hi ```Name```, I hope you're doing well. I saw that you're working with AWS AI services after graduating from my university. I'm a current student learning about machine learning on AWS and I recently built a small project using SageMaker. I'd love to hear any advice on breaking into the cloud AI industry or feedback on my approach to learning. Thanks and have a great day!
@@ -20,29 +20,40 @@ lastReviewed: "2025-08-06"
 Customize your message depending on the person's background and your ask. Networking can provide insights that study materials won't – perhaps tips about certifications, or ideas for improving your projects.
 
 ### Ready for more challenges?
+* **AWS Bedrock workshops:** Self‑paced labs for RAG, Agents, and prompt engineering — https://workshops.aws/categories/Amazon%20Bedrock  
+* **Advanced prompt management:** Version and test prompts at scale — https://aws.amazon.com/blogs/machine-learning/implementing-advanced-prompt-engineering-with-amazon-bedrock/  
+* **Skill Builder catalog (free courses):** https://aws.amazon.com/training/digital/
 * AWS blog post series on [AI/ML best practices and case studies](https://aws.amazon.com/blogs/machine-learning/)
 * LinkedIn Learning courses are **free to JHU students**. Search for AWS Machine Learning courses at [linkedinlearning.jh.edu](https://linkedinlearning.jh.edu)
 
-## Appendix A · AWS AI Project Ideas
-To further guide your learning, here are some sample project ideas that use AWS AI/ML services like SageMaker, Bedrock, Comprehend, and more:
+## Appendix A: AWS Project Ideas
+Pick one, finish it, and document it well.
 
-* **Text summarizer** – Use Amazon Bedrock foundation models (e.g., Anthropic Claude or Amazon Titan) with LangChain to summarise long documents. Build a serverless API (e.g., AWS Lambda) that takes a PDF or web page and returns a concise summary.
-* **Question‑answering with RAG** – Implement a retrieval‑augmented generative (RAG) system by creating a knowledge base of your course notes. Use LangChain's retrievers and Bedrock's Knowledge Bases to answer questions about the material.
-* **Chatbot with memory and agents** – Combine Bedrock with LangChain to create a conversational interface that can remember context and call external tools. Extend with additional features like persona prompts or integration with Slack.
-* **Code‑generation assistant** – Experiment with Bedrock models capable of code generation. Build an agent that generates boilerplate code, then use guardrails to filter unsafe output.
-* **Guardrail experimentation** – Set up a guardrail using Amazon Bedrock Guardrails and test the different policies. Create content‑filter and prompt‑attack policies, define denied topics and word filters, and test with sample prompts.
-
-<div className="bg-orange-50 rounded-lg p-6">
-    <strong>Portfolio tip</strong> – Focus on end-to-end AWS solutions that show your understanding of cloud architecture. Deploy using AWS services and document your infrastructure choices.
-</div>
+* **Campus FAQ Chatbot (RAG):** Create a Knowledge Base with a handful of campus PDFs and a website crawl; build a small web UI. ([Workshop](https://workshops.aws/card/bedrock), [Blog](https://aws.amazon.com/blogs/machine-learning/build-a-contextual-chatbot-application-using-knowledge-bases-for-amazon-bedrock/))
+* **Long‑note Summarizer:** Summarize lecture notes with citations back to source paragraphs. Try multiple models via Bedrock to compare styles.
+* **Syllabus Q&A Assistant:** Answer questions about due dates and policies by grounding to a course syllabus; include a “Show sources” toggle.
+* **Support QnABot:** Start from the [AWS Solution and swap in Bedrock for answers](https://aws.amazon.com/solutions/implementations/qnabot-on-aws/).  
+* **Agent that runs simple tasks:** Use an Agent for Bedrock to call a weather or calendar API and return structured JSON back to your app.
+* **Code‑generation assistant:** Experiment with Bedrock models capable of code generation. Build an agent that generates boilerplate code, then use guardrails to filter unsafe output.
+* **Guardrail experimentation:** Set up a guardrail using Amazon Bedrock Guardrails and test the different policies. Create content‑filter and prompt‑attack policies, define denied topics and word filters, and test with sample prompts.
 
 Each of these projects demonstrates different aspects of the AWS AI/ML ecosystem. They're excellent for learning because they expose you to various AWS services working together. As always, focus on understanding the architecture and making thoughtful service choices.
 
-**Portfolio Tip:** Document your AWS architecture decisions and cost optimizations. Include architecture diagrams and explain why you chose specific services. This shows strategic thinking that employers value.
+<div className="bg-blue-50 rounded-lg p-6">
+    <strong>Portfolio tip:</strong> One polished project with a clean README + screenshots beats three half‑finished demos.
+</div>
 
-**Resume Tip:** Highlight your AWS service expertise. For example: "Built a serverless sentiment analysis pipeline using Amazon Comprehend, Lambda, and S3, processing 10K+ customer reviews with 95% accuracy."
+## Appendix B: Free Access & Pricing
+* **[AWS Free Tier:](https://aws.amazon.com/free/)** Explore “always free” services; set billing alarms and delete resources after use
+* **[AWS Educate (no credit card):](https://aws.amazon.com/education/awseducate/  )** Beginner console + hands‑on labs
+* **[SageMaker Studio Lab (free):](https://studiolab.sagemaker.aws/)** Hosted Jupyter for ML experimentation, make a free account
+* **[Amazon Q Developer (Free Tier):](https://aws.amazon.com/q/developer/pricing/)** IDE and console assistant; understand limits before relying on it
 
-Share your AWS projects on LinkedIn and tag them with relevant AWS hashtags. The AWS community is active and supportive of students showcasing their work.
+## Appendix C: Tools & SDKs
+* [Bedrock docs & model list](https://aws.amazon.com/documentation-overview/bedrock/  )
+* [Bedrock Guardrails](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html)
+* [SageMaker Model Cards (SDK)](https://sagemaker.readthedocs.io/en/stable/api/governance/model_card.html)
+* [GitHub repo of Amazon Bedrock Workshop projects](https://github.com/aws-samples/amazon-bedrock-workshop)
 
 ---
 

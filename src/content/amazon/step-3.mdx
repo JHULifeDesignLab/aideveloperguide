@@ -6,16 +6,27 @@ slug: "/amazon/step-3"
 lastReviewed: "2025-08-06"
 ---
 
-### Goal
+# Step 3: Responsible AI on AWS · Model Cards & Guardrails
 
-Show that you can communicate risks, mitigate harm and document your solutions – just like a professional AI team.  AWS training emphasises that developers should **define the importance of generative AI, explain its potential risks and benefits, and identify business value**.  They must also **identify risks and mitigations when using generative AI**, understand the cost structure of Amazon Bedrock and design prompts that mitigate bias.
+## Goal
+Show that you can ship responsibly by documenting limitations and adding safety controls to your app.
 
-### Key practices
+### 1) Create a Model Card (SageMaker)
+Use **Amazon SageMaker Model Cards** to capture: intended use, data sources, known risks (e.g., bias, hallucinations), metrics, and caveats. You can export to PDF and link it in your repo. Read the [documentation here.](https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html)
 
-1. **Identify and mitigate risks** – Before deploying a model, list potential failure modes and misuse scenarios.  The objectives of the *Developing Generative AI Applications on AWS* course include discussing the technical foundations of generative AI, explaining the steps for planning a project and identifying risks and mitigation strategies.  Pay attention to cost implications and the importance of data protection and auditability.
-2. **Apply prompt‑safety techniques** – Advanced prompt engineering modules teach developers to recognise misuses, analyse potential bias in foundation‑model responses and design prompts that mitigate that bias.  Practise zero‑shot and few‑shot prompts, chain‑of‑thought and function‑calling, and document how you address fairness, inclusivity and safety.
-3. **Configure Bedrock Guardrails** – Amazon Bedrock Guardrails provides configurable safeguards for generative‑AI applications.  According to AWS engineers, guardrails offer six policies: **multimodal content filters**, **denied topics**, **sensitive information filters**, **word filters**, **contextual grounding checks** and **automated reasoning**.  These policies can be customised to maintain strong security controls and promote responsible use of AI.  Create a guardrail in the AWS console, enable harmful‑content and prompt‑attack filters, specify denied topics and word filters, and test the guardrail with sample prompts.
-4. **Document your model** – A clear README or model card should describe the model's purpose, data sources, training methods, evaluation metrics, limitations and safety filters.  The Bedrock foundation‑model documentation highlights data protection and auditability measures and demonstrates how to invoke models for text generation using secure APIs.  Include links to your guardrail configuration and risk assessments.
-5. **Publish transparently** – Add your model card to your GitHub repository or application's about page.  Being transparent about risks, mitigations and usage guidelines builds trust with users and employers.
+### 2) Add Guardrails (Bedrock)
+Configure **Bedrock Guardrails** to filter harmful content, redact sensitive info, and enforce denied topics. You can attach guardrails to Agents *or* call the `ApplyGuardrail` API independently to pre/post‑filter inputs/outputs.
+* [Guardrails guide](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html)
+* [ApplyGuardrail API](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-use-independent-api.html)
 
-> **Tip** – Responsible‑AI practices aren't an afterthought; they're part of the engineering process.  Bake them into your project from day one so you can clearly articulate trade‑offs and safeguards during interviews and code reviews.
+### 3) Document it in your README
+Add a **Responsible AI** section that says:
+* What the app does and doesn’t do
+* How retrieval and citations work
+* Which guardrails are enabled and why
+* Known failure modes and how users should report issues
+
+## Example documentation snippets
+*Resume bullet:* “Built a campus FAQ chatbot on Amazon Bedrock with Knowledge Bases; implemented Guardrails for topic filtering and PII redaction; published a SageMaker Model Card and README detailing limits and evaluation results.”
+
+*LinkedIn post:* “Shipped a small RAG app on AWS! Used Bedrock to ground answers in campus docs, enabled Guardrails, and wrote a Model Card to be transparent about risks. Feedback welcome.”
