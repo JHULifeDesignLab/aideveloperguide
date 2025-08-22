@@ -3,38 +3,52 @@ title: "Step 1 · AI Fundamentals"
 vendor: "microsoft"
 ordinal: 1
 slug: "/microsoft/step-1"
-lastReviewed: "2025-08-06"
+lastReviewed: "2025-08-22"
 ---
 
 import StepPageLayout from "../../components/StepPageLayout"
 
 <StepPageLayout vendor="microsoft" step="beginner">
 
-### Goal
+# Step 1: Beginner: Introduction to Generative AI Learning Path 
 
-Establish a strong foundation in AI concepts and Microsoft's AI ecosystem. Understand Azure's AI services, learn responsible AI principles, and gain familiarity with Azure OpenAI Service. This step prepares you for hands-on development while emphasizing Microsoft's commitment to ethical and responsible AI deployment.
+## Goal  
+**Goal:** Build a strong foundation in generative AI concepts, tools, and ethics—no prior experience required.
 
-### Core modules
+Microsoft Learn provides a **beginner-friendly onramp** to the Azure generative AI stack. In this step you’ll (a) understand GenAI at a practical developer level, (b) get oriented in **Azure AI Foundry** (formerly Azure AI Studio) and **Azure OpenAI**, and (c) ship two tiny but working demos (text + image). If you’re short on time, complete the core modules first; the labs and credential are optional.
 
-1. **Introduction to AI on Azure** – Overview of artificial intelligence concepts and Microsoft's AI platform. Learn about the Azure AI services portfolio, understand different types of AI models, and explore real-world use cases across industries.
+This path is designed for aspiring SWE/AI interns who need real, runnable artifacts. By the end, you’ll be able to deploy a model in Azure AI Foundry, call it from a simple app, and add **content safety** guardrails. You’ll also know the basic vocabulary you’ll be asked about in screens and interviews (prompting, grounding/RAG, embeddings, safety, evals).
 
-2. **Azure OpenAI Service Basics** – Deep dive into Microsoft's flagship AI service. Learn how to access and use state-of-the-art models like GPT-4, understand the service architecture, and practice basic prompt engineering techniques in the Azure environment.
+### What you should aim to be comfortable with
+* **Core Generative Models:** What LLMs do; prompting basics; modalities (text, image).  
+* **Implementing AI Solutions on Azure:** Deploying a model, calling REST/SDK from a small app, basic cost/safety controls.  
+* **Azure GenAI Offerings:** Where to find models, how to deploy/test in **Azure AI Foundry**, and how **Azure OpenAI** fits in.  
+* **Optimizing Outputs:** System messages, few-shot examples, parameters; basic evaluation habits.  
+* **Responsible AI & Safety:** When and how to integrate **Azure AI Content Safety**; logging limits/risks clearly in your README.
 
-3. **Responsible AI Principles** – Microsoft's approach to responsible AI development. Study the six principles of responsible AI, learn about built-in safety features, content filtering capabilities, and governance frameworks for enterprise AI deployment.
+<div className="bg-blue-50 rounded-lg p-6">
+  <em>Badge or pick-and-choose?</em> Recruiters care more about a concrete project than a badge. Use this step to ship two demos; add a credential later if helpful.
+</div>
 
-### Learning objectives
+## Core Modules
+1. GenAI refresher & prompt engineering (Azure context)**  
+- Skim Microsoft’s [Introduction to generative AI concepts](https://learn.microsoft.com/en-us/training/modules/fundamentals-generative-ai/) for quick intuition.  
+- Practice system/user messages and few-shot prompting in a notebook or the Foundry playground.
 
-By completing this step, you will:
-- Understand core AI concepts and terminology
-- Navigate the Azure AI services ecosystem
-- Recognize the importance of responsible AI development
-- Be prepared for hands-on Azure AI development
+2. Lesson 2 — Azure AI Foundry fast start (model catalog, deployments)**  
+- Create a Foundry project; browse the model catalog; deploy a chat model; send a test prompt in the playground.
 
-### Optional explorations
+3. Lesson 3 — Build your first app (text/chat)**  
+- Use the **Azure OpenAI** REST/SDK from a minimal Python/JS app (single endpoint call, environment variables, and logging).
 
-* **Microsoft Learn AI Learning Path** – Explore Microsoft's comprehensive AI learning modules for additional context and deeper understanding.
-* **Azure AI Studio Playground** – Experiment with different models and prompt techniques using Azure's web-based interface.
+4. Lesson 4 — Build your second app (image)**  
+- Call the image generation endpoint (DALL·E in Azure OpenAI); render/download result; add prompt tips.
 
-> **Tip** – Focus on understanding Microsoft's enterprise-first approach to AI. The concepts you learn here will be crucial for building production-ready applications in the next steps.
+5. Lesson 5 — Responsible AI checkpoint**  
+- Wire **Azure AI Content Safety** (text filter) into your app; add a short “intended use & limitations” section to your README.
+
+## Optional Labs (earn the Beginner Skill Badge, hands-on experience)
+- Do 1–2 **Applied Skills**/Learn modules tied to Azure OpenAI basics, RAG-on-your-data quickstarts, or prompt flow/evals.  
+- Screenshots + short write-ups go into your portfolio and LinkedIn.
 
 </StepPageLayout>
