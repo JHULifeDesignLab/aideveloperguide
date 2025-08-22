@@ -10,22 +10,34 @@ import StepPageLayout from "../../components/StepPageLayout"
 
 <StepPageLayout vendor="amazon" pageKey="step-1">
 
-### Goal
+# Step 1: Introduction to Generative AI on AWS
 
-Build a rock‑solid foundation in generative‑AI concepts, planning and Bedrock basics.  AWS's introductory training stresses that developers must be able to **describe generative AI**, explain its importance and potential risks, identify business value and understand how Amazon Bedrock works.  This stage gives you vocabulary and context before you tackle the full developer path.
+## Goal
+Get comfortable with core concepts and tools for free so you can start building in Step 2.
 
-### Core modules
+## 1) Learn the basics (fast)
+Work through these two AWS skill builder modules and refer to prompting guidelines as you build.
+* **[Introduction to Generative AI – Art of the Possible](https://explore.skillbuilder.aws/learn/courses/17176/introduction-to-generative-ai-art-of-the-possible) (AWS Skill Builder, 1 hr, free):** Short, non‑mathy overview of how modern generative AI works and where it’s useful.  
+* **[Foundations of Prompt Engineering](https://explore.skillbuilder.aws/learn/courses/17763/foundations-of-prompt-engineering) (AWS Skill Builder, 4hr, free):** Practical prompting patterns you’ll reuse with Bedrock models.  
+* **[Prompt engineering guidelines](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-engineering-guidelines.html) (Bedrock docs):** Official guidance you can reference while you build.  
 
-1. **Introduction to Generative AI – Art of the Possible** – A short module that provides an overview of machine learning and the basics of generative AI.  It discusses common use‑cases, illustrates generative‑AI in practice and highlights risks and benefits.
-2. **Planning a Generative AI Project** (≈ 1 h) – Learn the technical foundations and key terminology for generative AI and then walk through the steps for planning a generative‑AI project.  The course explains the context for generative‑AI initiatives, risk/benefit analysis and how to articulate a project plan.
-3. **Getting Started with Amazon Bedrock** – This module introduces the Amazon Bedrock service, covering its architecture and use‑cases, how to set up access and use the Bedrock playground.  You'll learn the basics of foundation models and prompt engineering, practise basic and advanced prompt techniques, and see how to mitigate mis‑uses and bias.
-4. **Foundations of Prompt Engineering** – Delve deeper into prompt engineering: review the basics of foundation models, study zero‑shot and few‑shot techniques, explore advanced prompt techniques and learn how to identify prompt misuses and mitigate bias.
+## 2) Set up your environment: Choose a safe place to practice without paying
+* **[AWS Educate:](https://aws.amazon.com/education/awseducate/)** Beginner‑friendly console and labs. Great for learning the AWS UI and fundamentals.  
+* **[SageMaker Studio Lab](https://studiolab.sagemaker.aws/faq) (free):** A hosted JupyterLab that doesn’t require an AWS account. Perfect for notebooks and experiments.  
 
-### Optional labs
+<div className="bg-blue-50 rounded-lg p-6 mt-2">
+<strong>Tip:</strong> If you *do* create a standard AWS account, stay within the <em>Free Tier</em>, delete resources when done, and set billing alarms.
+</div>
 
-* **Generative‑AI application components & RAG** – The *Amazon Bedrock application components* module surveys generative‑AI application building blocks such as datasets, embeddings, retrieval augmented generation (RAG), model fine‑tuning and securing applications.  Try building a simple RAG demo using the Bedrock playground.
-* **LangChain & architecture patterns** – Later modules cover using **LangChain** with Bedrock models (prompt templates, memory, chains and agents) and architecture patterns for text summarization, question answering, chatbots and code generation.  Work through these examples if you have extra time.
+## 3) Choose an AI assistant: set up helpful tooling
+* **Amazon Q Developer (Free Tier):** An AI coding assistant for VS Code/JetBrains and in the AWS Console. Get started [here](https://aws.amazon.com/q/developer/) and refer to [pricing/limits](https://aws.amazon.com/q/developer/pricing/) to ensure you don't pay.
+* **GitHub Copilot:** Students have free access through ```Settings > Billing and licensing > Education Benefits```
 
-> **Tip** – Don't rush.  Step 1 is about grasping the fundamentals and understanding the problem space.  The short courses above will prepare you to build real applications in Step 2, and they emphasise both the benefits and risks of generative AI.
+## 4) Quick hands‑on wins
+* **Bedrock workshops (self‑paced):** Build a simple RAG chatbot or try prompt‑engineering labs.  
+  Workshops hub: https://workshops.aws/categories/Amazon%20Bedrock  
+  Prompt engineering workshops: https://workshops.aws/categories/Prompt%20Engineering
+
+These short pieces will give you confidence before you tackle the full developer learning plan in Step 2.
 
 </StepPageLayout>

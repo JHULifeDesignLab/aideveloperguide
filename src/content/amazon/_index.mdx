@@ -8,14 +8,46 @@ lastReviewed: "2025-08-06"
 import VendorLanding from "../../components/VendorLanding"
 import NavigationLayout from "../../components/NavigationLayout"
 
-<NavigationLayout vendor="amazon" pageKey="index">
-
 <VendorLanding vendor="amazon" />
+
+<NavigationLayout vendor="amazon" pageKey="index">
 
 ## About
 This guide will help computer science undergraduates gain familiarity with AWS services, particularly in GenAI.
 AWS offers [various certifications](https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/pdfs/AWS_certification_paths.pdf), which are often quite time consuming (and can have costs to take the tests).
+This guide does *not* focus on preparation for those certifications, as often the experience is just as important as the paper documentation. 
 
-Follow the pages in the sidebar to dive deeper into each step, find project ideas and explore appendices with additional courses, tools and communities.
+**What you’ll accomplish**
+* **Understand modern gen‑AI on AWS:** What foundation models (FMs) are, why retrieval‑augmented generation (RAG) matters, and how services like **Amazon Bedrock**, **Amazon Q Developer**, and **Amazon SageMaker** fit together.
+* **Ship one portfolio project:** A minimal but working app (e.g., a campus FAQ bot powered by Bedrock Knowledge Bases) deployed and documented.
+* **Practice responsible AI:** Use **Bedrock Guardrails** and a **SageMaker Model Card** (or a README section) to articulate capabilities, limits, and safety considerations.
+
+<div className="bg-blue-50 rounded-lg p-6">
+**Badges vs. certificates**
+AWS offers **digital badges** for completing curated Skill Builder learning plans. They’re great for LinkedIn and for structuring your learning, but keep your focus on **a shipped project**—that’s what interviewers remember.
+</div>
+
+### Pricing & access -- plan ahead!
+You can learn on AWS for free if you’re careful. Strategize for when you intend to complete your learning so that you don't have to pay for resources.
+* **[AWS Educate](https://aws.amazon.com/education/awseducate/) (no credit card):** Beginner‑friendly accounts with hands‑on labs. Great for Step 1.  
+* **[SageMaker Studio Lab](https://aws.amazon.com/sagemaker/?trk=31926bd3-3ed0-43f3-a835-1801081fa158&sc_channel=ps&ef_id=Cj0KCQjwqqDFBhDhARIsAIHTlkvf4D1ZPUQfeD0-fXfU2vmmmMiA0Bvzf98wh8lLoNVk9a44PPNNsNcaAjdwEALw_wcB:G:s&s_kwcid=AL!4422!3!651751060695!e!!g!!sagemaker%20studio!19852662230!145019226137&gad_campaignid=19852662230&gbraid=0AAAAADjHtp8QsHsdwVvnOXP9GS1jjXFKn&gclid=Cj0KCQjwqqDFBhDhARIsAIHTlkvf4D1ZPUQfeD0-fXfU2vmmmMiA0Bvzf98wh8lLoNVk9a44PPNNsNcaAjdwEALw_wcB) (free Jupyter environment):** A center for all analytics, data, and AI.  
+* **[AWS Free Tier:](https://aws.amazon.com/free/?trk=e5a722bd-6ebd-40da-a612-43a6b9227b6a&sc_channel=ps&ef_id=Cj0KCQjwqqDFBhDhARIsAIHTlkual9zHyc7BvUW9JkpfSlFJlCTxArhnnnoa1Ew8dHJp7Grnp1XZRC4aAh_vEALw_wcB:G:s&s_kwcid=AL!4422!3!658520967071!!!g!!!19852662608!149878734860&gad_campaignid=19852662608&gbraid=0AAAAADjHtp-fEoiXuWc11YrQsJxVgtwOp&gclid=Cj0KCQjwqqDFBhDhARIsAIHTlkual9zHyc7BvUW9JkpfSlFJlCTxArhnnnoa1Ew8dHJp7Grnp1XZRC4aAh_vEALw_wcB)** New AWS customers may get started at no cost with up to $200 in credits. You'll have usage for six months after activation. Many services are “always free” but *usage caps apply*. Turn off resources when not in use to avoid charges.
+* **Amazon Q Developer Free Tier:** Use the IDE/chat assistant for code help at no cost within Free Tier limits.
+
+We’ll point to these options and call out where billing risks exist.
+
+### Why AWS for generative AI?
+* **Model choice via one API:** Access FMs from Anthropic, Cohere, Meta, Mistral, AI21, and Amazon **Titan** via **Amazon Bedrock**.
+* **Production‑ready building blocks:** Knowledge Bases (for RAG), Agents (tool‑use & orchestration), Guardrails (safety), and evaluation tools.
+* **Bridges to classic ML:** If you take ML classes, **SageMaker** makes it easy to go from notebooks to managed training and deployment.
+
+## How this guide works
+We split your journey into three steps. Each step links to official AWS courses, free labs, starter projects, and portfolio tips.
+
+1. **Step 1 – Beginner Foundation:** Concepts, prompt engineering, and safe/free environments (Educate + Studio Lab).  
+2. **Step 2 – Developer Path:** Work through the **Generative AI Learning Plan for Developers** and build/extend your project using Bedrock.  
+3. **Step 3 – Responsible AI:** Add **Guardrails** and a **Model Card**; write a clear “Responsible AI” section in your README.
+
+Follow the pages in the sidebar to dive in. Keep it small, ship something, and document it well.
 
 </NavigationLayout>
