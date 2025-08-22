@@ -9,16 +9,53 @@ import VendorLanding from "../../components/VendorLanding"
 
 <VendorLanding vendor="microsoft" />
 
-## Why build with Microsoft Azure AI?
+## About
+This guide is tailored for computer science undergraduates with limited Generative AI experience who want to build practical skills in the Microsoft ecosystem and earn beginner-friendly Microsoft credentials.
+It provides a clear, encouraging path from fundamentals to hands-on projects, with an emphasis on responsible AI practices.
+By following these steps, you'll gain experience with Microsoft’s AI tools (like **Azure OpenAI** and **Azure AI Foundry**) and build a portfolio that shows curiosity and initiative to recruiters.
 
-Microsoft Azure provides a comprehensive AI platform with **Azure OpenAI Service**, **Azure AI Studio**, and enterprise-grade **Copilot** integrations. These services enable developers to build intelligent applications using the latest foundation models while maintaining enterprise security, compliance, and governance standards. Microsoft's approach emphasizes responsible AI development with built-in safety features, content filtering, and comprehensive monitoring capabilities.
+**Applied Skills (Microsoft Learn):** *Applied Skills* are scenario-based, lab assessments from Microsoft Learn that verify your ability to complete a specific job task (for example, building a retrieval-augmented generation app). They’re shareable credentials you can add to your Microsoft Learn profile and LinkedIn. Most Microsoft credentials are now managed and shared directly from your Learn profile rather than through third-party platforms.
 
-## Three‑step roadmap
+> **Note on badges:** Microsoft previously used Credly for many badges, but sharing now primarily happens from your Microsoft Learn profile; community guidance confirms the Credly partnership change. If you do encounter a program that still issues via Credly, you can accept and share those as usual.
 
-| Step | Outcome |
-|------|---------|
-| **Step 1 – AI Fundamentals** | Build foundational knowledge of AI concepts, Azure's AI services ecosystem, and responsible AI principles. Learn core terminology, understand Azure OpenAI Service capabilities, and explore enterprise AI considerations. |
-| **Step 2 – Azure AI Development** | Master hands-on development with Azure OpenAI Service, Cognitive Services, and AI Studio. Build real-world applications including chatbots, document intelligence solutions, and Copilot extensions while following Microsoft's best practices. |
-| **Step 3 – Enterprise AI & Governance** | Implement enterprise-grade AI solutions with proper governance frameworks. Learn to configure content filters, set up monitoring and compliance, and create documentation that meets enterprise standards for AI deployment. |
+**Do you really need a badge?** That’s up to your goals. Recruiters tend to care more about a concrete project than a badge.
+And badges take time. If your objective is to ship a resume-ready project quickly, feel free to pick and choose steps from this guide; you can always earn the credential later.
 
-Follow the pages in the sidebar to dive deeper into each step, find project ideas and explore resources with additional courses, tools and communities.
+## Why take the time to build these skills?
+In a competitive job market, building projects with modern generative AI tools helps you stand out.
+Learning Microsoft’s AI stack exposes you to cloud services, responsible AI tooling, and the way production teams actually build apps.
+You’ll practice shipping features and documenting trade-offs—signals of readiness for software roles.
+
+### Why GenAI?
+Traditional ML analyzes data to classify, detect, or predict. **Generative AI creates**—text, images, code, and more—by learning patterns from large datasets.
+For developers, that means you can prototype features in hours using hosted models and SDKs instead of hand-rolling everything.
+With a few [API](#api) calls to services like **Azure OpenAI** (for GPT-style models) inside **Azure AI Foundry** (for end-to-end development), you can build chat apps, code assistants, or [RAG](#rag) systems that ship quickly. Understanding the underlying concepts and how to use the platform responsibly is essential.
+
+___Generative AI is a game changer___ because it shortens the path from idea to implementation. Recruiters for entry-level roles don’t expect expertise, but they do look for initiative, coding ability, and hands-on projects. By following this Microsoft-focused path, you’ll be able to:
+* **Showcase Industry Tools:** Work with **Azure OpenAI** and the **Azure AI Foundry** portal/SDK to build, evaluate, and deploy apps.  
+* **Build Transferable Skills:** Use APIs, manage cloud resources, and document designs—skills that travel across roles.  
+* **Demonstrate Responsible AI Practices:** Apply Microsoft’s Responsible AI guidance and integrate **Azure AI Content Safety** to detect and mitigate harmful content.
+
+## Key Microsoft (and CS) terms you’ll see in this guide
+- <strong id="rag">Retrieval Augmented Generation (RAG):</strong> a technique that enhances the performance of large language models (LLMs) by giving them the ability to access and utilize external knowledge sources beyond their original training data.
+- <strong id="api">Application Programming Interface (API):</strong> a set of definitions and protocols that allow different software components to communicate and interact with each other.
+- <strong id="sdk">Software Development Kit (SDK):</strong> a comprehensive set of tools, libraries, documentation, and potentially hardware resources that empower developers to build, train, and deploy machine learning models and applications. Some SDKs offered by Microsoft include Visual Studio SDK, Microsoft Graph SDK, and Microsoft Game Development Kit (GDK).
+- **Azure OpenAI (in Azure AI Foundry):** Microsoft’s managed access to OpenAI models via REST APIs/SDKs, with enterprise governance, regional availability, and data/privacy controls under Azure terms. Common use cases include content generation, summarization, code generation, and multimodal understanding.
+- **Azure AI Foundry:** A unified platform for building, evaluating, and operationalizing AI apps and agents (formerly Azure AI Studio). It brings together model catalogs, evals, prompt/workflow tooling, and deployment to production-grade infrastructure. 
+- **Azure AI Content Safety:** Services and tooling to detect and manage harmful or risky content across text and images; designed to support responsible AI usage in your applications.
+- **Microsoft Credentials:** Microsoft’s portfolio includes *Applied Skills* (task-focused assessments) and *role-based Certifications* (Fundamentals, Associate, Expert) you can share from your Microsoft Learn profile.
+
+## What about Microsoft’s AI/ML Certifications?
+We argue that it is more important to build these foundational skills first. Read more in the [Google Section ("What about the Google ML Certification?)](/developerguide/google#ai-not-ml).
+
+But, if you still want a recognized credential alongside your project work, a common pathway is:
+- **[Microsoft Certified: Azure AI Fundamentals (AI-900)](https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/?practice-assessment-type=certification)** — validates basic AI/ML concepts and how Azure services support them; intended for both technical and non-technical backgrounds.
+- **Microsoft Certified: Azure AI Engineer Associate** — an associate-level credential focused on planning and managing Azure AI solutions, **implementing generative AI (and agentic) solutions**, and delivering NLP/vision/knowledge-mining workloads on Azure. Review the exam skills outline and the official study guide when you’re ready.
+
+<div align="center">
+<img alt="Microsoft Responsible AI principles diagram (fairness, reliability & safety, privacy & security, inclusiveness, transparency, accountability)" src="https://craigclouditpro.wordpress.com/wp-content/uploads/2024/03/ai-respon.png" />
+</div>
+
+As you build, follow Microsoft’s Responsible AI guidance (and wire up Content Safety where appropriate) so you can clearly document intended use, limitations, and mitigations—an advantage in interviews and internships.
+
+Follow the pages in the sidebar to dive into each step, find project ideas, and explore appendices of extra courses and tools.
