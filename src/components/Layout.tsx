@@ -37,7 +37,7 @@ export default function Layout({ children }: LayoutProps) {
                 </div>
               </div>
               <Link to="/" className="text-xl font-bold text-gray-900">
-                Life Design Lab Developer Guide
+                Life Design Lab AI Developer Guide
               </Link>
             </div>
             <div className="flex items-center space-x-8">

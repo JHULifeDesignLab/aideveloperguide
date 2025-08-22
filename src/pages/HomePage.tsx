@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import ResumeTip from '../components/ResumeTip'
 
 export default function HomePage() {
   return (
@@ -20,11 +21,11 @@ export default function HomePage() {
           </div>
         </div>
         <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-          Life Design Lab Developer Guide
+          Life Design Lab AI Developer Guide
         </h1>
         <p className="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
-          A comprehensive guide to getting started with cloud developer certifications, 
-          provided by the Johns Hopkins University Life Design Lab.
+          A comprehensive guide to getting started with AI Development.
+          Fill in experience gaps around <strong>generative AI</strong> and <strong>software development</strong> so that you can <strong>pad your resumé</strong> with material that may now be convered in your coursework.
         </p>
       </div>
 
@@ -100,6 +101,20 @@ export default function HomePage() {
             </p>
           </Link>
         </div>
+      </div>
+
+      <div className="mt-16 bg-white rounded-lg shadow-md p-8">
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">Tips for success</h2>
+        <ul className="list-disc list-inside space-y-3 text-gray-700">
+          <li>Each section should give you something <strong>at least one item</strong> you can add to your resumé and LinkedIn. Suggestions for how to add them will be in bubbles like so:</li>
+          <ResumeTip title="📝 Resume Building Strategy" variant="success">
+            <strong>Pro tip:</strong> As you complete each step, immediately update your LinkedIn and resume.
+          </ResumeTip>
+          <li>You may find commonalities among these three paths, but the resources (while similar) are geared towards each platform. Feel free to skip over content that you are already familiar with.</li>
+          <li><strong>Disclaimer!</strong> The time stamps for modules are usually on the high end. Don't let them intimidate you.</li>
+        </ul>
+        
+        
       </div>
 
       <div className="mt-16 bg-white rounded-lg shadow-md p-8">

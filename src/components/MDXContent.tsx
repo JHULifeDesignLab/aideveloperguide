@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import type { MDXComponents } from 'mdx/types'
+import ResumeTip from './ResumeTip'
 
 interface MDXContentProps {
   children: ReactNode
@@ -120,6 +121,7 @@ export const mdxComponents: MDXComponents = {
   a: MDXLink,
   CheckList,
   CheckListItem,
+  ResumeTip,
 }
 
 export default function MDXContent({ children }: MDXContentProps) {
