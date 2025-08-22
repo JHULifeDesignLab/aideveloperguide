@@ -68,8 +68,7 @@
       {
         "id": "developer",
         "title": "Step 2 · Azure AI Development",
-        "description": "Hands-on development with Azure OpenAI, Cognitive Services, and enterprise AI solutions.",
-        "modules": 5,
+        "description": "RAG app on Azure AI Search + Azure OpenAI in Azure AI Foundry",
         "totalHours": 18
       },
       {

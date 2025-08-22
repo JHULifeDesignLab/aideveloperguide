@@ -10,12 +10,243 @@ import StepPageLayout from "../../components/StepPageLayout"
 
 <StepPageLayout vendor="microsoft" pageKey="step-2">
 
-# Step 2: Microsoft Generative AI for Developers Learning Path and Earn Applied Skills 
+# Step 2: RAG app on Azure AI Search + Azure OpenAI in Azure AI Foundry
 
 ## Goal  
-Ship a small **RAG-backed chat app** that runs against your own documents using **Azure AI Search** + **Azure OpenAI**, built and iterated in **Azure AI Foundry**.
-Keep scope tight (one use case, < 10 files).
-Add **Azure AI Content Safety** filters and a simple evaluation checklist (answer grounded? cites supplied? latency/cost acceptable?).
-If time aligns, validate your skills with an **Applied Skills** assessment or Learn path that covers deployment, RAG, and responsible AI.
+This step is to help you gain hands-on experience (and hopefully a resumé bullet) using Microsoft's tools.
+You'll ship a small **RAG-backed chat app** that runs against your own documents using **Azure AI Search** + **Azure OpenAI**, built and iterated in **Azure AI Foundry**.
+* Keep the scope of the project tight (one use case, < 10 files).
+* For example, you may want to build a study-buddy for a class that you've taken.
+* Add **Azure AI Content Safety** filters and a simple evaluation checklist (answer grounded? cites supplied? latency/cost acceptable?).
+* If time aligns, validate your skills with an **Applied Skills** assessment or Learn path that covers deployment, RAG, and responsible AI.
+
+Feel free to work through the prerequisites (~1 hour) and skip the "Build" section if you do not have time for a full project.
+
+<div className="bg-blue-50 rounded-lg p-6">Note that by activating your [$100 in Azure for Students](https://azure.microsoft.com/en-us/free/students) you should have access to the resources needed to get started, without cost. You can also use [GitHub Models](https://docs.github.com/en/github-models/use-github-models/prototyping-with-ai-models?) free of cost.
+[Here's more](https://github.com/features/models?) on getting started with GitHub models.</div>
+
+## Prerequisites
+1. Walkthrough: [Get started with Azure AI Foundry](https://learn.microsoft.com/en-us/azure/ai-foundry/quickstarts/get-started-code?utm_source=chatgpt.com&tabs=azure-ai-foundry&pivots=fdp-project)
+2. New vocab: Learn about [Azure OpenAI "On Your Data"](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/use-your-data?utm_source=chatgpt.com&tabs=ai-search%2Ccopilot)
+    * This is the feature that will allow you to train a model using *your own files*
+3. Quickstart: Build a small conversational model with your own data by [following this tutorial](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/use-your-data-quickstart?utm_source=chatgpt.com&tabs=keyless%2Ctypescript-keyless%2Cpython-new&pivots=ai-foundry-portal)
+    * [YouTube: 
+Build a Retrieval Augmented Generation AI App using Azure AI | Easy RAG on your data no code (10 min)](https://www.youtube.com/watch?v=dJbgBmCWscc)
+
+## Build
+Disclaimer: this plan was constructed with the help of AI. Please do not hesitate to reach out with suggestions.
+We recommend working in VSCode with GitHub Copilot (which students have free access to through Settings > Billing and licensing > Education Benefits) so you can get experience working *with* AI.
+
+### Environment setup
+We recommend using GitHub Codespaces.
+1. Click Open in Codespaces on your repo. This boots a dev container in the cloud with VS Code in the browser.
+2. In the Codespaces terminal, sign in and deploy:
+```
+azd auth login
+azd env new
+azd up
+```
+This provisions Search/OpenAI/etc. defined by your template and deploys your app. Students get a monthly Codespaces allowance (core-hours) on verified accounts—handy for labs.
+
+### Suggested repo setup
+```
+your-rag-app/
+├─ src/
+│  ├─ api/                # Backend (FastAPI/Flask/Node/.NET) - calls Search + model
+│  ├─ web/                # Frontend (React/Next/Vite or Blazor)
+│  ├─ common/             # Shared utils (prompting, chunking, telemetry)
+│  └─ __init__.py
+├─ notebooks/             # Data prep / chunking / eval examples (Jupyter)
+├─ data/
+│  ├─ raw/                # Original docs
+│  └─ processed/          # Cleaned/chunked docs ready to index
+├─ infra/                 # IaC (Bicep/Terraform) + azd infra hooks
+│  ├─ main.bicep
+│  └─ modules/
+├─ .github/workflows/
+│  ├─ ci.yml              # Lint/test/build
+│  └─ deploy.yml          # azd deploy + Azure login via OIDC (no stored secrets)
+├─ .devcontainer/         # Dev container config for local & Codespaces
+│  ├─ devcontainer.json
+│  └─ Dockerfile          # Optional; can also use Features for Azure CLI/Node/Python
+├─ .azure/                # Created by `azd env new` (per-environment settings)
+├─ azure.yaml             # azd project config (services, pipelines, hooks)
+├─ .env.example           # Local-only env variables (never commit real secrets)
+├─ README.md              # Setup instructions + architecture diagram
+└─ LICENSE
+```
+
+## 1) Data prep, chunking, embeddings, and indexing
+**What you’re doing:**
+You’ll break long documents into smaller pieces (“chunks”), turn each chunk into a numeric vector (“embedding”), and load everything into **Azure AI Search** so your app can quickly find the right chunks when a user asks a question. That retrieval step is what makes **RAG (Retrieval-Augmented Generation)** work: the model answers with help from your actual documents.
+
+**Key definitions**
+
+* **RAG (Retrieval-Augmented Generation):** A pattern where your app first **retrieves** relevant chunks from your data and then **augments** the model’s prompt with those chunks before generating an answer. ([Overview](https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview))
+* **Chunking:** Splitting big docs into smaller, meaningful parts so they fit model limits and retrieve well. ([RAG solution design & evaluation guide](https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide)) ([Semantic/layout chunking](https://learn.microsoft.com/en-us/azure/search/search-how-to-semantic-chunking))
+* **Embeddings / vectors:** Machine-readable vectors for each chunk so similar chunks are “close” in vector space and easy to find. ([Vector search overview](https://learn.microsoft.com/en-us/azure/search/vector-search-overview))
+* **Hybrid search:** A single query that **combines keyword + vector** and merges results with **RRF** (reciprocal rank fusion) for better relevance. ([Hybrid overview](https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview)) ([RRF explainer](https://learn.microsoft.com/en-us/azure/search/hybrid-search-ranking))
+* **Semantic ranker:** An optional (paid) re-ranker that uses Microsoft language understanding to **re-score** results. ([Overview](https://learn.microsoft.com/en-us/azure/search/semantic-search-overview)) ([Quickstart](https://learn.microsoft.com/en-us/azure/search/search-get-started-semantic))
+
+**Do this**
+
+* **Start from a vector quickstart:** Create an index, load data, and run vector queries in a notebook.
+  ([Vector quickstart—Python/JS](https://learn.microsoft.com/en-us/azure/search/search-get-started-vector))
+  ([Vector query how-to](https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-query))
+* **Portal wizard (no code) to build a hybrid, vectorized index:** Use **Import and vectorize data** to chunk and embed automatically, then search.
+  ([Portal quickstart](https://learn.microsoft.com/en-us/azure/search/search-get-started-portal-import-vectors))
+  ([Wizard details](https://learn.microsoft.com/en-us/azure/search/search-import-data-portal))
+* **Use hybrid search + semantic ranker for better baseline relevance:** Send one request that does both text and vector (RRF merges them), then add semantic ranker.
+  ([Hybrid how-to](https://learn.microsoft.com/en-us/azure/search/hybrid-search-how-to-query))
+  ([Semantic ranker intro](https://learn.microsoft.com/en-us/azure/search/semantic-search-overview))
+* **Python samples:** End-to-end examples for vector search and RAG.
+  ([Azure AI Search Python samples](https://learn.microsoft.com/en-us/azure/search/samples-python))
+
+**Limits to know early (so nothing breaks later)**
+
+* Request payloads to indexing/query APIs are capped (about **16 MB** per request). Split large docs before uploading.
+  ([Service limits](https://learn.microsoft.com/en-us/azure/search/search-limits-quotas-capacity)) ([Indexing large data](https://learn.microsoft.com/en-us/azure/search/search-how-to-large-index))
+* Vector index size and capacity depend on your Search tier; plan ahead if you have lots of vectors.
+  ([Vector index size limits](https://learn.microsoft.com/en-us/azure/search/vector-search-index-size))
+
+---
+
+## 2) Build the RAG app (end-to-end)
+
+**What you’re doing:**
+Wire up a simple chat UI that sends the user’s question to your **Search index** (to fetch chunks) and then calls an **Azure OpenAI** chat model with those chunks as context.
+
+**Good starting points**
+
+* **Official demo repo (multi-language)** — a full RAG app you can run locally or deploy.
+  ([Sample page](https://learn.microsoft.com/en-us/samples/azure-samples/azure-search-openai-demo/azure-search-openai-demo/)) ([GitHub](https://github.com/Azure-Samples/azure-search-openai-demo))
+* **.NET + App Service tutorial** — builds a Blazor RAG app and deploys it with **managed identity** so you don’t hard-code secrets.
+  ([Tutorial](https://learn.microsoft.com/en-us/azure/app-service/tutorial-ai-openai-search-dotnet))
+* **Azure AI Foundry SDK tutorial (Part 2)** — add RAG to a basic chat app using the **Azure AI Foundry SDK**.
+  ([Build a RAG app with the Foundry SDK](https://learn.microsoft.com/en-us/azure/ai-foundry/tutorials/copilot-sdk-build-rag))
+* **One-page RAG quickstart** — minimal code to chat over your indexed content.
+  ([Generative Search (RAG) quickstart](https://learn.microsoft.com/en-us/azure/search/search-get-started-rag))
+
+> **Definition: Managed identity** lets your app securely access other Azure resources (like Search or Key Vault) **without** storing secrets—Azure handles the identity.
+> ([Managed identity in the .NET/App Service RAG tutorial](https://learn.microsoft.com/en-us/azure/app-service/tutorial-ai-openai-search-dotnet))
+
+---
+
+## 3) Safety & guardrails
+
+**What you’re doing:**
+Set up **content filters** and **guardrails** so your app detects and blocks unsafe content (e.g., hate, self-harm, sexual, or violence categories). You can use defaults or create **custom** policies. Then monitor what’s being blocked to tune your settings.
+
+**Core pieces**
+
+* **Content filtering for Azure OpenAI** — how filtering works on prompts and model outputs.
+  ([Concepts](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/content-filter))
+* **Guardrails + controls in Foundry (custom filters)** — create your own filter config in the portal.
+  ([How-to](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/content-filters)) ([Foundry filtering concepts](https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/content-filtering))
+* **Azure AI Content Safety (service)** — separate safety APIs and studio to test/moderate text/images; backs Foundry filters.
+  ([Product page](https://azure.microsoft.com/en-us/products/ai-services/ai-content-safety)) ([Service overview](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/overview))
+* **Risks & Safety monitoring dashboard** — see what your filters are flagging, then adjust.
+  ([How-to](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/risks-safety-monitor))
+
+> **Definitions:**
+> **Content filter** = a policy that scores content for risk and can block or allow it. **Guardrails** = your broader safety settings and controls in the Foundry project (filters, thresholds, tools).
+> ([Foundry models content filtering](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/content-filter))
+
+---
+
+## 4) Evaluation (quality & safety)
+
+**What you’re doing:**
+Test your app with a small dataset (questions + expected answers) to check **quality** (relevance, groundedness, fluency) and **safety** before you ship; then iterate.
+
+**Ways to evaluate**
+
+* **Foundry UI evaluation** — point-and-click runs with built-in metrics; supports custom evaluators.
+  ([Evaluate in Foundry](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/evaluate-generative-ai-app))
+* **Prompt flow evaluation** — build an **evaluation flow** (a test pipeline) to score outputs at scale.
+  ([Develop an evaluation flow](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/flow-develop-evaluation)) ([Prompt flow concept](https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/prompt-flow))
+* **Evaluation SDK (Python)** — run metrics locally or in the cloud; track results back to your project.
+  ([SDK how-to](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/evaluate-sdk)) ([Python SDK overview](https://learn.microsoft.com/en-us/python/api/overview/azure/ai-evaluation-readme?view=azure-python))
+* **Metrics reference** — what “groundedness,” “relevance,” etc. mean and how they’re computed/aggregated.
+  ([Metrics & monitoring](https://learn.microsoft.com/en-us/azure/machine-learning/prompt-flow/concept-model-monitoring-generative-ai-evaluation-metrics?view=azureml-api-2)) ([View results](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/evaluate-results))
+
+> **Definitions:**
+> **Groundedness** = does the answer stick to the retrieved sources? **Relevance** = did we retrieve the right chunks? **Fluency** = is the answer readable/clear?
+> ([Metrics explainer](https://learn.microsoft.com/en-us/azure/machine-learning/prompt-flow/concept-model-monitoring-generative-ai-evaluation-metrics?view=azureml-api-2))
+
+---
+
+## 5) Telemetry, logging, and ops (keep an eye on quality & cost)
+
+**What you’re doing:**
+Turn on **observability** so you can see requests, latencies, token usage, and evaluation scores after deployment. Use **Application Insights** and careful SDK logging.
+
+**Core pieces**
+
+* **Observability in Foundry** — integrates with **Azure Monitor / Application Insights** for tracing, dashboards, and continuous evaluation.
+  ([Concepts](https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/observability)) ([How-to monitor](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/monitor-applications))
+* **SDK logging (Python)** — enable HTTP logging **only when needed** and avoid leaking secrets in logs.
+  ([Azure SDK logging](https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-logging))
+* **Semantic Kernel → App Insights** — if you use SK to build your app/agent, wire telemetry into AI Foundry/App Insights.
+  ([Telemetry with App Insights](https://learn.microsoft.com/en-us/semantic-kernel/concepts/enterprise-readiness/observability/telemetry-with-app-insights))
+* **Monitor Azure OpenAI** — export metrics/logs with diagnostic settings.
+  ([Monitor Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/monitor-openai))
+
+---
+
+## 6) Secrets, identity, and networking
+
+**What you’re doing:**
+Keep keys out of code, use **managed identity** where possible, and lock down network paths (private endpoints) for production.
+
+**Do this**
+- Store secrets in Key Vault — then read them from code (or better: use managed identity to skip secrets).
+([Key Vault Python quickstart](https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python))
+([Key Vault best practices](https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices))
+- **Secure “On your data”** — configure Entra ID RBAC and private endpoints when you connect data sources.
+  ([On-your-data networking](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/on-your-data-configuration))-* **Private endpoints** — restrict access to Search and OpenAI over your VNet (no public Internet).
+    - Search private endpoint: ([Guide](https://learn.microsoft.com/en-us/azure/search/service-create-private-endpoint))
+    - Azure OpenAI network isolation: ([Guide](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/network))
+    - Indexers calling private data sources via **shared private link**: ([How-to](https://learn.microsoft.com/en-us/azure/search/search-indexer-howto-access-private))
+
+> **Definitions:**
+> **Key Vault** stores secrets securely and lets you rotate them. **Private endpoint** exposes a resource on a private IP in your VNet so traffic doesn’t traverse the public Internet.
+> ([Key Vault security features](https://learn.microsoft.com/en-us/azure/key-vault/general/security-features)) ([AI services + VNets](https://learn.microsoft.com/en-us/azure/ai-services/cognitive-services-virtual-networks))
+
+---
+
+## 7) Cost, quotas, and rate limiting
+
+**What you’re doing:**
+Estimate token costs, know your **TPM (tokens-per-minute)** limits, and set budget alerts so you don’t overspend.
+
+**Plan & protect your wallet**
+
+* **Quotas & limits for Azure OpenAI** — quota is **per-region, per-model**, and you allocate TPM to deployments; learn about **dynamic quota** and 429s.
+  ([Quotas/limits](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/quotas-limits))
+  ([Manage quota](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/quota))
+  ([Dynamic quota](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/dynamic-quota))
+* **Pricing** — check **Azure OpenAI pricing** and the **Azure Pricing Calculator** before you run big tests.
+  ([OpenAI pricing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/))
+  ([Pricing calculator](https://azure.microsoft.com/en-us/pricing/calculator/))
+* **Set budgets & alerts** — get emails when you hit thresholds (actual or forecasted cost).
+  ([Budgets tutorial](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-acm-create-budgets))
+  ([Cost alerts](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending))
+
+> **Definitions:**
+> **TPM (Tokens per minute)** = throughput for a deployment; if you exceed it, you’ll see **HTTP 429** (“too many requests”). **PTU (Provisioned Throughput Unit)** = reserved capacity for predictable workloads.
+> ([Quota how-to](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/quota)) ([Pricing page](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/))
+
+---
+
+### Why do these steps matter?
+
+* **Chunking** makes retrieval accurate and keeps inputs under model limits.
+  ([RAG solution design guide](https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide))
+* **Hybrid + semantic ranker** often gives the best default relevance with minimal tuning.
+  ([Hybrid overview](https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview)) ([Semantic ranker](https://learn.microsoft.com/en-us/azure/search/semantic-search-overview))
+* **Evaluation** and **Observability** save you time: you can measure groundedness/relevance and watch costs/tokens as you iterate.
+  ([Evaluate in Foundry](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/evaluate-generative-ai-app)) ([Observability](https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/observability))
+
 
 </StepPageLayout>

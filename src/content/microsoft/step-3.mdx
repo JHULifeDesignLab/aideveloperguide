@@ -10,42 +10,41 @@ import StepPageLayout from "../../components/StepPageLayout"
 
 <StepPageLayout vendor="microsoft" pageKey="step-3">
 
-### Goal
+# Step 3: Advanced Responsible AI — Model Documentation & Risk Awareness 
 
-Implement enterprise-grade AI governance and responsible AI practices. Learn to configure advanced security features, establish monitoring and compliance frameworks, and create comprehensive documentation that meets enterprise standards for AI deployment in production environments.
+## Goal  
+Create a concise **responsible AI README** for your project that a recruiter/teammate can skim in 2–3 minutes.
+Align it with [Microsoft’s Responsible AI principles](https://www.microsoft.com/en-us/ai/principles-and-approach) and make clear how you mitigate risks (prompt rules, Content Safety thresholds, evaluation checklist, fallback UX, logging policies).
 
-### Enterprise governance areas
+Use the example documentation below to write a README for the project you created in Step 2.
 
-1. **AI Governance Frameworks** – Implement comprehensive governance policies for AI systems. Learn about Microsoft's AI governance tools, establish approval workflows, and create policies for AI system lifecycle management.
+## Example Documentation
+**1) System & Models**  
+- **Platform:** Azure AI Foundry (project + deployment).  
+- **Model(s):** Azure OpenAI chat model for generation; embeddings for retrieval.  
+- **RAG:** Azure AI Search index; hybrid retrieval (keyword + vector).  
 
-2. **Security & Compliance** – Configure advanced security features including Azure Policy for AI, implement data governance, and ensure compliance with industry regulations (GDPR, HIPAA, SOX). Learn about private endpoint configurations and network security.
+**2) Intended Use / Users**  
+- Designed for *X* scenario; *not* for medical, legal, or safety-critical advice.
 
-3. **Monitoring & Observability** – Set up comprehensive monitoring for AI applications using Azure Monitor, Application Insights, and custom telemetry. Learn to track model performance, usage patterns, and system health.
+**3) Data & Indexing**  
+- Source docs (owner, license), chunking approach, update cadence, PII handling.
 
-4. **Content Safety & Filtering** – Master Azure OpenAI's content filtering capabilities, configure custom content policies, and implement additional safety measures for enterprise deployments.
+**4) Safety & Guardrails**  
+- **Azure AI Content Safety** thresholds (hate/sexual/violence/self-harm).  
+- Prompt rules (refusal patterns, “no training data claims”, escalation).  
+- Blocklists/allowlists if applicable.
 
-### Advanced topics
+**5) Limitations / Failure Modes**  
+- Hallucination risk when outside indexed scope; latency under load; ambiguity handling.
 
-1. **Model Fine-tuning & Customization** – Learn when and how to fine-tune models for specific enterprise use cases while maintaining governance standards.
+**6) Evaluation & Quality**  
+- Groundedness checks on a seed set; spot-check answer/citation pairs; track regressions.
 
-2. **Cost Management & Optimization** – Implement cost control strategies, usage monitoring, and optimization techniques for large-scale AI deployments.
+**7) Operations**  
+- Rate limits/quotas; cost guardrails; telemetry (requests, errors, refusals).  
+- Privacy note (keys in Key Vault; no logging of sensitive user content by default).
 
-3. **Documentation & Model Cards** – Create comprehensive documentation including model cards, deployment guides, and user training materials that meet enterprise documentation standards.
-
-### Portfolio & certification
-
-- **Enterprise AI Portfolio Project** – Design and document a complete enterprise AI solution
-- **Microsoft AI Certifications** – Prepare for relevant Azure AI certifications
-- **Governance Documentation** – Create templates and frameworks for future AI projects
-
-### Outcomes
-
-Upon completion, you will be prepared to:
-- Lead enterprise AI initiatives with confidence
-- Implement comprehensive AI governance programs
-- Ensure responsible AI deployment at scale
-- Guide teams through AI adoption with proper safeguards
-
-> **Enterprise Ready** – This step prepares you for senior roles in AI implementation within large organizations. Focus on governance, documentation, and scalable practices that can be adopted across teams.
+Add this file to the repo and link it from your README.
 
 </StepPageLayout>
