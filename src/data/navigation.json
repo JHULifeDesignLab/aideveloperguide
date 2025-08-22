@@ -1,0 +1,158 @@
+{
+  "microsoft": {
+    "index": {
+      "back": {
+        "href": "/developerguide",
+        "label": "Back to Home"
+      },
+      "forward": {
+        "href": "/developerguide/microsoft/step-1",
+        "label": "Next: Step 1"
+      }
+    },
+    "step-1": {
+      "back": {
+        "href": "/developerguide/microsoft",
+        "label": "Back to Guide"
+      },
+      "forward": {
+        "href": "/developerguide/microsoft/step-2",
+        "label": "Next: Step 2"
+      }
+    },
+    "step-2": {
+      "back": {
+        "href": "/developerguide/microsoft/step-1",
+        "label": "Previous: Step 1"
+      },
+      "forward": {
+        "href": "/developerguide/microsoft/step-3",
+        "label": "Next: Step 3"
+      }
+    },
+    "step-3": {
+      "back": {
+        "href": "/developerguide/microsoft/step-2",
+        "label": "Previous: Step 2"
+      },
+      "forward": {
+        "href": "/developerguide/microsoft/resources",
+        "label": "Next: Resources"
+      }
+    },
+    "resources": {
+      "back": {
+        "href": "/developerguide/microsoft/step-3",
+        "label": "Previous: Step 3"
+      },
+      "forward": {
+        "href": "/developerguide",
+        "label": "Back to Home"
+      }
+    }
+  },
+  "google": {
+    "index": {
+      "back": {
+        "href": "/developerguide",
+        "label": "Back to Home"
+      },
+      "forward": {
+        "href": "/developerguide/google/step-1",
+        "label": "Next: Step 1"
+      }
+    },
+    "step-1": {
+      "back": {
+        "href": "/developerguide/google",
+        "label": "Back to Guide"
+      },
+      "forward": {
+        "href": "/developerguide/google/step-2",
+        "label": "Next: Step 2"
+      }
+    },
+    "step-2": {
+      "back": {
+        "href": "/developerguide/google/step-1",
+        "label": "Previous: Step 1"
+      },
+      "forward": {
+        "href": "/developerguide/google/step-3",
+        "label": "Next: Step 3"
+      }
+    },
+    "step-3": {
+      "back": {
+        "href": "/developerguide/google/step-2",
+        "label": "Previous: Step 2"
+      },
+      "forward": {
+        "href": "/developerguide/google/resources",
+        "label": "Next: Resources"
+      }
+    },
+    "resources": {
+      "back": {
+        "href": "/developerguide/google/step-3",
+        "label": "Previous: Step 3"
+      },
+      "forward": {
+        "href": "/developerguide",
+        "label": "Back to Home"
+      }
+    }
+  },
+  "amazon": {
+    "index": {
+      "back": {
+        "href": "/developerguide",
+        "label": "Back to Home"
+      },
+      "forward": {
+        "href": "/developerguide/amazon/step-1",
+        "label": "Next: Step 1"
+      }
+    },
+    "step-1": {
+      "back": {
+        "href": "/developerguide/amazon",
+        "label": "Back to Guide"
+      },
+      "forward": {
+        "href": "/developerguide/amazon/step-2",
+        "label": "Next: Step 2"
+      }
+    },
+    "step-2": {
+      "back": {
+        "href": "/developerguide/amazon/step-1",
+        "label": "Previous: Step 1"
+      },
+      "forward": {
+        "href": "/developerguide/amazon/step-3",
+        "label": "Next: Step 3"
+      }
+    },
+    "step-3": {
+      "back": {
+        "href": "/developerguide/amazon/step-2",
+        "label": "Previous: Step 2"
+      },
+      "forward": {
+        "href": "/developerguide/amazon/resources",
+        "label": "Next: Resources"
+      }
+    },
+    "resources": {
+      "back": {
+        "href": "/developerguide/amazon/step-3",
+        "label": "Previous: Step 3"
+      },
+      "forward": {
+        "href": "/developerguide",
+        "label": "Back to Home"
+      }
+    }
+  }
+}
