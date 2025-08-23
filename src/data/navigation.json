@@ -2,7 +2,7 @@
   "microsoft": {
     "index": {
       "back": {
-        "href": "/aideveloperguide",
+        "href": "/aideveloperguide/",
         "label": "Back to Home"
       },
       "forward": {
@@ -46,7 +46,7 @@
         "label": "Previous: Step 3"
       },
       "forward": {
-        "href": "/aideveloperguide",
+        "href": "/aideveloperguide/",
         "label": "Back to Home"
       }
     }
@@ -54,7 +54,7 @@
   "google": {
     "index": {
       "back": {
-        "href": "/aideveloperguide",
+        "href": "/aideveloperguide/",
         "label": "Back to Home"
       },
       "forward": {
@@ -98,7 +98,7 @@
         "label": "Previous: Step 3"
       },
       "forward": {
-        "href": "/aideveloperguide",
+        "href": "/aideveloperguide/",
         "label": "Back to Home"
       }
     }
@@ -106,7 +106,7 @@
   "amazon": {
     "index": {
       "back": {
-        "href": "/aideveloperguide",
+        "href": "/aideveloperguide/",
         "label": "Back to Home"
       },
       "forward": {
@@ -150,7 +150,7 @@
         "label": "Previous: Step 3"
       },
       "forward": {
-        "href": "/aideveloperguide",
+        "href": "/aideveloperguide/",
         "label": "Back to Home"
       }
     }

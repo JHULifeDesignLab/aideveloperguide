@@ -32,23 +32,24 @@
         "id": "beginner",
         "title": "Step 1 · Beginner foundation",
         "description": "Build a rock-solid foundation in generative AI concepts, planning and Bedrock basics.",
+        "totalHours": "1-6",
         "modules": [
-          { "title": "Introduction to Generative AI", "duration": "45 min" },
-          { "title": "Planning a Generative AI Project", "duration": "1 h" },
-          { "title": "Getting Started with Amazon Bedrock", "duration": "1.5 h" },
-          { "title": "Foundations of Prompt Engineering", "duration": "1 h" }
+          { "title": "Learn the basics (fast)", "duration": "5 hr" },
+          { "title": "Set up your environment", "duration": "10min" },
+          { "title": "Choose an AI assistant", "duration": "10 min" },
+          { "title": "Quick project", "duration": "1 h" }
         ]
       },
       {
         "id": "developer",
-        "title": "Step 2 · Developer Path & Certificate",
+        "title": "Step 2 · AWS Skill Builder - Digital Badge",
         "description": "Complete the AWS Generative AI for Developers Professional Certificate with hands-on projects.",
-        "modules": 3,
-        "totalHours": 22
+        "modules": 1,
+        "totalHours": "1-22"
       },
       {
         "id": "responsible-ai",
-        "title": "Step 3 · Responsible AI & Documentation",
+        "title": "Step 3 · Responsible AI: Model Cards + Guardrails",
         "description": "Learn to identify risks, set up Bedrock Guardrails, and create model documentation."
       }
     ]
