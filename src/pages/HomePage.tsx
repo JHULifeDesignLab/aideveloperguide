@@ -45,11 +45,11 @@ export default function HomePage() {
               </div>
               <div className="ml-4">
                 <h3 className="text-lg font-medium text-gray-900">Google Cloud</h3>
-                <p className="text-sm text-gray-500">Cloud Developer Path</p>
+                <p className="text-sm text-gray-500">Google Cloud, VertexAI, Model Cards + MCP</p>
               </div>
             </div>
             <p className="mt-4 text-gray-600">
-              Build modern applications with Google Cloud services.
+              Complete Google's Generative AI for Developers Learning Path for skill badge.
             </p>
           </Link>
         </div>
@@ -69,11 +69,11 @@ export default function HomePage() {
               </div>
               <div className="ml-4">
                 <h3 className="text-lg font-medium text-gray-900">Amazon AWS</h3>
-                <p className="text-sm text-gray-500">Cloud Developer Path</p>
+                <p className="text-sm text-gray-500">Bedrock, Amazon Q Developer, Guardrails</p>
               </div>
             </div>
             <p className="mt-4 text-gray-600">
-              Build scalable applications with AWS cloud services.
+              Build a contextual chatbot with Amazon Bedrock Knowledge Bases.
             </p>
           </Link>
         </div>
@@ -93,11 +93,11 @@ export default function HomePage() {
               </div>
               <div className="ml-4">
                 <h3 className="text-lg font-medium text-gray-900">Microsoft Azure</h3>
-                <p className="text-sm text-gray-500">Cloud Developer Path</p>
+                <p className="text-sm text-gray-500">Azure AI Foundry, Azure OpenAI Service, Content Safety</p>
               </div>
             </div>
             <p className="mt-4 text-gray-600">
-              Build modern applications with Azure cloud services.
+              Build a RAG-backed chat app with your own documents.
             </p>
           </Link>
         </div>
