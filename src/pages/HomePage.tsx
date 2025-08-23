@@ -111,7 +111,7 @@ export default function HomePage() {
             <strong>Pro tip:</strong> As you complete each step, immediately update your LinkedIn and resume.
           </ResumeTip>
           <li>You may find commonalities among these three paths, but the resources (while similar) are geared towards each platform. Feel free to skip over content that you are already familiar with.</li>
-          <li><strong>Disclaimer!</strong> The time stamps for modules are usually on the high end. Don't let them intimidate you.</li>
+          <li><strong>Disclaimer!</strong> We have found the time stamps for modules are usually on the high end. Don't let them intimidate you.</li>
         </ul>
         
         

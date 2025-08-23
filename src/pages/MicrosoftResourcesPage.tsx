@@ -1,13 +1,14 @@
 import { MDXProvider } from '@mdx-js/react'
+import NavigationLayout from '../components/NavigationLayout'
 import { mdxComponents } from '../components/MDXContent'
 import MicrosoftResources from '../content/microsoft/resources.mdx'
 
 export default function MicrosoftResourcesPage() {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+    <NavigationLayout vendor="microsoft" pageKey="resources">
       <MDXProvider components={mdxComponents}>
         <MicrosoftResources />
       </MDXProvider>
-    </div>
+    </NavigationLayout>
   )
 }
