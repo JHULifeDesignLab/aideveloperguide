@@ -81,29 +81,29 @@ export default function NavigationLayout({ vendor, pageKey, children }: Navigati
       {/* Navigation - Consistent for all pages */}
       <div className="flex justify-between items-center mt-8 not-prose">
         {navigation?.back ? (
-          <a 
-            href={navigation.back.href} 
+          <Link 
+            to={navigation.back.href} 
             className={`group inline-flex items-center px-6 py-3 border border-transparent text-sm font-medium rounded-xl text-white ${config.bgColor} hover:opacity-90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 no-underline`}
           >
             <svg className="mr-3 h-5 w-5 text-white group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
             </svg>
             {navigation.back.label}
-          </a>
+          </Link>
         ) : (
           <div />
         )}
         
         {navigation?.forward ? (
-          <a 
-            href={navigation.forward.href} 
+          <Link 
+            to={navigation.forward.href} 
             className={`group inline-flex items-center px-6 py-3 border border-transparent text-sm font-medium rounded-xl text-white ${config.bgColor} hover:opacity-90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 no-underline`}
           >
             {navigation.forward.label}
             <svg className="ml-3 h-5 w-5 text-white group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
             </svg>
-          </a>
+          </Link>
         ) : (
           <div />
         )}
