@@ -6,7 +6,7 @@ import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/aideveloperguide/',
+  base: '/',
   resolve: {
     alias: {
       '@': '/src'
