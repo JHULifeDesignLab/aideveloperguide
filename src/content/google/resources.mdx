@@ -24,17 +24,53 @@ Customize your message depending on the person's background and your ask. Networ
 * LinkedIn Learning courses are **free to JHU students**. This [Agentic AI course](https://www.linkedin.com/learning/agentic-ai-fundamentals-architectures-frameworks-and-applications/agentic-ai-the-future-of-smart-ai-is-here?u=2106537) is another possible next step. (log in at linkedinlearning.jh.edu) 
 
 ## Appendix A · Google AI Project Ideas
-To further guide your learning, here are some sample project ideas (with resources) that exclusively use Google's generative AI offerings like PaLM API, Vertex AI Studio, Model Garden, etc. Each project includes a brief description and a link to a tutorial or code: 
+To further guide your learning, here are some sample project ideas (with resources) that exclusively use Google's generative AI offerings like PaLM API, Vertex AI Studio, Model Garden, etc. Each project includes a brief description and a link to a tutorial or code:
 
-* **Long Document Summarizer (Text-Bison Model):** Use the PaLM Text Bison model via Vertex AI to summarize long texts or PDF documents. This project involves breaking a document into chunks and summarizing each part, then refining the results – a strategy to handle model input length limits. Tutorial: [Google Codelab on Text Summarization with Vertex AI](https://codelabs.developers.google.com/vertex-ai-summarization) walks you through multiple methods (like "MapReduce") to generate concise summaries from large documents. 
-* **Document Q&A Chatbot with Retrieval:** Build a chatbot that can answer questions based on your own documents (like class notes, research papers, or manuals). This project introduces you to retrieval-augmented generation (RAG)—a popular technique that grounds a model's output in real data to improve accuracy and reduce hallucinations. You'll learn how to split documents into chunks, generate embeddings, store them in a vector database, and retrieve relevant text for a user's query before passing it to a language model.
-    * **Tutorial:** [LangChain RAG Tutorial](https://python.langchain.com/docs/tutorials/rag/) – a beginner-friendly walkthrough that runs locally or in Colab, Google's free cloud-based coding environment for Python (no installation required). Once you understand the basics, you can apply the same RAG pipeline using [Vertex AI Vector Search](https://cloud.google.com/vertex-ai/docs/vector-search/overview) (formerly Matching Engine) for scalable, production-level retrieval on Google Cloud.
-* **Image Generation Web App (Imagen Model):** Develop a web application where users input a description and the app returns an AI-generated image. This leverages Google's Imagen model available through [Vertex AI's Model Garden](https://cloud.google.com/vertex-ai/generative-ai/docs/model-garden/explore-models). You can call the Vertex AI API with a text prompt to generate an image (e.g. "a medieval city skyline at sunset"). The official documentation shows how to use the Imagen model via the console or Python API, and Google has a Colab notebook for image generation that you can reference for code. This project is a great way to learn about prompt design for image models and how to handle the image data returned by the API. 
-* **Contextual Chatbot (Chat-Bison Model):** Create a chatbot that behaves in a specific way or domain, using the PaLM Chat-Bison model. For example, a "Coding Helper Chatbot" that answers programming questions, or a "History Tutor" that speaks in Shakespearean English. Using Vertex AI's ChatModel, you can define a context (system prompt) to set the bot's persona and provide a few example Q&A pairs to guide its style. This project will teach you how to steer a generative model's outputs.
-    * **Tutorial:** See InfoWorld's guide ["Build a chatbot with Google's PaLM API"](https://www.infoworld.com/article/2338790/build-a-chatbot-with-google-palm-api.html) for a step-by-step example of creating a custom chatbot using the Vertex AI PaLM SDK. 
-* **Autonomous Web Browsing Agent:** Develop an AI agent that uses generative models to navigate websites and perform multi-step tasks like scraping data, summarizing content, or filling out forms automatically. This project shows how LLMs can go beyond text generation to interact with real-world web applications.
-    * **Tutorial:** DeepLearning.AI's free short course ["Building AI Browser Agents"](https://www.deeplearning.ai/short-courses/building-ai-browser-agents/) provides step-by-step guidance on constructing and improving such web agents. 
-* **Text Summarizer with PaLM API & Vertex AI:** Use Google's PaLM language model to condense long articles or PDFs into brief summaries. This could be a simple Python script or web app that calls the Vertex AI API to summarize text. (Google provides a [codelab on summarization techniques](https://codelabs.developers.google.com/text-summ-large-docs-stuffing) to help you get started.) 
+<details>
+<summary><strong>Long Document Summarizer (Text-Bison Model)</strong></summary>
+
+Use the PaLM Text Bison model via Vertex AI to summarize long texts or PDF documents. This project involves breaking a document into chunks and summarizing each part, then refining the results – a strategy to handle model input length limits. 
+
+**Tutorial:** [Google Codelab on Text Summarization with Vertex AI](https://codelabs.developers.google.com/vertex-ai-summarization) walks you through multiple methods (like "MapReduce") to generate concise summaries from large documents.
+</details>
+
+<details>
+<summary><strong>Document Q&A Chatbot with Retrieval</strong></summary>
+
+Build a chatbot that can answer questions based on your own documents (like class notes, research papers, or manuals). This project introduces you to retrieval-augmented generation (RAG)—a popular technique that grounds a model's output in real data to improve accuracy and reduce hallucinations. You'll learn how to split documents into chunks, generate embeddings, store them in a vector database, and retrieve relevant text for a user's query before passing it to a language model.
+
+**Tutorial:** [LangChain RAG Tutorial](https://python.langchain.com/docs/tutorials/rag/) – a beginner-friendly walkthrough that runs locally or in Colab, Google's free cloud-based coding environment for Python (no installation required). Once you understand the basics, you can apply the same RAG pipeline using [Vertex AI Vector Search](https://cloud.google.com/vertex-ai/docs/vector-search/overview) (formerly Matching Engine) for scalable, production-level retrieval on Google Cloud.
+</details>
+
+<details>
+<summary><strong>Image Generation Web App (Imagen Model)</strong></summary>
+
+Develop a web application where users input a description and the app returns an AI-generated image. This leverages Google's Imagen model available through [Vertex AI's Model Garden](https://cloud.google.com/vertex-ai/generative-ai/docs/model-garden/explore-models). You can call the Vertex AI API with a text prompt to generate an image (e.g. "a medieval city skyline at sunset"). The official documentation shows how to use the Imagen model via the console or Python API, and Google has a Colab notebook for image generation that you can reference for code. This project is a great way to learn about prompt design for image models and how to handle the image data returned by the API.
+</details>
+
+<details>
+<summary><strong>Contextual Chatbot (Chat-Bison Model)</strong></summary>
+
+Create a chatbot that behaves in a specific way or domain, using the PaLM Chat-Bison model. For example, a "Coding Helper Chatbot" that answers programming questions, or a "History Tutor" that speaks in Shakespearean English. Using Vertex AI's ChatModel, you can define a context (system prompt) to set the bot's persona and provide a few example Q&A pairs to guide its style. This project will teach you how to steer a generative model's outputs.
+
+**Tutorial:** See InfoWorld's guide ["Build a chatbot with Google's PaLM API"](https://www.infoworld.com/article/2338790/build-a-chatbot-with-google-palm-api.html) for a step-by-step example of creating a custom chatbot using the Vertex AI PaLM SDK.
+</details>
+
+<details>
+<summary><strong>Autonomous Web Browsing Agent</strong></summary>
+
+Develop an AI agent that uses generative models to navigate websites and perform multi-step tasks like scraping data, summarizing content, or filling out forms automatically. This project shows how LLMs can go beyond text generation to interact with real-world web applications.
+
+**Tutorial:** DeepLearning.AI's free short course ["Building AI Browser Agents"](https://www.deeplearning.ai/short-courses/building-ai-browser-agents/) provides step-by-step guidance on constructing and improving such web agents.
+</details>
+
+<details>
+<summary><strong>Text Summarizer with PaLM API & Vertex AI</strong></summary>
+
+Use Google's PaLM language model to condense long articles or PDFs into brief summaries. This could be a simple Python script or web app that calls the Vertex AI API to summarize text. 
+
+**Tutorial:** Google provides a [codelab on summarization techniques](https://codelabs.developers.google.com/text-summ-large-docs-stuffing) to help you get started.
+</details> 
 
 <div className="bg-blue-50 rounded-lg p-6">
     <strong>Portfolio tip</strong> – One fully-working, well-documented project beats an ambitious half-finished idea. Deploy it on Cloud Run and showcase it on GitHub with screenshots and a clear README.
