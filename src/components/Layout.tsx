@@ -106,9 +106,22 @@ export default function Layout({ children }: LayoutProps) {
       </main>
       <footer className="bg-white border-t mt-12">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-gray-600">
-            Provided by the JHU Life Design Lab
-          </p>
+          <div className="text-center">
+            <p className="text-gray-600 mb-3">
+              Provided by the JHU Life Design Lab
+            </p>
+            <a 
+              href="https://forms.office.com/Pages/ResponsePage.aspx?id=OPSkn-axO0eAP4b4rt8N7DQ1jmk83SBMnsReHYqtIqpURVJNVUY2N1U5VU1WQ01XSDJPVDNNQVhRWC4u"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+            >
+              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10m0 0V6a2 2 0 00-2-2H9a2 2 0 00-2 2v2m0 0v8a2 2 0 002 2h6a2 2 0 002-2V8m-9 4h4" />
+              </svg>
+              Anonymous Feedback
+            </a>
+          </div>
         </div>
       </footer>
     </div>
