@@ -103,20 +103,36 @@ export default function HomePage() {
         </div>
       </div>
 
+    <div className="mt-16 bg-blue-50 border-l-4 border-blue-500 rounded-lg shadow-sm p-8">
+      <div className="flex items-start">
+        <div className="flex-shrink-0">
+          <svg className="h-8 w-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <div className="ml-4">
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">
+            Not sure where to start?
+          </h2>
+          <p className="text-gray-700">
+            We recommend starting with <strong className="text-blue-600">Google's path</strong>. 
+            After about <em>one hour</em>, you'll already have one new resumé item!
+          </p>
+        </div>
+      </div>
+    </div>
+
       <div className="mt-16 bg-white rounded-lg shadow-md p-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">Optimize your resumé</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-4">README (read this section first)</h1>
         <ul className="list-disc list-inside space-y-3 text-gray-700">
-          <li><strong>Where to start?</strong> We recommend starting with Google's path. After just <em>an hour</em>, you'll already have one new resumé item.</li>
           <li>Each section should give you something <strong>at least one item</strong> you can add to your resumé and LinkedIn. Suggestions for how to add them will be in bubbles like so:</li>
           <ResumeTip title="📝 Resume Building Strategy" variant="success">
             <strong>Pro tip:</strong> As you complete each step, immediately update your LinkedIn and resume.
           </ResumeTip>
           <li>You may find commonalities among these three paths, but the resources (while similar) are geared towards each platform. Feel free to skip over content that you are already familiar with.</li>
           <li><strong>Disclaimer!</strong> We have found the time stamps for modules are usually on the high end. Don't let them intimidate you.</li>
-          <li><strong>Why certifications?</strong> Certifications boost resumes by providing proof of specialized skills, demonstrating a commitment to professional growth, increasing a candidate's credibility, and improving ATS (Applicant Tracking System) visibility by including key words. They show that you <strong>take initiative</strong> to learn!</li>
+          <li><strong>Why certifications?</strong> Certifications boost resumes by providing proof of specialized skills, demonstrating a commitment to professional growth, increasing a candidate's credibility, and improving ATS (Applicant Tracking System) visibility by including key words. Bottom line: they show that you <strong>take initiative to learn!</strong></li>
         </ul>
-        
-        
       </div>
 
       <div className="mt-16 bg-white rounded-lg shadow-md p-8">
