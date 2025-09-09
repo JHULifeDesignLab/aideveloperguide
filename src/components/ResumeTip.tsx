@@ -22,17 +22,13 @@ export default function ResumeTip({ children, title = "📝 Resume Tip", variant
   }
 
   return (
-    <div className={`rounded-lg border-l-4 p-4 my-4 ${variantStyles[variant]}`}>
-      <div className="flex items-start">
-        <div className="flex-shrink-0">
-          <span className="text-lg mr-2">{iconVariants[variant]}</span>
-        </div>
-        <div className="ml-2 flex-1">
-          <h4 className="text-sm font-semibold mb-2">{title}</h4>
-          <div className="text-sm">
-            {children}
-          </div>
-        </div>
+    <div className={`rounded-lg border-l-4 px-3 py-2 my-2 ${variantStyles[variant]}`}>
+      <div className="flex items-baseline mb-1">
+        <span className="text-sm mr-2 leading-none">{iconVariants[variant]}</span>
+        <h4 className="text-sm font-semibold leading-none">{title}</h4>
+      </div>
+      <div className="text-sm leading-snug">
+        {children}
       </div>
     </div>
   )
