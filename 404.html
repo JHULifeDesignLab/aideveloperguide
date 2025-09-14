@@ -1,0 +1,28 @@
+<!--
+  SPA redirect for GitHub Pages
+  https://github.com/rafgraph/spa-github-pages
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+      // SPA redirect script
+      (function(l) {
+        var pathname = l.pathname;
+        var search = l.search;
+        var hash = l.hash;
+        var redirect = '/aideveloperguide/?redirect=' + encodeURIComponent(pathname + search + hash);
+        l.replace(redirect);
+      }(window.location));
+    </script>
+    <title>Redirecting...</title>
+  </head>
+  <body>
+    <h1>Redirecting...</h1>
+    <p>If you are not redirected, <a id="redirect-link" href="#">click here</a>.</p>
+    <script>
+      document.getElementById('redirect-link').href = '/aideveloperguide/';
+    </script>
+  </body>
+</html>
