@@ -7,12 +7,17 @@
   <head>
     <meta charset="utf-8">
     <script type="text/javascript">
-      // SPA redirect script
+      // SPA redirect script for GitHub Pages with basename
       (function(l) {
         var pathname = l.pathname;
         var search = l.search;
         var hash = l.hash;
-        var redirect = '/aideveloperguide/?p=' + encodeURIComponent(pathname + search + hash);
+        
+        // Remove the basename from pathname to get the route
+        var basename = '/aideveloperguide';
+        var route = pathname.replace(basename, '') || '/';
+        
+        var redirect = basename + '/?p=' + encodeURIComponent(route + search + hash);
         l.replace(redirect);
       }(window.location));
     </script>
