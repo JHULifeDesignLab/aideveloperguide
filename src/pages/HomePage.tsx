@@ -25,7 +25,7 @@ export default function HomePage() {
         </h1>
         <p className="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
           A comprehensive guide to getting started with AI Development.
-          Fill in experience gaps around <strong>generative AI</strong> and <strong>software development</strong> so that you can <strong>pad your resumé</strong> with material that may not be covered in your coursework.
+          Fill in experience gaps around <strong>generative AI</strong> and <strong>software development</strong> so that you can <strong>broaden your resume with experience!</strong>
         </p>
       </div>
 
