@@ -1,32 +1,66 @@
----
 title: "Step 3 · Responsible AI & Model Documentation"
 vendor: "amazon"
 ordinal: 3
 slug: "/amazon/step-3"
 lastReviewed: "2025-08-06"
----
 
-# Step 3: Responsible AI on AWS · Model Cards & Guardrails
+# Step 3: Responsible AI & Model Documentation (Unified)
 
 ## Goal
-Show that you can ship responsibly by documenting limitations and adding safety controls to your app.
+Create final project documentation and guardrails that show you can deploy generative AI responsibly. This page consolidates the core deliverables you should finish in Step 3 for any vendor: a Model Card / Responsible-AI README, safety controls, evaluation plan, and operational notes.
 
-### 1) Create a Model Card (SageMaker)
-Use **Amazon SageMaker Model Cards** to capture: intended use, data sources, known risks (e.g., bias, hallucinations), metrics, and caveats. You can export to PDF and link it in your repo. Read the [documentation here.](https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html)
+## Minimum deliverables (one-pager README + artifacts)
+1. Responsible-AI README (2–3 minutes to skim)
+	- Short summary of the app and intended users.
+	- Models and services used (vendor, model family, embeddings vs. LM).
+	- Intended scope and explicit out-of-scope use cases.
+2. Model Card or equivalent
+	- Intended use, training/data sources (if known), primary risks, and key metrics.
+3. Guardrails / Safety controls
+	- What filters/guardrails are in place (Content Safety thresholds, vendor guardrails, custom rules).
+4. Evaluation checklist / seed tests
+	- Grounding checks, hallucination spot checks, and known failure cases.
+5. Ops notes
+	- Cost/quotas, telemetry/metrics to monitor, key rotation and privacy considerations.
 
-### 2) Add Guardrails (Bedrock)
-Configure **Bedrock Guardrails** to filter harmful content, redact sensitive info, and enforce denied topics. You can attach guardrails to Agents *or* call the `ApplyGuardrail` API independently to pre/post‑filter inputs/outputs.
-* [Guardrails guide](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html)
-* [ApplyGuardrail API](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-use-independent-api.html)
+## Suggested structure (copy into your repo README)
+1) System & Models
+	- Platform: (e.g., AWS Bedrock / Azure AI Foundry / Vertex AI)
+	- Models: (LM for generation; embeddings for retrieval)
+	- Retrieval: index type and retrieval strategy (vector, keyword, hybrid)
 
-### 3) Document it in your README
-Add a **Responsible AI** section that says:
-* What the app does and doesn’t do
-* How retrieval and citations work
-* Which guardrails are enabled and why
-* Known failure modes and how users should report issues
+2) Intended Use and Users
+	- Describe the problem you solve and who should use the tool.
+	- Explicitly list prohibited or unsupported use cases (medical/legal/safety-critical).
 
-## Example documentation snippets
-*Resume bullet:* “Built a campus FAQ chatbot on Amazon Bedrock with Knowledge Bases; implemented Guardrails for topic filtering and PII redaction; published a SageMaker Model Card and README detailing limits and evaluation results.”
+3) Data, Indexing & Privacy
+	- Source documents (owner, license), chunking and embedding strategy, update cadence.
+	- PII handling, redaction approach, and what (if anything) is logged.
 
-*LinkedIn post:* “Shipped a small RAG app on AWS! Used Bedrock to ground answers in campus docs, enabled Guardrails, and wrote a Model Card to be transparent about risks. Feedback welcome.”
+4) Safety & Guardrails
+	- Vendor controls engaged (e.g., Bedrock guardrails / Azure AI Content Safety / Vertex AI content filters).
+	- Prompt rules (e.g., explicit refusal patterns, no training-data claims) and fallback UX.
+	- Blocklists/allowlists, rate limiting to reduce abusive use.
+
+5) Limitations & Failure Modes
+	- Where the model tends to hallucinate, latency/cost tradeoffs, and ambiguous inputs.
+
+6) Evaluation & Quality Gates
+	- Seed test cases for grounding and citation checks.
+	- Metrics to track (groundedness, precision of citations, average latency, cost per query).
+
+7) Operations & Monitoring
+	- Telemetry to collect (requests, errors, refusals, suspect outputs).
+	- Secrets & keys (store in KeyVault/Secrets Manager); rotation policy.
+	- Emergency plan for model/regression rollbacks.
+
+## Example resume/README snippets
+*Resume bullet:* “Built a RAG-backed study assistant using [vendor] models; added content‑safety checks and published a Model Card + Responsible-AI README documenting limitations and evaluation.”
+
+*README blurb:* “This project uses a RAG pipeline to ground answers in course materials. We intentionally exclude medical/legal guidance and apply content-safety thresholds to filter harmful outputs. See MODEL_CARD.md for details.”
+
+---
+This unified Step 3 is vendor-agnostic. If you’d like, I can also:
+- create a separate MODEL_CARD.md template and add it to the repo
+- update the vendor Step 3 pages to auto-redirect or import this page instead of duplicating
+Tell me which follow-ups you want and I’ll implement them.

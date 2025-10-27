@@ -1,30 +1,66 @@
----
 title: "Step 3 · Responsible AI & Model Documentation"
 vendor: "google"
 ordinal: 3
 slug: "/google/step-3"
 lastReviewed: "2025-08-06"
+
+# Step 3: Responsible AI & Model Documentation (Unified)
+
+## Goal
+Create final project documentation and guardrails that show you can deploy generative AI responsibly. This page consolidates the core deliverables you should finish in Step 3 for any vendor: a Model Card / Responsible-AI README, safety controls, evaluation plan, and operational notes.
+
+## Minimum deliverables (one-pager README + artifacts)
+1. Responsible-AI README (2–3 minutes to skim)
+    - Short summary of the app and intended users.
+    - Models and services used (vendor, model family, embeddings vs. LM).
+    - Intended scope and explicit out-of-scope use cases.
+2. Model Card or equivalent
+    - Intended use, training/data sources (if known), primary risks, and key metrics.
+3. Guardrails / Safety controls
+    - What filters/guardrails are in place (Content Safety thresholds, vendor guardrails, custom rules).
+4. Evaluation checklist / seed tests
+    - Grounding checks, hallucination spot checks, and known failure cases.
+5. Ops notes
+    - Cost/quotas, telemetry/metrics to monitor, key rotation and privacy considerations.
+
+## Suggested structure (copy into your repo README)
+1) System & Models
+    - Platform: (e.g., AWS Bedrock / Azure AI Foundry / Vertex AI)
+    - Models: (LM for generation; embeddings for retrieval)
+    - Retrieval: index type and retrieval strategy (vector, keyword, hybrid)
+
+2) Intended Use and Users
+    - Describe the problem you solve and who should use the tool.
+    - Explicitly list prohibited or unsupported use cases (medical/legal/safety-critical).
+
+3) Data, Indexing & Privacy
+    - Source documents (owner, license), chunking and embedding strategy, update cadence.
+    - PII handling, redaction approach, and what (if anything) is logged.
+
+4) Safety & Guardrails
+    - Vendor controls engaged (e.g., Bedrock guardrails / Azure AI Content Safety / Vertex AI content filters).
+    - Prompt rules (e.g., explicit refusal patterns, no training-data claims) and fallback UX.
+    - Blocklists/allowlists, rate limiting to reduce abusive use.
+
+5) Limitations & Failure Modes
+    - Where the model tends to hallucinate, latency/cost tradeoffs, and ambiguous inputs.
+
+6) Evaluation & Quality Gates
+    - Seed test cases for grounding and citation checks.
+    - Metrics to track (groundedness, precision of citations, average latency, cost per query).
+
+7) Operations & Monitoring
+    - Telemetry to collect (requests, errors, refusals, suspect outputs).
+    - Secrets & keys (store in KeyVault/Secrets Manager); rotation policy.
+    - Emergency plan for model/regression rollbacks.
+
+## Example resume/README snippets
+*Resume bullet:* “Built a RAG-backed study assistant using [vendor] models; added content‑safety checks and published a Model Card + Responsible-AI README documenting limitations and evaluation.”
+
+*README blurb:* “This project uses a RAG pipeline to ground answers in course materials. We intentionally exclude medical/legal guidance and apply content-safety thresholds to filter harmful outputs. See MODEL_CARD.md for details.”
+
 ---
-
-# Step 3: Advanced Responsible AI — Model Documentation & Risk Awareness 
-
-## Goal  
-Demonstrate that you can go beyond ethical awareness by clearly communicating the limitations and risks of your generative AI models—just like professional AI teams do.
-
-In Step 1, you were introduced to Responsible AI principles. Now, you’ll apply those ideas by creating **structured documentation** that communicates your model’s purpose, limitations, intended use, and ethical concerns. This is how responsible AI is practiced in real-world settings. 
-
-1. Use a [Model Card](https://modelcards.withgoogle.com/) or an “About this Model” section in your README. Explain: 
-    - What the model does
-    - What data it was trained on
-    - Where it may fail (e.g., bias, hallucination) 
-    - What safety features are in place (e.g., filters, grounding) 
-2. Explore the [Model Context Protocol (MCP)](https://www.anthropic.com/news/model-context-protocol) — a new way of standardizing how AI systems communicate risk and context. MCP helps developers: 
-    - Declare model capabilities and limitations 
-    - Set expectations for what an AI system *should and should not* do 
-    - Offer transparency to users, product teams, and auditors
-3. Showcase it on GitHub: Add a “Responsible AI” section to your README or app interface. 
-
-## Example Documentation
-Example resumé bullet: *“Created Model Card and applied MCP-style documentation for a generative AI chatbot, outlining intended use, known risks, and safety filters.”*
-
-Example LinkedIn post: *“Launched a Q&A bot built with PaLM2 via Vertex AI—and included a Model Card that defines its scope and ethical boundaries. Being transparent about AI limitations is just as important as the code itself. #ResponsibleAI #VertexAI #ModelCard”*
+This unified Step 3 is vendor-agnostic. If you’d like, I can also:
+- create a separate MODEL_CARD.md template and add it to the repo
+- update the vendor Step 3 pages to auto-redirect or import this page instead of duplicating
+Tell me which follow-ups you want and I’ll implement them.

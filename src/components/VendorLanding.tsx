@@ -53,9 +53,9 @@ export default function VendorLanding({ vendor }: VendorLandingProps) {
         </div>
       </div>
       
-      {/* Steps Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        {vendorData.steps.map((step: any, index: number) => (
+  {/* Steps Grid (show only first two steps on landing pages) */}
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 max-w-5xl mx-auto">
+        {vendorData.steps.slice(0, 2).map((step: any, index: number) => (
           <Link
             key={step.id}
             to={`/${vendor}/step-${index + 1}`}

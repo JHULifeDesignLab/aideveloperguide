@@ -47,7 +47,7 @@ function App() {
         <Route path="/resources" element={<ResourcesPage />} />
         <Route path="/resources/learning" element={<LearningPage />} />
         <Route path="/resources/github" element={<GitHubPage />} />
-        <Route path="/resources/tools" element={<ToolsPage />} />
+  <Route path="/resources/projects" element={<ToolsPage />} />
         <Route path="/resources/community" element={<CommunityPage />} />
       </Routes>
     </Layout>

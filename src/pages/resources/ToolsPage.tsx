@@ -6,9 +6,9 @@ import ToolsContent from '../../content/resources/tools.mdx'
 export default function ToolsPage() {
   return (
     <ResourcePageLayout 
-      title="Development Tools" 
-      subtitle="Essential tools and frameworks for modern AI development"
-      icon="🛠️"
+      title="Projects"
+      subtitle="Project workflows, templates, and Responsible‑AI documentation"
+      icon="🧩"
     >
       <MDXProvider components={mdxComponents}>
         <ToolsContent />

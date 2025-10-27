@@ -15,11 +15,18 @@ GitHub is more than just a place to store your code. It can serve as your person
 	- [Useful Badges and Stats:](#badges)
 - [Step 4: Enhance with GitHub Features](#step4)
 - [Step 5: Add to Resume and LinkedIn](#step5)
-- [Bonus: Real-World Git and Collaboration](#bonus)
+- [Real-World Git and Collaboration](#bonus)
 
+> Tip: to make each step feel distinct on the page, use visual separators, icons, and brief callouts. Below I've added spacing and horizontal rules between sections and small suggestions you can copy into your repo README or profile.
+
+{/* Visual spacing helpers: these classes assume Tailwind is available in the site. */}
+
+
+<hr className="my-8 border-gray-200" />
 <div id="step1">
 ## Step 1: Create a Polished Project Repository
 </div>
+<div className="mb-4 text-sm text-gray-600">Tip: make this step stand out with an emoji (e.g., 📦), a one-line summary, and a short checklist card in the README.</div>
 
 Each project should have its own GitHub repository. Follow these tips to make it stand out:
 
@@ -39,9 +46,11 @@ project-name/
 ```
 Sometimes, it can be difficult to anticipate the necessary structure of a repository beforehand. Feel free to give the description of your project to ChatGPT and ask “Tell me how I should structure the repository to support the current features and also allow for later additions.”
 
+<hr className="my-8 border-gray-200" />
 <div id="readme">
 ### What is a README?
 </div>
+
 This is a file (usually written in Markdown, which is an easy way to write HTML text) that explains the purpose of a project, and how to use it. You must have one of these for every GitHub project you have.
 
 README Essentials:
@@ -57,17 +66,21 @@ Include at minimum:
 Here is a [simple README template](https://gist.github.com/DomPizzie/7a5ff55ffa9081f2de27c315f5018afc): 
 If you’re curious about [learning more about Markdown](https://www.markdownguide.org/cheat-sheet/).
 
+<hr className="my-8 border-gray-200" />
 <div id="step2">
 ## Step 2: Step 2: Keep Commit History Clean
 </div>
+
 - Make regular commits with meaningful messages (e.g., added login logic, updated README with setup instructions).
 - A tip is that you should never have to use the word “and” in a commit message
 - Avoid single commits that say initial commit or final project with dozens of file changes.
 
+<hr className="my-8 border-gray-200" />
 <div id="step3">
 ## Step 3: Use Your Profile README as a Portfolio
 </div>
-Create a repository named exactly like your GitHub username (e.g., ```github.com/yourusername/yourusername```). GitHub will display this repo's README.md at the top of your profile. Use it to:
+
+Create a repository named exactly like your GitHub username (e.g. ```github.com/yourusername/yourusername```). GitHub will display this repo's README.md at the top of your profile. Use it to:
 - Introduce yourself
 - Showcase your best projects (with links)
 - List skills and tools
@@ -85,9 +98,11 @@ You can get [badges](https://github.com/Thinkright20/Profile-Badges) that show u
 
 You’ll also see that there is a part of your page that shows your commit history. This records how often you interact with GitHub. Some people make a bot that auto-commits every day (then they will have a little green square for every day). Just something to note :)
 
+<hr className="my-8 border-gray-200" />
 <div id="badges">
 ### Useful Badges and Stats:
 </div>
+
 
 Add these dynamic elements to your profile README:
 
@@ -106,9 +121,11 @@ Add these dynamic elements to your profile README:
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white)
 ```
 
+<hr className="my-8 border-gray-200" />
 <div id="step4">
 ## Step 4: Enhance with GitHub Features
 </div>
+
 - Use issues or project boards to track to-do items or features
 - Add a LICENSE file (MIT is common for student projects)
 - Use GitHub Pages if your project has a web UI
@@ -117,9 +134,11 @@ Add these dynamic elements to your profile README:
 GitHub Actions are continuous integration and continuous delivery platforms that allow you to automate parts of your deployment pipeline. Read more [here](https://docs.github.com/en/actions/get-started/understand-github-actions).
 - Use badges (build status, license, etc.) if applicable
 
+<hr className="my-8 border-gray-200" />
 <div id="step5">
 ## Step 5: Add to Resume and LinkedIn
 </div>
+
 **Resume:**
 Example: "Built a class scheduler web app using Flask and JavaScript; deployed on Render and documented setup in README. [GitHub]"
 * Include the project as a bullet under “Projects” or “Experience” with the *GitHub link embedded or as a footnote.*
@@ -136,9 +155,11 @@ You also may enjoy the course ___GitHub Career Essentials___ to learn more about
 - Use GitHub Discussions or contribute to open-source repos
 - Link to your GitHub in your email signature, personal site, and networking messages
 
+<hr className="my-8 border-gray-200" />
 <div id="bonus">
-## Bonus: Real-World Git and Collaboration
+## Real-World Git and Collaboration
 </div>
+
 A crucial aspect of real-world development is using version control (Git) and platforms like GitHub for team collaboration and open-source workflows. As you work on projects, adopt Git early to track changes and avoid “it works on my machine” problems. Using branches and pull requests allows multiple developers to add features or fix bugs concurrently, then merge contributions in a controlled way. In open-source projects, a solid Git workflow (feature branches, code reviews, issues) is essential for coordinating with contributors worldwide.
 
 Here is a beginner-friendly [video covering branches and collaborating with others](https://www.youtube.com/watch?v=FyAAIHHClqI). Here’s a [helpful article](https://dev.to/karanpratapsingh/my-journey-to-understanding-git-github-and-collaborative-workflow-46me).

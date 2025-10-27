@@ -61,26 +61,26 @@ export default function ResourcesPage() {
         </Link>
 
         <Link 
-          to="/resources/tools" 
+          to="/resources/projects" 
           className="group bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md hover:scale-105 transition-all duration-200"
         >
-          <div className="flex items-center mb-4">
-            <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mr-4">
-              <span className="text-2xl">🛠️</span>
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mr-4">
+                <span className="text-2xl">🧩</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 group-hover:text-purple-600">
+                Projects
+              </h3>
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 group-hover:text-purple-600">
-              Development Tools
-            </h3>
-          </div>
-          <p className="text-gray-600 mb-4">
-            Essential development tools, IDEs, libraries, and frameworks for modern AI development
-          </p>
-          <div className="flex items-center text-purple-600 group-hover:text-purple-700">
-            <span className="text-sm font-medium">Discover tools</span>
-            <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
+            <p className="text-gray-600 mb-4">
+              Project templates, quick-start guides, and Responsible‑AI documentation to finish and showcase your work
+            </p>
+            <div className="flex items-center text-purple-600 group-hover:text-purple-700">
+              <span className="text-sm font-medium">Explore projects</span>
+              <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
         </Link>
 
         <Link 

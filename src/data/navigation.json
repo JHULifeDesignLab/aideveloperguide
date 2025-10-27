@@ -26,8 +26,8 @@
         "label": "Previous: Step 1"
       },
       "forward": {
-        "href": "/microsoft/step-3",
-        "label": "Next: Step 3"
+        "href": "/microsoft/resources",
+        "label": "Next: Resources"
       }
     },
     "step-3": {
@@ -42,8 +42,8 @@
     },
     "resources": {
       "back": {
-        "href": "/microsoft/step-3",
-        "label": "Previous: Step 3"
+        "href": "/microsoft/step-2",
+        "label": "Previous: Step 2"
       },
       "forward": {
         "href": "/",
@@ -78,8 +78,8 @@
         "label": "Previous: Step 1"
       },
       "forward": {
-        "href": "/google/step-3",
-        "label": "Next: Step 3"
+        "href": "/google/resources",
+        "label": "Next: Resources"
       }
     },
     "step-3": {
@@ -94,8 +94,8 @@
     },
     "resources": {
       "back": {
-        "href": "/google/step-3",
-        "label": "Previous: Step 3"
+        "href": "/google/step-2",
+        "label": "Previous: Step 2"
       },
       "forward": {
         "href": "/",
@@ -130,8 +130,8 @@
         "label": "Previous: Step 1"
       },
       "forward": {
-        "href": "/amazon/step-3",
-        "label": "Next: Step 3"
+        "href": "/amazon/resources",
+        "label": "Next: Resources"
       }
     },
     "step-3": {
@@ -146,8 +146,8 @@
     },
     "resources": {
       "back": {
-        "href": "/amazon/step-3",
-        "label": "Previous: Step 3"
+        "href": "/amazon/step-2",
+        "label": "Previous: Step 2"
       },
       "forward": {
         "href": "/",

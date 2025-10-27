@@ -1,61 +1,100 @@
 ---
-title: "Development Tools"
-subtitle: "Essential tools and frameworks for modern AI development"
-icon: "🛠️"
-slug: "/resources/tools"
-lastReviewed: "2025-08-18"
+title: "Projects"
+subtitle: "Project workflows, templates, and Responsible‑AI documentation"
+icon: "🧩"
+slug: "/resources/projects"
+lastReviewed: "2025-10-26"
 ---
 
-## 🚧 Coming Soon
+### Introduction
+The projects you build are often the first things recruiters, professors, or interviewers see — they speak louder than grades alone. This guide gives project ideas that help you grow as an engineer, experiment with emerging technologies, and create something you can showcase on your resume, portfolio, or GitHub.
 
-We're curating the best development tools, IDEs, libraries, and frameworks for AI development. Check back soon for comprehensive tool recommendations!
+Pick projects that match your interests (applied AI, large-scale data systems, healthcare, finance, etc.) and that let you finish the minimum deliverables listed below.
 
-## Development Environment
+### Minimum deliverables (one-pager README + artifacts)
+1. Responsible‑AI README (2–3 minutes to skim)
+   - Short summary of the app and intended users
+   - Models and services used (vendor, model family, embeddings vs. LM)
+   - Intended scope and explicit out‑of‑scope use cases
+2. Model Card or equivalent
+   - Intended use, training/data sources (if known), primary risks, and key metrics
+3. Guardrails / Safety controls
+   - What filters/guardrails are in place (content safety thresholds, vendor guardrails, custom rules)
+4. Evaluation checklist / seed tests
+   - Grounding checks, hallucination spot checks, and known failure cases
+5. Ops notes
+   - Cost/quotas, telemetry/metrics to monitor, key rotation and privacy considerations
 
-### Code Editors & IDEs
-* **Visual Studio Code** - Popular, extensible editor with excellent AI extensions
-* **PyCharm** - Professional Python IDE with data science features
-* **Jupyter Lab** - Interactive development environment for data science
-* **Google Colab** - Free cloud-based Jupyter notebooks with GPU access
+### Project idea categories (full guide)
 
-### Version Control
-* **Git** - Essential for tracking code changes and collaboration
-* **GitHub** - Cloud-based Git repositories with collaboration features
-* **GitLab** - Alternative platform with built-in CI/CD
+#### 1. Retrieval‑Augmented Generation (RAG) Systems
+RAG powers chatbots, knowledge assistants, and enterprise search — a highly in‑demand skill.
+- Research Paper Assistant — retrieve academic papers and generate concise structured summaries
+- Developer Q&A over GitHub Repositories — index codebases and answer technical queries
+- Legal Document Analyzer — process contracts/PDFs and provide AI‑driven summaries
+- Multilingual RAG System — query in one language, retrieve sources in another
+- Enterprise Codebase Assistant — RAG over large repositories to accelerate onboarding
 
-## AI/ML Libraries & Frameworks
+#### 2. Model Context Protocol (MCP) & AI Infrastructure
+MCP connects models to tools and APIs — useful for building agents and tool‑enabled apps.
+- Financial Data MCP Server — connect stock APIs to LLMs for real‑time insights
+- Multi‑API AI Agent — chain APIs (weather, maps, calendar) through MCP for automation
+- Database Query Assistant — natural language over PostgreSQL using MCP
+- Context‑Aware AI Interface — inject user history/profile into prompts
+- Multi‑Tool Execution Agent — agent demonstrating cross‑tool execution using MCP
 
-### Python Libraries
-* **TensorFlow** - Google's open-source machine learning framework
-* **PyTorch** - Facebook's research-focused deep learning library
-* **scikit-learn** - Classical machine learning algorithms
-* **NumPy** - Fundamental package for scientific computing
-* **Pandas** - Data manipulation and analysis library
+#### 3. Computer Vision
+Vision projects are highly visible and apply to healthcare, retail, and more.
+- Medical Imaging Classifier — ViTs for lesion detection
+- Sign Language Interpreter — real‑time video→text
+- Face Recognition Attendance System — secure, anti‑spoofing measures
+- Visual Question Answering (VQA) — answer questions about images
+- Retail Shelf Monitoring — detect missing/misplaced items with object detection
+- OCR for Handwritten Forms — extract structured data from handwritten docs
+- Satellite Image Change Detection — track deforestation or urban growth
 
-### Cloud Platforms
-* **Google Cloud AI Platform** - Managed ML services and infrastructure
-* **AWS SageMaker** - End-to-end machine learning platform
-* **Azure Machine Learning** - Microsoft's cloud ML service
+#### 4. Speech & Multimodal AI
+Human‑facing projects with audio and multimodal inputs.
+- Voice Emotion Recognition — classify emotions from audio
+- Lecture Summarization Pipeline — transcript audio → structured summaries
+- Music Retrieval by Humming — identify songs from hummed queries
+- Podcast Q&A Bot — Whisper + RAG to query podcast transcripts
+- Medical Dialogue SOAP Classifier — structure doctor–patient conversations
+- Lip‑Reading with Speech Enhancement — combine vision and audio for noisy conditions
 
-## Data Tools
+#### 5. Data Engineering & MLOps
+Most ML work in industry is about pipelines and deployment — these projects show production readiness.
+- Social Media Data Pipeline — Spark + Airflow ETL with analytics dashboard
+- Fraud Detection API — real‑time service with FastAPI, Kafka, Docker
+- Kubernetes Model Deployment — containerize and deploy with autoscaling & monitoring
+- Drift Detection Framework — monitor embedding/data drift and trigger retraining
+- End‑to‑End ML CI/CD Pipeline — automate retraining and redeployment (GitHub Actions)
+- Feature Store System — centralized feature repository for consistency
 
-### Databases
-* **PostgreSQL** - Advanced open-source relational database
-* **MongoDB** - NoSQL document database
-* **Redis** - In-memory data structure store
+#### 6. Applied Finance & Business ML
+Projects here demonstrate ability to work on high‑impact, decision‑driven problems.
+- Graph‑Based Fraud Detection — GNNs for anomalous transactions
+- Fairness‑Aware Credit Scoring — account for fairness and bias mitigation
+- Churn Prediction Model — interpret results with SHAP
+- Retail Demand Forecasting — Prophet or LSTMs for inventory optimization
+- Earnings Call NLP Analysis — extract sentiment and risk signals
+- Portfolio Optimization with RL — adaptive allocation strategies
 
-### Data Processing
-* **Apache Spark** - Large-scale data processing engine
-* **Pandas** - Data manipulation in Python
-* **Dask** - Parallel computing library
+#### 7. Healthcare & Bioinformatics ML
+High‑impact area with strong employer interest (note: extra ethical/regulatory care required).
+- ICU Sepsis Prediction — time‑series models from patient vitals
+- Drug Repurposing with Knowledge Graphs — graph embeddings for new uses
+- Chest X‑Ray Classification — Grad‑CAM visualization
+- Clinical Notes NLP Pipeline — extract structured diagnoses/treatments
+- Genomic Sequence Classifier — motif detection with CNNs/transformers
+- Personalized Treatment Recommender — survival models for patient‑specific plans
 
-## Deployment & DevOps
-
-### Containerization
-* **Docker** - Application containerization platform
-* **Kubernetes** - Container orchestration system
-
-### Monitoring & Logging
-* **MLflow** - ML lifecycle management
-* **Weights & Biases** - Experiment tracking and visualization
-* **TensorBoard** - TensorFlow's visualization toolkit
+#### 8. All‑Encompassing & Emerging Tech Projects
+- Multimodal RAG Assistant — combine text, images, audio into one RAG pipeline
+- Personal Knowledge OS — ingest PDFs, spreadsheets, lectures; index and serve as a personal AI OS
+- Digital Twin Simulation with ML — simulate business operations + optimize with RL
+- AI Agent with Tool‑Use & Memory — autonomous agent chaining APIs with long‑term memory
+- Cross‑Domain Generative Design — diffusion + transformers for structured outputs (UI, code)
+- Edge + Cloud Hybrid AI — lightweight edge models synced with cloud LLMs
+- Self‑Optimizing ML Pipelines — AutoML that adapts pipelines dynamically
+- Neuro‑Symbolic AI Demo — combine symbolic reasoning with neural embeddings
