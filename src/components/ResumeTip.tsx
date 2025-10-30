@@ -21,14 +21,30 @@ export default function ResumeTip({ children, title = "📝 Resume Tip", variant
     info: 'ℹ️'
   }
 
+  const iconBg = {
+    default: 'bg-blue-100 text-blue-800',
+    success: 'bg-green-100 text-green-800',
+    warning: 'bg-yellow-100 text-yellow-800',
+    info: 'bg-indigo-100 text-indigo-800'
+  }
+
   return (
     <div className={`rounded-lg border-l-4 px-3 py-2 my-2 ${variantStyles[variant]}`}>
-      <div className="flex items-baseline mb-1">
-        <span className="text-sm mr-2 leading-none">{iconVariants[variant]}</span>
-        <h4 className="text-sm font-semibold leading-none">{title}</h4>
-      </div>
-      <div className="text-sm leading-snug">
-        {children}
+      <div className="flex items-center">
+        {/* Icon column - fixed width, centers the icon vertically against the content */}
+        <div className="flex-shrink-0 mr-3">
+          <span className={`inline-flex items-center justify-center h-6 w-6 rounded ${iconBg[variant]}`}>{iconVariants[variant]}</span>
+        </div>
+
+        {/* Content column */}
+        <div className="flex-1">
+          <div className="mb-1">
+            <h4 className="text-sm font-semibold leading-none">{title}</h4>
+          </div>
+          <div className="text-sm leading-snug">
+            {children}
+          </div>
+        </div>
       </div>
     </div>
   )
