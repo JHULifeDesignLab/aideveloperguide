@@ -27,6 +27,18 @@ export default function VendorLanding({ vendor }: VendorLandingProps) {
       bgColor: 'bg-blue-600',
       textColor: 'text-blue-600',
       borderColor: 'border-blue-600'
+    },
+    'claude-code': {
+      name: 'Claude Code',
+      bgColor: 'bg-purple-600',
+      textColor: 'text-purple-600',
+      borderColor: 'border-purple-600'
+    },
+    'rag': {
+      name: 'RAG Development',
+      bgColor: 'bg-green-600',
+      textColor: 'text-green-600',
+      borderColor: 'border-green-600'
     }
   }
 
@@ -43,45 +55,46 @@ export default function VendorLanding({ vendor }: VendorLandingProps) {
   return (
     <div className="mb-12">
       {/* Header Section */}
-      <div className={`${config.bgColor} text-white px-8 py-12 rounded-2xl mb-8 shadow-xl`}>
+      <div className="px-8 py-12 mb-8">
         <div className="text-center">
-          <div className="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <span className="text-2xl font-bold">📚</span>
-          </div>
-          <h2 className="text-3xl font-bold mb-2">{config.name}</h2>
-          <p className="text-xl text-white text-opacity-90">Complete Learning Path</p>
+          <h2 className="text-3xl font-bold mb-2 text-gray-900">{config.name}</h2>
+          <p className="text-xl text-gray-600">Complete Learning Path</p>
         </div>
       </div>
       
   {/* Steps Grid (show only first two steps on landing pages) */}
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 max-w-5xl mx-auto">
-        {vendorData.steps.slice(0, 2).map((step: any, index: number) => (
+        {vendorData.steps.slice(0, 2).map((step: any, index: number) => {
+          const isPrereq = vendor === 'claude-code' && index === 0
+          const cardConfig = isPrereq
+            ? { bgColor: 'bg-slate-500', textColor: 'text-slate-500' }
+            : { bgColor: config.bgColor, textColor: config.textColor }
+          return (
           <Link
             key={step.id}
             to={`/${vendor}/step-${index + 1}`}
             className="group relative bg-white rounded-2xl border border-gray-200 hover:border-gray-300 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
           >
             {/* Step number badge */}
-            <div className={`absolute top-4 left-4 w-12 h-12 ${config.bgColor} text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg z-10`}>
-              {index + 1}
+            <div className={`absolute top-4 left-4 w-12 h-12 ${cardConfig.bgColor} text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg z-10`}>
+              {isPrereq ? '~' : index + 1}
             </div>
-            
+
             {/* Background decoration */}
-            <div className={`absolute top-0 right-0 w-16 h-16 ${config.bgColor} opacity-10 rounded-full transform translate-x-6 -translate-y-6 group-hover:scale-125 transition-transform duration-500`}></div>
-            
-            <div className="p-8 pt-20">
-              <h3 className={`font-bold text-xl mb-3 ${config.textColor} group-hover:text-opacity-80 transition-colors`}>
+            <div className={`absolute top-0 right-0 w-16 h-16 ${cardConfig.bgColor} opacity-10 rounded-full transform translate-x-6 -translate-y-6 group-hover:scale-125 transition-transform duration-500`}></div>
+
+            <div className="p-5 pt-16">
+              <h3 className={`font-bold text-lg mb-2 ${cardConfig.textColor} group-hover:text-opacity-80 transition-colors`}>
                 {step.title}
               </h3>
 
-              {/* Description */}
               {step.description && (
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                <p className="text-gray-600 text-sm mb-3 leading-relaxed">
                   {step.description}
                 </p>
               )}
-              
-              <div className="space-y-2 mb-6">
+
+              <div className="space-y-1 mb-4">
                 {step.modules && typeof step.modules === 'number' && (
                   <div className="flex items-center text-sm text-gray-600">
                     <span className="w-4 h-4 mr-2 text-center">📚</span>
@@ -114,9 +127,9 @@ export default function VendorLanding({ vendor }: VendorLandingProps) {
               </div>
             </div>
           </Link>
-        ))}
+        )})}
       </div>
-      
+
       {/* Resources button */}
       <div className="text-center">
         <Link

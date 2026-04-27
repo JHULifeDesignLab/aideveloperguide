@@ -1,31 +1,52 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  return null
+}
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
-import GooglePage from './pages/GooglePage'
-import AmazonPage from './pages/AmazonPage'
-import MicrosoftPage from './pages/MicrosoftPage'
-import GoogleStep1 from './pages/GoogleStep1'
-import GoogleStep2 from './pages/GoogleStep2'
-import GoogleStep3 from './pages/GoogleStep3'
-import GoogleResourcesPage from './pages/GoogleResourcesPage'
-import AmazonStep1 from './pages/AmazonStep1'
-import AmazonStep2 from './pages/AmazonStep2'
-import AmazonStep3 from './pages/AmazonStep3'
-import AmazonResourcesPage from './pages/AmazonResourcesPage'
-import MicrosoftStep1 from './pages/MicrosoftStep1'
-import MicrosoftStep2 from './pages/MicrosoftStep2'
-import MicrosoftStep3 from './pages/MicrosoftStep3'
-import MicrosoftResourcesPage from './pages/MicrosoftResourcesPage'
-// New Resources pages
+import GooglePage from './pages/deployment/google/GooglePage'
+import AmazonPage from './pages/deployment/amazon/AmazonPage'
+import MicrosoftPage from './pages/deployment/microsoft/MicrosoftPage'
+import GoogleStep1 from './pages/deployment/google/GoogleStep1'
+import GoogleStep2 from './pages/deployment/google/GoogleStep2'
+import GoogleStep3 from './pages/deployment/google/GoogleStep3'
+import GoogleResourcesPage from './pages/deployment/google/GoogleResourcesPage'
+import AmazonStep1 from './pages/deployment/amazon/AmazonStep1'
+import AmazonStep2 from './pages/deployment/amazon/AmazonStep2'
+import AmazonStep3 from './pages/deployment/amazon/AmazonStep3'
+import AmazonResourcesPage from './pages/deployment/amazon/AmazonResourcesPage'
+import MicrosoftStep1 from './pages/deployment/microsoft/MicrosoftStep1'
+import MicrosoftStep2 from './pages/deployment/microsoft/MicrosoftStep2'
+import MicrosoftStep3 from './pages/deployment/microsoft/MicrosoftStep3'
+import MicrosoftResourcesPage from './pages/deployment/microsoft/MicrosoftResourcesPage'
+import ClaudeCodePage from './pages/devTools/claudeCode/ClaudeCodePage'
+import ClaudeCodeStep1 from './pages/devTools/claudeCode/ClaudeCodeStep1'
+import ClaudeCodeStep2 from './pages/devTools/claudeCode/ClaudeCodeStep2'
+import ClaudeCodeStep3 from './pages/devTools/claudeCode/ClaudeCodeStep3'
+import ClaudeCodeResourcesPage from './pages/devTools/claudeCode/ClaudeCodeResourcesPage'
+import ClaudeCodeLeakPage from './pages/devTools/claudeCode/ClaudeCodeLeakPage'
+import RagPage from './pages/productStack/rag/RagPage'
+import RagStep1 from './pages/productStack/rag/RagStep1'
+import RagStep2 from './pages/productStack/rag/RagStep2'
+import RagStep3 from './pages/productStack/rag/RagStep3'
+import RagResourcesPage from './pages/productStack/rag/RagResourcesPage'
+// Resources pages
 import ResourcesPage from './pages/ResourcesPage'
 import LearningPage from './pages/resources/LearningPage'
 import GitHubPage from './pages/resources/GitHubPage'
 import ToolsPage from './pages/resources/ToolsPage'
 import CommunityPage from './pages/resources/CommunityPage'
+import KeywordsIndexPage from './pages/KeywordsIndexPage'
+import WhereToStartPage from './pages/WhereToStartPage'
 
 function App() {
   return (
     <Layout>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/google" element={<GooglePage />} />
@@ -43,12 +64,25 @@ function App() {
         <Route path="/microsoft/step-2" element={<MicrosoftStep2 />} />
         <Route path="/microsoft/step-3" element={<MicrosoftStep3 />} />
         <Route path="/microsoft/resources" element={<MicrosoftResourcesPage />} />
-        {/* New Resources routes */}
+        <Route path="/claude-code" element={<ClaudeCodePage />} />
+        <Route path="/claude-code/step-1" element={<ClaudeCodeStep1 />} />
+        <Route path="/claude-code/step-2" element={<ClaudeCodeStep2 />} />
+        <Route path="/claude-code/step-3" element={<ClaudeCodeStep3 />} />
+        <Route path="/claude-code/resources" element={<ClaudeCodeResourcesPage />} />
+        <Route path="/claude-code/the-leak" element={<ClaudeCodeLeakPage />} />
+        <Route path="/rag" element={<RagPage />} />
+        <Route path="/rag/step-1" element={<RagStep1 />} />
+        <Route path="/rag/step-2" element={<RagStep2 />} />
+        <Route path="/rag/step-3" element={<RagStep3 />} />
+        <Route path="/rag/resources" element={<RagResourcesPage />} />
+        {/* Resources routes */}
         <Route path="/resources" element={<ResourcesPage />} />
         <Route path="/resources/learning" element={<LearningPage />} />
         <Route path="/resources/github" element={<GitHubPage />} />
-  <Route path="/resources/projects" element={<ToolsPage />} />
+        <Route path="/resources/projects" element={<ToolsPage />} />
         <Route path="/resources/community" element={<CommunityPage />} />
+        <Route path="/keywords" element={<KeywordsIndexPage />} />
+        <Route path="/where-to-start" element={<WhereToStartPage />} />
       </Routes>
     </Layout>
   )

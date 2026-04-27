@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import navigationData from '../data/navigation.json'
 
 interface NavigationLayoutProps {
-  vendor: "google" | "amazon" | "microsoft";
+  vendor: "google" | "amazon" | "microsoft" | "claude-code" | "rag";
   pageKey: string;
   children: ReactNode
 }
@@ -29,6 +29,18 @@ export default function NavigationLayout({ vendor, pageKey, children }: Navigati
       bgColor: 'bg-blue-600',
       textColor: 'text-blue-600',
       borderColor: 'border-blue-600'
+    },
+    'claude-code': {
+      name: 'Claude Code',
+      bgColor: 'bg-purple-600',
+      textColor: 'text-purple-600',
+      borderColor: 'border-purple-600'
+    },
+    'rag': {
+      name: 'RAG Development',
+      bgColor: 'bg-green-600',
+      textColor: 'text-green-600',
+      borderColor: 'border-green-600'
     }
   }
 
@@ -36,6 +48,31 @@ export default function NavigationLayout({ vendor, pageKey, children }: Navigati
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      {/* Floating nav buttons */}
+      {navigation?.back && (
+        <Link
+          to={navigation.back.href}
+          className={`fixed left-4 top-1/2 -translate-y-1/2 z-50 group flex flex-col items-center gap-1 ${config.bgColor} text-white rounded-2xl px-3 py-4 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-200 no-underline`}
+        >
+          <svg className="h-5 w-5 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          <span className="text-xs font-medium [writing-mode:vertical-rl] rotate-180 leading-tight tracking-wide">{navigation.back.label}</span>
+        </Link>
+      )}
+      {navigation?.forward && (
+        <Link
+          to={navigation.forward.href}
+          className={`fixed right-4 top-1/2 -translate-y-1/2 z-50 group flex flex-col items-center gap-1 ${config.bgColor} text-white rounded-2xl px-3 py-4 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-200 no-underline`}
+        >
+          <svg className="h-5 w-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+          </svg>
+          <span className="text-xs font-medium [writing-mode:vertical-rl] leading-tight tracking-wide">{navigation.forward.label}</span>
+        </Link>
+      )}
+
       {/* Breadcrumb */}
       <nav className="flex mb-8" aria-label="Breadcrumb">
         <ol className="flex items-center space-x-4">
@@ -78,36 +115,6 @@ export default function NavigationLayout({ vendor, pageKey, children }: Navigati
         </div>
       </div>
       
-      {/* Navigation - Consistent for all pages */}
-      <div className="flex justify-between items-center mt-8 not-prose">
-        {navigation?.back ? (
-          <Link 
-            to={navigation.back.href} 
-            className={`group inline-flex items-center px-6 py-3 border border-transparent text-sm font-medium rounded-xl text-white ${config.bgColor} hover:opacity-90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 no-underline`}
-          >
-            <svg className="mr-3 h-5 w-5 text-white group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-            </svg>
-            {navigation.back.label}
-          </Link>
-        ) : (
-          <div />
-        )}
-        
-        {navigation?.forward ? (
-          <Link 
-            to={navigation.forward.href} 
-            className={`group inline-flex items-center px-6 py-3 border border-transparent text-sm font-medium rounded-xl text-white ${config.bgColor} hover:opacity-90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 no-underline`}
-          >
-            {navigation.forward.label}
-            <svg className="ml-3 h-5 w-5 text-white group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </Link>
-        ) : (
-          <div />
-        )}
-      </div>
     </div>
   )
 }

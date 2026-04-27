@@ -54,6 +54,45 @@
       }
     ]
   },
+  "claude-code": {
+    "steps": [
+      {
+        "id": "llm-fundamentals",
+        "title": "Prereq · LLM Basics",
+        "description": "Understand context windows, tokens, hallucination, and the agent loop before writing a single prompt.",
+        "modules": [
+          { "title": "Claude is not a search engine", "duration": "10 min" },
+          { "title": "Context windows & tokens", "duration": "15 min" },
+          { "title": "Progressive disclosure as a workflow", "duration": "15 min" },
+          { "title": "The agent loop", "duration": "10 min" }
+        ]
+      },
+      {
+        "id": "getting-productive",
+        "title": "Step 2 · Getting Productive",
+        "description": "CLAUDE.md, slash commands, permission modes, and the prompting patterns that actually work.",
+        "modules": [
+          { "title": "CLAUDE.md setup", "duration": "10 min" },
+          { "title": "Slash commands reference", "duration": "10 min" },
+          { "title": "Permission modes", "duration": "10 min" },
+          { "title": "Prompting patterns", "duration": "20 min" },
+          { "title": "Honest tradeoffs", "duration": "10 min" }
+        ]
+      },
+      {
+        "id": "advanced-patterns",
+        "title": "Step 3 · Advanced Patterns",
+        "description": "Subagents, MCP, hooks, multi-file workflows, and honest limits of the tool.",
+        "modules": [
+          { "title": "Why subagents exist", "duration": "15 min" },
+          { "title": "MCP setup & usage", "duration": "30 min" },
+          { "title": "Hooks configuration", "duration": "20 min" },
+          { "title": "Multi-file workflow strategy", "duration": "15 min" },
+          { "title": "When NOT to use Claude Code", "duration": "10 min" }
+        ]
+      }
+    ]
+  },
   "microsoft": {
     "steps": [
       {
@@ -76,6 +115,31 @@
         "id": "responsible-ai",
         "title": "Step 3 · Enterprise AI & Governance",
         "description": "Implement enterprise-grade AI solutions with proper governance and compliance frameworks."
+      }
+    ]
+  },
+  "rag": {
+    "steps": [
+      {
+        "id": "why-rag-exists",
+        "title": "Step 1 · Why RAG Exists",
+        "description": "Understand the knowledge cutoff problem, the full pipeline, and key concepts before writing any code.",
+        "modules": 4,
+        "totalHours": "1-2"
+      },
+      {
+        "id": "building-pipeline",
+        "title": "Step 2 · Building Your First Pipeline",
+        "description": "Chunking, embeddings, vector stores, and prompt construction with real tools.",
+        "modules": 5,
+        "totalHours": "3-5"
+      },
+      {
+        "id": "production-rag",
+        "title": "Step 3 · Production RAG",
+        "description": "Hybrid search, reranking, evaluation with RAGAS, and when to stop using RAG.",
+        "modules": 5,
+        "totalHours": "3-5"
       }
     ]
   }

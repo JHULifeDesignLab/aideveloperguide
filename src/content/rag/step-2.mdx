@@ -1,0 +1,165 @@
+---
+title: "Step 2 · Building Your First Pipeline"
+vendor: "rag"
+slug: "/rag/step-2"
+lastReviewed: "2026-03-30"
+ordinal: 2
+---
+
+## Goal
+Build a working RAG pipeline with real tools — chunking, embedding, vector storage, retrieval, and generation.
+
+---
+
+## Picking your tools
+
+You'll need four things: an orchestration library, an embedding model, a vector store, and an LLM. Here's an honest comparison of the main options.
+
+### Orchestration: LangChain vs LlamaIndex
+
+Both are open-source Python frameworks that handle the plumbing — document loading, text splitting, embedding calls, vector store integration, and prompt construction.
+
+**LangChain** has a broader ecosystem. More integrations, more community examples, more Stack Overflow answers. The downside is API churn — it has changed significantly over its lifetime and documentation can lag.
+
+**LlamaIndex** is more focused on RAG specifically. Its data connectors and query engines are more RAG-native. Better choice if RAG is your primary use case. Less general-purpose.
+
+**Honest take**: for a first RAG project, either works. Pick LangChain if you want the wider ecosystem; pick LlamaIndex if you're going deep on RAG.
+
+### Embedding models
+
+| Model | Provider | Cost | Notes |
+|-------|----------|------|-------|
+| `text-embedding-3-small` | OpenAI | $0.02 / 1M tokens | Fast, cheap, solid quality |
+| `text-embedding-3-large` | OpenAI | $0.13 / 1M tokens | Higher quality, use for production |
+| `voyage-3` | Voyage AI | $0.06 / 1M tokens | Anthropic-recommended; strong on code and technical content |
+| `nomic-embed-text` | Nomic | Free (local) | Open-source; run locally with Ollama |
+
+For a personal project, `text-embedding-3-small` is fine. If you're embedding code-heavy content, `voyage-3` is worth the extra cost.
+
+### Vector stores
+
+| Store | Where it runs | Best for |
+|-------|--------------|----------|
+| Chroma | Local (in-process) | Development, small datasets, free |
+| Pinecone | Hosted | Production, scalability, no ops overhead |
+| Weaviate | Local or hosted | More features (hybrid search built-in) |
+| pgvector | PostgreSQL extension | If you already use Postgres |
+
+Start with **Chroma** locally. Move to Pinecone or pgvector when you need to scale or share.
+
+### LLM
+
+Claude Haiku is fast and cheap for development. Claude Sonnet for production quality. Both work with the Anthropic SDK.
+
+---
+
+## A concrete pipeline (Python)
+
+This is illustrative pseudocode showing the structure — not copy-paste runnable, but close enough to understand what each step does.
+
+```python
+from langchain.document_loaders import PyPDFLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_openai import OpenAIEmbeddings
+from langchain_chroma import Chroma
+import anthropic
+
+# --- INGESTION ---
+
+# 1. Load your document
+loader = PyPDFLoader("my_notes.pdf")
+documents = loader.load()
+
+# 2. Split into chunks
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=800,
+    chunk_overlap=100,
+    separators=["\n\n", "\n", ". ", " "]
+)
+chunks = splitter.split_documents(documents)
+
+# 3. Embed and store
+embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+vectorstore = Chroma.from_documents(chunks, embeddings, persist_directory="./chroma_db")
+
+# --- QUERYING ---
+
+client = anthropic.Anthropic()
+
+def answer_question(question: str) -> str:
+    # 4. Retrieve relevant chunks
+    retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
+    relevant_chunks = retriever.invoke(question)
+    context = "\n\n".join([doc.page_content for doc in relevant_chunks])
+
+    # 5. Build prompt and generate
+    prompt = f"""Answer the question based only on the context below.
+If the answer is not in the context, say "I don't have enough information to answer that."
+
+Context:
+{context}
+
+Question: {question}"""
+
+    response = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=1024,
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return response.content[0].text
+```
+
+---
+
+## Chunking strategy in practice
+
+`RecursiveCharacterTextSplitter` is the right default. It tries to split on paragraph breaks first (`\n\n`), then line breaks, then sentences, then spaces — preserving semantic boundaries as much as possible.
+
+**Chunk size (800 tokens)**: balances retrieval precision with context per chunk. Go smaller (400–600) if your documents are dense and you need precision. Go larger (1200–1500) if your answers require more surrounding context.
+
+**Overlap (100 tokens, ~12%)**: ensures that a sentence split across a chunk boundary doesn't disappear. Without overlap, answers near chunk edges get lost.
+
+**Test your chunking** before embedding anything. Print a few chunks. Do they look like coherent units? Does important information get split in bad places? Fix this before you build anything on top of it.
+
+---
+
+## Prompt construction
+
+The prompt structure matters. Three things to include:
+
+1. **Instructions**: tell the model to answer *only* from the provided context, and to say it doesn't know if the answer isn't there
+2. **The context**: the retrieved chunks, clearly delimited
+3. **The question**: at the end, so it's fresh in the model's attention
+
+```
+Answer the question based only on the context below.
+If the answer is not in the context, say "I don't have enough information."
+
+Context:
+[chunk 1]
+
+[chunk 2]
+
+[chunk 3]
+
+Question: [user's question]
+```
+
+The "only use the context" instruction matters. Without it, the model will blend retrieved content with its general training knowledge, making it harder to tell when retrieval failed.
+
+---
+
+## The honest take
+
+80% of RAG quality problems are chunking and retrieval problems. The LLM is not the bottleneck. If your answers are wrong, inconsistent, or vague, the most likely cause is:
+
+- Chunks are too large (diluted retrieval signal)
+- Chunks don't overlap (answers fall between chunk boundaries)
+- The wrong chunks are coming back (similarity search limitations — we'll fix this in Step 3)
+- The context window is getting crowded (too many chunks retrieved)
+
+Fix the data before blaming the model.
+
+<ResumeTip>
+  "Built a RAG pipeline using LangChain + Chroma + Claude over [your dataset]" is a concrete, verifiable project. The important detail for a resume or interview is being able to explain *why* you made the choices you did — why that chunk size, why that overlap, why that retriever k value. Those tradeoffs show engineering judgment, not just tutorial completion.
+</ResumeTip>

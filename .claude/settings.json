@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:lnkd.in)",
+      "WebFetch(domain:www.the-ai-corner.com)"
+    ]
+  }
+}

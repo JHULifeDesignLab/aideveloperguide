@@ -1,0 +1,87 @@
+---
+title: "The Claude Code Source Code Leak"
+vendor: "claude-code"
+slug: "/claude-code/the-leak"
+lastReviewed: "2026-04-13"
+---
+
+## What happened
+
+In early 2026, Anthropic accidentally published Claude Code version 2.1.88 to npm with a **59.8MB source map file** included. Source maps are meant to stay internal — they're the bridge between minified production code and the original source. This one exposed internal development details in full.
+
+Anthropic pulled it quickly. But not quickly enough.
+
+Developers combed through it and found something interesting: Claude Code isn't releasing features as fast as it could. It's releasing features as fast as Anthropic decides to flip switches.
+
+---
+
+## 44 feature flags. All already built.
+
+The source map revealed **44 feature flags** for capabilities that are complete but not yet enabled in production. The features aren't in progress — they're done, sitting behind a flag, waiting.
+
+This explains something that's been obvious to anyone paying attention: Anthropic's "new feature every two weeks" cadence isn't about engineering velocity. The engineering is largely ahead of the release schedule. Features ship when they're ready to ship *to users*, not when they're ready to run.
+
+---
+
+## The features worth knowing about
+
+**Background agents with GitHub webhooks**
+
+Claude Code agents that run 24/7, triggered by GitHub events. A push to a branch, a PR opened, an issue filed — any of these can wake an agent and kick off a task. Push notifications when the agent finishes.
+
+This is the "let Claude work while you sleep" capability that's been promised implicitly since agentic coding tools started. The code for it is already there.
+
+**Multi-Claude orchestration**
+
+One Claude instance acting as an orchestrator, managing multiple worker Claude instances with restricted toolsets. Different from the current subagent system — this is more structured, with explicit delegation and tool scoping between instances.
+
+If you've read Step 3 of this guide and thought "I want to compose agents more intentionally," this is the direction it's heading.
+
+**Cron scheduling for agent jobs**
+
+Schedule agent runs on a time-based cadence, with external webhook support. Think: a Claude agent that runs every morning, checks your open PRs, and surfaces anything that needs attention before standup.
+
+**Playwright browser control**
+
+The current tool is web fetching — Claude can retrieve a page's content. The flagged feature is full Playwright integration: navigating, clicking, filling forms, scraping dynamic content. The difference between reading a static page and actually using a browser.
+
+**Self-resuming agents**
+
+Agents that can pause mid-task, persist their state, and restart without user intervention. Long-running tasks across sessions without you babysitting them.
+
+**Persistent cross-session memory**
+
+Native memory that survives across sessions without requiring an external database or MCP setup. Contextual recall built into the tool, not bolted on.
+
+**Voice command mode**
+
+A voice CLI interface. Its own command layer, separate from the text interface. No additional details surfaced, but it's in the flags.
+
+---
+
+## What this actually means
+
+A few things worth sitting with:
+
+**The gap between "possible" and "available" is intentional.** Anthropic is clearly making deliberate decisions about what to unlock and when. Whether that's safety review, UX polish, capacity planning, or something else isn't public — but the pipeline is fuller than the release notes suggest.
+
+**The architecture is already designed for these workflows.** If you're building systems or workflows *around* Claude Code right now, the primitives you'd need for scheduled agents, orchestrated multi-agent pipelines, and persistent memory are already in the design. Your architectural choices today won't need to fight the tool tomorrow.
+
+**The subagent patterns from Step 3 are the foundation.** Background agents and multi-Claude orchestration are direct extensions of what's in Step 3 of this guide. The concepts — context isolation, task delegation, parallel work — carry forward.
+
+<div className="bg-amber-50 border border-amber-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-amber-800 mb-1">These aren't announced features</p>
+  <p className="text-amber-700 text-sm">Everything above comes from an accidental source map exposure, not an official roadmap. Features could ship in any order, change shape, or not ship at all. Take the direction seriously; hold the specifics loosely.</p>
+</div>
+
+---
+
+## The bigger picture
+
+The leak is interesting not just for what it revealed about specific features, but for what it revealed about how Anthropic operates. Claude Code is being developed with a feature pipeline significantly ahead of what's publicly available. The releases you see are curated, not capacity-constrained.
+
+For developers using Claude Code as a serious part of their workflow, that's useful context: the tool's trajectory is more ambitious than its current feature set suggests, and the architectural investments you make in agentic workflows are pointing in the right direction.
+
+---
+
+**Full breakdown:** [Anthropic just leaked Claude Code's entire source code — The AI Corner](https://www.the-ai-corner.com/p/claude-code-source-code-leaked-2026)

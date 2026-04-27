@@ -1,0 +1,160 @@
+---
+title: "Step 3 · Production RAG"
+vendor: "rag"
+slug: "/rag/step-3"
+lastReviewed: "2026-03-30"
+ordinal: 3
+---
+
+## Goal
+Make retrieval good enough to actually ship — hybrid search, reranking, evaluation, and an honest look at when RAG is the wrong tool.
+
+---
+
+## Why naive RAG fails in production
+
+The simple "embed → store → top-k cosine similarity" pipeline from Step 2 works well enough for demos. In production, it breaks in predictable ways:
+
+- **Keyword misses**: "What does RFC 1234 say about X?" — vector search doesn't know what RFC 1234 is; the embedding for "RFC 1234" may not be close to the embedding for the actual content
+- **Semantic drift**: vectors that look similar may not be contextually relevant to the specific question
+- **Top-k may not be top-relevant**: retrieving 4 chunks by similarity doesn't guarantee those are the 4 most useful chunks for the prompt
+- **Stale embeddings**: if you update a document and forget to re-embed it, your vector store is stale
+
+Fixing these requires adding layers: hybrid search, reranking, and evaluation.
+
+---
+
+## Hybrid search: dense + sparse
+
+Most production RAG systems combine two retrieval methods:
+
+**Dense retrieval** (what you built in Step 2): embedding-based, captures semantic similarity. Good for "questions phrased differently than the source."
+
+**Sparse retrieval** (BM25/keyword): exact keyword matching with term frequency weighting. Good for proper nouns, codes, IDs, technical terms, and anything that should match literally.
+
+The combination is called **hybrid search**: retrieve candidates with both methods, then merge the result lists. Weaviate has hybrid search built in. With Chroma or Pinecone, you implement it yourself by maintaining a separate BM25 index (e.g., with `rank_bm25`) and merging results.
+
+```python
+# Conceptual hybrid retrieval
+dense_results = vectorstore.similarity_search(query, k=10)
+sparse_results = bm25_index.get_top_n(query.split(), docs, n=10)
+
+# Reciprocal Rank Fusion (RRF) to merge result lists
+merged = reciprocal_rank_fusion([dense_results, sparse_results])
+top_chunks = merged[:4]  # keep top 4
+```
+
+Hybrid search consistently outperforms pure dense retrieval in benchmarks, especially for technical content.
+
+---
+
+## Reranking: cheap retrieval, expensive ranking
+
+The insight behind reranking: **embedding similarity is a cheap proxy for relevance, not relevance itself.** A better approach:
+
+1. Retrieve the top 15–20 chunks cheaply (with your existing retriever)
+2. Use a **cross-encoder** reranker to score each chunk against the query more accurately
+3. Keep only the top 4–5 chunks
+
+Cross-encoders look at the query and a chunk *together* (not separately embedded), so they can model their interaction. Much more accurate than cosine similarity, but too slow to run against your entire document set — hence the two-stage approach.
+
+```python
+from sentence_transformers import CrossEncoder
+
+reranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
+
+# Stage 1: broad retrieval
+candidates = vectorstore.similarity_search(query, k=20)
+
+# Stage 2: rerank
+pairs = [(query, chunk.page_content) for chunk in candidates]
+scores = reranker.predict(pairs)
+
+# Sort by reranker score and keep top 4
+reranked = sorted(zip(scores, candidates), reverse=True)[:4]
+final_chunks = [chunk for _, chunk in reranked]
+```
+
+Adding a reranker is often the single biggest quality improvement you can make to an existing RAG system.
+
+---
+
+## Contextual retrieval (Anthropic's technique)
+
+Standard chunking strips context. A chunk that says "The policy was updated in Q3" is meaningless without knowing what policy, what document, what time period.
+
+Anthropic's **Contextual Retrieval** technique fixes this by prepending a generated summary of each chunk's context *before* embedding it:
+
+```
+[Generated context]: This chunk is from the employee handbook, section 4 (Leave Policy), discussing the 2024 update to parental leave duration.
+
+[Original chunk]: The policy was updated in Q3. Employees are now eligible for 16 weeks of paid leave...
+```
+
+The chunk is still small; the context summary is generated once per chunk at ingest time (not at query time, so it doesn't add per-query latency). Retrieval quality improves significantly because the embedding now captures what the chunk *is about*, not just what it literally says.
+
+<div className="bg-green-50 border border-green-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-green-800 mb-2">Implementation note</p>
+  <p className="text-green-700 text-sm">Contextual retrieval requires a brief LLM call per chunk at ingest time. For large document sets, this adds cost. It's worth it for high-value retrieval; use it selectively for documents where context matters most.</p>
+</div>
+
+---
+
+## Evaluating RAG (the part most tutorials skip)
+
+You cannot improve what you don't measure. The three metrics that matter:
+
+**Faithfulness**: does the answer contain only information present in the retrieved chunks? Unfaithful answers mix in hallucinated knowledge.
+
+**Answer relevance**: does the answer actually address the question? A faithful answer to the wrong question is still wrong.
+
+**Context recall**: were the right chunks retrieved? If the relevant document exists but wasn't retrieved, the LLM can't answer correctly no matter how good it is.
+
+### RAGAS
+
+[RAGAS](https://docs.ragas.io) is an open-source framework that automates these evaluations using an LLM judge. You give it your questions, retrieved contexts, and generated answers; it returns scores for each metric.
+
+```python
+from ragas import evaluate
+from ragas.metrics import faithfulness, answer_relevancy, context_recall
+
+dataset = {
+    "question": ["What is the refund policy?"],
+    "answer": ["Refunds are processed within 5 business days."],
+    "contexts": [["The refund policy states: processing takes 5 business days..."]],
+    "ground_truth": ["Refunds take 5 business days."]
+}
+
+results = evaluate(dataset, metrics=[faithfulness, answer_relevancy, context_recall])
+print(results)
+```
+
+Run RAGAS on a representative test set before shipping. Low context recall means you need better retrieval; low faithfulness means your prompt isn't grounding the model tightly enough.
+
+---
+
+## Common failure modes
+
+| Symptom | Likely cause | Fix |
+|---------|-------------|-----|
+| Wrong answers despite relevant docs | Prompt not grounding model firmly | Add "only answer from context" instruction |
+| Correct chunks not retrieved | Keyword-heavy queries fail vector search | Add hybrid search |
+| Inconsistent answers to same question | Top-k chunks vary | Add reranking to stabilize |
+| Context window overflow | Too many/large chunks | Reduce k, use smaller chunks, add reranker |
+| Outdated answers | Documents updated but not re-embedded | Automate re-ingestion on document update |
+
+---
+
+## When NOT to use RAG
+
+**Real-time data**: RAG retrieves from a static index. If you need live stock prices, weather, or current news — use tool calling / API integration instead.
+
+**Tiny knowledge base**: if your entire knowledge base fits in a single prompt (say, under 50 pages), just stuff everything in the context. No retrieval needed.
+
+**Strict citations**: RAG gives you the retrieved chunks, but the generated answer doesn't inherently cite which chunk each fact came from. If you need verifiable citations, you need to build attribution on top.
+
+**Complex multi-hop reasoning**: RAG retrieves one round of chunks. Queries like "find all employees who joined after the policy change date" require structured queries, not semantic retrieval.
+
+<ResumeTip>
+  Most RAG tutorials stop at Step 2. If you've implemented hybrid search, added a reranker, and measured your pipeline with RAGAS, you're operating at a level most junior developers haven't reached. Being able to say "I identified that my context recall was 0.6 and fixed it by adding hybrid search, which brought it to 0.85" is the kind of quantitative, diagnostic thinking that stands out.
+</ResumeTip>

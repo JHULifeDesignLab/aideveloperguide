@@ -10,14 +10,14 @@ const deploymentItems = [
 
 const productStackItems = [
   { name: 'LangChain', description: 'Framework for building apps with LLMs and agents.', to: null },
-  { name: 'Gemini', description: "Google's multimodal AI for text, code, and images.", to: null },
+  { name: 'RAG', description: 'Pattern for grounding LLM responses in your own data.', to: '/rag' },
   { name: 'Hugging Face', description: 'Hub for sharing and deploying ML models and datasets.', to: null },
 ]
 
 const devToolsItems = [
-  { name: 'Claude Code', description: "Anthropic's agentic coding assistant for terminal and IDE.", to: null },
+  { name: 'Claude Code', description: "Anthropic's agentic coding assistant for terminal and IDE.", to: '/claude-code' },
   { name: 'Cursor', description: 'AI-first code editor with inline edits and chat.', to: null },
-  { name: 'OpenClaw (ClawdBot)', description: 'Claude-powered chatbot for experimenting with AI workflows.', to: null },
+  { name: 'GitHub Copilot', description: "Microsoft's AI pair programmer integrated directly into your editor.", to: null },
 ]
 
 const pillColors = [
@@ -32,13 +32,22 @@ const pillColors = [
 ]
 
 function CategoryCard({ name, description, to }: { name: string; description: string; to: string | null }) {
-  const inner = (
-    <div className="px-5 py-4 transition-shadow bg-white border border-gray-200 cursor-pointer rounded-xl hover:shadow-md">
-      <p className="font-semibold text-gray-900">{name}</p>
-      <p className="text-sm text-gray-400 mt-0.5">{description}</p>
-    </div>
+  if (!to) {
+    return (
+      <div className="px-4 py-3 bg-white border border-gray-100 rounded-xl cursor-default">
+        <p className="text-sm font-semibold text-gray-300">{name}</p>
+        <p className="text-xs text-gray-300 mt-0.5">{description}</p>
+      </div>
+    )
+  }
+  return (
+    <Link to={to} className="block">
+      <div className="px-4 py-3 transition-shadow bg-white border border-gray-200 cursor-pointer rounded-xl hover:shadow-md">
+        <p className="text-sm font-semibold text-gray-900">{name}</p>
+        <p className="text-xs text-gray-400 mt-0.5">{description}</p>
+      </div>
+    </Link>
   )
-  return to ? <Link to={to} className="block">{inner}</Link> : inner
 }
 
 type Keyword = typeof keywordsData.keywords[number]
@@ -59,17 +68,22 @@ export default function HomePage() {
 
   return (
     <div className="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
-      <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+      <h1 className="text-3xl font-bold tracking-tight text-gray-900">
         Life Design Lab<br />AI Development Guide
       </h1>
-      <p className="max-w-lg mt-4 text-base text-gray-600">
+      <p className="max-w-lg mt-3 text-sm text-gray-600">
         A comprehensive guide to getting started with AI Development. Fill in experience gaps around generative
         AI and software development so that you can enhance your resume with experience!
       </p>
 
-      <div className="mt-8">
-        <span className="block mb-2 text-sm text-gray-500">Daily Keywords (hover to see explanations!):</span>
-        <div className="py-2 overflow-hidden border border-gray-200 rounded-lg bg-gray-50">
+      <Link to="/where-to-start" className="inline-block px-4 py-2 mt-4 text-sm font-medium text-white transition-colors bg-slate-500 rounded-xl hover:bg-slate-400">
+        I don't know where to start →
+      </Link>
+
+      <div className="mt-5">
+        <span className="block mb-1.5 text-xs text-gray-500">Daily Keywords (hover to see explanations!):</span>
+        <Link to="/keywords" className="block">
+        <div className="py-2 overflow-hidden border border-gray-200 rounded-lg bg-gray-50 cursor-pointer hover:border-gray-300 transition-colors">
           <div className="marquee-track">
             {[...keywords, ...keywords].map((kw, i) => (
               <span
@@ -84,6 +98,7 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+        </Link>
       </div>
 
       {hoveredKw && (
@@ -100,56 +115,50 @@ export default function HomePage() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 mt-4 sm:grid-cols-3">
         {/* Deployment — teal */}
-        <div className="rounded-xl bg-teal-50 border border-teal-100 overflow-hidden">
-          <div className="h-1.5 bg-teal-500" />
-          <div className="p-4">
-            <h2 className="mb-4 text-lg font-bold text-teal-800">
-              Deployment
-            </h2>
-            <div className="space-y-3">
+        <div className="overflow-hidden border border-teal-100 rounded-xl bg-teal-50">
+          <div className="h-1 bg-teal-500" />
+          <div className="p-3.5">
+            <h2 className="mb-3 text-base font-bold text-teal-800">Deployment</h2>
+            <div className="space-y-2">
               {deploymentItems.map((item) => (
                 <CategoryCard key={item.name} {...item} />
               ))}
             </div>
-            <button className="w-full py-2 mt-3 text-sm font-medium text-teal-600 transition-colors bg-white border border-teal-200 rounded-xl hover:bg-teal-50 hover:text-teal-800">
+            <button className="w-full py-2 mt-2.5 text-xs font-medium text-teal-600 transition-colors bg-white border border-teal-200 rounded-xl hover:bg-teal-50 hover:text-teal-800">
               ⇓ more
             </button>
           </div>
         </div>
 
         {/* Product Stack — blue */}
-        <div className="rounded-xl bg-blue-50 border border-blue-100 overflow-hidden">
-          <div className="h-1.5 bg-blue-500" />
-          <div className="p-4">
-            <h2 className="mb-4 text-lg font-bold text-blue-900">
-              Product Stack
-            </h2>
-            <div className="space-y-3">
+        <div className="overflow-hidden border border-blue-100 rounded-xl bg-blue-50">
+          <div className="h-1 bg-blue-500" />
+          <div className="p-3.5">
+            <h2 className="mb-3 text-base font-bold text-blue-900">Product Stack</h2>
+            <div className="space-y-2">
               {productStackItems.map((item) => (
                 <CategoryCard key={item.name} {...item} />
               ))}
             </div>
-            <button className="w-full py-2 mt-3 text-sm font-medium text-blue-600 transition-colors bg-white border border-blue-200 rounded-xl hover:bg-blue-50 hover:text-blue-900">
+            <button className="w-full py-2 mt-2.5 text-xs font-medium text-blue-600 transition-colors bg-white border border-blue-200 rounded-xl hover:bg-blue-50 hover:text-blue-900">
               ⇓ more
             </button>
           </div>
         </div>
 
         {/* Dev Tools — purple */}
-        <div className="rounded-xl bg-purple-50 border border-purple-100 overflow-hidden">
-          <div className="h-1.5 bg-purple-500" />
-          <div className="p-4">
-            <h2 className="mb-4 text-lg font-bold text-purple-900">
-              Dev Tools +
-            </h2>
-            <div className="space-y-3">
+        <div className="overflow-hidden border border-purple-100 rounded-xl bg-purple-50">
+          <div className="h-1 bg-purple-500" />
+          <div className="p-3.5">
+            <h2 className="mb-3 text-base font-bold text-purple-900">Dev Tools +</h2>
+            <div className="space-y-2">
               {devToolsItems.map((item) => (
                 <CategoryCard key={item.name} {...item} />
               ))}
             </div>
-            <button className="w-full py-2 mt-3 text-sm font-medium text-purple-600 transition-colors bg-white border border-purple-200 rounded-xl hover:bg-purple-50 hover:text-purple-900">
+            <button className="w-full py-2 mt-2.5 text-xs font-medium text-purple-600 transition-colors bg-white border border-purple-200 rounded-xl hover:bg-purple-50 hover:text-purple-900">
               ⇓ more
             </button>
           </div>

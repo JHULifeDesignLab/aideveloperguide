@@ -1,0 +1,148 @@
+---
+title: "Step 3 · Advanced Patterns"
+vendor: "claude-code"
+slug: "/claude-code/step-3"
+lastReviewed: "2026-03-30"
+ordinal: 3
+---
+
+## Goal
+Use subagents, MCP, and hooks to build real workflows — and develop a clear sense of when Claude Code is not the right tool.
+
+---
+
+## Why subagents exist
+
+When Claude Code spawns a **subagent**, it launches a fresh Claude instance in a separate process with its own clean context window. The parent agent can hand off a task, wait for the result, and incorporate it — without that work ever filling the main context.
+
+This solves a concrete problem: some operations (searching a large codebase, reading many files, doing parallel research) would consume so much context that they'd crowd out everything else. Subagents let you do that work without paying the context cost in the main session.
+
+**The three reasons subagents exist:**
+
+1. **Context isolation** — errors, dead ends, and noise from a subtask don't contaminate the main session
+2. **Parallelism** — multiple subagents can run simultaneously; Claude Code uses this for tasks like "explore all three of these directories at once"
+3. **Fresh attention** — a subagent starts with only the task you gave it, not 50,000 tokens of conversation history diluting its focus
+
+<div className="bg-purple-50 border border-purple-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-purple-800 mb-2">The progressive learning parallel again</p>
+  <p className="text-purple-700 text-sm">Subagents are like study groups: you give each person a focused topic, they go learn it deeply without distraction, then report back. Everyone having the full reading list and trying to cover it all is less effective than dividing it strategically.</p>
+</div>
+
+**The honest cost:** spawning subagents multiplies your token usage fast. Each subagent has its own context, its own tool calls, its own cost. Profile a complex agentic workflow before running it on a large codebase — it can be surprisingly expensive.
+
+---
+
+## MCP: Model Context Protocol
+
+**MCP** (Model Context Protocol) is an open standard that lets Claude Code connect to external tools — databases, APIs, local services, GitHub, file systems outside your project — through a defined interface. Instead of copying data into your prompt, Claude can query it directly through an MCP server.
+
+**What MCP enables:**
+- Query a local SQLite database as part of a coding task
+- Read GitHub issues and PRs directly from Claude Code
+- Pull environment variables or secrets from a secrets manager
+- Run specialized tools (linters, formatters, test runners) with structured output
+
+**How to set it up (basic):**
+
+MCP servers are configured in your Claude Code settings (`.claude/settings.json` or `settings.local.json`):
+
+```json
+{
+  "mcpServers": {
+    "sqlite": {
+      "command": "uvx",
+      "args": ["mcp-server-sqlite", "--db-path", "./local.db"]
+    }
+  }
+}
+```
+
+Once connected, Claude can use the server's tools in the same way it uses built-in tools like Read and Bash.
+
+<div className="bg-blue-50 border border-blue-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-blue-800 mb-2">Good first MCP project</p>
+  <p className="text-blue-700 text-sm">Set up the SQLite MCP server against a local database in a project you're already working on. Then ask Claude to query the schema and help you write a migration. It's a realistic, low-stakes way to see what MCP-enabled workflows feel like.</p>
+</div>
+
+---
+
+## Hooks: automating around Claude's actions
+
+**Hooks** are shell commands that run automatically before or after Claude's tool calls. They let you enforce guardrails, run checks, or trigger workflows without relying on Claude to remember to do them.
+
+**Examples of useful hooks:**
+
+```json
+{
+  "hooks": {
+    "postToolUse": [
+      {
+        "matcher": "Edit",
+        "hooks": [
+          { "type": "command", "command": "npm run lint -- --fix ${file}" }
+        ]
+      }
+    ]
+  }
+}
+```
+
+This runs the linter automatically every time Claude edits a file — so you don't end up with a session that produces correct-but-unformatted code.
+
+**Other practical hook patterns:**
+- Run tests after any file edit (`npm test -- --related ${file}`)
+- Format with Prettier after edits
+- Prevent Claude from editing certain files by adding a `preToolUse` hook that checks the path and exits non-zero
+
+Hooks are configured in `.claude/settings.json`. They're one of the least-used features of Claude Code and one of the most valuable for team or production use.
+
+---
+
+## Multi-file workflows at scale
+
+For large codebases, a few principles prevent Claude from going off the rails:
+
+**Map before you edit.** Ask Claude to describe the structure of the relevant area before touching it: "Read these three files and describe how they connect, without making any changes." This surfaces misunderstandings early and cheaply.
+
+**One concern at a time.** Don't ask Claude to "refactor the auth module and update the tests and fix the linting issues." Pick one. Compound instructions produce compound mistakes.
+
+**Use git as a checkpoint system.** Commit after each successful Claude session, not at the end of the day. If a session produces good output, capture it before starting the next one. This makes `git reset --hard` a safe recovery option instead of a disaster.
+
+**Don't review at the end — review throughout.** Read diffs as Claude produces them, not after 15 tool calls. Mistakes caught at step 3 are cheap. Mistakes caught at step 15 mean unwinding 12 steps.
+
+---
+
+## When NOT to use Claude Code
+
+This is the section most guides skip. Claude Code is genuinely impressive — but there are situations where using it is the wrong call:
+
+**Security-sensitive code.** Claude can write authentication flows, authorization checks, and input sanitization that *look* correct and aren't. It doesn't have a security mindset by default. If you can't carefully audit every line of security-critical code, don't let Claude write it unsupervised.
+
+**Unfamiliar codebases you can't evaluate.** If you're new to a codebase and can't tell good output from bad, Claude Code will produce confident output you can't evaluate. Use it to *learn* the codebase (read and explain), not to *change* it until you understand what you're changing.
+
+**Anything requiring guaranteed correctness.** Medical software, financial calculations, legal logic, safety systems. Claude's output is probabilistic. "It looks right" isn't sufficient for code where being wrong has serious consequences.
+
+**When you need to actually learn something.** If you're a student trying to understand recursion and you ask Claude to implement it for you, you haven't learned recursion. You have a function. These are different things.
+
+<div className="bg-red-50 border border-red-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-red-800 mb-1">The skill erosion risk is real</p>
+  <p className="text-red-700 text-sm">Developers who outsource debugging entirely to Claude Code often find their debugging skills atrophy. The ability to read a stack trace, form a hypothesis, and test it systematically is worth protecting. Use Claude to accelerate debugging, not to replace the thinking part of it.</p>
+</div>
+
+---
+
+## Putting it together
+
+The developers who use Claude Code most effectively share a few traits:
+- They know the codebase well enough to evaluate Claude's output
+- They scope tasks narrowly and expand scope only after verifying
+- They use CLAUDE.md, hooks, and `/cost` habitually
+- They treat Claude's output as a first draft, not a final answer
+- They know when to close the terminal and think without assistance
+
+Claude Code is a genuinely powerful tool. It's also one that rewards developers who already have strong fundamentals — and exposes weaknesses in developers who don't.
+
+<ResumeTip>
+  If you've built a real workflow using subagents, MCP, or hooks — even a small one — document it. "Configured a Claude Code workflow with automated linting hooks and a SQLite MCP integration" is specific and concrete. It shows you understand the tool at a level most people don't.
+</ResumeTip>
+

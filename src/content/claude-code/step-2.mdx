@@ -1,0 +1,132 @@
+---
+title: "Step 2 · Getting Productive"
+vendor: "claude-code"
+slug: "/claude-code/step-2"
+lastReviewed: "2026-03-30"
+ordinal: 2
+---
+
+## Goal
+Learn the day-to-day workflows that make Claude Code genuinely useful — CLAUDE.md, slash commands, permission modes, and the prompting patterns that produce good output consistently.
+
+---
+
+## CLAUDE.md: the highest-ROI thing you can set up
+
+Every time you start a new Claude Code session, it reads a file called `CLAUDE.md` from your project root (and optionally from `~/.claude/CLAUDE.md` for global settings). This file persists across sessions — it's how you give Claude standing instructions that survive context resets.
+
+If you do one thing after reading this guide, set up a `CLAUDE.md`. It takes 10 minutes and pays for itself immediately.
+
+**What to put in it:**
+```markdown
+# Project context
+This is a React + TypeScript app using Vite. We use Tailwind for styling.
+Tests run with Vitest. Always run `npm run lint` before saying a task is done.
+
+# Conventions
+- Use named exports, not default exports for components
+- File names use kebab-case
+- Never commit directly to main — always use a branch
+
+# What NOT to do
+- Don't add comments explaining what the code does — the code should be self-explanatory
+- Don't add console.log statements
+- Don't change files outside the scope of what was asked
+```
+
+The more specific you are, the better. Claude will follow these instructions throughout the session — and if you find yourself correcting the same mistake across sessions, that's a sign it belongs in `CLAUDE.md`.
+
+<div className="bg-purple-50 border border-purple-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-purple-800 mb-2">Global vs. project CLAUDE.md</p>
+  <p className="text-purple-700 text-sm"><code>~/.claude/CLAUDE.md</code> applies everywhere. <code>./CLAUDE.md</code> applies only to that project. Use the global one for your personal preferences (tone, verbosity) and the project one for project-specific conventions.</p>
+</div>
+
+---
+
+## Slash commands worth knowing
+
+Claude Code has a small set of slash commands that change how the session behaves. These are worth memorizing:
+
+| Command | What it does |
+|---|---|
+| `/clear` | Wipes the context window and starts fresh. Use when Claude is looping or confused. |
+| `/compact` | Summarizes the conversation to free up context space without losing all history. |
+| `/cost` | Shows how many tokens you've used and what the session has cost so far. |
+| `/memory` | Opens your CLAUDE.md files for editing mid-session. |
+| `/help` | Lists all available commands. |
+
+**When to use `/clear` vs `/compact`:**
+- Use `/compact` when you want to continue the current task but are running low on context
+- Use `/clear` when Claude has gotten confused, is repeating itself, or the output quality has noticeably dropped — a fresh start is faster than trying to correct a derailed context
+
+---
+
+## Permission modes
+
+Claude Code asks for permission before taking potentially risky actions — running bash commands, deleting files, making network requests. There are three modes:
+
+- **Manual (default):** Claude asks before each tool call. Slower, but you stay in control.
+- **Auto-approve:** Claude runs without asking. Fast, but you need to trust it.
+- **Deny list:** You pre-approve certain tools (read, edit) and deny others (bash, network).
+
+**Honest recommendation:** stay on manual until you know a codebase well. Auto-approve is great for greenfield work or well-scoped tasks, but in an unfamiliar repo it's easy for Claude to go several steps in the wrong direction before you realize it. The approval pause is cheap insurance.
+
+---
+
+## Prompting patterns that actually work
+
+**Be specific about file paths.**
+Instead of: "fix the auth bug"
+Write: "In `src/hooks/useAuth.ts`, the `refreshToken` function isn't handling the 401 case correctly. Fix it."
+
+Claude can search your codebase, but giving it exact paths removes ambiguity and saves context.
+
+**Say what NOT to do.**
+Claude tends to over-engineer and over-comment. Adding explicit constraints helps:
+- "Don't refactor anything outside of the function I specified"
+- "Don't add type annotations to code you didn't change"
+- "Don't add error handling for cases that can't happen"
+
+**Give before/after examples for style.**
+If you want code formatted a specific way, show one example before describing what you want. Concrete examples outperform abstract descriptions.
+
+**Ask for a plan before execution on large tasks.**
+"Before making any changes, describe what you're going to do and which files you'll touch." This catches misunderstandings before Claude has spent 20 tool calls going the wrong direction.
+
+---
+
+## The honest tradeoffs
+
+Claude Code is excellent for:
+- Boilerplate generation and repetitive edits
+- Explaining unfamiliar code
+- Writing tests for existing functions
+- Searching and navigating large codebases
+- First drafts of new features
+
+Claude Code is risky for:
+- **Large refactors without committing first.** Agentic sessions that touch many files can leave your codebase in a partially-edited state if something goes wrong. Always `git commit` before a big session.
+- **Security-sensitive code.** Claude can write code that looks correct but has subtle vulnerabilities. Authentication, authorization, cryptography, and input sanitization deserve careful human review.
+- **Unfamiliar codebases.** If you can't evaluate the output, you can't catch the mistakes.
+
+<div className="bg-red-50 border border-red-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-red-800 mb-1">Always commit before a big agentic task</p>
+  <p className="text-red-700 text-sm">If a multi-file session goes sideways, <code>git reset --hard</code> is your friend — but only if you have a clean commit to reset to. This is the single most common regret reported by Claude Code users.</p>
+</div>
+
+---
+
+## When to start fresh
+
+If you notice any of these, use `/clear`:
+- Claude is contradicting itself between messages
+- Output quality has dropped noticeably
+- Claude is repeating the same approach that already failed
+- The task has drifted far from where you started
+
+A clean context is almost always faster than trying to steer a corrupted one. Claude doesn't get "credit" for work done in a session — if it's going in circles, start over.
+
+<ResumeTip>
+  Setting up and maintaining a CLAUDE.md for a real project — and being able to explain what goes in it and why — demonstrates thoughtful AI tooling integration. It's a small thing that shows you understand the tool, not just that you used it.
+</ResumeTip>
+
