@@ -40,20 +40,22 @@ export default function Layout({ children }: LayoutProps) {
                 AI Developer Guide
               </Link>
             </div>
-            <div className="flex items-center space-x-8">
+            <div className="flex items-center space-x-6">
               {[
-                { label: 'All Tech Stacks', to: '/stacks' },
-                { label: 'Resume/LinkedIn', to: '/resume' },
-                { label: 'Projects', to: '/projects' },
-                { label: 'Resource Index', to: '/resources' },
+                { label: 'Resume',    to: '/resources/resume' },
+                { label: 'LinkedIn',  to: '/resources/linkedin' },
+                { label: 'Projects',  to: '/resources/projects' },
+                { label: 'Learning',  to: '/resources/learning' },
+                { label: 'GitHub',    to: '/resources/github' },
+                { label: 'Community', to: '/resources/community' },
               ].map(({ label, to }) => (
                 <Link
                   key={to}
                   to={to}
-                  className={`text-sm font-medium ${
-                    location.pathname.startsWith(to)
+                  className={`text-sm font-medium transition-colors ${
+                    location.pathname === to
                       ? 'text-gray-900'
-                      : 'text-gray-700 hover:text-gray-900'
+                      : 'text-gray-500 hover:text-gray-900'
                   }`}
                 >
                   {label}

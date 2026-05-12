@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 
 function ScrollToTop() {
@@ -35,11 +35,12 @@ import RagStep2 from './pages/productStack/rag/RagStep2'
 import RagStep3 from './pages/productStack/rag/RagStep3'
 import RagResourcesPage from './pages/productStack/rag/RagResourcesPage'
 // Resources pages
-import ResourcesPage from './pages/ResourcesPage'
 import LearningPage from './pages/resources/LearningPage'
 import GitHubPage from './pages/resources/GitHubPage'
 import ToolsPage from './pages/resources/ToolsPage'
 import CommunityPage from './pages/resources/CommunityPage'
+import ResumePage from './pages/resources/ResumePage'
+import LinkedInPage from './pages/resources/LinkedInPage'
 import KeywordsIndexPage from './pages/KeywordsIndexPage'
 import WhereToStartPage from './pages/WhereToStartPage'
 
@@ -75,11 +76,13 @@ function App() {
         <Route path="/rag/step-2" element={<RagStep2 />} />
         <Route path="/rag/step-3" element={<RagStep3 />} />
         <Route path="/rag/resources" element={<RagResourcesPage />} />
-        {/* Resources routes */}
-        <Route path="/resources" element={<ResourcesPage />} />
+        {/* Resources routes — /resources redirects to first tab */}
+        <Route path="/resources" element={<Navigate to="/resources/resume" replace />} />
+        <Route path="/resources/resume" element={<ResumePage />} />
+        <Route path="/resources/linkedin" element={<LinkedInPage />} />
+        <Route path="/resources/projects" element={<ToolsPage />} />
         <Route path="/resources/learning" element={<LearningPage />} />
         <Route path="/resources/github" element={<GitHubPage />} />
-        <Route path="/resources/projects" element={<ToolsPage />} />
         <Route path="/resources/community" element={<CommunityPage />} />
         <Route path="/keywords" element={<KeywordsIndexPage />} />
         <Route path="/where-to-start" element={<WhereToStartPage />} />
