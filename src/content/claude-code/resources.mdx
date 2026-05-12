@@ -1,0 +1,64 @@
+---
+title: "Claude Code — Resources"
+vendor: "claude-code"
+slug: "/claude-code/resources"
+lastReviewed: "2026-03-30"
+---
+
+## Resources & Project Ideas
+
+### Official Documentation
+
+- **[Claude Code Overview](https://docs.anthropic.com/en/docs/claude-code/overview)** — The official getting-started guide. Read this first.
+- **[CLAUDE.md Reference](https://docs.anthropic.com/en/docs/claude-code/memory)** — How Claude's memory system works, including global vs. project memory.
+- **[Hooks Reference](https://docs.anthropic.com/en/docs/claude-code/hooks)** — Full spec for configuring pre/post tool-call hooks.
+- **[MCP Documentation](https://modelcontextprotocol.io/introduction)** — The official MCP spec and list of available servers.
+- **[Anthropic API Docs](https://docs.anthropic.com/en/api/getting-started)** — For building with Claude programmatically beyond the CLI.
+- **[Claude Agent SDK](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/claude-code-sdk)** — For embedding Claude Code in your own tools and automations.
+
+---
+
+### Understanding LLMs (go deeper)
+
+- **[Anthropic's Introduction to Claude](https://www.anthropic.com/claude)** — High-level model overview and capabilities.
+- **[What are tokens?](https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them)** — OpenAI's explainer (the concept is the same across all LLMs).
+- **[Transformer explainer (visual)](https://bbycroft.net/llm)** — An interactive visualization of how token prediction works in transformers. Worth 20 minutes of your time.
+- **[Anthropic's Prompt Engineering Guide](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview)** — The canonical reference for writing effective prompts.
+
+---
+
+### Videos
+
+- **[Claude Code official walkthrough](https://www.youtube.com/watch?v=F5_ZfYFSHno)** — Anthropic's own demo of Claude Code in a real project.
+- **[Anthropic YouTube Channel](https://www.youtube.com/@anthropic-ai)** — Model releases, research talks, and developer walkthroughs.
+
+---
+
+### Community
+
+- **[Anthropic Discord](https://discord.com/invite/anthropic)** — The most active community for Claude Code questions, workflows, and MCP server sharing.
+- **[r/ClaudeAI](https://www.reddit.com/r/ClaudeAI/)** — Community discussion, tips, and honest takes on what works and what doesn't.
+- **[MCP Servers (community list)](https://github.com/modelcontextprotocol/servers)** — GitHub repo listing available MCP server implementations.
+
+---
+
+### Project Ideas
+
+These are real, portfolio-worthy projects that can be completed in a weekend and demonstrate genuine Claude Code skills:
+
+**Beginner**
+- Write a `CLAUDE.md` for an existing personal project. Add project context, coding conventions, and explicit "don'ts." Document what changed about Claude's output before and after.
+
+**Intermediate**
+- Set up a hook that runs your test suite against any file Claude edits. Configure it to block Claude from proceeding if tests fail. Document the setup.
+- Build a simple CLI script using the Claude Agent SDK that takes a GitHub issue URL and outputs a proposed implementation plan.
+
+**Advanced**
+- Set up an MCP server connecting Claude Code to a local SQLite database in one of your projects. Build a feature using it — e.g., ask Claude to read the schema and help you write a typed query layer.
+- Design a multi-agent workflow: one agent explores and maps a codebase, another implements a feature based on that map. Compare output quality to a single-agent approach.
+
+<div className="bg-purple-50 border border-purple-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-purple-800 mb-2">What to document for your portfolio</p>
+  <p className="text-purple-700 text-sm">The project matters less than your ability to explain the tradeoffs. What did you put in CLAUDE.md and why? How did you structure the context to avoid drift? Where did Claude fail and how did you catch it? That narrative is what shows engineering judgment.</p>
+</div>
+

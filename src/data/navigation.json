@@ -1,4 +1,51 @@
 {
+  "rag": {
+    "index": {
+      "back": { "href": "/", "label": "Back to Home" },
+      "forward": { "href": "/rag/step-1", "label": "Next: Step 1" }
+    },
+    "step-1": {
+      "back": { "href": "/rag", "label": "Back to Guide" },
+      "forward": { "href": "/rag/step-2", "label": "Next: Step 2" }
+    },
+    "step-2": {
+      "back": { "href": "/rag/step-1", "label": "Previous: Step 1" },
+      "forward": { "href": "/rag/step-3", "label": "Next: Step 3" }
+    },
+    "step-3": {
+      "back": { "href": "/rag/step-2", "label": "Previous: Step 2" },
+      "forward": { "href": "/rag/resources", "label": "Next: Resources" }
+    },
+    "resources": {
+      "back": { "href": "/rag/step-3", "label": "Previous: Step 3" },
+      "forward": { "href": "/", "label": "Back to Home" }
+    }
+  },
+  "claude-code": {
+    "index": {
+      "back": { "href": "/", "label": "Back to Home" },
+      "forward": { "href": "/claude-code/step-1", "label": "Next: Prereq" }
+    },
+    "step-1": {
+      "back": { "href": "/claude-code", "label": "Back to Guide" },
+      "forward": { "href": "/claude-code/step-2", "label": "Next: Step 1" }
+    },
+    "step-2": {
+      "back": { "href": "/claude-code/step-1", "label": "Previous: Step 1" },
+      "forward": { "href": "/claude-code/step-3", "label": "Next: Step 3" }
+    },
+    "step-3": {
+      "back": { "href": "/claude-code/step-2", "label": "Previous: Step 2" },
+      "forward": { "href": "/claude-code/resources", "label": "Next: Resources" }
+    },
+    "resources": {
+      "back": { "href": "/claude-code/step-3", "label": "Previous: Step 3" },
+      "forward": { "href": "/", "label": "Back to Home" }
+    },
+    "the-leak": {
+      "back": { "href": "/claude-code", "label": "Back to Claude Code" }
+    }
+  },
   "microsoft": {
     "index": {
       "back": {

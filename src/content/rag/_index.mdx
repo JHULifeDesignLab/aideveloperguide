@@ -1,0 +1,42 @@
+---
+title: "RAG — Retrieval-Augmented Generation Guide"
+vendor: "rag"
+slug: "/rag"
+lastReviewed: "2026-03-30"
+---
+
+## About
+RAG — Retrieval-Augmented Generation — is the technique that lets you build LLM applications that answer questions about *your* data. Not data the model was trained on. Your documents, your database, your knowledge base.
+
+The core idea is simple: instead of hoping the model knows the answer, you fetch the relevant documents yourself, hand them to the model as context, and ask it to answer based on what you gave it. The model's job shifts from "know everything" to "reason about this specific information."
+
+This guide is honest about the tradeoffs. RAG is powerful, but **retrieval quality determines answer quality**. The LLM cannot fix bad retrieval. If the wrong chunks come back, the answer will be wrong — confidently.
+
+<div className="bg-amber-50 border border-amber-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-amber-800 mb-1">⚠️ Token cost</p>
+  <p className="text-amber-700 text-sm">RAG costs tokens twice — once for the retrieved chunks injected into the prompt, once for the generated answer. A naive implementation that retrieves 10 large chunks per query can burn through context and budget fast. Monitor your context size and tune top-k before scaling.</p>
+</div>
+
+## What you'll accomplish
+
+- **Understand why RAG exists** — the knowledge cutoff problem, why fine-tuning isn't always the answer, and how the retrieve-then-generate pipeline actually works
+- **Build a working pipeline** — chunking strategy, embedding models, vector stores, and prompt construction with real tools
+- **Make it production-ready** — hybrid search, reranking, evaluation with RAGAS, and knowing when RAG is the wrong tool
+
+## Why RAG specifically?
+
+Fine-tuning bakes knowledge into model weights — it's expensive, slow, and doesn't update dynamically. RAG injects knowledge at inference time. That means you can update your document set, re-embed, and the model immediately knows about the changes. No retraining.
+
+For most applications that need to answer questions about custom data — internal docs, course materials, product manuals, codebases — RAG is the right tool. Fine-tuning is for changing *how* a model behaves, not *what* it knows.
+
+## The progressive disclosure connection
+
+RAG is a technical implementation of the same principle that makes Claude Code sessions and learning itself work: **don't give the model (or yourself) everything at once. Give it the relevant slice.**
+
+A search engine retrieves the right documents. A teacher assigns the right chapter. RAG retrieves the right chunks. The common thread is scoping: narrow the information space before asking for reasoning. That discipline — filtering first, reasoning second — shows up everywhere in good engineering.
+
+## How this guide works
+
+1. **Step 1 – Why RAG Exists:** The knowledge cutoff problem, the full retrieve-then-generate pipeline, and core concepts (embeddings, chunking, vector similarity) before you write a line of code.
+2. **Step 2 – Building Your First Pipeline:** Real tools, chunking strategy, prompt construction, and an honest comparison of your options.
+3. **Step 3 – Production RAG:** Hybrid search, reranking, evaluation, common failure modes, and when to stop using RAG.

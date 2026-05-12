@@ -1,168 +1,166 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import ResumeTip from '../components/ResumeTip'
+import keywordsData from '../content/other/keywords.json'
+
+const deploymentItems = [
+  { name: 'Amazon AWS', description: 'Leading cloud platform for hosting and scaling apps.', to: '/amazon' },
+  { name: 'Google Cloud', description: 'Cloud suite strong in data, ML, and Kubernetes.', to: '/google' },
+  { name: 'Microsoft Azure', description: 'Enterprise cloud deeply integrated with Microsoft tools.', to: '/microsoft' },
+]
+
+const productStackItems = [
+  { name: 'LangChain', description: 'Framework for building apps with LLMs and agents.', to: null },
+  { name: 'RAG', description: 'Pattern for grounding LLM responses in your own data.', to: '/rag' },
+  { name: 'Hugging Face', description: 'Hub for sharing and deploying ML models and datasets.', to: null },
+]
+
+const devToolsItems = [
+  { name: 'Claude Code', description: "Anthropic's agentic coding assistant for terminal and IDE.", to: '/claude-code' },
+  { name: 'Cursor', description: 'AI-first code editor with inline edits and chat.', to: null },
+  { name: 'GitHub Copilot', description: "Microsoft's AI pair programmer integrated directly into your editor.", to: null },
+]
+
+const pillColors = [
+  'text-red-400',
+  'text-indigo-400',
+  'text-purple-400',
+  'text-teal-400',
+  'text-emerald-400',
+  'text-yellow-400',
+  'text-blue-400',
+  'text-pink-400',
+]
+
+function CategoryCard({ name, description, to }: { name: string; description: string; to: string | null }) {
+  if (!to) {
+    return (
+      <div className="px-4 py-3 bg-white border border-gray-100 rounded-xl cursor-default">
+        <p className="text-sm font-semibold text-gray-300">{name}</p>
+        <p className="text-xs text-gray-300 mt-0.5">{description}</p>
+      </div>
+    )
+  }
+  return (
+    <Link to={to} className="block">
+      <div className="px-4 py-3 transition-shadow bg-white border border-gray-200 cursor-pointer rounded-xl hover:shadow-md">
+        <p className="text-sm font-semibold text-gray-900">{name}</p>
+        <p className="text-xs text-gray-400 mt-0.5">{description}</p>
+      </div>
+    </Link>
+  )
+}
+
+type Keyword = typeof keywordsData.keywords[number]
 
 export default function HomePage() {
+  const keywords = keywordsData.keywords
+  const [hoveredKw, setHoveredKw] = useState<Keyword | null>(null)
+  const [popupPos, setPopupPos] = useState({ x: 0, y: 0 })
+
+  function handleMouseEnter(kw: Keyword, e: React.MouseEvent) {
+    setHoveredKw(kw)
+    setPopupPos({ x: e.clientX, y: e.clientY })
+  }
+
+  function handleMouseMove(e: React.MouseEvent) {
+    setPopupPos({ x: e.clientX, y: e.clientY })
+  }
+
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <div className="text-center">
-        <div className="flex justify-center mb-8">
-          <img 
-            src="/aideveloperguide/jhu-shield.png" 
-            alt="Johns Hopkins University" 
-            className="h-16 w-auto"
-            onError={(e) => {
-              e.currentTarget.style.display = 'none';
-              const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-              if (fallback) fallback.style.display = 'block';
-            }}
-          />
-          <div className="hidden bg-blue-900 text-white px-6 py-3 rounded-lg font-bold text-xl">
-            Johns Hopkins University
+    <div className="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
+      <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+        Life Design Lab<br />AI Development Guide
+      </h1>
+      <p className="max-w-lg mt-3 text-sm text-gray-600">
+        A comprehensive guide to getting started with AI Development. Fill in experience gaps around generative
+        AI and software development so that you can enhance your resume with experience!
+      </p>
+
+      <Link to="/where-to-start" className="inline-block px-4 py-2 mt-4 text-sm font-medium text-white transition-colors bg-slate-500 rounded-xl hover:bg-slate-400">
+        I don't know where to start →
+      </Link>
+
+      <div className="mt-5">
+        <span className="block mb-1.5 text-xs text-gray-500">Daily Keywords (hover to see explanations!):</span>
+        <Link to="/keywords" className="block">
+        <div className="py-2 overflow-hidden border border-gray-200 rounded-lg bg-gray-50 cursor-pointer hover:border-gray-300 transition-colors">
+          <div className="marquee-track">
+            {[...keywords, ...keywords].map((kw, i) => (
+              <span
+                key={i}
+                className={`font-semibold mx-8 whitespace-nowrap text-sm cursor-default ${pillColors[i % pillColors.length]}`}
+                onMouseEnter={(e) => handleMouseEnter(kw, e)}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={() => setHoveredKw(null)}
+              >
+                {kw.term}
+              </span>
+            ))}
           </div>
         </div>
-        <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-          Life Design Lab AI Developer Guide
-        </h1>
-        <p className="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
-          A comprehensive guide to getting started with AI Development.
-          Fill in experience gaps around <strong>generative AI</strong> and <strong>software development</strong> so that you can <strong>broaden your resume with experience!</strong>
-        </p>
+        </Link>
       </div>
 
-      <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-3">
-        <div className="relative group">
-          <Link
-            to="/google"
-            className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-500"
-          >
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <img 
-                  src="https://www.google.com/favicon.ico" 
-                  alt="Google" 
-                  className="h-12 w-12"
-                />
-              </div>
-              <div className="ml-4">
-                <h3 className="text-lg font-medium text-gray-900">Google Cloud</h3>
-                <p className="text-sm text-gray-500">Google Cloud, VertexAI, Model Cards + MCP</p>
-              </div>
+      {hoveredKw && (
+        <div
+          className="fixed z-50 p-4 bg-white border border-gray-200 shadow-xl pointer-events-none w-72 rounded-xl"
+          style={{ left: popupPos.x + 16, top: popupPos.y + 16 }}
+        >
+          <p className="text-base font-bold text-gray-900">{hoveredKw.term}</p>
+          {hoveredKw.fullName !== hoveredKw.term && (
+            <p className="text-xs text-gray-400 mt-0.5">{hoveredKw.fullName}</p>
+          )}
+          <p className="mt-2 text-sm leading-relaxed text-gray-600">{hoveredKw.explanation}</p>
+          <p className="mt-3 text-xs italic text-gray-400">Origin: {hoveredKw.origin}</p>
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 gap-5 mt-4 sm:grid-cols-3">
+        {/* Deployment — teal */}
+        <div className="overflow-hidden border border-teal-100 rounded-xl bg-teal-50">
+          <div className="h-1 bg-teal-500" />
+          <div className="p-3.5">
+            <h2 className="mb-3 text-base font-bold text-teal-800">Deployment</h2>
+            <div className="space-y-2">
+              {deploymentItems.map((item) => (
+                <CategoryCard key={item.name} {...item} />
+              ))}
             </div>
-            <p className="mt-4 text-gray-600">
-              Complete Google's Generative AI for Developers Learning Path for skill badge.
-            </p>
-          </Link>
+            <button className="w-full py-2 mt-2.5 text-xs font-medium text-teal-600 transition-colors bg-white border border-teal-200 rounded-xl hover:bg-teal-50 hover:text-teal-800">
+              ⇓ more
+            </button>
+          </div>
         </div>
 
-        <div className="relative group">
-          <Link
-            to="/amazon"
-            className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-orange-500"
-          >
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <img 
-                  src="https://www.amazon.com/favicon.ico" 
-                  alt="Amazon" 
-                  className="h-12 w-12"
-                />
-              </div>
-              <div className="ml-4">
-                <h3 className="text-lg font-medium text-gray-900">Amazon AWS</h3>
-                <p className="text-sm text-gray-500">Bedrock, Amazon Q Developer, Guardrails</p>
-              </div>
+        {/* Product Stack — blue */}
+        <div className="overflow-hidden border border-blue-100 rounded-xl bg-blue-50">
+          <div className="h-1 bg-blue-500" />
+          <div className="p-3.5">
+            <h2 className="mb-3 text-base font-bold text-blue-900">Product Stack</h2>
+            <div className="space-y-2">
+              {productStackItems.map((item) => (
+                <CategoryCard key={item.name} {...item} />
+              ))}
             </div>
-            <p className="mt-4 text-gray-600">
-              Build a contextual chatbot with Amazon Bedrock Knowledge Bases.
-            </p>
-          </Link>
+            <button className="w-full py-2 mt-2.5 text-xs font-medium text-blue-600 transition-colors bg-white border border-blue-200 rounded-xl hover:bg-blue-50 hover:text-blue-900">
+              ⇓ more
+            </button>
+          </div>
         </div>
 
-        <div className="relative group">
-          <Link
-            to="/microsoft"
-            className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
-          >
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <img 
-                  src="https://www.microsoft.com/favicon.ico" 
-                  alt="Microsoft" 
-                  className="h-12 w-12"
-                />
-              </div>
-              <div className="ml-4">
-                <h3 className="text-lg font-medium text-gray-900">Microsoft Azure</h3>
-                <p className="text-sm text-gray-500">Azure AI Foundry, Azure OpenAI Service, Content Safety</p>
-              </div>
+        {/* Dev Tools — purple */}
+        <div className="overflow-hidden border border-purple-100 rounded-xl bg-purple-50">
+          <div className="h-1 bg-purple-500" />
+          <div className="p-3.5">
+            <h2 className="mb-3 text-base font-bold text-purple-900">Dev Tools +</h2>
+            <div className="space-y-2">
+              {devToolsItems.map((item) => (
+                <CategoryCard key={item.name} {...item} />
+              ))}
             </div>
-            <p className="mt-4 text-gray-600">
-              Build a RAG-backed chat app with your own documents.
-            </p>
-          </Link>
-        </div>
-      </div>
-
-    <div className="mt-16 bg-blue-50 border-l-4 border-blue-500 rounded-lg shadow-sm p-8">
-      <div className="flex items-start">
-        <div className="flex-shrink-0">
-          <svg className="h-8 w-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        </div>
-        <div className="ml-4">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
-            Not sure where to start?
-          </h2>
-          <p className="text-gray-700">
-            We recommend starting with <strong className="text-blue-600">Google's path</strong>. 
-            After about <em>one hour</em>, you'll already have one new resumé item!
-          </p>
-        </div>
-      </div>
-    </div>
-
-      <div className="mt-16 bg-white rounded-lg shadow-md p-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">README (read this section first)</h1>
-        <ul className="list-disc list-inside space-y-3 text-gray-700">
-          <li>Each section should give you something <strong>at least one item</strong> you can add to your resumé and LinkedIn. Suggestions for how to add them will be in bubbles like so:</li>
-          <ResumeTip title="📝 Resume Building Strategy" variant="success">
-            <strong>Pro tip:</strong> As you complete each step, immediately update your LinkedIn and resume.
-          </ResumeTip>
-          <li>You may find commonalities among these three paths, but the resources (while similar) are geared towards each platform. Feel free to skip over content that you are already familiar with.</li>
-          <li><strong>Disclaimer!</strong> We have found the time stamps for modules are usually on the high end. Don't let them intimidate you.</li>
-          <li><strong>Why certifications?</strong> Certifications boost resumes by providing proof of specialized skills, demonstrating a commitment to professional growth, increasing a candidate's credibility, and improving ATS (Applicant Tracking System) visibility by including key words. Bottom line: they show that you <strong>take initiative to learn!</strong></li>
-        </ul>
-      </div>
-
-      <div className="mt-16 bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Why These Certifications?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Career Impact</h3>
-            <p className="text-gray-600">
-              Cloud certifications are among the highest-paying in tech, with average salary increases 
-              of 25-30% after certification.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Industry Demand</h3>
-            <p className="text-gray-600">
-              95% of enterprises use cloud services, creating massive demand for certified professionals 
-              across all industries.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Hands-On Learning</h3>
-            <p className="text-gray-600">
-              Our guides focus on practical projects and real-world applications, not just theory.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Structured Path</h3>
-            <p className="text-gray-600">
-              Follow our step-by-step roadmaps designed specifically for students and new developers.
-            </p>
+            <button className="w-full py-2 mt-2.5 text-xs font-medium text-purple-600 transition-colors bg-white border border-purple-200 rounded-xl hover:bg-purple-50 hover:text-purple-900">
+              ⇓ more
+            </button>
           </div>
         </div>
       </div>

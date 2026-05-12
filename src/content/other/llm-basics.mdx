@@ -1,0 +1,150 @@
+---
+title: "Prereq · LLM Basics"
+slug: "/claude-code/step-1"
+lastReviewed: "2026-04-27"
+---
+
+## Goal
+Understand how large language models actually work — what they are, why they make things up, how memory works, and how agentic tools turn a stateless model into something that can actually do multi-step work.
+
+---
+
+## 1. What an LLM actually is: a stateless black box
+
+At its core, a large language model does one thing: **text in, text out**.
+
+You give it a string of text. It gives you back a string of text. That's it. There's no hidden state, no memory between calls, no understanding — just a very sophisticated function that maps input text to output text based on patterns learned from training data.
+
+**It is completely stateless.** Every time you call it, it starts from zero. It has no idea who you are, what you asked yesterday, or what happened in a previous session — unless you explicitly include that information in the text you send it.
+
+A few dials you can turn when calling a model:
+
+| Setting | What it does |
+|---|---|
+| **Temperature** | Controls randomness. 0 = deterministic and repetitive. 1+ = creative and unpredictable. Most coding use cases want 0–0.3. |
+| **Max tokens** | Caps how long the response can be. |
+| **System prompt** | A hidden instruction block prepended before your message — this is how every AI assistant has a "personality." |
+| **Top-p / Top-k** | More ways to tune the randomness of token selection. |
+
+The model doesn't "think." It predicts the next token given all previous tokens, one at a time, until it decides to stop. That prediction process is where everything — good and bad — comes from.
+
+---
+
+## 1.5 Hallucination: confident, wrong, and unavoidable
+
+Because the model is always predicting *plausible continuations* rather than retrieving verified facts, it will sometimes generate text that sounds completely correct but is entirely made up. This is called **hallucination**, and it's not a bug — it's a fundamental property of how these models work.
+
+The model doesn't know what it doesn't know. It has no internal "uncertainty" flag that it checks before answering. It just generates the most statistically plausible next tokens, which often look like confident, authoritative text.
+
+**Common patterns in coding:**
+- Inventing method names that follow correct conventions but don't exist
+- Writing imports for packages that don't exist
+- Describing API behavior from an older version
+- Writing tests that look right but test the wrong behavior
+
+**How to work with it:**
+- Always run the code. Looking correct and being correct are different things.
+- Be skeptical of specific version numbers, URLs, and method signatures
+- If it cites a doc link, check it — the URL may exist but contain different content
+
+The model is most likely to hallucinate at the edges of its training data: very new libraries, obscure APIs, anything after its knowledge cutoff date.
+
+---
+
+## 2. Tokens: the actual unit of everything
+
+The model doesn't read words or characters — it reads **tokens**. A token is roughly a word-chunk, produced by a tokenizer that splits text in ways that optimize compression. In English prose, 1 token ≈ 0.75 words. In code, it's often denser.
+
+Tokens are what you're billed on, and tokens are what fill up the context window.
+
+**Rough token counts for things you'll actually work with:**
+
+| Content | Tokens |
+|---|---|
+| One tweet | ~30 tokens |
+| One paragraph of text | ~100 tokens |
+| One page of a research paper | ~500 tokens |
+| A 200-line TypeScript file | ~800–1,500 tokens |
+| A full bash command + its output | ~200–800 tokens |
+| A 10-page PDF | ~5,000 tokens |
+| A 50-page PDF | ~25,000 tokens |
+| This entire page you're reading | ~1,200 tokens |
+| A medium-sized codebase | ~50,000–200,000+ tokens |
+
+Reading a file twice costs twice the tokens and takes up twice the space. This is why being precise about what you feed the model matters — both for cost and for quality.
+
+---
+
+## 3. Context windows: the whiteboard with a fixed size
+
+Here's the thing about that stateless black box: there's a limit to how much text you can send it at once. That limit is called the **context window**, measured in tokens.
+
+Everything goes into that window — your message, the model's previous responses, file contents, tool results, the system prompt, all of it. Once it's full, old content is dropped to make room for new content. The model never "sees" what fell off.
+
+**Popular models and their context windows, in real terms:**
+
+| Model | Context window | Rough equivalent |
+|---|---|---|
+| GPT-4o | 128,000 tokens | ~250 research paper pages |
+| Claude Sonnet / Opus | 200,000 tokens | ~400 research paper pages |
+| Gemini 1.5 Pro | 1,000,000 tokens | ~2,000 research paper pages |
+| GPT-3.5 (old) | 16,000 tokens | ~32 research paper pages |
+
+That sounds like a lot. But consider: a single agentic session that reads 10 files, runs several commands, and has a back-and-forth conversation can easily burn 20,000–80,000 tokens. Quality degrades as the window fills.
+
+**Why it deteriorates:** Transformer attention is not uniform. Tokens near the end of the context have a stronger influence on what the model generates next than tokens buried near the beginning. The further back something is, the weaker its signal. So even if a file is technically still "in context," if it's 150,000 tokens back, the model may effectively ignore it.
+
+**Symptoms of a crowded context:**
+- The model starts contradicting things it said earlier
+- It "forgets" constraints you gave at the start
+- Responses get less specific and more generic
+- It repeats itself
+
+Starting a fresh session is often more effective than trying to re-explain things mid-session.
+
+---
+
+## 4. The agent loop: making stateless feel stateful
+
+So if the model is stateless and forgets everything between calls, how does a tool like Claude Code or Cursor maintain a coherent conversation across an entire session?
+
+**Here's what's actually happening every single time you send a message:**
+
+Every AI assistant — Claude, ChatGPT, Gemini, all of them — works by copying and pasting the *entire conversation history* into the model's context on every single call. When you send message #10, the model receives messages 1 through 9 plus your new message, all concatenated together. It's one giant text blob. This is what creates the *illusion* of memory.
+
+And at the very top of that blob, invisible to you, is a **system prompt** — the instructions that give the assistant its personality and rules. Something like:
+
+```
+You are a helpful coding assistant. You write clean, well-documented code.
+You ask clarifying questions before making large changes. You never...
+```
+
+Every chat product you've used has one of these. It's how the same underlying model can feel like "Claude" in one product and "Aria" in another.
+
+**The agent loop goes further.** Instead of just sending text back and forth, agentic tools give the model access to tools — file reads, bash commands, web searches, code edits. The loop looks like this:
+
+```
+Your message + full conversation history + system prompt
+  → Model decides: respond, or call a tool?
+  → If tool: tool runs, result is appended to context
+  → Model sees the result and decides next action
+  → Repeat until done
+```
+
+This is what makes multi-step tasks possible. The model isn't "remembering" — it's reading a longer and longer transcript of what happened, appended to the front of each call.
+
+**The tradeoff:** every tool call adds more tokens to the context. A session that reads 20 files and runs 15 commands might consume 60,000 tokens before you've written a single line of code. This is why long agentic sessions degrade — not because the model gets tired, but because the context fills up and early instructions lose signal.
+
+<div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-slate-800 mb-2">What this means for you</p>
+  <ul className="text-slate-700 text-sm space-y-1 list-disc list-inside">
+    <li><strong>Verify everything</strong> — it's predicting, not reasoning</li>
+    <li><strong>Keep sessions focused</strong> — broad sessions degrade; narrow sessions stay sharp</li>
+    <li><strong>Start fresh when things get weird</strong> — a crowded context is usually the cause</li>
+    <li><strong>Watch the tool calls</strong> — each one costs context and can go wrong</li>
+  </ul>
+</div>
+
+<ResumeTip>
+  Most people who "use AI" can't explain why their sessions degrade, what a context window actually is, or how the agent loop works under the hood. Being able to articulate this — and explain how you structure sessions to work with these constraints — is a genuine signal of engineering judgment, not just tool use.
+</ResumeTip>

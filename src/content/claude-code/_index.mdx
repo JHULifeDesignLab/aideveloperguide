@@ -1,0 +1,43 @@
+---
+title: "Claude Code — AI Coding Assistant Guide"
+vendor: "claude-code"
+slug: "/claude-code"
+lastReviewed: "2026-03-30"
+---
+
+## About
+Claude Code is Anthropic's agentic coding assistant — a CLI tool that reads your files, writes and edits code, runs terminal commands, and reasons across your entire codebase. It's one of the most capable AI coding tools available right now. It's also genuinely addictive to use, which makes it easy to lean on it in ways that quietly erode your own skills.
+
+This guide is honest about that tradeoff. Claude Code is a **force multiplier**, not a replacement for knowing how to code. The developers who get the most out of it are the ones who already know what good output looks like — and can tell when Claude is confidently wrong.
+
+<div className="bg-amber-50 border border-amber-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-amber-800 mb-1">⚠️ Cost awareness</p>
+  <p className="text-amber-700 text-sm">Claude Code bills per token. A single large agentic session can consume thousands of tokens without you noticing. Use <code>/cost</code> regularly and set spend limits in your Anthropic account before you start.</p>
+</div>
+
+## What you'll accomplish
+
+- **Understand why Claude behaves the way it does** — context windows, token limits, and why it sometimes forgets things or hallucinates code
+- **Build effective day-to-day workflows** — CLAUDE.md, slash commands, permission modes, and prompting patterns that actually work
+- **Use advanced features deliberately** — subagents, MCP integrations, hooks, and knowing when to stop using Claude Code entirely
+
+## Why Claude Code specifically?
+
+There are plenty of AI coding tools: Cursor, Copilot, Windsurf. Claude Code is different in one important way — it's **agentic by default**. It doesn't just autocomplete your next line; it reads files, runs commands, edits multiple files in sequence, and hands off work to subagents. This makes it dramatically more powerful for complex, multi-step tasks. It also makes it dramatically easier to lose track of what it's actually doing.
+
+Understanding the mechanics — how the context window works, what tokens cost, why subagents exist — is what separates developers who use Claude Code well from developers who get burned by it.
+
+## The progressive skill connection
+
+Here's something worth internalizing: **the way you should feed information to Claude Code is the same way you should learn any new technology.** Not all at once. Progressively.
+
+When you dump your entire codebase into a prompt and ask Claude to "fix everything," you're asking it to do the cognitive equivalent of reading an entire textbook and answering an exam in one sitting. Output quality degrades. Context gets diluted. Mistakes compound.
+
+The best Claude Code sessions look like careful, layered work: start narrow, get a result, verify it, expand scope. This is also how you get better at software development in general.
+
+## How this guide works
+
+1. **Step 1 – How Claude Actually Works:** The mechanics behind context windows, tokens, and the agent loop — so Claude's behavior stops feeling random.
+2. **Step 2 – Getting Productive:** CLAUDE.md, slash commands, permission modes, and the prompting patterns worth learning.
+3. **Step 3 – Advanced Patterns:** Subagents, MCP, hooks, and an honest look at when Claude Code is the wrong tool.
+

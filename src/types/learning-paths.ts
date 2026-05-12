@@ -21,4 +21,4 @@ export interface LearningPaths {
   microsoft: VendorPath | {}
 }
 
-export type VendorName = 'google' | 'amazon' | 'microsoft'
+export type VendorName = 'google' | 'amazon' | 'microsoft' | 'claude-code' | 'rag'

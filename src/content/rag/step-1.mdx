@@ -1,0 +1,112 @@
+---
+title: "Step 1 · Why RAG Exists"
+vendor: "rag"
+slug: "/rag/step-1"
+lastReviewed: "2026-03-30"
+ordinal: 1
+---
+
+## Goal
+Understand the problem RAG solves and the full pipeline — conceptually — before writing any code.
+
+---
+
+## The knowledge cutoff problem
+
+Every LLM has a training cutoff date. After that date, it knows nothing. More importantly, it never knew about your private data at all — your internal documents, your company's knowledge base, your class notes, your product manuals.
+
+When you ask an LLM about your data, one of three things happens:
+1. It says it doesn't know (good, but not useful)
+2. It makes something up that sounds plausible (bad)
+3. If you somehow get the info into its context, it reasons from it correctly (what you want)
+
+RAG is how you reliably get to option 3.
+
+---
+
+## Why not fine-tuning?
+
+Fine-tuning is the other common answer to "how do I get the model to know about my data." It trains the model further on your documents, baking that knowledge into its weights.
+
+The problems:
+
+- **Expensive and slow**: fine-tuning requires compute, careful data preparation, and time. Not something you do on the fly.
+- **Doesn't update dynamically**: if your knowledge base changes, you re-train. RAG lets you update your document set and re-embed — no training required.
+- **Hallucination doesn't go away**: fine-tuned models can still hallucinate facts from their training data. RAG grounds the answer in documents you can inspect.
+- **Overkill for most use cases**: fine-tuning changes *how* a model behaves. If you just want it to *know* something, RAG is more appropriate.
+
+Fine-tuning is for changing the model's style, tone, or task specialization. RAG is for giving it access to specific information at query time.
+
+---
+
+## The RAG pipeline
+
+RAG has two phases: **ingestion** (you do this once, or on a schedule) and **querying** (you do this every time a user asks something).
+
+### Phase 1 — Ingestion
+
+```
+Documents
+  → Load (PDF, text, HTML, markdown, etc.)
+  → Split into chunks
+  → Embed each chunk (convert to a vector)
+  → Store chunks + vectors in a vector database
+```
+
+### Phase 2 — Query
+
+```
+User's question
+  → Embed the question (same embedding model)
+  → Find the most similar chunks in the vector DB
+  → Inject those chunks into the LLM prompt
+  → LLM answers using the retrieved context
+```
+
+That's the whole thing. The complexity is in doing each step well.
+
+---
+
+## Embeddings: semantic meaning as a vector
+
+An **embedding** is a numerical representation of text — a list of hundreds or thousands of floating-point numbers. The embedding model is trained so that texts with similar *meaning* end up with *nearby* vectors in that high-dimensional space.
+
+"How do I reset my password?" and "I forgot my login credentials" will produce vectors that are close together, even though they share no keywords. That's the key advantage over keyword search.
+
+You use the **same embedding model** for both ingestion and queries. If you embed your documents with `text-embedding-3-small`, you must also embed queries with it. Mixing models produces garbage.
+
+---
+
+## Vector similarity: finding the relevant chunks
+
+Once your documents are embedded and stored, answering a query means finding the stored vectors that are closest to the query vector. The most common measure is **cosine similarity** — it measures the angle between two vectors, not their magnitude, so it works well for comparing semantic content regardless of text length.
+
+Most vector databases handle this for you. You ask for "top-k most similar chunks" and get them back ranked by similarity score.
+
+---
+
+## Chunking: why you split documents
+
+You can't embed an entire 100-page PDF as one vector. A single vector can't capture 100 pages of nuance. You need to split it into chunks, each of which gets its own embedding.
+
+**Why chunking matters:**
+
+- **Context window limits**: each retrieved chunk takes up tokens in your LLM prompt. Smaller chunks = more chunks fit; larger chunks = more context per chunk.
+- **Retrieval precision**: if chunks are too large, a single chunk may match multiple topics and dilute the signal. If chunks are too small, the answer may be split across multiple chunks.
+- **The tradeoff**: small chunks retrieve precisely but may lack surrounding context; large chunks have more context but may match too broadly.
+
+A common starting point: **512–1024 tokens per chunk, with 10–20% overlap** between consecutive chunks. Overlap ensures that sentences split across a chunk boundary don't get lost.
+
+---
+
+## The progressive disclosure connection
+
+RAG is an engineering implementation of the same principle that makes learning — and Claude Code sessions — work: **don't dump everything in at once; retrieve the relevant slice first.**
+
+A good teacher doesn't assign the entire textbook before asking a question. A good Claude Code session doesn't load the entire codebase into context. RAG doesn't inject an entire knowledge base into every prompt. In all three cases, scoping the information space before reasoning produces better results.
+
+This isn't a coincidence. Transformers — the architecture behind LLMs — give stronger weight to tokens that appear closer to the end of the context. Relevant, compact, recent context beats exhaustive context every time.
+
+<ResumeTip>
+  Being able to explain the RAG pipeline end to end — ingestion, embedding, retrieval, generation — and articulate the tradeoffs vs. fine-tuning is genuinely uncommon. Most developers who "use RAG" have run a tutorial without internalizing why each step exists. If you can explain chunking tradeoffs and why you'd choose RAG over fine-tuning for a given use case, that's interview-level knowledge.
+</ResumeTip>
