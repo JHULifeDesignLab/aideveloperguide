@@ -61,23 +61,25 @@ jobs:
 
           const broken = [];
           let i = 0;
-          for (const [url, files] of urls) {
-            let status = await request(url, 'HEAD');
-            if ([403, 405, 503].includes(status)) status = await request(url, 'GET');
-            if (status === 'ERROR' || status === 'TIMEOUT' || status >= 400) {
-              broken.push({ url, status, files });
+          (async () => {
+            for (const [url, files] of urls) {
+              let status = await request(url, 'HEAD');
+              if ([403, 405, 503].includes(status)) status = await request(url, 'GET');
+              if (status === 'ERROR' || status === 'TIMEOUT' || status >= 400) {
+                broken.push({ url, status, files });
+              }
+              process.stdout.write(`\r${++i}/${urls.size} checked`);
             }
-            process.stdout.write(`\r${++i}/${urls.size} checked`);
-          }
 
-          console.log(`\n\nFound ${broken.length} broken links.`);
-          if (broken.length > 0) {
-            broken.forEach(({ url, status, files }) =>
-              console.log(`\n❌ [${status}] ${url}\n   in: ${files.join(', ')}`)
-            );
-            fs.writeFileSync('broken-links.json', JSON.stringify(broken, null, 2));
-            fs.appendFileSync(process.env.GITHUB_OUTPUT, 'broken_found=true\n');
-          }
+            console.log(`\n\nFound ${broken.length} broken links.`);
+            if (broken.length > 0) {
+              broken.forEach(({ url, status, files }) =>
+                console.log(`\n❌ [${status}] ${url}\n   in: ${files.join(', ')}`)
+              );
+              fs.writeFileSync('broken-links.json', JSON.stringify(broken, null, 2));
+              fs.appendFileSync(process.env.GITHUB_OUTPUT, 'broken_found=true\n');
+            }
+          })();
           EOF
 
       - name: Open issue for broken links
@@ -92,6 +94,7 @@ jobs:
               console.log(`**❌ [${status}] ${url}**\nFound in: ${files.join(", ")}\n`)
             );
           ')
+          gh label create "broken-links" --color "d73a4a" --force 2>/dev/null || true
           gh issue create \
             --title "🔗 Broken links detected" \
             --body "$body" \
