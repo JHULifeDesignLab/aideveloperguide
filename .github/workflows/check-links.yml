@@ -2,194 +2,97 @@ name: Check for Broken Links
 
 on:
   schedule:
-    # Run every Sunday at midnight UTC
     - cron: '0 0 * * 0'
-  # Allow manual trigger from Actions tab
   workflow_dispatch:
 
 jobs:
   check-links:
     runs-on: ubuntu-latest
-    
     permissions:
       contents: read
       issues: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: Extract and check links from MDX files
+      - name: Check links
         id: check
         run: |
           node << 'EOF'
           const fs = require('fs');
-          const path = require('path');
           const https = require('https');
           const http = require('http');
 
-          // Recursively find all MDX files
-          function findMdxFiles(dir, fileList = []) {
-            const files = fs.readdirSync(dir);
-            files.forEach(file => {
-              const filePath = path.join(dir, file);
-              const stat = fs.statSync(filePath);
-              if (stat.isDirectory()) {
-                findMdxFiles(filePath, fileList);
-              } else if (file.endsWith('.mdx')) {
-                fileList.push(filePath);
-              }
+          function findMdxFiles(dir) {
+            return fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
+              const full = `${dir}/${entry.name}`;
+              return entry.isDirectory() ? findMdxFiles(full) : full.endsWith('.mdx') ? [full] : [];
             });
-            return fileList;
           }
 
-          const mdxFiles = findMdxFiles('src/content');
           const urlRegex = /https?:\/\/[^\s\)\]\}"'>]+/g;
-          const urls = new Map(); // url -> [files]
+          const skip = [/YOURUSERNAME/, /example\.com/, /placeholder/];
+          const urls = new Map();
 
-          // Skip placeholder/template URLs
-          const skipPatterns = [
-            /YOURUSERNAME/,
-            /example\.com/,
-            /placeholder/
-          ];
+          for (const file of findMdxFiles('src/content')) {
+            for (const match of fs.readFileSync(file, 'utf-8').matchAll(urlRegex)) {
+              const url = match[0].replace(/[)\]\}.,;:!?"'>]+$/, '');
+              if (skip.some(p => p.test(url))) continue;
+              if (!urls.has(url)) urls.set(url, []);
+              urls.get(url).push(file.replace('src/content/', ''));
+            }
+          }
 
-          mdxFiles.forEach(file => {
-            const content = fs.readFileSync(file, 'utf-8');
-            const matches = content.match(urlRegex) || [];
-            matches.forEach(url => {
-              const cleanUrl = url.replace(/[)\]\}.,;:!?"'>]+$/, '');
-              if (skipPatterns.some(p => p.test(cleanUrl))) return;
-              if (!urls.has(cleanUrl)) {
-                urls.set(cleanUrl, []);
-              }
-              urls.get(cleanUrl).push(file.replace('src/content/', ''));
-            });
+          const request = (url, method) => new Promise(resolve => {
+            const lib = url.startsWith('https') ? https : http;
+            const { hostname, pathname, search } = new URL(url);
+            const req = lib.request(
+              { hostname, path: pathname + search, method, timeout: 10000,
+                headers: { 'User-Agent': 'Mozilla/5.0 Chrome/120.0.0.0' } },
+              res => { res.resume(); resolve(res.statusCode); }
+            );
+            req.on('timeout', () => { req.destroy(); resolve('TIMEOUT'); });
+            req.on('error', () => resolve('ERROR'));
+            req.end();
           });
 
-          console.log(`Found ${mdxFiles.length} MDX files with ${urls.size} unique URLs\n`);
-
-          // Check each URL
-          const brokenLinks = [];
-          let checked = 0;
-
-          const makeRequest = (url, method) => {
-            return new Promise((resolve) => {
-              const isHttps = url.startsWith('https');
-              const protocol = isHttps ? https : http;
-              const timer = setTimeout(() => {
-                resolve({ url, status: 'TIMEOUT', files: urls.get(url) });
-              }, 10000);
-
-              const parsedUrl = new URL(url);
-              const options = {
-                hostname: parsedUrl.hostname,
-                path: parsedUrl.pathname + parsedUrl.search,
-                method: method,
-                timeout: 10000,
-                headers: {
-                  'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-                }
-              };
-              const req = protocol.request(options, (res) => {
-                clearTimeout(timer);
-                // Consume body for GET requests
-                res.resume();
-                resolve({ statusCode: res.statusCode });
-              });
-              req.on('error', (err) => {
-                clearTimeout(timer);
-                resolve({ statusCode: -1, error: err.code });
-              });
-              req.end();
-            });
-          };
-
-          const checkUrl = async (url) => {
-            // First try HEAD
-            let result = await makeRequest(url, 'HEAD');
-
-            // If HEAD returns 403, 405, or 503 — retry with GET (some sites block HEAD)
-            if ([403, 405, 503].includes(result.statusCode)) {
-              result = await makeRequest(url, 'GET');
+          const broken = [];
+          let i = 0;
+          for (const [url, files] of urls) {
+            let status = await request(url, 'HEAD');
+            if ([403, 405, 503].includes(status)) status = await request(url, 'GET');
+            if (status === 'ERROR' || status === 'TIMEOUT' || status >= 400) {
+              broken.push({ url, status, files });
             }
+            process.stdout.write(`\r${++i}/${urls.size} checked`);
+          }
 
-            if (result.statusCode === -1) {
-              return { url, status: 'ERROR', error: result.error, files: urls.get(url) };
-            }
-            if (result.statusCode === 'TIMEOUT' || result.statusCode >= 400) {
-              return { url, status: result.statusCode, files: urls.get(url) };
-            }
-            return null;
-          };
-
-          (async () => {
-            for (const url of urls.keys()) {
-              const result = await checkUrl(url);
-              if (result) {
-                brokenLinks.push(result);
-              }
-              checked++;
-              process.stdout.write(`Checked ${checked}/${urls.size}\r`);
-            }
-
-            console.log(`\n\n✅ Scan complete! Checked ${checked} links.`);
-            console.log(`Found ${brokenLinks.length} broken links.\n`);
-
-            if (brokenLinks.length > 0) {
-              console.log('BROKEN LINKS FOUND:');
-              brokenLinks.forEach(link => {
-                console.log(`\n❌ ${link.url}`);
-                console.log(`   Status: ${link.status || link.error}`);
-                console.log(`   Found in: ${link.files.join(', ')}`);
-              });
-              
-              fs.writeFileSync('broken-links.json', JSON.stringify(brokenLinks, null, 2));
-              process.exit(1);
-            } else {
-              console.log('✅ All external links are working!');
-              process.exit(0);
-            }
-          })();
+          console.log(`\n\nFound ${broken.length} broken links.`);
+          if (broken.length > 0) {
+            broken.forEach(({ url, status, files }) =>
+              console.log(`\n❌ [${status}] ${url}\n   in: ${files.join(', ')}`)
+            );
+            fs.writeFileSync('broken-links.json', JSON.stringify(broken, null, 2));
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, 'broken_found=true\n');
+          }
           EOF
 
-      - name: Check if broken links exist
-        id: find-broken
-        if: failure()
-        run: |
-          echo "broken_found=true" >> $GITHUB_OUTPUT
-          echo "### 🔗 Broken Links Detected" > pr-message.md
-          echo "" >> pr-message.md
-          echo "The link checker found broken external links in your MDX files:" >> pr-message.md
-          echo "" >> pr-message.md
-          node -e '
-            const fs = require("fs");
-            const links = JSON.parse(fs.readFileSync("broken-links.json", "utf-8"));
-            links.forEach(link => {
-              console.log("");
-              console.log("**❌ " + link.url + "**");
-              console.log("- Status: " + (link.status || link.error));
-              console.log("- Found in: " + link.files.join(", "));
-            });
-          ' >> pr-message.md
-          echo "" >> pr-message.md
-          echo "## How to Fix" >> pr-message.md
-          echo "1. Open the MDX files listed above (in \`src/content/\`)" >> pr-message.md
-          echo "2. Update or remove the broken URLs" >> pr-message.md
-          echo "3. Test locally with \`npm run dev\`" >> pr-message.md
-          echo "4. Commit and push your fixes" >> pr-message.md
-
-      - name: Create GitHub Issue for broken links
-        if: failure() && steps.find-broken.outputs.broken_found == 'true'
+      - name: Open issue for broken links
+        if: steps.check.outputs.broken_found == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          body="The weekly link checker found broken URLs in \`src/content/\`. Open each in a browser to confirm — 403s are often false positives from scraper-blocking sites.\n\n"
+          body+=$(node -e '
+            const links = require("./broken-links.json");
+            links.forEach(({ url, status, files }) =>
+              console.log(`**❌ [${status}] ${url}**\nFound in: ${files.join(", ")}\n`)
+            );
+          ')
           gh issue create \
-            --title "🔗 Broken Links Detected - Review Required" \
-            --body-file pr-message.md \
+            --title "🔗 Broken links detected" \
+            --body "$body" \
             --label "broken-links"

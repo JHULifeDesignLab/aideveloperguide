@@ -2,20 +2,13 @@ import { Link } from 'react-router-dom'
 import { ReactNode, useState } from 'react'
 import navigationData from '../data/navigation.json'
 import learningPathsData from '../data/learning-paths.json'
+import { topicConfigs, ColorConfig } from '../data/topic-config'
 
 interface StepPageLayoutProps {
-  vendor: "google" | "amazon" | "microsoft" | "claude-code" | "rag";
-  pageKey: string;
-  children: ReactNode;
-  colorOverride?: { bgColor: string; textColor: string; borderColor: string; gradientColor?: string }
-}
-
-const vendorConfig = {
-  google:        { name: 'Google Cloud',    bgColor: 'bg-blue-500',   textColor: 'text-blue-500',   borderColor: 'border-blue-500',   gradientColor: 'rgba(59,130,246,0.13)'  },
-  amazon:        { name: 'Amazon AWS',      bgColor: 'bg-orange-500', textColor: 'text-orange-500', borderColor: 'border-orange-500', gradientColor: 'rgba(249,115,22,0.13)'  },
-  microsoft:     { name: 'Microsoft Azure', bgColor: 'bg-blue-600',   textColor: 'text-blue-600',   borderColor: 'border-blue-600',   gradientColor: 'rgba(37,99,235,0.13)'   },
-  'claude-code': { name: 'Claude Code',     bgColor: 'bg-purple-600', textColor: 'text-purple-600', borderColor: 'border-purple-600', gradientColor: 'rgba(147,51,234,0.13)'  },
-  rag:           { name: 'RAG Development', bgColor: 'bg-green-600',  textColor: 'text-green-600',  borderColor: 'border-green-600',  gradientColor: 'rgba(22,163,74,0.13)'   },
+  vendor: string
+  pageKey: string
+  children: ReactNode
+  colorOverride?: Partial<ColorConfig>
 }
 
 export default function StepPageLayout({ vendor, pageKey, children, colorOverride }: StepPageLayoutProps) {
@@ -23,8 +16,14 @@ export default function StepPageLayout({ vendor, pageKey, children, colorOverrid
   const [backHovered, setBackHovered]       = useState(false)
   const [forwardHovered, setForwardHovered] = useState(false)
 
-  const base = vendorConfig[vendor]
-  const config = colorOverride ? { ...base, ...colorOverride } : base
+  const base = topicConfigs[vendor] ?? {
+    name: vendor,
+    bgColor: 'bg-gray-500',
+    textColor: 'text-gray-500',
+    borderColor: 'border-gray-500',
+    gradientColor: 'rgba(100,116,139,0.13)',
+  }
+  const config = { ...base, ...colorOverride }
   const gradientColor = colorOverride?.gradientColor ?? base.gradientColor
 
   const stepIndex = ['step-1', 'step-2', 'step-3'].indexOf(pageKey)
@@ -34,7 +33,6 @@ export default function StepPageLayout({ vendor, pageKey, children, colorOverrid
     : stepIndex >= 0 && steps[stepIndex] ? steps[stepIndex].title
     : null
 
-  // Fixed side buttons sit in the margin space outside max-w-5xl (64rem)
   const sideBase = 'fixed inset-y-0 hidden xl:flex flex-col items-center justify-center gap-2 transition-all duration-300 text-gray-300 hover:text-gray-500 no-underline z-10 w-[calc((100vw-64rem)/2)]'
 
   return (
@@ -71,7 +69,7 @@ export default function StepPageLayout({ vendor, pageKey, children, colorOverrid
         </Link>
       )}
 
-      {/* Main content — untouched centering */}
+      {/* Main content */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
         <nav className="flex mb-8" aria-label="Breadcrumb">

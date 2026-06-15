@@ -1,4 +1,3 @@
-// Type definitions for learning paths data
 export interface Module {
   title: string
   duration: string
@@ -20,5 +19,3 @@ export interface LearningPaths {
   amazon: VendorPath | {}
   microsoft: VendorPath | {}
 }
-
-export type VendorName = 'google' | 'amazon' | 'microsoft' | 'claude-code' | 'rag'

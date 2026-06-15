@@ -5,6 +5,13 @@ slug: "/rag"
 lastReviewed: "2026-03-30"
 ---
 
+import VendorLanding from "../../components/VendorLanding"
+import NavigationLayout from "../../components/NavigationLayout"
+
+<VendorLanding vendor="rag" />
+
+<NavigationLayout vendor="rag" pageKey="index">
+
 ## About
 RAG — Retrieval-Augmented Generation — is the technique that lets you build LLM applications that answer questions about *your* data. Not data the model was trained on. Your documents, your database, your knowledge base.
 
@@ -40,3 +47,5 @@ A search engine retrieves the right documents. A teacher assigns the right chapt
 1. **Step 1 – Why RAG Exists:** The knowledge cutoff problem, the full retrieve-then-generate pipeline, and core concepts (embeddings, chunking, vector similarity) before you write a line of code.
 2. **Step 2 – Building Your First Pipeline:** Real tools, chunking strategy, prompt construction, and an honest comparison of your options.
 3. **Step 3 – Production RAG:** Hybrid search, reranking, evaluation, common failure modes, and when to stop using RAG.
+
+</NavigationLayout>
