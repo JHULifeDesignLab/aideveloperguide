@@ -87,7 +87,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          body="The weekly link checker found broken URLs in \`src/content/\`. Open each in a browser to confirm — 403s are often false positives from scraper-blocking sites.\n\n"
+          body=$'The weekly link checker found broken URLs in `src/content/`. Open each in a browser to confirm — 403s are often false positives from scraper-blocking sites.\n\n'
           body+=$(node -e '
             const links = require("./broken-links.json");
             links.forEach(({ url, status, files }) =>
