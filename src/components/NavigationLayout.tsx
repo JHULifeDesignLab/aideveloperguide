@@ -1,19 +1,12 @@
 import { ReactNode, useState } from 'react'
 import { Link } from 'react-router-dom'
 import navigationData from '../data/navigation.json'
+import { topicConfigs } from '../data/topic-config'
 
 interface NavigationLayoutProps {
-  vendor: "google" | "amazon" | "microsoft" | "claude-code" | "rag";
-  pageKey: string;
+  vendor: string
+  pageKey: string
   children: ReactNode
-}
-
-const vendorConfig = {
-  google:        { name: 'Google Cloud',    bgColor: 'bg-blue-500',   textColor: 'text-blue-500',   borderColor: 'border-blue-500',   gradientColor: 'rgba(59,130,246,0.13)'  },
-  amazon:        { name: 'Amazon AWS',      bgColor: 'bg-orange-500', textColor: 'text-orange-500', borderColor: 'border-orange-500', gradientColor: 'rgba(249,115,22,0.13)'  },
-  microsoft:     { name: 'Microsoft Azure', bgColor: 'bg-blue-600',   textColor: 'text-blue-600',   borderColor: 'border-blue-600',   gradientColor: 'rgba(37,99,235,0.13)'   },
-  'claude-code': { name: 'Claude Code',     bgColor: 'bg-purple-600', textColor: 'text-purple-600', borderColor: 'border-purple-600', gradientColor: 'rgba(147,51,234,0.13)'  },
-  rag:           { name: 'RAG Development', bgColor: 'bg-green-600',  textColor: 'text-green-600',  borderColor: 'border-green-600',  gradientColor: 'rgba(22,163,74,0.13)'   },
 }
 
 export default function NavigationLayout({ vendor, pageKey, children }: NavigationLayoutProps) {
@@ -21,7 +14,13 @@ export default function NavigationLayout({ vendor, pageKey, children }: Navigati
   const [backHovered, setBackHovered]       = useState(false)
   const [forwardHovered, setForwardHovered] = useState(false)
 
-  const config = vendorConfig[vendor]
+  const config = topicConfigs[vendor] ?? {
+    name: vendor,
+    bgColor: 'bg-gray-500',
+    textColor: 'text-gray-500',
+    borderColor: 'border-gray-500',
+    gradientColor: 'rgba(100,116,139,0.13)',
+  }
   const { gradientColor } = config
 
   const sideBase = 'fixed inset-y-0 hidden xl:flex flex-col items-center justify-center gap-2 transition-all duration-300 text-gray-300 hover:text-gray-500 no-underline z-10 w-[calc((100vw-64rem)/2)]'
