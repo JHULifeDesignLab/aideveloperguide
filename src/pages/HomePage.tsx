@@ -68,19 +68,34 @@ export default function HomePage() {
 
   return (
     <div className="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-        Life Design Lab<br />AI Development Guide
-      </h1>
-      <p className="max-w-lg mt-3 text-sm text-gray-600">
-        A comprehensive guide to getting started with AI Development. Fill in experience gaps around generative
-        AI and software development so that you can enhance your resume with experience!
-      </p>
+      {/* Hero: centered content on the left 3/4, image slot on the right 1/4 */}
+      <div className="grid items-center grid-cols-1 gap-6 py-4 md:grid-cols-4">
+        <div className="flex flex-col items-center text-center md:col-span-3">
+          <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase">
+            JHU Life Design Lab
+          </p>
+          <h1 className="mt-2 text-4xl font-bold tracking-tight text-gray-900">
+            AI Development Guide
+          </h1>
+          <p className="max-w-md mt-3 text-sm text-gray-600">
+            Get started with generative AI and software development. Build real
+            experience you can put on your resume!
+          </p>
+          <Link to="/where-to-start" className="inline-block px-5 py-2 mt-4 text-sm font-medium text-white transition-colors bg-slate-500 rounded-xl hover:bg-slate-400">
+            I don't know where to start →
+          </Link>
+        </div>
 
-      <Link to="/where-to-start" className="inline-block px-4 py-2 mt-4 text-sm font-medium text-white transition-colors bg-slate-500 rounded-xl hover:bg-slate-400">
-        I don't know where to start →
-      </Link>
+        <div className="hidden md:flex items-center justify-center">
+          <img
+            src={`${import.meta.env.BASE_URL}coding-bird.png`}
+            alt="Coding bluejay mascot"
+            className="w-full max-w-[220px] h-auto md:-translate-x-2"
+          />
+        </div>
+      </div>
 
-      <div className="mt-5">
+      <div className="mt-2">
         <span className="block mb-1.5 text-xs text-gray-500">Daily Keywords (hover to see explanations!):</span>
         <Link to="/keywords" className="block">
         <div className="py-2 overflow-hidden border border-gray-200 rounded-lg bg-gray-50 cursor-pointer hover:border-gray-300 transition-colors">
