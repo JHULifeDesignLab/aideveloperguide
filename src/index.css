@@ -45,3 +45,40 @@ body {
 .marquee-track:hover {
   animation-play-state: paused;
 }
+
+/* Gentle bob for the hero mascot */
+@keyframes float-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+.float-bob {
+  animation: float-bob 3.5s ease-in-out infinite;
+}
+
+/* Speech bubble pops in after the page settles */
+@keyframes bubble-pop {
+  0%   { opacity: 0; transform: scale(0.6); }
+  70%  { transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.bubble-pop {
+  animation: bubble-pop 0.45s ease-out 0.6s both;
+}
+
+/* Category columns cascade in on load */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up {
+  animation: fade-in-up 0.5s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-bob, .bubble-pop, .fade-in-up, .marquee-track {
+    animation: none;
+  }
+}

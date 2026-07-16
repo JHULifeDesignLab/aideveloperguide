@@ -12,14 +12,14 @@ export default function Layout({ children }: LayoutProps) {
     <div className="min-h-screen bg-gray-50">
       <nav className="bg-slate-200 shadow-sm border-b border-slate-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-11">
-            <div className="flex items-center space-x-4">
+          <div className="flex justify-between h-14">
+            <div className="flex items-center space-x-3">
               {/* Johns Hopkins Logo */}
               <div className="flex items-center">
-                <img 
-                  src="/aideveloperguide/jhu-shield.png" 
-                  alt="Johns Hopkins University" 
-                  className="h-8 w-auto"
+                <img
+                  src="/aideveloperguide/jhu-shield.png"
+                  alt="Johns Hopkins University"
+                  className="h-9 w-auto"
                   onError={(e) => {
                     // Try alternative paths if the first one fails
                     const img = e.currentTarget as HTMLImageElement;
@@ -36,8 +36,13 @@ export default function Layout({ children }: LayoutProps) {
                   JHU
                 </div>
               </div>
-              <Link to="/" className="text-xl font-bold text-gray-900">
-                AI Developer Guide
+              <Link to="/" className="flex flex-col leading-tight group">
+                <span className="text-xl font-bold text-gray-900">
+                  <span className="text-blue-600 transition-colors group-hover:text-blue-500">AI</span> Developer Guide
+                </span>
+                <span className="text-[11px] font-medium tracking-wide text-gray-500">
+                  Learn · Build · Get Hired
+                </span>
               </Link>
             </div>
             <div className="flex items-center space-x-6">
