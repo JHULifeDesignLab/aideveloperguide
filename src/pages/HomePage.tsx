@@ -5,14 +5,14 @@ import keywordsData from '../content/other/keywords.json'
 type Item = { name: string; description: string; to: string | null }
 
 const deploymentItems: Item[] = [
-  { name: 'Amazon AWS', description: 'Leading cloud platform for hosting and scaling apps.', to: '/amazon' },
-  { name: 'Google Cloud', description: 'Cloud suite strong in data, ML, and Kubernetes.', to: '/google' },
-  { name: 'Microsoft Azure', description: 'Enterprise cloud deeply integrated with Microsoft tools.', to: '/microsoft' },
+  { name: 'Vercel', description: 'Zero-config deploys for modern frontend frameworks.', to: null },
+  { name: 'Render', description: 'Simple hosting for full-stack apps, APIs, and databases.', to: null },
+  { name: 'Netlify', description: 'Popular zero-config host for frontend and JAMstack apps.', to: null },
 ]
 
 const deploymentExtras: Item[] = [
-  { name: 'Vercel', description: 'Zero-config deploys for modern frontend frameworks.', to: null },
-  { name: 'Docker', description: 'Containerize apps so they run the same everywhere.', to: null },
+  { name: 'Railway', description: 'Deploy full-stack apps and databases with no infra setup.', to: null },
+  { name: 'Streamlit Community Cloud', description: 'Free hosting for Python data and AI app demos.', to: null },
 ]
 
 const productStackItems: Item[] = [

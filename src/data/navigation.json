@@ -49,8 +49,8 @@
   "microsoft": {
     "index": {
       "back": {
-        "href": "/",
-        "label": "Back to Home"
+        "href": "/resources/learning",
+        "label": "Back to Learning"
       },
       "forward": {
         "href": "/microsoft/step-1",
@@ -93,16 +93,16 @@
         "label": "Previous: Step 2"
       },
       "forward": {
-        "href": "/",
-        "label": "Back to Home"
+        "href": "/resources/learning",
+        "label": "Back to Learning"
       }
     }
   },
   "google": {
     "index": {
       "back": {
-        "href": "/",
-        "label": "Back to Home"
+        "href": "/resources/learning",
+        "label": "Back to Learning"
       },
       "forward": {
         "href": "/google/step-1",
@@ -145,16 +145,16 @@
         "label": "Previous: Step 2"
       },
       "forward": {
-        "href": "/",
-        "label": "Back to Home"
+        "href": "/resources/learning",
+        "label": "Back to Learning"
       }
     }
   },
   "amazon": {
     "index": {
       "back": {
-        "href": "/",
-        "label": "Back to Home"
+        "href": "/resources/learning",
+        "label": "Back to Learning"
       },
       "forward": {
         "href": "/amazon/step-1",
@@ -197,8 +197,8 @@
         "label": "Previous: Step 2"
       },
       "forward": {
-        "href": "/",
-        "label": "Back to Home"
+        "href": "/resources/learning",
+        "label": "Back to Learning"
       }
     }
   }
