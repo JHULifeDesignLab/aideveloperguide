@@ -10,13 +10,14 @@ interface ResourcePageLayoutProps {
 export default function ResourcePageLayout({ title, subtitle, icon, children }: ResourcePageLayoutProps) {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="flex items-center mb-6">
-        <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mr-3">
-          <span className="text-xl">{icon}</span>
-        </div>
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">{title}</h1>
-          <p className="text-sm text-gray-500">{subtitle}</p>
+      <div className="mb-8 overflow-hidden text-center border border-gray-100 rounded-2xl bg-gradient-to-r from-teal-50 via-blue-50 to-purple-50 fade-in-up">
+        <div className="px-6 py-8">
+          <div className="flex items-center justify-center mx-auto bg-white shadow-sm w-14 h-14 rounded-2xl float-bob">
+            <span className="text-3xl">{icon}</span>
+          </div>
+          <h1 className="mt-3 text-3xl font-bold tracking-tight text-gray-900">{title}</h1>
+          <p className="mt-1 text-sm text-gray-600">{subtitle}</p>
+          <div className="w-16 h-1 mx-auto mt-4 rounded-full bg-gradient-to-r from-teal-400 via-blue-400 to-purple-400" />
         </div>
       </div>
 
