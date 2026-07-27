@@ -30,8 +30,8 @@ export default function ResumeTip({ children, title = "📝 Resume Tip", variant
 
   return (
     <div className={`rounded-lg border-l-4 px-3 py-2 my-2 ${variantStyles[variant]}`}>
-      <div className="flex items-center">
-        {/* Icon column - fixed width, centers the icon vertically against the content */}
+      <div className="flex items-start">
+        {/* Icon column - fixed width, aligned with the first line of content */}
         <div className="flex-shrink-0 mr-3">
           <span className={`inline-flex items-center justify-center h-6 w-6 rounded ${iconBg[variant]}`}>{iconVariants[variant]}</span>
         </div>

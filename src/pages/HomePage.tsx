@@ -251,9 +251,9 @@ export default function HomePage() {
       )}
 
       <div className="grid grid-cols-1 gap-5 mt-4 sm:grid-cols-3">
-        <CategorySection title="Deployment" color="teal" items={deploymentItems} extras={deploymentExtras} delay={0} />
-        <CategorySection title="Product Stack" color="blue" items={productStackItems} extras={productStackExtras} delay={120} />
-        <CategorySection title="Dev Tools +" color="purple" items={devToolsItems} extras={devToolsExtras} delay={240} />
+        <CategorySection title="Product Stack" color="blue" items={productStackItems} extras={productStackExtras} delay={0} />
+        <CategorySection title="Dev Tools +" color="purple" items={devToolsItems} extras={devToolsExtras} delay={120} />
+        <CategorySection title="Deployment" color="teal" items={deploymentItems} extras={deploymentExtras} delay={240} />
       </div>
     </div>
   )

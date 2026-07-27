@@ -1,30 +1,65 @@
 import { Link } from 'react-router-dom'
+import ResourcePageLayout from '../components/ResourcePageLayout'
 import keywordsData from '../content/other/keywords.json'
+
+const accentColors = [
+  'border-l-teal-400',
+  'border-l-blue-400',
+  'border-l-purple-400',
+]
 
 export default function KeywordsIndexPage() {
   const keywords = keywordsData.keywords
 
   return (
-    <div className="max-w-3xl px-4 mx-auto sm:px-6 lg:px-8 py-10">
-      <Link to="/" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">← Back to Home</Link>
-
-      <h1 className="mt-4 text-2xl font-bold text-gray-900">AI Keywords</h1>
-      <p className="mt-1 text-sm text-gray-500">{keywords.length} terms · as of {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
-
-      <div className="mt-6 divide-y divide-gray-100 border border-gray-200 rounded-xl overflow-hidden">
-        {keywords.map((kw) => (
-          <div key={kw.term} className="px-5 py-4 bg-white">
-            <div className="flex items-baseline gap-2 flex-wrap">
-              <span className="text-sm font-semibold text-gray-900">{kw.term}</span>
-              {kw.fullName !== kw.term && (
-                <span className="text-xs text-gray-400">{kw.fullName}</span>
-              )}
-            </div>
-            <p className="mt-1 text-sm text-gray-600 leading-relaxed">{kw.explanation}</p>
-            <p className="mt-1 text-xs italic text-gray-400">Origin: {kw.origin}</p>
-          </div>
-        ))}
+    <div className="max-w-4xl px-4 mx-auto sm:px-6 lg:px-8">
+      <div className="pt-6">
+        <Link to="/" className="text-sm text-gray-400 transition-colors hover:text-gray-600">← Back to Home</Link>
       </div>
+
+      <ResourcePageLayout
+        title="AI Keywords"
+        subtitle={`Your working vocabulary for the AI industry · ${keywords.length} terms and counting`}
+        icon="📖"
+      >
+        <div className="not-prose">
+          <div className="space-y-3 text-sm leading-relaxed text-gray-700">
+            <p>
+              This glossary is your working vocabulary for the AI industry. These are the terms that show up in job
+              requirements, technical interviews, and everyday engineering conversations — many of them (RAG, MCP,
+              fine-tuning, agents) are among the most requested skills in AI job postings right now. Knowing what
+              they mean is how you read a posting and see the actual work behind the buzzwords.
+            </p>
+            <p>
+              Use it in three passes: <strong className="text-gray-900">learn</strong> the terms below,{' '}
+              <strong className="text-gray-900">build</strong> them into a real{' '}
+              <Link to="/resources/projects" className="font-medium text-blue-600 underline hover:text-blue-800 hover:no-underline transition-colors">project</Link>, then{' '}
+              <strong className="text-gray-900">apply</strong> them precisely on your{' '}
+              <Link to="/resources/resume" className="font-medium text-blue-600 underline hover:text-blue-800 hover:no-underline transition-colors">resume</Link>{' '}
+              — recruiters and ATS software match these words literally, and a keyword backed by something you
+              actually built is what turns a scan into an interview.
+            </p>
+          </div>
+
+          <div className="mt-6 space-y-2.5">
+            {keywords.map((kw, i) => (
+              <div
+                key={kw.term}
+                className={`px-5 py-4 bg-white border border-gray-200 border-l-4 rounded-xl transition-all hover:shadow-md hover:-translate-y-0.5 ${accentColors[i % accentColors.length]}`}
+              >
+                <div className="flex flex-wrap items-baseline gap-2">
+                  <span className="text-sm font-semibold text-gray-900">{kw.term}</span>
+                  {kw.fullName !== kw.term && (
+                    <span className="text-xs text-gray-400">{kw.fullName}</span>
+                  )}
+                </div>
+                <p className="mt-1 text-sm leading-relaxed text-gray-600">{kw.explanation}</p>
+                <p className="mt-1 text-xs italic text-gray-400">Origin: {kw.origin}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ResourcePageLayout>
     </div>
   )
 }

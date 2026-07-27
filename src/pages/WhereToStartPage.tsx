@@ -1,86 +1,154 @@
 import { Link } from 'react-router-dom'
 
+const agentRows = [
+  { label: 'Best for', claude: 'Agentic, multi-file tasks in terminal', cursor: 'In-editor AI with strong autocomplete', copilot: 'Inline suggestions in VS Code / JetBrains' },
+  { label: 'Pricing', claude: 'Usage-based or $20/mo Pro', cursor: '$20/mo Pro', copilot: '$10/mo, free for students' },
+  { label: 'Strengths', claude: 'Deep reasoning, runs bash, reads your whole repo', cursor: 'Slick UX, fast inline edits, good chat', copilot: 'Lowest friction, familiar IDE feel' },
+  { label: 'Weaknesses', claude: 'Can get expensive on large sessions; terminal-first', cursor: 'Proprietary, model quality varies by tier', copilot: 'Shallower reasoning, less useful for complex tasks' },
+  { label: "Who it's for", claude: 'Devs comfortable in terminal who want an autonomous agent', cursor: 'Anyone who wants AI baked into their editor', copilot: 'Beginners, or anyone already deep in VS Code' },
+]
+
+function StepCard({
+  number,
+  title,
+  color,
+  children,
+}: {
+  number: string
+  title: string
+  color: 'teal' | 'blue' | 'purple'
+  children: React.ReactNode
+}) {
+  const styles = {
+    teal: { frame: 'border-teal-100 bg-teal-50', bar: 'bg-teal-500', circle: 'bg-teal-100 text-teal-700', heading: 'text-teal-800' },
+    blue: { frame: 'border-blue-100 bg-blue-50', bar: 'bg-blue-500', circle: 'bg-blue-100 text-blue-700', heading: 'text-blue-900' },
+    purple: { frame: 'border-purple-100 bg-purple-50', bar: 'bg-purple-500', circle: 'bg-purple-100 text-purple-700', heading: 'text-purple-900' },
+  }[color]
+
+  return (
+    <div className={`overflow-hidden border rounded-xl ${styles.frame}`}>
+      <div className={`h-1 ${styles.bar}`} />
+      <div className="p-4 sm:p-5">
+        <div className="flex items-center gap-3 mb-2.5">
+          <span className={`flex items-center justify-center w-9 h-9 text-sm font-bold rounded-full shrink-0 ${styles.circle}`}>
+            {number}
+          </span>
+          <h2 className={`text-lg font-bold ${styles.heading}`}>{title}</h2>
+        </div>
+        {children}
+      </div>
+    </div>
+  )
+}
+
 export default function WhereToStartPage() {
   return (
-    <div className="max-w-3xl px-4 mx-auto sm:px-6 lg:px-8 py-12">
-      <Link to="/" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">← Back to Home</Link>
+    <div className="max-w-6xl px-4 py-6 mx-auto sm:px-6 lg:px-8">
+      <Link to="/" className="text-sm text-gray-400 transition-colors hover:text-gray-600">← Back to Home</Link>
 
-      <h1 className="mt-6 text-2xl font-bold text-gray-900">Not sure where to start?</h1>
+      <h1 className="mt-4 text-2xl font-bold text-gray-900">Not sure where to start?</h1>
+      <p className="mt-2 text-sm leading-relaxed text-gray-600">
+        Three steps to get your footing before you build. Each one takes minutes to start, and together they turn
+        "I keep hearing about AI" into "I know what I'm doing and why."
+      </p>
 
-      <div className="mt-6 space-y-4 text-sm text-gray-700 leading-relaxed">
-        <h2 className="text-lg font-bold text-gray-900 mt-8">Cloud still matters — maybe more than ever</h2>
-        <p>
-          It's tempting to think that with AI doing so much of the work, infrastructure knowledge doesn't matter anymore.
-          It's the opposite. Every AI product, every LLM API call, every vector database, every model deployment runs
-          on cloud infrastructure. The industry doesn't just value cloud skills alongside AI — it expects them together.
-        </p>
-        <p>
-          Scalability is what separates a side project from something real. Cloud platforms give you managed compute,
-          auto-scaling, logging, security, and global distribution out of the box. Learning this as a student means
-          you can speak the language that engineering teams actually use on the job.
-        </p>
-        <p>
-          <strong>Start with Google Cloud.</strong> It has the most beginner-friendly learning path, gives you a
-          verifiable skill badge after about an hour, and Vertex AI is increasingly relevant for anyone building with LLMs.
-        </p>
-      </div>
+      <div className="mt-5 space-y-4">
+        {/* Step 1 — Understand the machine */}
+        <StepCard number="01" title="Understand the machine" color="teal">
+          <p className="text-sm leading-relaxed text-gray-700">
+            Before you touch a single tool, learn what a large language model actually is: a stateless
+            text-in, text-out machine that predicts tokens — which explains both its power and its habit of
+            confidently making things up. Fifteen minutes here will save you hours of confusion later, and it's
+            the understanding interviewers probe for.
+          </p>
+          <div className="mt-4 text-center">
+            <Link
+              to="/llm-basics"
+              className="inline-block px-5 py-2 text-sm font-semibold text-white transition-all bg-teal-600 shadow-sm rounded-xl hover:bg-teal-500 hover:shadow-md"
+            >
+              Read LLM Basics →
+            </Link>
+          </div>
+        </StepCard>
 
-      <div className="mt-6 mb-10">
-        <Link
-          to="/google"
-          className="inline-block px-6 py-3 text-sm font-semibold text-white bg-blue-500 rounded-xl shadow-md hover:shadow-lg hover:opacity-90 transition-all"
-        >
-          Start with Google Cloud →
-        </Link>
-      </div>
+        {/* Step 2 — Learn the language */}
+        <StepCard number="02" title="Learn the language" color="blue">
+          <p className="text-sm leading-relaxed text-gray-700">
+            RAG, MCP, fine-tuning, guardrails — job postings and interviews are full of these terms, and knowing
+            them is how you read a job description and see through the buzzwords. Browse the keyword glossary,
+            hover anything unfamiliar, and check the word of the day on the homepage until they all feel like
+            vocabulary you own.
+          </p>
+          <div className="mt-4 text-center">
+            <Link
+              to="/keywords"
+              className="inline-block px-5 py-2 text-sm font-semibold text-white transition-all bg-blue-600 shadow-sm rounded-xl hover:bg-blue-500 hover:shadow-md"
+            >
+              Browse the glossary →
+            </Link>
+          </div>
+        </StepCard>
 
-      <div className="mt-10 space-y-4 text-sm text-gray-700 leading-relaxed">
-        <h2 className="text-lg font-bold text-gray-900">Then pick a coding agent</h2>
-        <p>
-          Once you have some cloud grounding, add a coding agent to your daily workflow. These tools will meaningfully
-          change how fast you write and understand code — but they're not all the same.
-        </p>
-        <div className="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 text-xs text-amber-800 leading-relaxed">
-          <strong>Heads up (April 2026):</strong> The pricing landscape is shifting fast. Most of these companies have been absorbing the cost of LLM tokens on your behalf to stay competitive — that's not sustainable. Almost all major coding agents have recently reduced their included allowances or tightened what's covered under flat monthly plans. Always check current pricing before committing. What's in this table is accurate as of April 2026 but will likely be outdated soon.
-        </div>
+        {/* Step 3 — Pick your path */}
+        <StepCard number="03" title="Pick your path" color="purple">
+          <p className="text-sm leading-relaxed text-gray-700">
+            Now build something. Pick the track that matches what you want to make — each one ends with a
+            project you can put on your resume:
+          </p>
+          <div className="grid grid-cols-1 gap-3 mt-4 sm:grid-cols-2">
+            <Link to="/rag" className="block px-4 py-3 transition-all bg-white border border-gray-200 rounded-xl hover:shadow-md hover:-translate-y-0.5">
+              <p className="text-sm font-semibold text-gray-900">Build an AI app → RAG</p>
+              <p className="text-xs text-gray-500 mt-0.5">Ground an LLM in your own data — the most common first AI project.</p>
+            </Link>
+            <Link to="/claude-code" className="block px-4 py-3 transition-all bg-white border border-gray-200 rounded-xl hover:shadow-md hover:-translate-y-0.5">
+              <p className="text-sm font-semibold text-gray-900">Code with AI → Claude Code</p>
+              <p className="text-xs text-gray-500 mt-0.5">Learn agentic development and ship faster than you thought possible.</p>
+            </Link>
+          </div>
 
-        <div className="overflow-x-auto mt-4">
-          <table className="w-full text-sm border border-gray-200 rounded-xl overflow-hidden">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide w-32"></th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-purple-600 uppercase tracking-wide">Claude Code</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-blue-600 uppercase tracking-wide">Cursor</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">GitHub Copilot</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-100">
-              {[
-                { label: 'Best for', claude: 'Agentic, multi-file tasks in terminal', cursor: 'In-editor AI with strong autocomplete', copilot: 'Inline suggestions in VS Code / JetBrains' },
-                { label: 'Pricing', claude: 'Usage-based or $20/mo Pro', cursor: '$20/mo Pro', copilot: '$10/mo, free for students' },
-                { label: 'Strengths', claude: 'Deep reasoning, runs bash, reads your whole repo', cursor: 'Slick UX, fast inline edits, good chat', copilot: 'Lowest friction, familiar IDE feel' },
-                { label: 'Weaknesses', claude: 'Can get expensive on large sessions; terminal-first', cursor: 'Proprietary, model quality varies by tier', copilot: 'Shallower reasoning, less useful for complex tasks' },
-                { label: 'Who it\'s for', claude: 'Devs comfortable in terminal who want an autonomous agent', cursor: 'Anyone who wants AI baked into their editor', copilot: 'Beginners, or anyone already deep in VS Code' },
-              ].map((row) => (
-                <tr key={row.label} className="hover:bg-gray-50">
-                  <td className="px-4 py-3 font-semibold text-gray-500 text-xs">{row.label}</td>
-                  <td className="px-4 py-3 text-gray-700">{row.claude}</td>
-                  <td className="px-4 py-3 text-gray-700">{row.cursor}</td>
-                  <td className="px-4 py-3 text-gray-700">{row.copilot}</td>
+          <p className="mt-5 text-sm leading-relaxed text-gray-700">
+            Whichever path you pick, you'll want a coding agent in your daily workflow. They're not all the same:
+          </p>
+
+          <div className="px-4 py-3 mt-3 text-xs leading-relaxed border rounded-lg bg-amber-50 border-amber-200 text-amber-800">
+            <strong>Heads up (April 2026):</strong> The pricing landscape is shifting fast. Most of these companies have
+            been absorbing the cost of LLM tokens on your behalf to stay competitive — that's not sustainable. Almost all
+            major coding agents have recently reduced their included allowances or tightened what's covered under flat
+            monthly plans. Always check current pricing before committing.
+          </div>
+
+          <div className="mt-3 overflow-x-auto">
+            <table className="w-full overflow-hidden text-sm bg-white border border-gray-200 rounded-xl">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="w-32 px-4 py-3 text-xs font-semibold tracking-wide text-left text-gray-500 uppercase"></th>
+                  <th className="px-4 py-3 text-xs font-semibold tracking-wide text-left text-purple-600 uppercase">Claude Code</th>
+                  <th className="px-4 py-3 text-xs font-semibold tracking-wide text-left text-blue-600 uppercase">Cursor</th>
+                  <th className="px-4 py-3 text-xs font-semibold tracking-wide text-left text-gray-600 uppercase">GitHub Copilot</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {agentRows.map((row) => (
+                  <tr key={row.label} className="hover:bg-gray-50">
+                    <td className="px-4 py-3 text-xs font-semibold text-gray-500">{row.label}</td>
+                    <td className="px-4 py-3 text-gray-700">{row.claude}</td>
+                    <td className="px-4 py-3 text-gray-700">{row.cursor}</td>
+                    <td className="px-4 py-3 text-gray-700">{row.copilot}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-        <p className="mt-4">
-          No single tool wins for everyone. If you're comfortable in the terminal, Claude Code pays off fast.
-          If you want something that just works inside your editor from day one, start with Cursor or Copilot.
-        </p>
+          <p className="mt-4 text-sm leading-relaxed text-gray-700">
+            No single tool wins for everyone. If you're comfortable in the terminal, Claude Code pays off fast.
+            If you want something that just works inside your editor from day one, start with Cursor or Copilot.
+          </p>
+        </StepCard>
       </div>
 
-      <div className="mt-10 bg-gray-50 border border-gray-200 rounded-xl px-6 py-5">
-        <p className="text-sm text-gray-700 leading-relaxed">
+      <div className="px-5 py-4 mt-5 border border-gray-200 bg-gray-50 rounded-xl">
+        <p className="text-sm leading-relaxed text-gray-700">
           <strong>A note before you start.</strong> These tools are genuinely powerful — and that's exactly why
           you shouldn't lean on them completely. Coding is still important. Not because AI can't write code,
           but because you don't want to be a slave to your tools. If a model goes down, if pricing changes,

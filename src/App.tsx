@@ -18,6 +18,7 @@ import ResumePage from './pages/resources/ResumePage'
 import LinkedInPage from './pages/resources/LinkedInPage'
 import KeywordsIndexPage from './pages/KeywordsIndexPage'
 import WhereToStartPage from './pages/WhereToStartPage'
+import LlmBasicsPage from './pages/LlmBasicsPage'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         {/* Static utility pages — must be listed before /:vendor to take priority */}
         <Route path="/keywords" element={<KeywordsIndexPage />} />
         <Route path="/where-to-start" element={<WhereToStartPage />} />
+        <Route path="/llm-basics" element={<LlmBasicsPage />} />
         <Route path="/resources" element={<Navigate to="/resources/resume" replace />} />
         <Route path="/resources/resume" element={<ResumePage />} />
         <Route path="/resources/linkedin" element={<LinkedInPage />} />

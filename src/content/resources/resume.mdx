@@ -1,13 +1,13 @@
 <div id="the-mindset">
-## The Mindset
+## The Mindset: Turn AI Experience Into Valuable Resume Content
 </div>
 
-**Your resume is a marketing document, not a career history.** Recruiters spend **about 10 seconds** on a first pass. They aren't fully reading your resume. They're scanning it for one thing: *why should we interview you instead of someone else?*
+**Your resume is more than a list of accomplishments. It is a marketing document.** Recruiters spend **about 10 seconds** on a first pass. They aren't fully reading your resume. They're scanning it for one thing: *why should we interview you instead of someone else?*
 
-That means your resume's job is **not** to record everything you've ever done. Its job is to tell a short, convincing story about the value you bring. A resume doesn't get you the job. **It gets you the interview.** The interview is where you show how you think.
+That means your resume's job is to tell a short, convincing story about the value you bring. A resume doesn't get you the job. **It gets you the interview.** The interview is where you'll have to show your critical thinking and problem-solving skills — and you likely won't be able to use AI assistance there (though some companies, like Meta, are starting to allow AI for technical problem-solving in interviews).
 
 <ResumeTip title="The one-sentence test" variant="info">
-If a recruiter can't explain your value in one clear sentence ("CS student who ships real AI projects and can talk about the tradeoffs"), they can't advocate for you. Write your resume so that sentence is impossible to miss.
+If a recruiter can't explain your value in one clear sentence, they can't advocate for you. Aim for something like: **"CS junior who built a RAG app handling 500+ real queries and can explain the retrieval tradeoffs."** That's specific enough for a recruiter to repeat to a hiring manager without doing any translation work themselves. Write your resume so that sentence is impossible to miss.
 </ResumeTip>
 
 ---
@@ -19,11 +19,13 @@ If a recruiter can't explain your value in one clear sentence ("CS student who s
 Keep it to **one page**. Use this order — it puts your strongest material where the 10-second scan lands:
 
 1. **Header** — name, email, phone, LinkedIn, GitHub. No full mailing address, no headshot.
-2. **Summary** *(2–3 sentences)* — who you are, what you build, what you bring. Show value, not adjectives.
+2. **Summary** *(2–3 sentences)* — who you are, what you build, and the concrete value you bring.
 3. **Education** — school, degree, graduation date. GPA if it helps you.
-4. **Projects** — for students, this section can carry the resume. Treat each project like a job: what you built, the tech, the result.
-5. **Experience** — internships, research, part-time work, leadership.
-6. **Skills** — a tight, honest list. Specific tools and services, grouped sensibly.
+4. **Experience** — internships, research, part-time work, leadership.
+5. **Projects** — treat each project like a job: what you built, the tech, the result.
+6. **Skills** — a tight list of specific tools and services, grouped sensibly.
+
+Experience usually goes above Projects — that's the default recruiters expect. But if your projects are stronger than your experience so far (true for many underclassmen), flip the two so your best material lands first.
 
 <ResumeTip title="Students: projects are your experience!" variant="success">
 No internship yet? A deployed RAG app with a GitHub link is stronger evidence than most classroom credentials. Every path in this guide is designed to end in a project you can list. Build one, ship it, link it.
@@ -32,10 +34,9 @@ No internship yet? A deployed RAG app with a GitHub link is stronger evidence th
   <p className="mb-2 text-sm font-semibold text-green-800">Need somewhere to start?</p>
   <a
     href="/aideveloperguide/resources/projects"
-    className="inline-block px-5 py-2 text-sm font-semibold text-white no-underline transition-all bg-green-600 shadow-sm rounded-xl hover:bg-green-500 hover:shadow-md hover:-translate-y-0.5"
-  >
-    Check out some ideas here! →
-  </a>
+    style={{ textDecoration: 'none' }}
+    className="inline-block px-5 py-2 text-sm font-semibold transition-all bg-green-600 shadow-sm rounded-xl hover:bg-green-500 hover:shadow-md hover:-translate-y-0.5"
+  ><span style={{ color: '#ffffff' }}>Check out some ideas here! →</span></a>
 </div>
 </ResumeTip>
 
@@ -49,7 +50,7 @@ Two mistakes recruiters call out constantly on tech resumes:
 
 **1. All achievements, no context.** If every line is a win, the reader loses the thread of what you were actually responsible for. Open each role or project with one summary-style bullet (1–2 lines) that frames the scope. *Then* dive into the wins.
 
-**2. Numbers that show you did it — but not how well.** "Managed a team" says you had a role. It doesn't say whether you were good at it. Recruiters aren't checking a box that says *did this*. They're gauging performance.
+**2. Numbers that show you did it — but not how well.** "Managed a team" says you had a role. It doesn't say whether you were good at it. Recruiters are gauging performance, and a bullet that only proves you did the task leaves them guessing how well you did it.
 
 > **Instead of:** Managed a team.
 >
@@ -67,7 +68,7 @@ Examples:
 - "Configured Claude Code agentic sessions with CLAUDE.md and custom hooks to automate multi-file TypeScript refactors"
 
 <ResumeTip title="No metric? Find the scale" variant="default">
-Can't measure impact yet? Quantify scope instead: documents processed, users served, files refactored, hours saved per week, number of cloud regions. Any honest number beats an adjective.
+Can't measure impact yet? Quantify scope instead: documents processed, users served, files refactored, hours saved per week, number of cloud regions. A real number beats an adjective.
 </ResumeTip>
 
 <ResumeTip title="Does it belong on your resume?" variant="info">
@@ -92,7 +93,7 @@ Don't just say "completed course." Name the credential and the platform:
 
 ### Projects
 
-Frame projects around what they do and what they demonstrate, not just what tech they use:
+Frame projects around what they do and what they demonstrate — then let the tech list follow:
 
 > Built a retrieval-augmented generation (RAG) pipeline using LangChain, OpenAI embeddings, and Pinecone — grounded LLM responses in a private document corpus, reducing hallucination on domain-specific queries.
 
@@ -159,7 +160,7 @@ A few more Hopkins-specific notes:
         <li className="flex items-start gap-2.5 px-3 py-2 bg-white border border-red-100 rounded-lg"><span className="font-bold text-red-500">✗</span><span><strong className="text-gray-900">Claim skills you can't discuss.</strong> "Familiar with AI" and tutorial-only tools don't survive interviews.</span></li>
         <li className="flex items-start gap-2.5 px-3 py-2 bg-white border border-red-100 rounded-lg"><span className="font-bold text-red-500">✗</span><span><strong className="text-gray-900">Use vague duty verbs.</strong> "Worked on" and "helped with" hide your contribution.</span></li>
         <li className="flex items-start gap-2.5 px-3 py-2 bg-white border border-red-100 rounded-lg"><span className="font-bold text-red-500">✗</span><span><strong className="text-gray-900">Make every line a win with no context.</strong> Readers lose track of what your job was.</span></li>
-        <li className="flex items-start gap-2.5 px-3 py-2 bg-white border border-red-100 rounded-lg"><span className="font-bold text-red-500">✗</span><span><strong className="text-gray-900">Read like a tool inventory.</strong> Tools and titles show activity, not value.</span></li>
+        <li className="flex items-start gap-2.5 px-3 py-2 bg-white border border-red-100 rounded-lg"><span className="font-bold text-red-500">✗</span><span><strong className="text-gray-900">Read like a tool inventory.</strong> Tools and titles show activity but hide the value you created.</span></li>
         <li className="flex items-start gap-2.5 px-3 py-2 bg-white border border-red-100 rounded-lg"><span className="font-bold text-red-500">✗</span><span><strong className="text-gray-900">Include outdated info.</strong> Objectives, references, high school, full address.</span></li>
         <li className="flex items-start gap-2.5 px-3 py-2 bg-white border border-red-100 rounded-lg"><span className="font-bold text-red-500">✗</span><span><strong className="text-gray-900">Use tables, charts, or headshots.</strong> ATS parsers scramble them.</span></li>
         <li className="flex items-start gap-2.5 px-3 py-2 bg-white border border-red-100 rounded-lg"><span className="font-bold text-red-500">✗</span><span><strong className="text-gray-900">Cram.</strong> Tiny fonts and no white space kill the 10-second scan.</span></li>
@@ -194,14 +195,14 @@ Rejection is a numbers game, and every application is a rep. Pick a system, keep
 
 "My resume speaks for itself" is how interviews get cut short. A resume proves you have experience, but the interview is where you demonstrate how you think, how you work with people, and how you influenced outcomes.
 
-So before you apply, prepare **the story behind every bullet**: the situation, what you did, and what changed because of it. The strongest candidates don't rely on titles or years — they tell the stories behind them.
+So before you apply, prepare **the story behind every bullet**: the situation, what you did, and what changed because of it. The strongest candidates tell the stories behind their titles and years.
 
 In the interview itself:
 
 - **Ask questions.** It's a two-way street — ask about team culture, daily workflows, how they measure success. Be curious.
-- **Be honest about your speed.** If they ask how long something took, tell the truth. They're calibrating your workflow, not trying to catch you.
-- **Connect experience to judgment.** Don't defend your resume — explain the thinking behind it.
+- **Be honest about your speed.** If they ask how long something took, tell the truth. They're simply calibrating how you work.
+- **Connect experience to judgment.** Explain the thinking behind your resume rather than defending it.
 
 <ResumeTip title="The bottom line" variant="default">
-Your resume isn't just a list of jobs — it's a marketing tool. Tell the story of the value you've created and the results you've delivered, and let it open the door.
+Your resume is more than a list of jobs. It is a marketing tool. Tell the story of the value you've created and the results you've delivered, and let it open the door.
 </ResumeTip>
