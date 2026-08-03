@@ -1,0 +1,54 @@
+---
+title: "Step 1 · Your First Deploy"
+vendor: "vercel"
+slug: "/vercel/step-1"
+lastReviewed: "2026-07-27"
+ordinal: 1
+---
+
+## Goal
+Take a project from your GitHub account to a live, shareable URL — and understand the deployment model that makes Vercel worth learning.
+
+---
+
+## What Vercel actually does
+
+Vercel is a deployment platform built around one loop: **you push code, it ships**. When you connect a repository, Vercel builds your project on its infrastructure, distributes the output across a global CDN, and gives every deployment its own URL with HTTPS included. No servers to configure, no build pipelines to write.
+
+It supports every major frontend framework — Next.js, Vite, React, Svelte, Astro, and [about 40 others](https://vercel.com/docs/frameworks) — and detects which one you're using automatically.
+
+---
+
+## Deploy something (10 minutes)
+
+**What you need:** a GitHub account and any frontend project that builds. A Vite or Next.js app from a class project works; so does a portfolio site.
+
+1. Sign up at [vercel.com](https://vercel.com) using **Continue with GitHub** — this links the accounts in one step
+2. Click **Add New → Project**, and import your repository
+3. Vercel auto-detects your framework and fills in the build settings — for a standard project, change nothing
+4. Click **Deploy**, and watch the build log run
+5. When it finishes, you get a live URL: `your-project.vercel.app`
+
+That's a real production deployment on a global CDN. Send the link to someone on your phone's data connection — it works.
+
+<div className="bg-gray-50 border border-gray-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-gray-800 mb-2">If the build fails</p>
+  <p className="text-gray-600 text-sm">Read the build log — it's the same output you'd see running the build locally. The two most common student issues: the project doesn't build locally either (run <code>npm run build</code> first), or the repo root isn't the project root (set the "Root Directory" in project settings).</p>
+</div>
+
+---
+
+## The deployment model: preview vs. production
+
+This is the concept that makes Vercel more than a hosting service:
+
+- **Production deployments** happen when you push to your default branch (usually `main`). They update your real URL.
+- **Preview deployments** happen for every push to any other branch or pull request. Each gets its own temporary URL showing exactly what that branch looks like deployed.
+
+This means every PR can be reviewed *as a running site*, not just as a diff. This is how professional frontend teams review work, and it's a workflow you can demonstrate in an interview: "every branch had a preview URL; my reviewer clicked it before approving."
+
+---
+
+## What you just earned
+
+One deploy gives you three durable things: a live link for your resume and LinkedIn Featured section, automatic redeploys every time you push, and the vocabulary of modern deployment — build, preview, promote, rollback. Step 2 turns the deployed site into a real application.

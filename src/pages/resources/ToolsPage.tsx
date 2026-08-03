@@ -98,16 +98,14 @@ const categories: Category[] = [
   {
     emoji: '🚀',
     title: 'Production AI: Ship, Evaluate, Monitor',
-    tagline: 'Deployed, tested, and monitored. This is the difference between "it ran on my laptop" and engineering a company can trust you with!',
+    tagline: 'Deployed, tested, and monitored. This is the difference between "it ran on my laptop" and engineering a company can trust you with! Heads up: this category takes longer than the other three — we recommend taking something you already built and producing it, rather than starting from scratch.',
     tech: ['FastAPI', 'Docker', 'GitHub Actions CI', 'Render · Railway · Vercel', 'Eval harnesses', 'Guardrails'],
     color: 'amber',
     projects: [
       {
         name: 'Productionize One of Your Projects',
-        example: true,
-        exampleHref: null,
         description:
-          'Take an AI app you\'ve built — any project on this page — and turn it into something people can actually visit and use. Deploy the backend and front end to a real host with a public URL, add automated tests that check the AI\'s answers are still good every time you push new code, and build a small dashboard tracking what your traffic costs and how fast responses come back. Our example will be the workout tracker from the RAG category, deployed end to end so you can follow every step.',
+          'Take an AI app you\'ve built — any project on this page — and turn it into something people can actually visit and use. Deploy the backend and front end to a real host with a public URL, add automated tests that check the AI\'s answers are still good every time you push new code, and build a small dashboard tracking what your traffic costs and how fast responses come back.',
       },
       {
         name: 'LLM Test Suite',
@@ -211,7 +209,8 @@ export default function ToolsPage() {
                     {cat.emoji} {cat.title}
                   </h2>
                   <p className="mt-1 text-sm italic text-gray-600">{cat.tagline}</p>
-                  <div className="flex flex-wrap gap-1.5 mt-3">
+                  <p className="mt-3 text-xs font-semibold tracking-wide text-gray-500 uppercase">Example skills to put on your resume</p>
+                  <div className="flex flex-wrap gap-1.5 mt-1.5">
                     {cat.tech.map((t) => (
                       <span key={t} className={`px-2 py-0.5 text-[11px] font-medium border rounded-full ${s.chip}`}>
                         {t}

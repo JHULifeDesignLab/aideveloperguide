@@ -1,0 +1,47 @@
+---
+title: "Step 3 · Agents, LangGraph & LangSmith"
+vendor: "langchain"
+slug: "/langchain/step-3"
+lastReviewed: "2026-07-27"
+ordinal: 3
+---
+
+## Goal
+See the production ecosystem around LangChain — agents, stateful graphs, observability — and develop the judgment interviewers actually test: knowing when *not* to use the framework.
+
+---
+
+## Tool-calling agents
+
+An **agent** is a model in a loop: it sees a task, decides whether to call a tool (search, database query, your Python function), observes the result, and repeats until done. LangChain lets you define tools as decorated functions and hand them to a model that supports tool calling — the loop, the parsing, and the retries are handled for you.
+
+If you did this guide's [where-to-start track](/aideveloperguide/where-to-start), you've seen this idea as MCP; LangChain agents are one framework-specific way to wire the same pattern.
+
+---
+
+## LangGraph: when the loop needs structure
+
+Simple agent loops break down when workflows need branching, human approval steps, or memory that survives restarts. **[LangGraph](https://langchain-ai.github.io/langgraph/)** models the workflow as an explicit graph — nodes are steps, edges are transitions — with state checkpointing built in. It's the part of the ecosystem most heavily used in industry for serious agent work, and worth knowing by name even if your first project doesn't need it.
+
+---
+
+## LangSmith: seeing what the pipeline did
+
+The debugging problem with chains is invisibility — an answer is wrong and you can't see which stage failed. **[LangSmith](https://docs.smith.langchain.com/)** traces every run: each component's inputs, outputs, latency, and token cost, laid out step by step. It also runs evaluations against test datasets, which connects directly to the LLM Test Suite project on the [Projects page](/aideveloperguide/resources/projects). There's a free tier suitable for student projects.
+
+---
+
+## When to skip LangChain (the interview answer)
+
+<div className="bg-teal-50 border border-teal-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-teal-800 mb-2">The honest decision rule</p>
+  <p className="text-teal-700 text-sm">One model, one prompt, no retrieval? Call the provider SDK directly — the abstraction adds surface area without paying rent. Multiple components, providers, or data sources? The framework starts earning. Complex stateful agent? That's LangGraph territory. Plenty of strong engineering teams choose raw SDKs for control and debuggability, and being able to argue both sides — "here's what LangChain gave me, here's where I'd drop it" — is exactly the kind of answer that makes an interviewer sit up.</p>
+</div>
+
+A concrete way to earn that opinion: rebuild your Step 2 pipeline once with the raw SDK, no framework. It's ~40 lines instead of 20, and afterward you *know* what the framework was doing for you — which means you can defend either choice with specifics instead of vibes.
+
+---
+
+## Check yourself
+
+You can name what each ecosystem piece is for (LangChain: components; LangGraph: stateful workflows; LangSmith: observability and evals), you've built one agent with at least one custom tool, and you have a two-sided opinion about the framework you can support with your own code.

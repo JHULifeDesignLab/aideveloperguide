@@ -1,8 +1,19 @@
+<div className="px-5 py-4 my-4 border rounded-xl border-blue-200 bg-blue-50 not-prose">
+  <p className="text-sm leading-relaxed text-gray-700">
+    <strong className="text-gray-900">Setting up LinkedIn for the first time?</strong> Start with the Life Design Lab's{' '}
+    <a href="https://imagine.jhu.edu/resources/linkedin-checklist/" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-600 underline hover:text-blue-800 hover:no-underline transition-colors">LinkedIn Checklist</a>{' '}
+    — it covers profile photos, headlines, connections, and general best practices. Once the basics are in place,
+    keep reading: <strong className="text-gray-900">everything on this page is specifically about showcasing AI skills and AI projects.</strong>
+  </p>
+</div>
+
 <div id="why-linkedin">
 ## Why LinkedIn matters for AI roles
 </div>
 
-Recruiters for AI and engineering roles actively search LinkedIn by keyword — Vertex AI, Bedrock, RAG, LangChain, Claude Code. If these don't appear in your profile, you won't show up. Your profile isn't a resume copy-paste; it's a searchable document that should reflect every credentialed thing you've done.
+Recruiters for AI and engineering roles actively search LinkedIn by keyword — Vertex AI, Bedrock, RAG, LangChain, MCP, Claude Code. If these terms don't appear in your profile, you won't show up in their searches. Your profile isn't a resume copy-paste; it's a searchable document that should reflect every AI credential, project, and tool you've actually worked with.
+
+This page is intentionally AI-specific. General profile advice lives in the checklist above — here, the goal is making your AI work findable and convincing.
 
 ---
 
@@ -10,9 +21,9 @@ Recruiters for AI and engineering roles actively search LinkedIn by keyword — 
 ## Skills section
 </div>
 
-Add every specific tool and service you actually used. LinkedIn's skills section directly feeds recruiter search filters.
+Add every specific AI tool and service you actually used. LinkedIn's skills section directly feeds recruiter search filters.
 
-**Add these as you complete each path:**
+**Add these as you complete each path in this guide:**
 
 - Generative AI
 - Large Language Models (LLMs)
@@ -22,6 +33,7 @@ Add every specific tool and service you actually used. LinkedIn's skills section
 - Amazon Bedrock / AWS
 - Microsoft Azure / Azure OpenAI Service
 - LangChain
+- Model Context Protocol (MCP)
 - Vector Databases
 - Responsible AI / AI Ethics
 - Claude Code / AI-assisted development
@@ -34,13 +46,13 @@ Don't add skills you can't talk about in an interview. But if you completed the 
 ## Certifications section
 </div>
 
-LinkedIn has a dedicated certifications section — use it. Each badge from this guide belongs here:
+LinkedIn has a dedicated certifications section — use it. Each AI badge from this guide belongs here:
 
 1. Go to your profile → **Add section** → **Licenses & Certifications**
 2. Fill in the credential name, issuing organization, and date
 3. Paste the credential URL if you have one (Google and AWS both provide shareable badge links)
 
-This is one of the highest-signal things you can do. Recruiters filter for verified credentials.
+This is one of the highest-signal things you can do. Recruiters filter for verified credentials, and AI credentials are still rare enough among students to stand out.
 
 ---
 
@@ -48,12 +60,12 @@ This is one of the highest-signal things you can do. Recruiters filter for verif
 ## Featured section
 </div>
 
-Pin at least one project. The featured section appears near the top of your profile and is the first thing most people click after reading your headline.
+Pin at least one AI project. The featured section appears near the top of your profile and is the first thing most people click after reading your headline.
 
 What to pin:
-- A GitHub repo for a project you built in this guide
-- A Loom walkthrough of a working RAG app or chatbot
-- A blog post or LinkedIn article explaining something you learned (even a short one)
+- A GitHub repo for an AI project you built in this guide — with the Responsible-AI README from the [Projects page](/aideveloperguide/resources/projects) deliverables
+- A short screen recording of your RAG app or agent actually working (Loom or a plain video)
+- A post or article explaining something you learned — even a short one
 
 ---
 
@@ -61,22 +73,32 @@ What to pin:
 ## About section
 </div>
 
-Write 3–4 sentences max. Formula:
+Write 3–4 sentences max, and name your AI work specifically. Formula:
 
-> I'm a [year] student at [school] studying [field]. I've been building with [specific tools] and recently [completed X / built Y / earned Z]. I'm interested in [specific area] and looking for [internship/role type].
+> I'm a [year] student at [school] studying [field]. I've been building with [specific AI tools — "LangChain and Chroma," not "AI"] and recently [built a RAG app / earned a Vertex AI badge / shipped an agent]. I'm interested in [specific area] and looking for [internship/role type].
 
-Keep it current. Update it every time you finish a new path.
+Keep it current. Update it every time you finish a new path or project.
 
 ---
 
 <div id="posting-strategy">
-## Posting strategy
+## Posting about AI projects
 </div>
 
-You don't need to post constantly. One post per project is enough:
+You don't need to post constantly — one good post per project beats a stream of filler. AI projects have a real advantage here: they demo well. Strategies that work:
 
-- Screenshot of your skill badge with 2–3 sentences about what you learned
-- A short write-up of a problem you hit and how you solved it
-- A link to your GitHub project with a one-line explanation of what it does
+**1. Show it running.** A 30-second screen recording of your app answering a real question outperforms any text description. Movement stops the scroll; a repo link in the comments catches the people who want depth.
 
-These posts get indexed by LinkedIn search AND signal to your network that you're actively building things.
+**2. Use the problem → build → lesson structure.**
+> *Hook:* the problem in plain language ("Course notes are unsearchable the week before finals.")
+> *Build:* what you made, naming the exact stack ("a RAG pipeline with LangChain, Chroma, and Claude — answers cite the exact lecture")
+> *Lesson:* one honest thing you learned or got wrong
+> *Link:* the GitHub repo or live demo
+
+**3. Post the failure, not just the win.** "My chatbot confidently invented a citation — here's how I caught it and what I changed" reads as real engineering judgment. These posts consistently do better than polished announcements, and they're exactly what interviewers ask about later.
+
+**4. Name the terms recruiters search.** Write "retrieval-augmented generation (RAG)" and "MCP server" in the post body, not just "my AI project." Posts are indexed by LinkedIn search the same way profiles are.
+
+**5. Post your badges with substance.** A skill-badge screenshot plus 2–3 sentences on the most surprising thing you learned. The badge proves the credential; the sentences prove it stuck.
+
+**6. Write it yourself.** Recruiters scroll past obviously AI-generated posts all day. A slightly rough post in your own voice signals more than polished text that sounds like everyone else's — and being able to explain your own project crisply *is* the skill being evaluated.

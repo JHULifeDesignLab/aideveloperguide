@@ -1,0 +1,48 @@
+---
+title: "Step 1 · Setup & Tab"
+vendor: "cursor"
+slug: "/cursor/step-1"
+lastReviewed: "2026-07-27"
+ordinal: 1
+---
+
+## Goal
+Get Cursor installed with your familiar setup intact, and learn the two features you'll use hundreds of times a day: Tab and inline edit.
+
+---
+
+## Install and import (10 minutes)
+
+1. Download from [cursor.com](https://cursor.com) (macOS, Windows, Linux)
+2. On first launch, choose **Import from VS Code** — extensions, themes, keybindings, and settings all carry over, because Cursor is a VS Code fork
+3. Sign in — a free account works to start
+4. Students: check [cursor.com/students](https://cursor.com/students) and verify with your .edu email if the education offer is available to you
+
+The "it's just VS Code" part matters: there's no new editor to learn, so the switching cost is nearly zero, and if you walk away, your workflow walks with you.
+
+---
+
+## Tab: autocomplete that edits
+
+Cursor's **Tab** is not the single-token autocomplete you know. It predicts *edits*: complete the line, rewrite the next several, or jump you to the next place in the file that needs the same change. Rename a variable, and Tab starts offering the matching updates as you move.
+
+The skill is calibration, and you build it in an hour of normal coding: accept when the gray text matches your intent, reject without guilt when it doesn't. Treat every acceptance as a micro code review.
+
+<div className="bg-indigo-50 border border-indigo-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-indigo-800 mb-2">Connect it to what you know</p>
+  <p className="text-indigo-700 text-sm">Tab is next-token prediction over your code context — the same mechanism from <a href="/aideveloperguide/llm-basics" className="underline">LLM Basics</a>, tuned for edits. That's why it's brilliant on boilerplate and patterns it has seen, and why it will confidently suggest a method that doesn't exist. Prediction, not knowledge. Review accordingly.</p>
+</div>
+
+---
+
+## Inline edit: Cmd+K
+
+Select code, press **Cmd+K** (Ctrl+K), describe the change in plain language — "convert to async/await," "add input validation with helpful errors" — and review the proposed diff before accepting. It's scoped, visible, and reversible, which makes it the ideal training ground for the review habits that matter much more in Step 2.
+
+Do this now: take any project, spend 30 minutes coding normally with Tab on, then make five Cmd+K edits of increasing ambition. Note where the model shines and where it invents things — that map of strengths and failure modes is the real deliverable.
+
+---
+
+## Check yourself
+
+You're done when your VS Code setup works inside Cursor, you've accepted and rejected enough Tab suggestions to feel the calibration, and every Cmd+K diff you accepted was one you actually read.

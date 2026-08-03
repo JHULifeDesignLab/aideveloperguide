@@ -1,0 +1,63 @@
+---
+title: "Step 1 · Core Abstractions"
+vendor: "langchain"
+slug: "/langchain/step-1"
+lastReviewed: "2026-07-27"
+ordinal: 1
+---
+
+## Goal
+Understand the four building blocks everything in LangChain is made of — and what composing them actually buys you.
+
+---
+
+## The problem LangChain solves
+
+Calling an LLM directly is easy: send text, get text. Real applications need more: a prompt assembled from user input, the model's output parsed into structured data, a retriever feeding in documents, maybe three providers tried in sequence. Without a framework, that's glue code you rewrite for every project and every provider.
+
+LangChain standardizes the pieces. Each component — model, prompt, parser, retriever — has a common interface, so components snap together and swap out without rewiring.
+
+---
+
+## The four core pieces
+
+**1. Chat models.** One interface across providers. `init_chat_model("claude-sonnet-4-5")` and `init_chat_model("gpt-4o")` return objects with identical methods — provider switching becomes configuration, not code.
+
+**2. Prompt templates.** Prompts with typed placeholders, defined once and reused:
+
+```python
+from langchain_core.prompts import ChatPromptTemplate
+
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "You are a study assistant. Answer only from the provided context."),
+    ("human", "Context: {context}\n\nQuestion: {question}"),
+])
+```
+
+**3. Output parsers.** Turn model text into structured data — a string, JSON, or a validated Pydantic object — with retry-on-mismatch built in.
+
+**4. Chains (composition).** The pipe operator wires components into a pipeline:
+
+```python
+chain = prompt | model | parser
+answer = chain.invoke({"context": docs, "question": "What is chunking?"})
+```
+
+Each stage's output feeds the next. This is the pattern the whole ecosystem builds on — a RAG pipeline is this chain with a retriever supplying `context`.
+
+<div className="bg-teal-50 border border-teal-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-teal-800 mb-2">What the abstraction costs</p>
+  <p className="text-teal-700 text-sm">Honesty checkpoint: every layer between you and the API call is something extra to debug when behavior surprises you. For a one-prompt app, the raw SDK is genuinely simpler. LangChain earns its keep when you have multiple components, providers, or pipelines to manage — Step 3 makes this judgment explicit.</p>
+</div>
+
+---
+
+## Do this now (30 minutes)
+
+Follow the [official quickstart](https://python.langchain.com/docs/introduction/): install `langchain`, build exactly the prompt → model → parser chain above with any provider key you have, and swap the model line for a second provider if you have another key. Feeling how little changes is the entire lesson.
+
+---
+
+## Check yourself
+
+You should be able to explain: what a prompt template adds over an f-string (reuse, validation, message structure), what a parser adds over `.content` (structure, retries), and what the pipe gives you over nested function calls (uniform interface, streaming and async support on the whole pipeline for free).

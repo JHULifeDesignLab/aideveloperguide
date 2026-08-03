@@ -1,0 +1,63 @@
+---
+title: "Step 2 · Make It Real"
+vendor: "vercel"
+slug: "/vercel/step-2"
+lastReviewed: "2026-07-27"
+ordinal: 2
+---
+
+## Goal
+Turn a deployed static site into a working application: secrets, API routes, a real domain, and AI responses that stream.
+
+---
+
+## Environment variables (secrets live here, not in code)
+
+Any real app has keys — an LLM API key, a database URL. These must never be committed to GitHub. On Vercel:
+
+1. Project → **Settings → Environment Variables**
+2. Add the key (e.g., `ANTHROPIC_API_KEY`) and its value
+3. Choose which environments see it: Production, Preview, or Development
+4. Redeploy — variables are injected at build/runtime
+
+The per-environment split matters more than it looks: you can point preview deployments at a test database while production uses the real one. This is standard industry practice, and [the docs](https://vercel.com/docs/environment-variables) cover the details.
+
+<div className="bg-amber-50 border border-amber-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-amber-800 mb-1">⚠️ Frontend variables are public</p>
+  <p className="text-amber-700 text-sm">Any variable exposed to browser code (prefixed <code>NEXT_PUBLIC_</code> or <code>VITE_</code>) ships to every visitor — never put an API key in one. Keys belong in server-side code only: API routes and serverless functions. If your "frontend-only" app calls an LLM directly from the browser, the key is public. That's what the next section fixes.</p>
+</div>
+
+---
+
+## Serverless functions: a backend without a server
+
+Vercel runs backend code as **serverless functions** — small handlers that spin up per request. In Next.js these are API routes; in other projects, files in an `/api` directory become endpoints automatically ([docs](https://vercel.com/docs/functions)).
+
+This is how a "static" AI app keeps its key private: the browser calls `/api/chat`, and the function — holding the key from an environment variable — calls the model and returns the answer.
+
+```ts
+// api/chat.ts — the key stays server-side
+export async function POST(req: Request) {
+  const { message } = await req.json()
+  const answer = await callModel(process.env.ANTHROPIC_API_KEY!, message)
+  return Response.json({ answer })
+}
+```
+
+---
+
+## Streaming AI responses
+
+Users expect AI answers to appear word by word, and waiting 15 seconds for a complete response feels broken. Vercel's [AI SDK](https://ai-sdk.dev/docs/introduction) is a free, open-source library that handles the streaming plumbing — model call, token stream, React hooks for rendering — and works with Claude, OpenAI, Google, and most other providers. If you built the RAG path in this guide, this is the natural way to give it a polished frontend.
+
+---
+
+## A custom domain (optional, cheap credibility)
+
+`yourname.dev` reads better than `yourname.vercel.app` on a resume. Buy a domain anywhere (typically ~$10–15/year), then: Project → **Settings → Domains** → add it and follow the DNS instructions. HTTPS is automatic. [Docs here](https://vercel.com/docs/domains).
+
+---
+
+## Check yourself
+
+You're done with this step when you can explain: where API keys live and why, what a serverless function is, why the browser never holds a secret, and how a preview deployment can use different variables than production. Those four sentences are interview material.

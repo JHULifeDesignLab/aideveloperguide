@@ -63,4 +63,32 @@ export const topicConfigs: Record<string, TopicConfig> = {
     borderColor: 'border-green-600',
     gradientColor: 'rgba(22,163,74,0.13)',
   },
+  vercel: {
+    name: 'Vercel',
+    bgColor: 'bg-gray-900',
+    textColor: 'text-gray-900',
+    borderColor: 'border-gray-900',
+    gradientColor: 'rgba(17,24,39,0.13)',
+  },
+  render: {
+    name: 'Render',
+    bgColor: 'bg-emerald-600',
+    textColor: 'text-emerald-600',
+    borderColor: 'border-emerald-600',
+    gradientColor: 'rgba(5,150,105,0.13)',
+  },
+  langchain: {
+    name: 'LangChain',
+    bgColor: 'bg-teal-700',
+    textColor: 'text-teal-700',
+    borderColor: 'border-teal-700',
+    gradientColor: 'rgba(15,118,110,0.13)',
+  },
+  cursor: {
+    name: 'Cursor',
+    bgColor: 'bg-indigo-600',
+    textColor: 'text-indigo-600',
+    borderColor: 'border-indigo-600',
+    gradientColor: 'rgba(79,70,229,0.13)',
+  },
 }

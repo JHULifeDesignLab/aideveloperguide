@@ -1,0 +1,40 @@
+---
+title: "LangChain — Resources"
+vendor: "langchain"
+slug: "/langchain/resources"
+lastReviewed: "2026-07-27"
+---
+
+## Resources & Project Ideas
+
+### Official Documentation
+
+- **[LangChain Python Docs](https://python.langchain.com/docs/introduction/)** — The source of truth. Given how fast the API moves, prefer this over any tutorial.
+- **[LangChain JS Docs](https://js.langchain.com/docs/introduction/)** — The TypeScript/JavaScript version, if your stack is Node.
+- **[LangGraph](https://langchain-ai.github.io/langgraph/)** — Stateful agent workflows; the production-grade part of the ecosystem.
+- **[LangSmith Docs](https://docs.smith.langchain.com/)** — Tracing, debugging, and evaluation for LLM pipelines.
+- **[LangChain GitHub](https://github.com/langchain-ai/langchain)** — Source, issues, and release notes — useful for tracking API changes.
+
+---
+
+### Learning
+
+- **[LangChain Academy](https://academy.langchain.com/)** — Free official courses, including a solid LangGraph introduction.
+
+---
+
+### Project Ideas
+
+**Beginner**
+- Build the Step 1 chain (prompt → model → parser) twice: once with LangChain, once with the raw provider SDK. Write a short README comparing the two — that comparison *is* the deliverable.
+
+**Intermediate**
+- Document Q&A over your own course notes (Step 2), deployed behind a FastAPI endpoint on [Render](/aideveloperguide/render), with the retrieval knobs (k, chunk size) exposed as query parameters so you can demo their effect live.
+
+**Advanced**
+- An agent with two custom tools (e.g., a vector-store retriever and a live API), traced in LangSmith, with a 10-question evaluation dataset and a README section on where the agent failed and how you fixed it. That failure analysis is the strongest artifact on this page.
+
+<div className="bg-teal-50 border border-teal-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-teal-800 mb-2">What to document for your portfolio</p>
+  <p className="text-teal-700 text-sm">Include one LangSmith trace screenshot showing a full pipeline run, and your written take on the framework tradeoff. "Used LangChain" is a keyword; "can articulate when not to use LangChain" is a differentiator.</p>
+</div>

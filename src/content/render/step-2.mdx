@@ -1,0 +1,52 @@
+---
+title: "Step 2 · Going Full Stack"
+vendor: "render"
+slug: "/render/step-2"
+lastReviewed: "2026-07-27"
+ordinal: 2
+---
+
+## Goal
+Assemble the rest of a real application around your API: a database, a hosted frontend, shared secrets, and scheduled work.
+
+---
+
+## Postgres in two clicks
+
+**New → Postgres** gives you a managed database with connection credentials. Copy the **internal database URL** into your web service's environment variables and connect with any standard client (SQLAlchemy, Prisma, node-postgres) — same as localhost, except it's real.
+
+<div className="bg-amber-50 border border-amber-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-amber-800 mb-1">⚠️ Free databases are temporary</p>
+  <p className="text-amber-700 text-sm">Render's free Postgres instances have a limited lifetime before they're suspended and deleted — they're for development and demos, not for data you want to keep. Check <a href="https://render.com/docs/free" className="underline">the free tier docs</a> for the current window, export anything you care about, and treat a paid instance as the "real data" line.</p>
+</div>
+
+Internal vs. external URLs is worth understanding: services inside Render talk to the database over a private network (internal URL, faster, free traffic); your laptop connects with the external URL. Knowing why there are two is a small systems-design lesson for free.
+
+---
+
+## Host the frontend too (or split it)
+
+Render serves **static sites** — built frontend files on a CDN, free with generous bandwidth. Two sensible architectures, both worth being able to defend:
+
+- **Everything on Render:** static site + web service + database. One dashboard, one platform, internal networking between pieces.
+- **Split deployment:** frontend on Vercel (previews, streaming helpers), backend + database on Render. The industry-common shape, and the one our [Vercel guide](/aideveloperguide/vercel) pairs with.
+
+Either way, the frontend calls your API's public URL, and CORS configuration becomes your first real "it works locally but not deployed" debugging exercise. Every developer has that fight once; better during a class project than an internship.
+
+---
+
+## Environment groups: secrets shared properly
+
+When the API server and a worker both need `ANTHROPIC_API_KEY`, don't paste it twice. **Environment groups** hold shared variables that multiple services subscribe to — update the key once, every service gets it. Small feature, but it's the pattern (centralized secrets) that scales to how real teams operate.
+
+---
+
+## Cron jobs: work on a schedule
+
+A **cron job** runs a command on a schedule you define — `0 6 * * *` for daily at 6:00 — in the same repo, with the same environment variables. This unlocks the projects that need recurring work: re-indexing documents for your RAG app nightly, sending a daily briefing, or running your eval suite every morning and writing results to Postgres.
+
+---
+
+## Check yourself
+
+Done when: your API reads and writes Postgres in production, a frontend calls it from a browser, secrets live in one environment group, and one scheduled job runs on its own. That's a full-stack deployment — most students never get here.

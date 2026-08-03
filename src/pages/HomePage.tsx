@@ -5,8 +5,8 @@ import keywordsData from '../content/other/keywords.json'
 type Item = { name: string; description: string; to: string | null }
 
 const deploymentItems: Item[] = [
-  { name: 'Vercel', description: 'Zero-config deploys for modern frontend frameworks.', to: null },
-  { name: 'Render', description: 'Simple hosting for full-stack apps, APIs, and databases.', to: null },
+  { name: 'Vercel', description: 'Zero-config deploys for modern frontend frameworks.', to: '/vercel' },
+  { name: 'Render', description: 'Simple hosting for full-stack apps, APIs, and databases.', to: '/render' },
   { name: 'Netlify', description: 'Popular zero-config host for frontend and JAMstack apps.', to: null },
 ]
 
@@ -17,7 +17,7 @@ const deploymentExtras: Item[] = [
 
 const productStackItems: Item[] = [
   { name: 'RAG', description: 'Pattern for grounding LLM responses in your own data.', to: '/rag' },
-  { name: 'LangChain', description: 'Framework for building apps with LLMs and agents.', to: null },
+  { name: 'LangChain', description: 'Framework for building apps with LLMs and agents.', to: '/langchain' },
   { name: 'MCP', description: 'Open protocol for connecting LLMs to tools and data.', to: null },
 ]
 
@@ -28,7 +28,7 @@ const productStackExtras: Item[] = [
 
 const devToolsItems: Item[] = [
   { name: 'Claude Code', description: "Anthropic's agentic coding assistant for terminal and IDE.", to: '/claude-code' },
-  { name: 'Cursor', description: 'AI-first code editor with inline edits and chat.', to: null },
+  { name: 'Cursor', description: 'AI-first code editor with inline edits and chat.', to: '/cursor' },
   { name: 'GitHub Copilot', description: "Microsoft's AI pair programmer integrated directly into your editor.", to: null },
 ]
 

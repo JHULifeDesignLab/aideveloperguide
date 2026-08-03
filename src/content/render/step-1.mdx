@@ -1,0 +1,59 @@
+---
+title: "Step 1 · Your First Web Service"
+vendor: "render"
+slug: "/render/step-1"
+lastReviewed: "2026-07-27"
+ordinal: 1
+---
+
+## Goal
+Deploy a real backend server — the kind that can't run on serverless platforms — and understand what the free tier actually gives you.
+
+---
+
+## What a "web service" is on Render
+
+A **web service** is a process Render builds from your repo, starts with a command you provide, and keeps running to serve requests. That's the whole model. Anything that binds to a port works: FastAPI, Flask, Express, Spring Boot, Go.
+
+You give Render two commands:
+
+- **Build command** — how to install dependencies (e.g., `pip install -r requirements.txt` or `npm install`)
+- **Start command** — how to run the server (e.g., `uvicorn main:app --host 0.0.0.0 --port $PORT`)
+
+Render sets the `PORT` environment variable; your server listens on it. That one convention is most of what there is to learn.
+
+---
+
+## Deploy an API (20 minutes)
+
+**What you need:** a GitHub repo containing any server. The FastAPI backend from a RAG project is ideal; a 20-line Express app works too.
+
+1. Sign up at [render.com](https://render.com) with GitHub
+2. **New → Web Service**, select your repository
+3. Render suggests a language runtime; fill in the build and start commands
+4. Pick the **Free** instance type
+5. Click **Create Web Service** and watch the build log
+
+When it goes live you get an `onrender.com` URL. Hit your API route in the browser — that's your backend, on the public internet. Every push to the connected branch triggers an automatic redeploy. The official [FastAPI quickstart](https://render.com/docs/deploy-fastapi) mirrors this flow if you want a reference.
+
+---
+
+## Free-tier behavior: spin-down and cold starts
+
+Here's the honest part. Free web services **spin down after a period of inactivity**. The next request wakes the service, and that first response can take up to a minute while it cold-starts. See [the free tier docs](https://render.com/docs/free) for current specifics.
+
+What this means in practice:
+
+- **Demos and portfolio projects:** completely fine. Warn the first click may be slow, or visit your own URL before a demo to warm it.
+- **Anything that must respond instantly, always:** wrong tier. That's what paid instances are for.
+
+<div className="bg-emerald-50 border border-emerald-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-emerald-800 mb-2">Interview framing</p>
+  <p className="text-emerald-700 text-sm">"My demo runs on Render's free tier, so it cold-starts after idle periods — for a production deployment I'd use a paid instance or a health-check pinger." One sentence that shows you know the difference between a demo and production. That's the entire point of this guide.</p>
+</div>
+
+---
+
+## Check yourself
+
+You're done when: your API responds at a public URL, you've pushed a commit and watched it auto-deploy, and you can explain what spin-down is and who it's acceptable for.

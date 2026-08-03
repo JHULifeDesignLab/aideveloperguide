@@ -1,0 +1,39 @@
+---
+title: "Render — Resources"
+vendor: "render"
+slug: "/render/resources"
+lastReviewed: "2026-07-27"
+---
+
+## Resources & Project Ideas
+
+### Official Documentation
+
+- **[Render Documentation](https://render.com/docs)** — The official docs hub: web services, databases, static sites, cron jobs.
+- **[Free Tier Details](https://render.com/docs/free)** — The source of truth for spin-down behavior and free database limits. Read this before relying on the free tier.
+- **[Deploy FastAPI](https://render.com/docs/deploy-fastapi)** — Official quickstart for the most common student backend; Flask, Express, and Django versions are in the same docs section.
+- **[Pricing](https://render.com/pricing)** — Current instance types and costs.
+
+---
+
+### Community
+
+- **[Render Community](https://community.render.com/)** — Official forum; most free-tier questions you'll have are already answered here.
+
+---
+
+### Project Ideas
+
+**Beginner**
+- Deploy the API from any class project as a web service with a `/healthz` endpoint. Push a change, watch it auto-deploy, and document both URLs in the README.
+
+**Intermediate**
+- Give your RAG app a persistent home: FastAPI + Postgres on Render, with a nightly cron job that re-indexes documents. This is the "productionize one of your projects" path from the [Projects page](/aideveloperguide/resources/projects), started.
+
+**Advanced**
+- Build the full split-deployment: Vercel frontend, Render API + Postgres, an environment group for shared secrets, and a cron-scheduled eval run that writes scores to the database. Write the README as an architecture doc — every arrow labeled with *why*.
+
+<div className="bg-emerald-50 border border-emerald-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-emerald-800 mb-2">What to document for your portfolio</p>
+  <p className="text-emerald-700 text-sm">Screenshot the logs during a real deploy, the health check config, and one rollback. "Here's how I operated it" is a rarer and stronger artifact than "here's what I built."</p>
+</div>

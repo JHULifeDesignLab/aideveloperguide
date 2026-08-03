@@ -1,0 +1,71 @@
+---
+title: "Step 2 · Build a RAG Chain"
+vendor: "langchain"
+slug: "/langchain/step-2"
+lastReviewed: "2026-07-27"
+ordinal: 2
+---
+
+## Goal
+Implement the full retrieval-augmented generation pipeline — documents to grounded answers — using LangChain's components. This is the framework's home turf.
+
+---
+
+## The pipeline, mapped to components
+
+The [RAG guide](/aideveloperguide/rag) taught the concepts; here's the 1:1 component mapping:
+
+| Pipeline stage | LangChain component |
+|---|---|
+| Load documents | Document loaders (PDF, web, Notion, ~100 more) |
+| Split into chunks | Text splitters |
+| Embed chunks | Embeddings interface (any provider) |
+| Store & search | Vector store interface (Chroma, Pinecone, pgvector…) |
+| Retrieve for a query | Retriever |
+| Generate the answer | Prompt template + chat model |
+
+The value is concentrated in the edges: the loaders (parsing PDFs yourself is misery) and the uniform vector-store interface (start on Chroma locally, move to Pinecone without rewriting).
+
+---
+
+## The whole thing, sketched
+
+```python
+from langchain_community.document_loaders import PyPDFLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_chroma import Chroma
+
+# 1. Load and split
+docs = PyPDFLoader("course-notes.pdf").load()
+chunks = RecursiveCharacterTextSplitter(
+    chunk_size=1000, chunk_overlap=200
+).split_documents(docs)
+
+# 2. Embed and index
+vectorstore = Chroma.from_documents(chunks, embedding_model)
+retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
+
+# 3. Retrieve, then generate (the chain from Step 1)
+def answer(question):
+    context = retriever.invoke(question)
+    return chain.invoke({"context": context, "question": question})
+```
+
+Twenty-ish real lines for a working document Q&A system. Exact imports move between LangChain versions — take structure from here, syntax from the [current docs](https://python.langchain.com/docs/introduction/).
+
+<div className="bg-teal-50 border border-teal-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-teal-800 mb-2">The knobs that matter</p>
+  <p className="text-teal-700 text-sm">Chunk size, overlap, and k (how many chunks to retrieve) are where RAG quality lives — the RAG guide's Step 2 covers how to think about each. The framework makes them one-word changes, which means you can actually experiment instead of re-plumbing. Try k=2 vs k=8 on the same question and watch both the answer quality and the token cost move.</p>
+</div>
+
+---
+
+## Do this now (2–3 hours)
+
+Build document Q&A over your own course notes: load 2–3 PDFs, index them in Chroma, and ask questions you know the answers to. Then break it on purpose — ask something the documents don't cover and watch what comes back. Making the chain say "the context doesn't contain this" (via the prompt template) instead of hallucinating is the difference between a demo and something you can defend in an interview.
+
+---
+
+## Check yourself
+
+Done when your questions come back grounded with the retrieved chunks visible, you've tuned k and chunk size and seen the difference, and your resume can honestly say: *"Built a RAG pipeline with LangChain and Chroma over course materials, with grounding checks against retrieval failures."*

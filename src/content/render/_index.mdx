@@ -1,0 +1,43 @@
+---
+title: "Render — Full-Stack Hosting Guide"
+vendor: "render"
+slug: "/render"
+lastReviewed: "2026-07-27"
+---
+
+import VendorLanding from "../../components/VendorLanding"
+import NavigationLayout from "../../components/NavigationLayout"
+
+<VendorLanding vendor="render" />
+
+<NavigationLayout vendor="render" pageKey="index">
+
+## About
+Render hosts the things Vercel's serverless model can't: persistent backend servers, databases, background workers, and scheduled jobs — the other half of a real application. You connect a GitHub repository, tell Render how to start your app, and it builds and runs it on every push.
+
+If Vercel is "ship the frontend," Render is "run the backend." A FastAPI server for your RAG pipeline, an Express API, a Postgres database — this is where they live, with a workflow simple enough to learn in an afternoon.
+
+<div className="bg-amber-50 border border-amber-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-amber-800 mb-1">⚠️ Free tier reality</p>
+  <p className="text-amber-700 text-sm">Render's free web services spin down after periods of inactivity, and the first request afterward waits through a cold start. Free databases have time limits before they're deleted. Both are fine for demos and completely wrong for anything that must stay up — Step 1 and Step 2 cover exactly where those lines are.</p>
+</div>
+
+## What you'll accomplish
+
+- **Deploy a real backend** — a Python or Node API server running from your GitHub repo, redeployed on every push
+- **Go full stack** — attach a Postgres database, host the frontend, manage secrets, and schedule recurring jobs
+- **Build production habits** — health checks, log reading, and the platform judgment interviewers actually probe
+
+## Why Render specifically?
+
+Because it runs *processes*, not just functions. Your server starts and stays running — websockets work, long jobs work, in-memory state works. That's the mental model most CS coursework assumes, so there's less translation between "it works locally" and "it works deployed."
+
+It's also the natural second platform after Vercel: pairing the two teaches you the frontend/backend split as it actually exists in industry, and being able to explain *which piece went where and why* is a genuinely strong interview answer.
+
+## How this guide works
+
+1. **Step 1 – Your First Web Service:** Deploy an API server from GitHub and understand free-tier spin-down behavior.
+2. **Step 2 – Going Full Stack:** Postgres, static frontends, environment groups, and cron jobs.
+3. **Step 3 – Production Habits:** Health checks, logs, scaling, and honest comparisons with the other platforms.
+
+</NavigationLayout>

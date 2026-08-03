@@ -1,0 +1,43 @@
+---
+title: "Vercel — Ship Your Frontend Guide"
+vendor: "vercel"
+slug: "/vercel"
+lastReviewed: "2026-07-27"
+---
+
+import VendorLanding from "../../components/VendorLanding"
+import NavigationLayout from "../../components/NavigationLayout"
+
+<VendorLanding vendor="vercel" />
+
+<NavigationLayout vendor="vercel" pageKey="index">
+
+## About
+Vercel is the fastest way to put a frontend project on the internet. Connect a GitHub repository, and every push deploys automatically — with HTTPS, a global CDN, and a shareable URL, all configured for you. It's the platform behind Next.js, and the default choice for shipping React apps, portfolios, and AI app frontends.
+
+This guide gets you from "it runs on localhost" to "here's my link" — and then teaches you the judgment part: what Vercel's free tier actually covers, where the costs hide, and when a different platform is the right call.
+
+<div className="bg-amber-50 border border-amber-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-amber-800 mb-1">⚠️ Free tier fine print</p>
+  <p className="text-amber-700 text-sm">Vercel's Hobby plan is free and generous for personal projects, but it's licensed for non-commercial use and has hard usage limits. That's fine for a portfolio or class project — just know the line exists before you build something you plan to charge for. Details in Step 3.</p>
+</div>
+
+## What you'll accomplish
+
+- **Deploy a real project in minutes** — GitHub import, automatic framework detection, and the preview-vs-production deployment model
+- **Make it production-ready** — environment variables, serverless API routes, custom domains, and streaming AI responses
+- **Develop platform judgment** — understand the Hobby plan's limits, the cost traps, and when Vercel is the wrong tool
+
+## Why Vercel specifically?
+
+For a student shipping a frontend, the pitch is simple: it's the lowest-friction path from repo to URL, and the URL is what goes on your resume. Recruiters click links; they don't clone repos. Vercel also happens to be what a large share of industry frontend teams deploy on, so the workflow you learn — git push, preview deploy, review, promote — is the workflow you'll see at work.
+
+The tradeoff: Vercel is frontend-and-serverless shaped. Long-running backends, websockets, and databases live better elsewhere (that's what our [Render guide](/aideveloperguide/render) is for). Knowing which shape your project is — that's the skill.
+
+## How this guide works
+
+1. **Step 1 – Your First Deploy:** Connect GitHub, deploy, and understand what preview and production deployments actually are.
+2. **Step 2 – Make It Real:** Environment variables, serverless functions, custom domains, and streaming AI responses.
+3. **Step 3 – Limits, Costs & Judgment:** What the free tier really includes, where teams get surprised, and when to reach for a different platform.
+
+</NavigationLayout>

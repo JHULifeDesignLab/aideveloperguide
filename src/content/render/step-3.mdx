@@ -1,0 +1,51 @@
+---
+title: "Step 3 · Production Habits"
+vendor: "render"
+slug: "/render/step-3"
+lastReviewed: "2026-07-27"
+ordinal: 3
+---
+
+## Goal
+Pick up the small habits that mark the difference between "deployed once" and "operates software" — and finish with a clear map of when to use which platform.
+
+---
+
+## Health checks
+
+A **health check** is an endpoint (conventionally `/healthz`) that returns 200 when your service is genuinely ready — server up, database reachable. Render pings it to decide whether a deploy succeeded and whether the running service is alive, restarting it if checks fail.
+
+Add one to every API you deploy. It's ten lines, and "my services expose health checks and get zero-downtime deploys from them" is production vocabulary that very few students can use honestly.
+
+---
+
+## Read your logs before you need them
+
+Render streams every service's stdout to the **Logs** tab live. Two habits:
+
+1. **Log with intent.** Log startup config (never secrets), request failures with context, external API status codes. Print-statement debugging in production is what logs are — done deliberately, it's called observability.
+2. **Visit logs when nothing is wrong.** Knowing what healthy looks like is how you recognize broken instantly instead of at 2 a.m. before a demo.
+
+The **Metrics** tab (CPU, memory, request volume) answers "why is it slow" questions — and teaches you what your app's normal resource footprint is, which is the number you'd use to pick an instance size.
+
+---
+
+## Deploys you can trust
+
+Two settings turn deployment from an event into a non-event:
+
+- **Auto-deploy on push** (default): merged PRs go live on their own — your class project gets CI/CD by default.
+- **Rollbacks:** every deploy is kept; one click returns to any previous build when a bad merge ships.
+
+Combined with health checks gating each deploy, this is a genuinely professional release setup, on a free tier, for a student project.
+
+---
+
+## The platform map (the judgment that matters)
+
+<div className="bg-emerald-50 border border-emerald-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-emerald-800 mb-2">When someone asks "why Render?"</p>
+  <p className="text-emerald-700 text-sm">Persistent processes. Websockets, long-running jobs, in-memory state, a database next to the server — the shapes serverless can't hold. Frontend-heavy apps with light APIs belong on Vercel; quick ML demos belong on Hugging Face Spaces or Streamlit; Railway competes directly with Render and choosing between them is taste more than capability. Saying that out loud, unprompted, is a strong interview moment.</p>
+</div>
+
+Costs, honestly: paid instances start cheap but are per-service — a web service, a worker, and a database each bill separately, so "a few small pieces" quietly becomes real money. Check [current pricing](https://render.com/pricing) before upgrading anything, and turn off what you're not using. Cost hygiene is a skill; hiring managers who've cleaned up cloud bills respect it.

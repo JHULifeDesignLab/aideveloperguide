@@ -10,7 +10,7 @@ const tocItems: TocItem[] = [
   { id: 'certifications-section', label: 'Certifications' },
   { id: 'featured-section', label: 'Featured section' },
   { id: 'about-section', label: 'About section' },
-  { id: 'posting-strategy', label: 'Posting strategy' },
+  { id: 'posting-strategy', label: 'Posting AI projects' },
 ]
 
 export default function LinkedInPage() {

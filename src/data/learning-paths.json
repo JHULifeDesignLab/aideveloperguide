@@ -1,27 +1,35 @@
-
 {
   "google": {
     "steps": [
       {
         "id": "beginner",
-        "title": "Step 1 · Beginner foundation",
-        "description" : "Build AI fundamentals with Google's beginner-friendly modules.",
+        "title": "Step 1 \u00b7 Beginner foundation",
+        "description": "Build AI fundamentals with Google's beginner-friendly modules.",
         "modules": [
-          { "title": "Introduction to Generative AI",  "duration": "45 min" },
-          { "title": "Introduction to LLMs",           "duration": "1 h"   },
-          { "title": "Introduction to Responsible AI", "duration": "30 min"}
+          {
+            "title": "Introduction to Generative AI",
+            "duration": "45 min"
+          },
+          {
+            "title": "Introduction to LLMs",
+            "duration": "1 h"
+          },
+          {
+            "title": "Introduction to Responsible AI",
+            "duration": "30 min"
+          }
         ]
       },
       {
         "id": "developer",
-        "title": "Step 2 · Complete Developer Path & earn skill badge",
+        "title": "Step 2 \u00b7 Complete Developer Path & earn skill badge",
         "description": "Hands-on experience with Vertex AI and Google's tools.",
         "modules": 12,
         "totalHours": 26
       },
       {
         "id": "responsible-ai",
-        "title": "Step 3 · Model documentation & risk awareness",
+        "title": "Step 3 \u00b7 Model documentation & risk awareness",
         "description": "Apply ethical AI principles and create your portfolio."
       }
     ]
@@ -30,26 +38,38 @@
     "steps": [
       {
         "id": "beginner",
-        "title": "Step 1 · Beginner foundation",
+        "title": "Step 1 \u00b7 Beginner foundation",
         "description": "Build a rock-solid foundation in generative AI concepts, planning and Bedrock basics.",
         "totalHours": "1-6",
         "modules": [
-          { "title": "Learn the basics (fast)", "duration": "5 hr" },
-          { "title": "Set up your environment", "duration": "10min" },
-          { "title": "Choose an AI assistant", "duration": "10 min" },
-          { "title": "Quick project", "duration": "1 h" }
+          {
+            "title": "Learn the basics (fast)",
+            "duration": "5 hr"
+          },
+          {
+            "title": "Set up your environment",
+            "duration": "10min"
+          },
+          {
+            "title": "Choose an AI assistant",
+            "duration": "10 min"
+          },
+          {
+            "title": "Quick project",
+            "duration": "1 h"
+          }
         ]
       },
       {
         "id": "developer",
-        "title": "Step 2 · AWS Skill Builder - Digital Badge",
+        "title": "Step 2 \u00b7 AWS Skill Builder - Digital Badge",
         "description": "Complete the AWS Generative AI for Developers Professional Certificate with hands-on projects.",
         "modules": 1,
         "totalHours": "1-22"
       },
       {
         "id": "responsible-ai",
-        "title": "Step 3 · Responsible AI: Model Cards + Guardrails",
+        "title": "Step 3 \u00b7 Responsible AI: Model Cards + Guardrails",
         "description": "Learn to identify risks, set up Bedrock Guardrails, and create model documentation."
       }
     ]
@@ -58,37 +78,79 @@
     "steps": [
       {
         "id": "llm-fundamentals",
-        "title": "Prereq · LLM Basics",
+        "title": "Prereq \u00b7 LLM Basics",
         "description": "Understand context windows, tokens, hallucination, and the agent loop before writing a single prompt.",
         "modules": [
-          { "title": "Claude is not a search engine", "duration": "10 min" },
-          { "title": "Context windows & tokens", "duration": "15 min" },
-          { "title": "Progressive disclosure as a workflow", "duration": "15 min" },
-          { "title": "The agent loop", "duration": "10 min" }
+          {
+            "title": "Claude is not a search engine",
+            "duration": "10 min"
+          },
+          {
+            "title": "Context windows & tokens",
+            "duration": "15 min"
+          },
+          {
+            "title": "Progressive disclosure as a workflow",
+            "duration": "15 min"
+          },
+          {
+            "title": "The agent loop",
+            "duration": "10 min"
+          }
         ]
       },
       {
         "id": "getting-productive",
-        "title": "Step 2 · Getting Productive",
+        "title": "Step 2 \u00b7 Getting Productive",
         "description": "CLAUDE.md, slash commands, permission modes, and the prompting patterns that actually work.",
         "modules": [
-          { "title": "CLAUDE.md setup", "duration": "10 min" },
-          { "title": "Slash commands reference", "duration": "10 min" },
-          { "title": "Permission modes", "duration": "10 min" },
-          { "title": "Prompting patterns", "duration": "20 min" },
-          { "title": "Honest tradeoffs", "duration": "10 min" }
+          {
+            "title": "CLAUDE.md setup",
+            "duration": "10 min"
+          },
+          {
+            "title": "Slash commands reference",
+            "duration": "10 min"
+          },
+          {
+            "title": "Permission modes",
+            "duration": "10 min"
+          },
+          {
+            "title": "Prompting patterns",
+            "duration": "20 min"
+          },
+          {
+            "title": "Honest tradeoffs",
+            "duration": "10 min"
+          }
         ]
       },
       {
         "id": "advanced-patterns",
-        "title": "Step 3 · Advanced Patterns",
+        "title": "Step 3 \u00b7 Advanced Patterns",
         "description": "Subagents, MCP, hooks, multi-file workflows, and honest limits of the tool.",
         "modules": [
-          { "title": "Why subagents exist", "duration": "15 min" },
-          { "title": "MCP setup & usage", "duration": "30 min" },
-          { "title": "Hooks configuration", "duration": "20 min" },
-          { "title": "Multi-file workflow strategy", "duration": "15 min" },
-          { "title": "When NOT to use Claude Code", "duration": "10 min" }
+          {
+            "title": "Why subagents exist",
+            "duration": "15 min"
+          },
+          {
+            "title": "MCP setup & usage",
+            "duration": "30 min"
+          },
+          {
+            "title": "Hooks configuration",
+            "duration": "20 min"
+          },
+          {
+            "title": "Multi-file workflow strategy",
+            "duration": "15 min"
+          },
+          {
+            "title": "When NOT to use Claude Code",
+            "duration": "10 min"
+          }
         ]
       }
     ]
@@ -97,23 +159,32 @@
     "steps": [
       {
         "id": "beginner",
-        "title": "Step 1 · AI Fundamentals",
+        "title": "Step 1 \u00b7 AI Fundamentals",
         "description": "Build foundational knowledge of AI concepts and Microsoft's AI services ecosystem.",
         "modules": [
-          { "title": "Introduction to AI on Azure", "duration": "1 h" },
-          { "title": "Azure OpenAI Service Basics", "duration": "1.5 h" },
-          { "title": "Responsible AI Principles", "duration": "45 min" }
+          {
+            "title": "Introduction to AI on Azure",
+            "duration": "1 h"
+          },
+          {
+            "title": "Azure OpenAI Service Basics",
+            "duration": "1.5 h"
+          },
+          {
+            "title": "Responsible AI Principles",
+            "duration": "45 min"
+          }
         ]
       },
       {
         "id": "developer",
-        "title": "Step 2 · Azure AI Development",
+        "title": "Step 2 \u00b7 Azure AI Development",
         "description": "RAG app on Azure AI Search or MS AI Engineer Learning paths.",
         "totalHours": 18
       },
       {
         "id": "responsible-ai",
-        "title": "Step 3 · Enterprise AI & Governance",
+        "title": "Step 3 \u00b7 Enterprise AI & Governance",
         "description": "Implement enterprise-grade AI solutions with proper governance and compliance frameworks."
       }
     ]
@@ -122,24 +193,124 @@
     "steps": [
       {
         "id": "why-rag-exists",
-        "title": "Step 1 · Why RAG Exists",
+        "title": "Step 1 \u00b7 Why RAG Exists",
         "description": "Understand the knowledge cutoff problem, the full pipeline, and key concepts before writing any code.",
         "modules": 4,
         "totalHours": "1-2"
       },
       {
         "id": "building-pipeline",
-        "title": "Step 2 · Building Your First Pipeline",
+        "title": "Step 2 \u00b7 Building Your First Pipeline",
         "description": "Chunking, embeddings, vector stores, and prompt construction with real tools.",
         "modules": 5,
         "totalHours": "3-5"
       },
       {
         "id": "production-rag",
-        "title": "Step 3 · Production RAG",
+        "title": "Step 3 \u00b7 Production RAG",
         "description": "Hybrid search, reranking, evaluation with RAGAS, and when to stop using RAG.",
         "modules": 5,
         "totalHours": "3-5"
+      }
+    ]
+  },
+  "vercel": {
+    "steps": [
+      {
+        "id": "first-deploy",
+        "title": "Step 1 \u00b7 Your First Deploy",
+        "description": "Connect GitHub, deploy a real project in minutes, and understand preview vs. production deployments.",
+        "modules": 4,
+        "totalHours": "1-2"
+      },
+      {
+        "id": "make-it-real",
+        "title": "Step 2 \u00b7 Make It Real",
+        "description": "Environment variables, serverless functions, custom domains, and streaming AI responses.",
+        "modules": 4,
+        "totalHours": "2-3"
+      },
+      {
+        "id": "limits-and-costs",
+        "title": "Step 3 \u00b7 Limits, Costs & Judgment",
+        "description": "Hobby-plan limits, cost traps, and knowing when Vercel is the wrong tool.",
+        "modules": 3,
+        "totalHours": "1-2"
+      }
+    ]
+  },
+  "render": {
+    "steps": [
+      {
+        "id": "first-service",
+        "title": "Step 1 \u00b7 Your First Web Service",
+        "description": "Deploy a real backend \u2014 API server included \u2014 straight from GitHub, and understand free-tier behavior.",
+        "modules": 4,
+        "totalHours": "1-2"
+      },
+      {
+        "id": "full-stack",
+        "title": "Step 2 \u00b7 Going Full Stack",
+        "description": "Add a Postgres database, a static front end, environment groups, and scheduled jobs.",
+        "modules": 4,
+        "totalHours": "2-4"
+      },
+      {
+        "id": "production-habits",
+        "title": "Step 3 \u00b7 Production Habits",
+        "description": "Health checks, logs, autodeploys, scaling, and honest platform comparisons.",
+        "modules": 3,
+        "totalHours": "1-2"
+      }
+    ]
+  },
+  "langchain": {
+    "steps": [
+      {
+        "id": "core-abstractions",
+        "title": "Step 1 \u00b7 Core Abstractions",
+        "description": "Models, prompts, output parsers, and chains \u2014 what LangChain actually gives you over the raw SDK.",
+        "modules": 4,
+        "totalHours": "2-3"
+      },
+      {
+        "id": "rag-chain",
+        "title": "Step 2 \u00b7 Build a RAG Chain",
+        "description": "Loaders, splitters, embeddings, and retrievers \u2014 LangChain's bread and butter.",
+        "modules": 5,
+        "totalHours": "3-5"
+      },
+      {
+        "id": "agents-and-beyond",
+        "title": "Step 3 \u00b7 Agents, LangGraph & LangSmith",
+        "description": "Tool-calling agents, stateful graphs, observability \u2014 and when to skip LangChain entirely.",
+        "modules": 4,
+        "totalHours": "2-4"
+      }
+    ]
+  },
+  "cursor": {
+    "steps": [
+      {
+        "id": "setup-and-tab",
+        "title": "Step 1 \u00b7 Setup & Tab",
+        "description": "Install, import your VS Code setup, claim the student plan, and learn Tab autocomplete and inline edits.",
+        "modules": 4,
+        "totalHours": "1"
+      },
+      {
+        "id": "chat-and-agent",
+        "title": "Step 2 \u00b7 Chat & Agent Mode",
+        "description": "Codebase-aware chat, @-references, and multi-file agent edits \u2014 where Cursor earns its keep.",
+        "modules": 4,
+        "totalHours": "1-2"
+      },
+      {
+        "id": "rules-and-judgment",
+        "title": "Step 3 \u00b7 Rules & Judgment",
+        "description": "Project rules, review discipline, and how Cursor compares to Claude Code and Copilot.",
+        "modules": 3,
+        "totalHours": "1-2"
       }
     ]
   }

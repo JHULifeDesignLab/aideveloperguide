@@ -1,0 +1,43 @@
+---
+title: "LangChain — LLM App Framework Guide"
+vendor: "langchain"
+slug: "/langchain"
+lastReviewed: "2026-07-27"
+---
+
+import VendorLanding from "../../components/VendorLanding"
+import NavigationLayout from "../../components/NavigationLayout"
+
+<VendorLanding vendor="langchain" />
+
+<NavigationLayout vendor="langchain" pageKey="index">
+
+## About
+LangChain is the most widely known framework for building LLM applications. It gives you standard building blocks — models, prompts, retrievers, tools — and a way to compose them into pipelines, so that swapping Claude for GPT or Chroma for Pinecone is a one-line change instead of a rewrite. Its ecosystem includes LangGraph (stateful agents) and LangSmith (tracing and evaluation), which many industry teams run in production.
+
+This guide is honest about the debate around it: LangChain adds an abstraction layer, and for simple apps that layer can be more trouble than help. You'll learn what it genuinely buys you, how to build the classic RAG chain with it, and — just as important for interviews — when to skip it and call the model SDK directly.
+
+<div className="bg-amber-50 border border-amber-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-amber-800 mb-1">⚠️ Version churn</p>
+  <p className="text-amber-700 text-sm">LangChain's API has evolved rapidly, and much of the tutorial content on the internet is out of date. Trust the <a href="https://python.langchain.com/docs/introduction/" className="underline">current official docs</a> over any blog post or video more than a few months old, and pin your dependency versions so working code keeps working.</p>
+</div>
+
+## What you'll accomplish
+
+- **Learn the core abstractions** — chat models, prompt templates, output parsers, and chains, and what they buy you over the raw SDK
+- **Build a complete RAG chain** — loaders, splitters, embeddings, and retrievers wired into a pipeline that answers from your documents
+- **Reach the ecosystem edge** — tool-calling agents, LangGraph, LangSmith, and the judgment of when LangChain is the wrong choice
+
+## Why LangChain specifically?
+
+Two reasons, one practical and one strategic. Practical: its integration catalog is unmatched — hundreds of loaders, vector stores, and model providers behind one interface, which makes it the fastest way to prototype a pipeline that touches several external pieces. Strategic: it's the framework name that appears in AI job postings, and being able to discuss it critically — what it solved for you, where it got in the way — reads far better in interviews than either fandom or ignorance.
+
+If you haven't done the [RAG guide](/aideveloperguide/rag) yet, do it first. This guide implements those concepts; that one teaches them.
+
+## How this guide works
+
+1. **Step 1 – Core Abstractions:** Models, prompts, parsers, and composition — the mental model behind everything else.
+2. **Step 2 – Build a RAG Chain:** The full document-to-answer pipeline, in code, with LangChain's components.
+3. **Step 3 – Agents, LangGraph & LangSmith:** The production ecosystem, and the honest "when not to use it" conversation.
+
+</NavigationLayout>

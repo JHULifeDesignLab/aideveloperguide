@@ -1,49 +1,112 @@
 {
   "rag": {
     "index": {
-      "back": { "href": "/", "label": "Back to Home" },
-      "forward": { "href": "/rag/step-1", "label": "Next: Step 1" }
+      "back": {
+        "href": "/",
+        "label": "Back to Home"
+      },
+      "forward": {
+        "href": "/rag/step-1",
+        "label": "Next: Step 1"
+      }
     },
     "step-1": {
-      "back": { "href": "/rag", "label": "Back to Guide" },
-      "forward": { "href": "/rag/step-2", "label": "Next: Step 2" }
+      "back": {
+        "href": "/rag",
+        "label": "Back to Guide"
+      },
+      "forward": {
+        "href": "/rag/step-2",
+        "label": "Next: Step 2"
+      }
     },
     "step-2": {
-      "back": { "href": "/rag/step-1", "label": "Previous: Step 1" },
-      "forward": { "href": "/rag/step-3", "label": "Next: Step 3" }
+      "back": {
+        "href": "/rag/step-1",
+        "label": "Previous: Step 1"
+      },
+      "forward": {
+        "href": "/rag/step-3",
+        "label": "Next: Step 3"
+      }
     },
     "step-3": {
-      "back": { "href": "/rag/step-2", "label": "Previous: Step 2" },
-      "forward": { "href": "/rag/resources", "label": "Next: Resources" }
+      "back": {
+        "href": "/rag/step-2",
+        "label": "Previous: Step 2"
+      },
+      "forward": {
+        "href": "/rag/resources",
+        "label": "Next: Resources"
+      }
     },
     "resources": {
-      "back": { "href": "/rag/step-3", "label": "Previous: Step 3" },
-      "forward": { "href": "/", "label": "Back to Home" }
+      "back": {
+        "href": "/rag/step-3",
+        "label": "Previous: Step 3"
+      },
+      "forward": {
+        "href": "/",
+        "label": "Back to Home"
+      }
     }
   },
   "claude-code": {
     "index": {
-      "back": { "href": "/", "label": "Back to Home" },
-      "forward": { "href": "/claude-code/step-1", "label": "Next: Prereq" }
+      "back": {
+        "href": "/",
+        "label": "Back to Home"
+      },
+      "forward": {
+        "href": "/claude-code/step-1",
+        "label": "Next: Prereq"
+      }
     },
     "step-1": {
-      "back": { "href": "/claude-code", "label": "Back to Guide" },
-      "forward": { "href": "/claude-code/step-2", "label": "Next: Step 1" }
+      "back": {
+        "href": "/claude-code",
+        "label": "Back to Guide"
+      },
+      "forward": {
+        "href": "/claude-code/step-2",
+        "label": "Next: Step 1"
+      }
     },
     "step-2": {
-      "back": { "href": "/claude-code/step-1", "label": "Previous: Step 1" },
-      "forward": { "href": "/claude-code/step-3", "label": "Next: Step 3" }
+      "back": {
+        "href": "/claude-code/step-1",
+        "label": "Previous: Step 1"
+      },
+      "forward": {
+        "href": "/claude-code/step-3",
+        "label": "Next: Step 3"
+      }
     },
     "step-3": {
-      "back": { "href": "/claude-code/step-2", "label": "Previous: Step 2" },
-      "forward": { "href": "/claude-code/resources", "label": "Next: Resources" }
+      "back": {
+        "href": "/claude-code/step-2",
+        "label": "Previous: Step 2"
+      },
+      "forward": {
+        "href": "/claude-code/resources",
+        "label": "Next: Resources"
+      }
     },
     "resources": {
-      "back": { "href": "/claude-code/step-3", "label": "Previous: Step 3" },
-      "forward": { "href": "/", "label": "Back to Home" }
+      "back": {
+        "href": "/claude-code/step-3",
+        "label": "Previous: Step 3"
+      },
+      "forward": {
+        "href": "/",
+        "label": "Back to Home"
+      }
     },
     "the-leak": {
-      "back": { "href": "/claude-code", "label": "Back to Claude Code" }
+      "back": {
+        "href": "/claude-code",
+        "label": "Back to Claude Code"
+      }
     }
   },
   "microsoft": {
@@ -199,6 +262,214 @@
       "forward": {
         "href": "/resources/learning",
         "label": "Back to Learning"
+      }
+    }
+  },
+  "vercel": {
+    "index": {
+      "back": {
+        "href": "/",
+        "label": "Back to Home"
+      },
+      "forward": {
+        "href": "/vercel/step-1",
+        "label": "Next: Step 1"
+      }
+    },
+    "step-1": {
+      "back": {
+        "href": "/vercel",
+        "label": "Back to Guide"
+      },
+      "forward": {
+        "href": "/vercel/step-2",
+        "label": "Next: Step 2"
+      }
+    },
+    "step-2": {
+      "back": {
+        "href": "/vercel/step-1",
+        "label": "Previous: Step 1"
+      },
+      "forward": {
+        "href": "/vercel/step-3",
+        "label": "Next: Step 3"
+      }
+    },
+    "step-3": {
+      "back": {
+        "href": "/vercel/step-2",
+        "label": "Previous: Step 2"
+      },
+      "forward": {
+        "href": "/vercel/resources",
+        "label": "Next: Resources"
+      }
+    },
+    "resources": {
+      "back": {
+        "href": "/vercel/step-3",
+        "label": "Previous: Step 3"
+      },
+      "forward": {
+        "href": "/",
+        "label": "Back to Home"
+      }
+    }
+  },
+  "render": {
+    "index": {
+      "back": {
+        "href": "/",
+        "label": "Back to Home"
+      },
+      "forward": {
+        "href": "/render/step-1",
+        "label": "Next: Step 1"
+      }
+    },
+    "step-1": {
+      "back": {
+        "href": "/render",
+        "label": "Back to Guide"
+      },
+      "forward": {
+        "href": "/render/step-2",
+        "label": "Next: Step 2"
+      }
+    },
+    "step-2": {
+      "back": {
+        "href": "/render/step-1",
+        "label": "Previous: Step 1"
+      },
+      "forward": {
+        "href": "/render/step-3",
+        "label": "Next: Step 3"
+      }
+    },
+    "step-3": {
+      "back": {
+        "href": "/render/step-2",
+        "label": "Previous: Step 2"
+      },
+      "forward": {
+        "href": "/render/resources",
+        "label": "Next: Resources"
+      }
+    },
+    "resources": {
+      "back": {
+        "href": "/render/step-3",
+        "label": "Previous: Step 3"
+      },
+      "forward": {
+        "href": "/",
+        "label": "Back to Home"
+      }
+    }
+  },
+  "langchain": {
+    "index": {
+      "back": {
+        "href": "/",
+        "label": "Back to Home"
+      },
+      "forward": {
+        "href": "/langchain/step-1",
+        "label": "Next: Step 1"
+      }
+    },
+    "step-1": {
+      "back": {
+        "href": "/langchain",
+        "label": "Back to Guide"
+      },
+      "forward": {
+        "href": "/langchain/step-2",
+        "label": "Next: Step 2"
+      }
+    },
+    "step-2": {
+      "back": {
+        "href": "/langchain/step-1",
+        "label": "Previous: Step 1"
+      },
+      "forward": {
+        "href": "/langchain/step-3",
+        "label": "Next: Step 3"
+      }
+    },
+    "step-3": {
+      "back": {
+        "href": "/langchain/step-2",
+        "label": "Previous: Step 2"
+      },
+      "forward": {
+        "href": "/langchain/resources",
+        "label": "Next: Resources"
+      }
+    },
+    "resources": {
+      "back": {
+        "href": "/langchain/step-3",
+        "label": "Previous: Step 3"
+      },
+      "forward": {
+        "href": "/",
+        "label": "Back to Home"
+      }
+    }
+  },
+  "cursor": {
+    "index": {
+      "back": {
+        "href": "/",
+        "label": "Back to Home"
+      },
+      "forward": {
+        "href": "/cursor/step-1",
+        "label": "Next: Step 1"
+      }
+    },
+    "step-1": {
+      "back": {
+        "href": "/cursor",
+        "label": "Back to Guide"
+      },
+      "forward": {
+        "href": "/cursor/step-2",
+        "label": "Next: Step 2"
+      }
+    },
+    "step-2": {
+      "back": {
+        "href": "/cursor/step-1",
+        "label": "Previous: Step 1"
+      },
+      "forward": {
+        "href": "/cursor/step-3",
+        "label": "Next: Step 3"
+      }
+    },
+    "step-3": {
+      "back": {
+        "href": "/cursor/step-2",
+        "label": "Previous: Step 2"
+      },
+      "forward": {
+        "href": "/cursor/resources",
+        "label": "Next: Resources"
+      }
+    },
+    "resources": {
+      "back": {
+        "href": "/cursor/step-3",
+        "label": "Previous: Step 3"
+      },
+      "forward": {
+        "href": "/",
+        "label": "Back to Home"
       }
     }
   }

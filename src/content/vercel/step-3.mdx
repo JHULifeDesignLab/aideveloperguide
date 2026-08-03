@@ -1,0 +1,50 @@
+---
+title: "Step 3 · Limits, Costs & Judgment"
+vendor: "vercel"
+slug: "/vercel/step-3"
+lastReviewed: "2026-07-27"
+ordinal: 3
+---
+
+## Goal
+Know exactly what the free tier covers, where costs surprise people, and when Vercel is the wrong tool — the judgment layer that separates "I deployed once" from "I understand deployment."
+
+---
+
+## What the Hobby plan actually is
+
+Vercel's free **Hobby plan** is built for personal, non-commercial projects. It includes a monthly allowance of bandwidth, function execution, and build time that comfortably covers portfolios, class projects, and demos. The specific numbers change — always check the [current pricing page](https://vercel.com/pricing) rather than a blog post — but the shape is constant:
+
+- **Generous for small things.** A portfolio or an AI demo with modest traffic will likely never hit a limit.
+- **Non-commercial.** If a project becomes a business, the terms require the Pro plan.
+- **Hard stops, not surprise bills.** By default, hitting Hobby limits pauses the resource rather than charging you — a kinder failure mode than an unexpected invoice.
+
+---
+
+## Serverless has shapes it can't hold
+
+Serverless functions are short-lived request handlers with execution time limits. Some things fundamentally don't fit:
+
+- **Long-running processes** — a job that takes 10 minutes, a worker that polls a queue
+- **Persistent connections** — traditional websocket servers, live multiplayer state
+- **Heavy compute** — model training, video processing, anything needing a GPU
+- **Cold starts** — a rarely-visited function may take extra time on its first request
+
+None of these are flaws; they're the shape of the platform. A workout tracker frontend with an API route: perfect. The eval suite that re-runs your test set for 20 minutes: wrong shape — that belongs on a persistent server ([Render](/aideveloperguide/render)) or a CI runner.
+
+<div className="bg-gray-50 border border-gray-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-gray-800 mb-2">The cost stories you've seen on social media</p>
+  <p className="text-gray-600 text-sm">Periodically a "my Vercel bill was $3,000" post goes viral. The pattern underneath is almost always a paid-plan project that went viral or looped a function, with no spend limits configured. Vercel has since added spend controls and pause thresholds — if you ever upgrade to Pro, configuring those is the first thing to do. On Hobby, the default is protection: things stop, they don't bill.</p>
+</div>
+
+---
+
+## The decision framework
+
+Ask three questions about any project:
+
+1. **Is it mostly frontend, with light API needs?** → Vercel. This is its home turf.
+2. **Does it need a persistent server, database, or background jobs?** → Render or Railway for the backend. You can still put the frontend on Vercel — split deployments are normal and worth being able to explain.
+3. **Is it a demo of a Python ML model?** → Hugging Face Spaces or Streamlit reach a working demo faster.
+
+Being able to articulate *why* you chose your platform is worth more in an interview than any individual deploy. "I used Vercel for the Next.js frontend and Render for the FastAPI backend because serverless couldn't hold my websocket connection" is a senior-sounding sentence a sophomore can honestly say.

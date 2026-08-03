@@ -1,0 +1,52 @@
+---
+title: "Step 3 · Rules & Judgment"
+vendor: "cursor"
+slug: "/cursor/step-3"
+lastReviewed: "2026-07-27"
+ordinal: 3
+---
+
+## Goal
+Encode your standards so the AI follows them by default, and finish with the tool-comparison judgment that turns "I use Cursor" into an interview answer.
+
+---
+
+## Project rules: standards the AI reads
+
+Cursor supports **project rules** — instruction files in `.cursor/rules/` in your repo — that are automatically included as context for chat and agent work ([docs](https://docs.cursor.com/)). Think of them as a README written for the AI:
+
+```
+- TypeScript strict mode; no `any`
+- Use our fetch wrapper in src/lib/api.ts — never call fetch directly
+- Tests colocated as *.test.ts; new logic ships with tests
+- Prefer editing existing components over creating near-duplicates
+```
+
+Two payoffs. Immediate: suggestions start matching your conventions instead of generic tutorial style, and the whole team (or your project group) inherits the same behavior since rules live in the repo. Strategic: this is the same pattern as Claude Code's CLAUDE.md — *encoding standards as context* is a transferable, resume-worthy skill, not a Cursor trick.
+
+Do this now: write a rules file for your current project — conventions, forbidden patterns, one "always do X" — then re-run yesterday's agent task and diff the behavior.
+
+---
+
+## The review discipline (non-negotiable)
+
+The failure mode of AI editors isn't bad suggestions — it's good-looking ones accepted on autopilot. The developers who get *faster and better* with Cursor are the ones who treat it as a junior pair whose work always gets reviewed: read the diff, run the tests, ask "why this way?" when something looks unfamiliar. The ones who get faster and worse stopped reading.
+
+If a suggestion touches code you don't understand, that's not a moment to accept — it's a moment to switch to chat and ask it to explain. You're building comprehension, not just commits; the comprehension is what you'll be interviewed on.
+
+---
+
+## Cursor vs. Claude Code vs. Copilot — the honest map
+
+<div className="bg-indigo-50 border border-indigo-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-indigo-800 mb-2">The one-paragraph interview answer</p>
+  <p className="text-indigo-700 text-sm">Cursor is strongest when you're living in the editor — Tab, inline edits, and supervised agent work with instant visual diffs. <a href="/aideveloperguide/claude-code" className="underline">Claude Code</a> is terminal-first and strongest for autonomous multi-step work: long refactors, running builds and tests in a loop, working across a whole repo. Copilot is the incumbent inside plain VS Code — lowest friction, deepest GitHub integration, historically shallower on multi-file agentic work. Many working developers keep two of the three. What matters in an interview is having *reasons*, and the only way to have reasons is reps with more than one.</p>
+</div>
+
+On pricing: plans and included usage change frequently across all these tools — verify at [cursor.com/pricing](https://cursor.com/pricing) rather than trusting anything written down, including this guide. (The same warning appears in our [where-to-start comparison](/aideveloperguide/where-to-start), and it stays true.)
+
+---
+
+## Check yourself
+
+Done when your repo has a rules file that visibly changes agent behavior, you can honestly say you read every diff you accepted this week, and you can deliver the three-tool comparison above in your own words — with one example from your own use backing each claim.

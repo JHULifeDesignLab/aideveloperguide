@@ -1,0 +1,50 @@
+---
+title: "Step 2 · Chat & Agent Mode"
+vendor: "cursor"
+slug: "/cursor/step-2"
+lastReviewed: "2026-07-27"
+ordinal: 2
+---
+
+## Goal
+Move past autocomplete into the features that change how you work: chat that knows your codebase, and an agent that makes multi-file changes under your review.
+
+---
+
+## Chat with codebase context
+
+Cursor's chat panel (Cmd+L) isn't a browser tab with a chatbot — it can see your project. Cursor indexes your codebase so questions like "where is authentication handled?" or "why would this request return 401?" get answers grounded in *your* files, with references you can click.
+
+Precision comes from **@-references** — you control exactly what context the model sees:
+
+- `@somefile.ts` — pull a specific file into context
+- `@src/components` — a folder
+- `@Codebase` — search the whole indexed project for relevant code
+
+<div className="bg-indigo-50 border border-indigo-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-indigo-800 mb-2">This is context engineering</p>
+  <p className="text-indigo-700 text-sm">The quality of every answer tracks the quality of the context you attach — vague question over a whole repo gets a vague answer; targeted question over two @-referenced files gets a sharp one. That's the same principle as RAG and the same skill as prompt design. You're learning it with a UI.</p>
+</div>
+
+The best first habit: use chat to *understand* code before using it to *write* code. Point it at an unfamiliar file from a class project or open-source repo and interrogate it. Reading code faster is arguably the bigger productivity unlock.
+
+---
+
+## Agent mode: multi-file changes, supervised
+
+Agent mode (in the same panel) takes a task — "add dark mode support," "extract this logic into a shared module and update the callers" — plans it, edits multiple files, and can run terminal commands, pausing for your approval. Every change lands as a reviewable diff; nothing is final until you accept.
+
+The working rhythm that separates power users from passengers:
+
+1. **Scope tightly.** "Add validation to the signup form fields with error messages matching our existing style" beats "improve the form."
+2. **Point at examples.** @-reference a file that already does it the way you want — the model imitates patterns far better than it invents them.
+3. **Read every diff.** Accept file by file, not "accept all" on faith. You are the reviewer; the moment you stop reading is the moment bugs ship under your name.
+4. **Reset rather than argue.** If the agent goes sideways twice, don't keep patching its patches — revert, tighten the prompt, and start clean.
+
+Do this now (45 minutes): pick a small, real feature in one of your projects and run the loop above end to end — scope, reference an example, review each diff, land it. Then write two sentences in your notes about what the agent got wrong and how you caught it. That sentence pair is interview material.
+
+---
+
+## Check yourself
+
+Done when: you've asked codebase questions and clicked the references back to source, shipped one agent-driven multi-file change where you read every diff, and can explain what @-references actually control (the context window) in one sentence.

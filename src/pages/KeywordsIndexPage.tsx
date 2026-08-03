@@ -54,7 +54,20 @@ export default function KeywordsIndexPage() {
                   )}
                 </div>
                 <p className="mt-1 text-sm leading-relaxed text-gray-600">{kw.explanation}</p>
-                <p className="mt-1 text-xs italic text-gray-400">Origin: {kw.origin}</p>
+                <div className="flex flex-wrap items-center justify-between gap-2 mt-1">
+                  <p className="text-xs italic text-gray-400">Origin: {kw.origin}</p>
+                  {(kw as { link?: string }).link && (
+                    <a
+                      href={(kw as { link?: string }).link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ textDecoration: 'none' }}
+                      className="shrink-0 px-3 py-1 text-xs font-medium text-blue-600 transition-colors border border-blue-200 rounded-full bg-blue-50 hover:bg-blue-100"
+                    >
+                      Click to learn more →
+                    </a>
+                  )}
+                </div>
               </div>
             ))}
           </div>
