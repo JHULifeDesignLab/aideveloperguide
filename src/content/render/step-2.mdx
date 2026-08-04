@@ -31,7 +31,7 @@ Render serves **static sites** — built frontend files on a CDN, free with gene
 - **Everything on Render:** static site + web service + database. One dashboard, one platform, internal networking between pieces.
 - **Split deployment:** frontend on Vercel (previews, streaming helpers), backend + database on Render. The industry-common shape, and the one our [Vercel guide](/aideveloperguide/vercel) pairs with.
 
-Either way, the frontend calls your API's public URL, and CORS configuration becomes your first real "it works locally but not deployed" debugging exercise. Every developer has that fight once; better during a class project than an internship.
+Either way, the frontend calls your API's public URL, and CORS — the browser security rules governing which sites may call which APIs — becomes your first real "it works locally but not deployed" debugging exercise. Every developer has that fight once; better during a class project than an internship.
 
 ---
 

@@ -26,7 +26,7 @@ Vercel's free **Hobby plan** is built for personal, non-commercial projects. It 
 Serverless functions are short-lived request handlers with execution time limits. Some things fundamentally don't fit:
 
 - **Long-running processes** — a job that takes 10 minutes, a worker that polls a queue
-- **Persistent connections** — traditional websocket servers, live multiplayer state
+- **Persistent connections** — websockets (the always-open, two-way connections behind live chat and multiplayer), which need a server that stays running
 - **Heavy compute** — model training, video processing, anything needing a GPU
 - **Cold starts** — a rarely-visited function may take extra time on its first request
 
