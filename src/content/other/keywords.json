@@ -37,8 +37,7 @@
       "term": "ReAct",
       "fullName": "Reason + Act",
       "explanation": "A prompting and architecture pattern where the model interleaves reasoning steps ('I should look up X') with action steps ('calling tool: web_search') before producing a final answer.",
-      "origin": "Academic research, widely adopted industry-wide",
-      "link": "https://arxiv.org/abs/2210.03629"
+      "origin": "Academic research, widely adopted industry-wide"
     },
     {
       "term": "Multiagent Orchestration",
@@ -50,15 +49,14 @@
       "term": "RLAIF",
       "fullName": "Reinforcement Learning from AI Feedback",
       "explanation": "A variant of RLHF where another AI model (instead of humans) provides preference labels for training. Dramatically cheaper to scale than human feedback.",
-      "origin": "Anthropic, Google DeepMind",
-      "link": "https://arxiv.org/abs/2212.08073"
+      "origin": "Anthropic, Google DeepMind"
     },
     {
       "term": "DPO",
       "fullName": "Direct Preference Optimization",
       "explanation": "An alignment training technique that replaces the separate reward model step in RLHF by directly training on preference pairs (chosen vs. rejected responses) in a single pass.",
       "origin": "Academic research, widely adopted 2024–2025",
-      "link": "https://arxiv.org/abs/2305.18290"
+      "link": "https://huggingface.co/docs/trl/dpo_trainer"
     },
     {
       "term": "PEFT",
@@ -72,7 +70,7 @@
       "fullName": "Low-Rank Adaptation",
       "explanation": "The dominant PEFT technique — small trainable 'delta' matrices are injected into an existing model's layers, reducing trainable parameters by 90%+ while achieving near-full fine-tune quality. QLoRA is the quantized, memory-reduced variant.",
       "origin": "Academic research, industry-standard",
-      "link": "https://arxiv.org/abs/2106.09685"
+      "link": "https://huggingface.co/docs/peft/conceptual_guides/lora"
     },
     {
       "term": "Constitutional AI",
@@ -85,8 +83,7 @@
       "term": "Mechanistic Interpretability",
       "fullName": "Mechanistic Interpretability",
       "explanation": "A research discipline that attempts to reverse-engineer how a neural network internally represents and processes information — tracing specific model behaviors back to specific weights, circuits, or features.",
-      "origin": "Academic ML safety, heavily developed at Anthropic",
-      "link": "https://transformer-circuits.pub/"
+      "origin": "Academic ML safety, heavily developed at Anthropic"
     },
     {
       "term": "Test-Time Compute",
@@ -106,8 +103,7 @@
       "term": "Speculative Decoding",
       "fullName": "Speculative Decoding",
       "explanation": "An inference optimization where a small 'draft' model rapidly generates candidate tokens and a larger model verifies them in parallel, significantly speeding up output generation.",
-      "origin": "Google, Meta, inference infra teams",
-      "link": "https://arxiv.org/abs/2211.17192"
+      "origin": "Google, Meta, inference infra teams"
     },
     {
       "term": "KV Cache",
