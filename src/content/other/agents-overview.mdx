@@ -1,0 +1,42 @@
+## What an agent actually is
+
+A chatbot answers questions. An **AI agent** goes further: it's software that can **plan a task, use outside tools, and act on its own** — booking the meeting, querying the database, filing the pull request — rather than just telling you how.
+
+The architecture is a formula worth memorizing:
+
+> **Agent = Generative model + Tools + Memory + Planning**
+
+- **The model** is the reasoning engine — it decides what to do next
+- **Tools** let it *act*: calling APIs, executing code, searching the web, making HTTP requests
+- **Memory** lets it retrieve the external data a task needs (this is where [RAG](/aideveloperguide/rag) plugs in)
+- **Planning** lets it break a goal into steps and work through them, checking results as it goes
+
+Almost everything on this site is a piece of this formula: [LangChain](/aideveloperguide/langchain) orchestrates the pieces, MCP standardizes how tools connect, and [Claude Code](/aideveloperguide/claude-code) is an agent you can use today — for coding.
+
+---
+
+## The engineering challenge: taming non-determinism
+
+In your CS classes, the same input produces the same output, every time. LLMs break that assumption: the same prompt can produce different — individually correct but inconsistent — answers. An agent might label an image "dog," "a cute brown dog," or "not a cat," and a downstream system expecting one exact string breaks.
+
+**The core challenge of agent engineering is achieving reliable outcomes from unreliable components.** That's what makes it a genuine engineering discipline rather than prompt-typing, and it's why the operational problems below dominate real agent work: hallucination, prompt sensitivity, inconsistent output length, latency, and the difficulty of explaining why the model did what it did.
+
+---
+
+## The agency–control tradeoff
+
+The most important design decision in any agent is how much autonomy to grant:
+
+- **High agency:** the system turns intent into action on its own ("chat-to-book" a hotel end to end)
+- **High control:** the system suggests, and a human approves each step
+
+These trade off against each other — and the rule is: **only relinquish control as your trust in the system's measured reliability increases.** High-stakes domains (medicine, finance, insurance) demand maximum control and strict guardrails; a demo that drafts your morning brief can run free. Real teams start with a small, high-control version, deploy it to a few users, study the failure modes, recalibrate prompts and tools, and only *then* increase autonomy — most of the work happens after the first deployment, not before.
+
+---
+
+## Where to go next
+
+- **[Building Effective Agents](https://www.anthropic.com/research/building-effective-agents)** (Anthropic) — the most-cited practical guide to agent architectures; readable in one sitting
+- **[MCP documentation](https://modelcontextprotocol.io/)** — the open standard for connecting agents to tools
+- **[LangGraph](https://langchain-ai.github.io/langgraph/)** — the framework most industry teams use for stateful agent workflows
+- On this site: the [LangChain guide](/aideveloperguide/langchain) (Step 3 builds an agent), the [Projects page](/aideveloperguide/resources/projects) (the Agents & MCP category), and [Claude Code](/aideveloperguide/claude-code) to *use* an agent before you build one

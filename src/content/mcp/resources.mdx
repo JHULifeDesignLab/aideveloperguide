@@ -1,0 +1,36 @@
+---
+title: "MCP — Resources"
+vendor: "mcp"
+slug: "/mcp/resources"
+lastReviewed: "2026-08-09"
+---
+
+## Resources & Project Ideas
+
+These are the canonical references — the spec and SDKs are the source of truth for a protocol that's still evolving, so bookmark them rather than tutorials. Use them to unblock yourself while building, then ship one server from the project ideas: MCP is new enough that a working, well-documented server on your GitHub genuinely differentiates you.
+
+### Official Documentation
+
+- **[MCP Documentation](https://modelcontextprotocol.io/)** — The official docs: concepts, quickstarts, and SDKs for Python and TypeScript.
+- **[The Specification](https://modelcontextprotocol.io/specification/latest)** — The protocol itself. Skim it once; cite it in interviews.
+- **[MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector)** — The official tool for testing and debugging servers.
+- **[Servers Repository](https://github.com/modelcontextprotocol/servers)** — Reference implementations and the community server list. Read a reference server's code before writing your own.
+- **[MCP in Claude Code](https://docs.anthropic.com/en/docs/claude-code/mcp)** — Configuring servers in the host you most likely already have.
+
+---
+
+### Project Ideas
+
+**Beginner**
+- Connect three existing servers (filesystem, SQLite, one of your choice) to Claude Code and write a short README documenting one real task each one unlocked.
+
+**Intermediate**
+- Build the "talk to your data" server from the [Projects page](/aideveloperguide/resources/projects): 3–5 tools over a dataset you actually maintain, tested with the Inspector, with input validation and a documented permissions model.
+
+**Advanced**
+- Build the Daily Briefing Agent's toolbelt: one server exposing calendar, weather, and news tools, then drive it from a host and document where the model composed tools well and where it needed better descriptions. That analysis is the differentiator.
+
+<div className="bg-sky-50 border border-sky-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-sky-800 mb-2">What to document for your portfolio</p>
+  <p className="text-sky-700 text-sm">Include the Inspector screenshot, your tool descriptions before/after refinement, and the "what this server refuses to do" section. Evidence of iteration on tool design reads as real engineering; a list of tools does not.</p>
+</div>

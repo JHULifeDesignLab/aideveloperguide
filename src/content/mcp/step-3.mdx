@@ -1,0 +1,60 @@
+---
+title: "Step 3 · Build Your Own Server"
+vendor: "mcp"
+slug: "/mcp/step-3"
+lastReviewed: "2026-08-09"
+ordinal: 3
+---
+
+## Goal
+Build a small MCP server with the official SDK — the step that turns "I've used MCP" into a portfolio artifact.
+
+---
+
+## The shape of a server
+
+The official SDKs (Python and TypeScript, at [modelcontextprotocol.io](https://modelcontextprotocol.io/)) handle the protocol; you write the capabilities. A minimal Python server is genuinely small:
+
+```python
+from mcp.server.fastmcp import FastMCP
+
+mcp = FastMCP("course-tools")
+
+@mcp.tool()
+def gpa_after(current_gpa: float, credits: int, new_grade: float, new_credits: int) -> float:
+    """What your GPA becomes after a new grade."""
+    return (current_gpa * credits + new_grade * new_credits) / (credits + new_credits)
+
+if __name__ == "__main__":
+    mcp.run()
+```
+
+A decorated function with type hints and a docstring — the SDK turns that into a tool the model can discover and call, using the docstring to understand *when* to call it. Writing good tool descriptions is prompt engineering in disguise.
+
+---
+
+## Test with the Inspector
+
+The [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector) is the official debugging tool: it connects to your server, lists what it exposes, and lets you invoke tools by hand — like a REST client, for MCP. Develop against the Inspector first, *then* connect a real host; debugging a protocol and a model at the same time is misery.
+
+---
+
+## Make it a project worth showing
+
+A good student server wraps something you actually use — and the ideas on our [Projects page](/aideveloperguide/resources/projects) (Agents & MCP category) are sized for exactly this. What separates a portfolio piece from a demo:
+
+- **Real data source** — your budget spreadsheet, a club roster, a course catalog; not a toy
+- **3–5 well-described tools** — enough for the model to compose them in interesting ways
+- **Input validation and least-privilege** — show you thought about a model calling this, not a human
+- **A README with an honest limits section** — what the server refuses to do, and why
+
+<div className="bg-sky-50 border border-sky-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-sky-800 mb-2">The interview answer this buys you</p>
+  <p className="text-sky-700 text-sm">"I built an MCP server over [real thing]; the interesting part was designing tool descriptions the model reliably chose correctly, and deciding what it shouldn't be allowed to do." That sentence demonstrates protocol literacy, API design, and safety thinking — three things at once, from one weekend project.</p>
+</div>
+
+---
+
+## Check yourself
+
+Done when: your server runs against the Inspector, a real host can use it end to end, and the repo README explains what it exposes, what it refuses, and what you'd harden before real use.

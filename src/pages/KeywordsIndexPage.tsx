@@ -41,7 +41,13 @@ export default function KeywordsIndexPage() {
             </p>
           </div>
 
-          <div className="mt-6 space-y-2.5">
+          <p className="mt-5 text-xs leading-relaxed text-gray-500">
+            ⭐ marks links to <strong className="text-gray-700">official sources</strong> — documentation or announcements
+            from the company or organization behind the term. Unstarred links point to community resources (like wikis)
+            that we found helpful, but that aren't published by the originating company.
+          </p>
+
+          <div className="mt-3 space-y-2.5">
             {keywords.map((kw, i) => (
               <div
                 key={kw.term}
@@ -64,7 +70,7 @@ export default function KeywordsIndexPage() {
                       style={{ textDecoration: 'none' }}
                       className="shrink-0 px-3 py-1 text-xs font-medium text-blue-600 transition-colors border border-blue-200 rounded-full bg-blue-50 hover:bg-blue-100"
                     >
-                      Click to learn more →
+                      {(kw as { official?: boolean }).official ? '⭐ ' : ''}Click to learn more →
                     </a>
                   )}
                 </div>

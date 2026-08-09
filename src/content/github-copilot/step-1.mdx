@@ -1,0 +1,43 @@
+---
+title: "Step 1 · Setup & the Student Pack"
+vendor: "github-copilot"
+slug: "/github-copilot/step-1"
+lastReviewed: "2026-08-09"
+ordinal: 1
+---
+
+## Goal
+Get Copilot running free through GitHub Education, and learn inline completions as a skill rather than a slot machine.
+
+---
+
+## Free access, properly
+
+1. Apply for the [GitHub Student Developer Pack](https://education.github.com/pack) with your .edu email and proof of enrollment — approval typically takes a few days, and the pack includes far more than Copilot
+2. Once verified, enable Copilot from your GitHub settings (the Education benefit activates the paid tier at no cost)
+3. Install the **GitHub Copilot** extension in VS Code (or your JetBrains IDE) and sign in with GitHub
+
+If you can't wait for verification, a limited free tier exists — but as a student there's no reason to pay: verify once, benefit all degree long. Current plan details live in [the official docs](https://docs.github.com/en/copilot).
+
+---
+
+## Completions: the calibration skill
+
+Copilot's core feature is the gray ghost text: it watches what you type and proposes what comes next — a line, a block, sometimes a whole function. `Tab` accepts; keep typing to reject.
+
+The skill is the same one our [Cursor guide](/aideveloperguide/cursor) teaches, and it transfers both ways:
+
+- **Write the comment or signature first.** Copilot completes from context — a clear function name, typed parameters, and a one-line docstring produce dramatically better suggestions than a blank line.
+- **Accept in small pieces.** A line you've read beats a block you've skimmed.
+- **Treat every acceptance as a micro code review.** If you wouldn't approve it in a PR, don't Tab it into your file.
+
+<div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-slate-800 mb-2">Do this now (30 minutes)</p>
+  <p className="text-slate-600 text-sm">Open a current assignment and code normally with completions on. Keep a scratch note with two columns: suggestions that saved you time, and suggestions that were confidently wrong. That wrong-column awareness — knowing <em>where</em> it fails (unfamiliar APIs, your project's custom helpers, anything past its training data) — is the actual lesson of Step 1.</p>
+</div>
+
+---
+
+## Check yourself
+
+Done when Copilot runs free on your account, you've consciously rejected at least a few plausible-but-wrong suggestions, and you can name the two contexts where its suggestions are weakest for you.

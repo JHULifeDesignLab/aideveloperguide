@@ -1,0 +1,41 @@
+---
+title: "Netlify — Frontend Hosting Guide"
+vendor: "netlify"
+slug: "/netlify"
+lastReviewed: "2026-08-09"
+---
+
+import VendorLanding from "../../components/VendorLanding"
+import NavigationLayout from "../../components/NavigationLayout"
+
+<VendorLanding vendor="netlify" />
+
+<NavigationLayout vendor="netlify" pageKey="index">
+
+## About
+Netlify is one of the two canonical "push your frontend, get a URL" platforms (the other being [Vercel](/aideveloperguide/vercel)). Connect a GitHub repository — or literally drag a folder onto the browser — and your site is live on a global CDN with HTTPS. It popularized this whole workflow, and it remains one of the friendliest on-ramps to deployment that exists.
+
+This guide is deliberately shorter than our Vercel one: the concepts transfer almost entirely, so we focus on what's distinct — Netlify's famously simple deploys, its built-in extras like forms and redirects, and the judgment call of when to pick which platform.
+
+<div className="bg-amber-50 border border-amber-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-amber-800 mb-1">⚠️ Already did the Vercel guide?</p>
+  <p className="text-amber-700 text-sm">Skim Step 1, read Step 2's forms/redirects sections, then go straight to Step 3's comparison. The platforms rhyme — your time is better spent shipping than re-learning the same deploy loop twice.</p>
+</div>
+
+## What you'll accomplish
+
+- **Deploy two ways** — the drag-and-drop instant deploy and the git-connected workflow with previews
+- **Use the built-in extras** — redirects for single-page apps, environment variables, forms without a backend, and serverless functions
+- **Develop platform judgment** — free-tier boundaries and an honest Netlify vs. Vercel vs. Render decision rule
+
+## Why Netlify specifically?
+
+Two honest reasons. First, the drag-and-drop deploy is the single fastest path from "folder on my laptop" to "URL I can text someone" — a genuinely great first-deploy experience. Second, employers don't care *which* of these platforms you used; they care that you understand the workflow (build → preview → promote) and can explain your choice. Knowing both major players makes that explanation credible.
+
+## How this guide works
+
+1. **Step 1 – Your First Deploy:** Both deploy paths, and what Netlify does with your build.
+2. **Step 2 – The Features That Make It Real:** Redirects, environment variables, forms, and functions.
+3. **Step 3 – Limits & Judgment:** The free tier's real boundaries and the three-platform decision rule.
+
+</NavigationLayout>

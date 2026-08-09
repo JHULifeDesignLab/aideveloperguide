@@ -1,0 +1,51 @@
+---
+title: "Step 1 · What MCP Actually Is"
+vendor: "mcp"
+slug: "/mcp/step-1"
+lastReviewed: "2026-08-09"
+ordinal: 1
+---
+
+## Goal
+Understand the problem MCP solves and its architecture well enough to explain both in an interview — before touching any code.
+
+---
+
+## The problem: N×M integrations
+
+An LLM is text-in, text-out. To *do* anything — read a file, query a database, send a message — something must connect it to that system. Before MCP, every AI application built custom connections to every data source it needed: N apps × M systems = N×M pieces of glue code, each different, none reusable.
+
+MCP collapses that to N+M: each app implements the protocol once, each system gets one server, and everything interoperates. This is the same move USB made for hardware — hence the nickname.
+
+---
+
+## The architecture: host, client, server
+
+Three roles, worth keeping straight because job postings use these words:
+
+- **Host** — the AI application the user interacts with (Claude Code, Claude Desktop, Cursor, your own agent)
+- **Client** — the connector inside the host that speaks the protocol (you mostly never see it)
+- **Server** — a small program that exposes some capability: a filesystem, a Postgres database, GitHub, a weather API
+
+The host asks the server what it offers, the model decides when to use it, and the server does the actual work. The model never touches your database directly — it asks the server, and the server decides what's allowed.
+
+---
+
+## What a server can offer
+
+Three kinds of capability, and the distinction matters when you build one in Step 3:
+
+1. **Tools** — actions the model can invoke: `query_database`, `create_issue`, `send_email`. This is the "give the LLM hands" part from the [agents overview](/aideveloperguide/agents).
+2. **Resources** — data the host can read into context: file contents, schemas, documents.
+3. **Prompts** — reusable prompt templates the server provides for common operations.
+
+<div className="bg-sky-50 border border-sky-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-sky-800 mb-2">Connect it to what you know</p>
+  <p className="text-sky-700 text-sm">If you've written a REST API in a class: an MCP server plays a similar role — a defined interface in front of a capability — except its consumer is a model choosing when to call it, not a frontend hard-coded to call it. That "the caller decides" difference is what makes agent behavior possible, and what makes input validation and permissions matter even more.</p>
+</div>
+
+---
+
+## Check yourself
+
+You're ready for Step 2 when you can explain to a friend: what N×M problem MCP solves, the difference between a host and a server, and one reason "the model decides when to call tools" changes how you'd design an API.

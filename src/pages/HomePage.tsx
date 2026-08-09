@@ -7,7 +7,7 @@ type Item = { name: string; description: string; to: string | null }
 const deploymentItems: Item[] = [
   { name: 'Vercel', description: 'Zero-config deploys for modern frontend frameworks.', to: '/vercel' },
   { name: 'Render', description: 'Simple hosting for full-stack apps, APIs, and databases.', to: '/render' },
-  { name: 'Netlify', description: 'Popular zero-config host for frontend and JAMstack apps.', to: null },
+  { name: 'Netlify', description: 'Popular zero-config host for frontend apps, with built-in forms.', to: '/netlify' },
 ]
 
 const deploymentExtras: Item[] = [
@@ -18,7 +18,7 @@ const deploymentExtras: Item[] = [
 const productStackItems: Item[] = [
   { name: 'RAG', description: 'Pattern for grounding LLM responses in your own data.', to: '/rag' },
   { name: 'LangChain', description: 'Framework for building apps with LLMs and agents.', to: '/langchain' },
-  { name: 'MCP', description: 'Open protocol for connecting LLMs to tools and data.', to: null },
+  { name: 'MCP', description: 'Open protocol for connecting LLMs to tools and data.', to: '/mcp' },
 ]
 
 const productStackExtras: Item[] = [
@@ -29,7 +29,7 @@ const productStackExtras: Item[] = [
 const devToolsItems: Item[] = [
   { name: 'Claude Code', description: "Anthropic's agentic coding assistant for terminal and IDE.", to: '/claude-code' },
   { name: 'Cursor', description: 'AI-first code editor with inline edits and chat.', to: '/cursor' },
-  { name: 'GitHub Copilot', description: "Microsoft's AI pair programmer integrated directly into your editor.", to: null },
+  { name: 'GitHub Copilot', description: "Microsoft's AI pair programmer — free for students.", to: '/github-copilot' },
 ]
 
 const devToolsExtras: Item[] = [
@@ -249,6 +249,36 @@ export default function HomePage() {
           <p className="mt-3 text-xs italic text-gray-400">Origin: {hoveredKw.origin}</p>
         </div>
       )}
+
+      {/* Two ways to build with AI — overview cards */}
+      <div className="grid grid-cols-1 gap-5 mt-4 md:grid-cols-2">
+        <Link to="/ai-tools" className="block">
+          <div className="h-full overflow-hidden transition-all border border-indigo-100 rounded-xl bg-indigo-50 hover:shadow-md hover:-translate-y-0.5 fade-in-up">
+            <div className="h-1.5 bg-indigo-500" />
+            <div className="p-4">
+              <h2 className="text-base font-bold text-indigo-900">🛠️ Building with AI-Assisted Tools</h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-gray-600">
+                Claude Code, Cursor, Copilot — assistants that help you write software faster and better.
+                What they are, how they work, and the best practices that make them a superpower instead of a crutch.
+              </p>
+              <span className="inline-block mt-2 text-sm font-semibold text-indigo-600">Read the overview →</span>
+            </div>
+          </div>
+        </Link>
+        <Link to="/agents" className="block">
+          <div className="h-full overflow-hidden transition-all border border-rose-100 rounded-xl bg-rose-50 hover:shadow-md hover:-translate-y-0.5 fade-in-up" style={{ animationDelay: '100ms' }}>
+            <div className="h-1.5 bg-rose-500" />
+            <div className="p-4">
+              <h2 className="text-base font-bold text-rose-900">🤖 Building with Agents</h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-gray-600">
+                Software that plans a task, uses outside tools, and acts on its own — not just answers questions.
+                What an agent actually is, and how the pieces below fit together to build one.
+              </p>
+              <span className="inline-block mt-2 text-sm font-semibold text-rose-600">Read the overview →</span>
+            </div>
+          </div>
+        </Link>
+      </div>
 
       <div className="grid grid-cols-1 gap-5 mt-4 sm:grid-cols-3">
         <CategorySection title="Product Stack" color="blue" items={productStackItems} extras={productStackExtras} delay={0} />

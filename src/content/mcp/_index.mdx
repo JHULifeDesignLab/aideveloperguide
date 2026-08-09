@@ -1,0 +1,41 @@
+---
+title: "MCP — Model Context Protocol Guide"
+vendor: "mcp"
+slug: "/mcp"
+lastReviewed: "2026-08-09"
+---
+
+import VendorLanding from "../../components/VendorLanding"
+import NavigationLayout from "../../components/NavigationLayout"
+
+<VendorLanding vendor="mcp" />
+
+<NavigationLayout vendor="mcp" pageKey="index">
+
+## About
+MCP — the Model Context Protocol — is an open standard for connecting AI models to the outside world: your files, your databases, your APIs, your tools. Before MCP, every app that wanted its AI to check a calendar or query a database wrote custom glue code for each connection. MCP replaces that with one standard interface — the reason it gets called "the USB-C of AI."
+
+It was created by Anthropic, is now stewarded openly, and has been adopted across the industry — which is why it shows up in AI job postings and why it appears all over this site: [agents](/aideveloperguide/agents) use it to act, [Claude Code](/aideveloperguide/claude-code) speaks it natively, and our [Projects page](/aideveloperguide/resources/projects) has a whole category built on it.
+
+<div className="bg-amber-50 border border-amber-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-amber-800 mb-1">⚠️ Prerequisite</p>
+  <p className="text-amber-700 text-sm">This guide assumes you know what an LLM is and why it can't act on the world by itself. If that's fuzzy, read <a href="/aideveloperguide/llm-basics" className="underline">LLM Basics</a> (15 minutes) and the <a href="/aideveloperguide/agents" className="underline">agents overview</a> first — MCP will make far more sense as "the tools layer of the agent formula."</p>
+</div>
+
+## What you'll accomplish
+
+- **Understand the architecture** — hosts, clients, and servers, and the three things a server can offer (tools, resources, prompts)
+- **Use existing servers** — connect ready-made MCP servers to Claude Code and feel what tool-use changes
+- **Build your own server** — a small, working MCP server with the official SDK, tested and documented for your portfolio
+
+## Why MCP specifically?
+
+Because it's the rare thing that is both genuinely new and genuinely standard. Learning one protocol gives you access to a whole ecosystem of servers other people have built — and building your own server is a compact, impressive project: it demonstrates API design, tool-use understanding, and current-AI literacy in a single weekend-sized artifact. "Built and published an MCP server" is a resume line very few students can claim yet.
+
+## How this guide works
+
+1. **Step 1 – What MCP Actually Is:** The problem, the architecture, and the vocabulary — no code yet.
+2. **Step 2 – Use Existing Servers:** Connect real servers to Claude Code and see tool-use work.
+3. **Step 3 – Build Your Own Server:** The official SDK, the Inspector, and a shippable project.
+
+</NavigationLayout>

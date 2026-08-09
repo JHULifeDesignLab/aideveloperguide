@@ -472,5 +472,161 @@
         "label": "Back to Home"
       }
     }
+  },
+  "netlify": {
+    "index": {
+      "back": {
+        "href": "/",
+        "label": "Back to Home"
+      },
+      "forward": {
+        "href": "/netlify/step-1",
+        "label": "Next: Step 1"
+      }
+    },
+    "step-1": {
+      "back": {
+        "href": "/netlify",
+        "label": "Back to Guide"
+      },
+      "forward": {
+        "href": "/netlify/step-2",
+        "label": "Next: Step 2"
+      }
+    },
+    "step-2": {
+      "back": {
+        "href": "/netlify/step-1",
+        "label": "Previous: Step 1"
+      },
+      "forward": {
+        "href": "/netlify/step-3",
+        "label": "Next: Step 3"
+      }
+    },
+    "step-3": {
+      "back": {
+        "href": "/netlify/step-2",
+        "label": "Previous: Step 2"
+      },
+      "forward": {
+        "href": "/netlify/resources",
+        "label": "Next: Resources"
+      }
+    },
+    "resources": {
+      "back": {
+        "href": "/netlify/step-3",
+        "label": "Previous: Step 3"
+      },
+      "forward": {
+        "href": "/",
+        "label": "Back to Home"
+      }
+    }
+  },
+  "mcp": {
+    "index": {
+      "back": {
+        "href": "/",
+        "label": "Back to Home"
+      },
+      "forward": {
+        "href": "/mcp/step-1",
+        "label": "Next: Step 1"
+      }
+    },
+    "step-1": {
+      "back": {
+        "href": "/mcp",
+        "label": "Back to Guide"
+      },
+      "forward": {
+        "href": "/mcp/step-2",
+        "label": "Next: Step 2"
+      }
+    },
+    "step-2": {
+      "back": {
+        "href": "/mcp/step-1",
+        "label": "Previous: Step 1"
+      },
+      "forward": {
+        "href": "/mcp/step-3",
+        "label": "Next: Step 3"
+      }
+    },
+    "step-3": {
+      "back": {
+        "href": "/mcp/step-2",
+        "label": "Previous: Step 2"
+      },
+      "forward": {
+        "href": "/mcp/resources",
+        "label": "Next: Resources"
+      }
+    },
+    "resources": {
+      "back": {
+        "href": "/mcp/step-3",
+        "label": "Previous: Step 3"
+      },
+      "forward": {
+        "href": "/",
+        "label": "Back to Home"
+      }
+    }
+  },
+  "github-copilot": {
+    "index": {
+      "back": {
+        "href": "/",
+        "label": "Back to Home"
+      },
+      "forward": {
+        "href": "/github-copilot/step-1",
+        "label": "Next: Step 1"
+      }
+    },
+    "step-1": {
+      "back": {
+        "href": "/github-copilot",
+        "label": "Back to Guide"
+      },
+      "forward": {
+        "href": "/github-copilot/step-2",
+        "label": "Next: Step 2"
+      }
+    },
+    "step-2": {
+      "back": {
+        "href": "/github-copilot/step-1",
+        "label": "Previous: Step 1"
+      },
+      "forward": {
+        "href": "/github-copilot/step-3",
+        "label": "Next: Step 3"
+      }
+    },
+    "step-3": {
+      "back": {
+        "href": "/github-copilot/step-2",
+        "label": "Previous: Step 2"
+      },
+      "forward": {
+        "href": "/github-copilot/resources",
+        "label": "Next: Resources"
+      }
+    },
+    "resources": {
+      "back": {
+        "href": "/github-copilot/step-3",
+        "label": "Previous: Step 3"
+      },
+      "forward": {
+        "href": "/",
+        "label": "Back to Home"
+      }
+    }
   }
 }

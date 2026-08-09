@@ -1,0 +1,42 @@
+---
+title: "Step 1 · Your First Deploy"
+vendor: "netlify"
+slug: "/netlify/step-1"
+lastReviewed: "2026-08-09"
+ordinal: 1
+---
+
+## Goal
+Put a site on the internet twice — once the instant way, once the professional way — and understand the difference.
+
+---
+
+## The 60-second version: drag and drop
+
+Netlify's party trick: build your project locally (`npm run build`), go to your Netlify dashboard, and **drag the build output folder onto the page**. That's it — live URL, HTTPS, CDN. No git, no config.
+
+Do this once even though you'll never do it again. It demystifies deployment completely: a website is just files, and hosting is just putting those files somewhere reliable.
+
+---
+
+## The real version: connect the repo
+
+The workflow you'll actually use mirrors what you learned (or will learn) with [Vercel](/aideveloperguide/vercel):
+
+1. Sign up at [netlify.com](https://www.netlify.com) with GitHub
+2. **Add new site → Import an existing project**, pick your repo
+3. Netlify detects your framework and fills in the build command and publish directory
+4. Deploy — and from now on, every push to your main branch deploys automatically
+
+Pull requests get **Deploy Previews**: a unique URL per PR showing that branch live, posted right into the PR. Same review-the-running-site workflow professional teams use.
+
+<div className="bg-cyan-50 border border-cyan-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-cyan-800 mb-2">If the build fails</p>
+  <p className="text-cyan-700 text-sm">Same debugging as anywhere: read the deploy log, make sure <code>npm run build</code> works locally first, and check that the publish directory matches your framework's output folder (<code>dist</code> for Vite, <code>build</code> for Create React App). The <a href="https://docs.netlify.com/" className="underline">docs</a> list correct settings per framework.</p>
+</div>
+
+---
+
+## Check yourself
+
+Done when you've deployed both ways, a push to main auto-deploys, and you can explain to a classmate why the drag-and-drop version — magical as it is — isn't how teams work (no history, no previews, no automation).

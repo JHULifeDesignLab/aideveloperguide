@@ -1,0 +1,48 @@
+---
+title: "Step 2 · Use Existing Servers"
+vendor: "mcp"
+slug: "/mcp/step-2"
+lastReviewed: "2026-08-09"
+ordinal: 2
+---
+
+## Goal
+Connect ready-made MCP servers to a host you already use and *feel* what tool-use changes — the fastest way to make the architecture concrete.
+
+---
+
+## Start with Claude Code
+
+If you did our [Claude Code guide](/aideveloperguide/claude-code), you already have a host installed. Servers are configured in your settings file — for example, the filesystem and SQLite servers:
+
+```json
+{
+  "mcpServers": {
+    "sqlite": {
+      "command": "uvx",
+      "args": ["mcp-server-sqlite", "--db-path", "./local.db"]
+    }
+  }
+}
+```
+
+Restart, and Claude can now query that database as part of any coding task — the same way it uses its built-in tools. The [official Claude Code MCP docs](https://docs.anthropic.com/en/docs/claude-code/mcp) cover the exact configuration for your platform.
+
+---
+
+## What to try (an hour, well spent)
+
+1. **Connect the SQLite server** to a database from any class project and ask the host to describe the schema, then write a query. Notice what changed: it's not summarizing a schema you pasted — it's *looking for itself*.
+2. **Browse the [community servers list](https://github.com/modelcontextprotocol/servers)** — hundreds exist: GitHub, Postgres, Google Drive, Slack, browsers. Pick one relevant to a project you actually have and connect it.
+3. **Watch the tool calls.** Hosts show you each call the model makes and ask approval for sensitive ones. Read them — this visible loop of *decide → call → observe → continue* is the agent pattern from the [agents overview](/aideveloperguide/agents), happening live.
+
+<div className="bg-amber-50 border border-amber-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-amber-800 mb-1">⚠️ Trust is part of the protocol</p>
+  <p className="text-amber-700 text-sm">An MCP server runs real code with your permissions and can see whatever you connect it to. Only install servers from sources you trust (the official repo marks reference servers), read what a server can do before connecting it, and give it the least access that works — a database copy, not production. This judgment is part of what you're learning.</p>
+</div>
+
+---
+
+## Check yourself
+
+Done when you've connected at least one server, watched the model choose to call it (and observed the approval flow), and can describe one task that went from impossible to easy because the tool existed.

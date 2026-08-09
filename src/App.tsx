@@ -19,6 +19,8 @@ import LinkedInPage from './pages/resources/LinkedInPage'
 import KeywordsIndexPage from './pages/KeywordsIndexPage'
 import WhereToStartPage from './pages/WhereToStartPage'
 import LlmBasicsPage from './pages/LlmBasicsPage'
+import AiToolsPage from './pages/AiToolsPage'
+import AgentsPage from './pages/AgentsPage'
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
         <Route path="/keywords" element={<KeywordsIndexPage />} />
         <Route path="/where-to-start" element={<WhereToStartPage />} />
         <Route path="/llm-basics" element={<LlmBasicsPage />} />
+        <Route path="/ai-tools" element={<AiToolsPage />} />
+        <Route path="/agents" element={<AgentsPage />} />
         <Route path="/resources" element={<Navigate to="/resources/resume" replace />} />
         <Route path="/resources/resume" element={<ResumePage />} />
         <Route path="/resources/linkedin" element={<LinkedInPage />} />

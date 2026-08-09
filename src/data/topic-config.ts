@@ -91,4 +91,25 @@ export const topicConfigs: Record<string, TopicConfig> = {
     borderColor: 'border-indigo-600',
     gradientColor: 'rgba(79,70,229,0.13)',
   },
+  netlify: {
+    name: 'Netlify',
+    bgColor: 'bg-cyan-600',
+    textColor: 'text-cyan-600',
+    borderColor: 'border-cyan-600',
+    gradientColor: 'rgba(8,145,178,0.13)',
+  },
+  mcp: {
+    name: 'MCP',
+    bgColor: 'bg-sky-600',
+    textColor: 'text-sky-600',
+    borderColor: 'border-sky-600',
+    gradientColor: 'rgba(2,132,199,0.13)',
+  },
+  'github-copilot': {
+    name: 'GitHub Copilot',
+    bgColor: 'bg-slate-600',
+    textColor: 'text-slate-600',
+    borderColor: 'border-slate-600',
+    gradientColor: 'rgba(71,85,105,0.13)',
+  },
 }

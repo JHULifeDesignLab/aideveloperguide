@@ -1,0 +1,52 @@
+---
+title: "Step 2 · The Features That Make It Real"
+vendor: "netlify"
+slug: "/netlify/step-2"
+lastReviewed: "2026-08-09"
+ordinal: 2
+---
+
+## Goal
+Learn the four built-in features that turn a static deploy into a working product — including the one every React app needs on day one.
+
+---
+
+## Redirects: the SPA fix you'll hit immediately
+
+Deploy a React app with client-side routing, refresh on `/about`, and you'll get a 404 — the server has no file called `about`; your router only works once the page loads. The fix is one file in your publish directory, `_redirects`:
+
+```
+/*  /index.html  200
+```
+
+"Serve `index.html` for every path and let the router handle it." Every SPA host has a version of this; Netlify's one-liner is the cleanest place to learn *why* it's needed — that's the [redirects docs](https://docs.netlify.com/routing/redirects/) if you want the full syntax (proxies, country-based routing, and more).
+
+---
+
+## Environment variables
+
+Same rules as everywhere: **Site settings → Environment variables**, injected at build time, never committed to git. And the same trap as everywhere — anything your frontend bundle uses ships to the browser, so real secrets belong in functions (below), not in `VITE_`-prefixed variables. (Our [Vercel step 2](/aideveloperguide/vercel/step-2) covers the why in depth; it transfers exactly.)
+
+---
+
+## Forms without a backend
+
+Distinctly Netlify: add one attribute to a plain HTML form —
+
+```html
+<form name="contact" netlify>
+```
+
+— and submissions appear in your dashboard, with spam filtering, no server code at all. For a portfolio site's contact form, this is the difference between "done in five minutes" and "I guess I need a backend now." Free-tier submission limits apply; check [the docs](https://docs.netlify.com/manage/forms/setup/).
+
+---
+
+## Functions: the escape hatch
+
+When you do need server-side code — hiding an API key, calling an LLM — **Netlify Functions** are serverless functions in a `netlify/functions/` folder, deployed with your site, same mental model as Vercel's. Your AI app's key stays server-side; the browser calls `/.netlify/functions/chat`.
+
+---
+
+## Check yourself
+
+Done when your SPA survives a refresh on a deep route, one secret lives in an environment variable consumed by a function (not the browser bundle), and you've received a form submission in the dashboard.

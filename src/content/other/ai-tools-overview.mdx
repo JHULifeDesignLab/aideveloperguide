@@ -1,0 +1,40 @@
+## What these tools are
+
+AI-assisted engineering tools are coding assistants powered by large language models — Claude Code, Cursor, and GitHub Copilot are the big three. They read your code as context and help you write, edit, debug, and understand software: some complete lines as you type, some chat about your codebase, and the newest generation can plan and carry out multi-file changes while you review the diffs.
+
+Under the hood they all work the same way: your code and your request are assembled into context for an LLM, and the model predicts what comes next — which is why they're brilliant at patterns they've seen and why they sometimes confidently invent a method that doesn't exist. ([LLM Basics](/aideveloperguide/llm-basics) explains this in 15 minutes, and it's worth reading first.)
+
+**Why they matter for you:** these tools are now standard on real engineering teams, and interviewers increasingly ask how you use them. Knowing them well — and knowing their failure modes — is a resume skill in its own right.
+
+---
+
+## The market, as of August 2026
+
+The tool landscape shifts fast — treat this as a snapshot, re-check it each semester, and expect pricing and features to have moved.
+
+- **Claude Code** (Anthropic) — terminal-first agent; strongest at autonomous multi-step work: long refactors, running builds and tests in a loop, reasoning across a whole repo. [Our full guide →](/aideveloperguide/claude-code)
+- **Cursor** — an AI-first fork of VS Code; strongest inside the editor: multi-line autocomplete, codebase-aware chat, supervised agent edits. Has offered a free year for students. [Our full guide →](/aideveloperguide/cursor)
+- **GitHub Copilot** (Microsoft) — the incumbent with the largest install base; lowest friction inside plain VS Code and free for verified students; historically shallower on multi-file agentic work.
+- **Also in the market:** Windsurf (agentic editor), OpenAI's Codex tooling, and Google's Gemini CLI — worth knowing by name, and evidence that this list will look different next year.
+
+A side-by-side comparison table with pricing caveats lives on our [Where to Start page](/aideveloperguide/where-to-start).
+
+---
+
+## Best practices: a very smart assistant, not an autopilot
+
+Think of these tools as a super-smart assistant that can help you write software faster *with improved quality* — but only if you work with them deliberately:
+
+1. **Scope your asks.** "Add validation to the signup form matching our error style" beats "improve the form." Small, specific tasks produce reviewable results.
+2. **Provide context.** Point the tool at examples of how your project already does things — reference files, write project rules (Cursor's rules, Claude Code's CLAUDE.md). The model imitates far better than it invents.
+3. **Review every diff.** You are the engineer of record. Read what you accept, run the tests, and ask the tool to explain anything unfamiliar — the moment you stop reading is the moment bugs ship under your name.
+4. **Use them to learn, not to skip learning.** Have the assistant explain code you don't understand instead of just generating more of it. If a model went down tomorrow, you should still be able to do the work.
+5. **Verify claims.** Method names, API versions, config syntax — anything specific can be hallucinated. Looking correct and being correct are different things.
+
+---
+
+## Where to go next
+
+- [Claude Code guide](/aideveloperguide/claude-code) — includes LLM Basics as step 1
+- [Cursor guide](/aideveloperguide/cursor) — setup to advanced workflow
+- [Where to Start](/aideveloperguide/where-to-start) — the three-step on-ramp with the tool comparison table

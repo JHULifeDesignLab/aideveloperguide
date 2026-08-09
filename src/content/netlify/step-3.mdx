@@ -1,0 +1,39 @@
+---
+title: "Step 3 · Limits & Judgment"
+vendor: "netlify"
+slug: "/netlify/step-3"
+lastReviewed: "2026-08-09"
+ordinal: 3
+---
+
+## Goal
+Know the free tier's real boundaries, and finish with the three-platform decision rule that makes any deployment choice defensible in an interview.
+
+---
+
+## The free tier, honestly
+
+Netlify's free plan comfortably hosts portfolios, class projects, and demos: a monthly allowance of bandwidth, build minutes, and function invocations. The specific numbers move — check [current pricing](https://www.netlify.com/pricing/) — but the practical boundaries are stable:
+
+- **Build minutes are the one students actually hit.** Every push triggers a build; a slow build × many pushes adds up. If you're iterating hard, batch pushes or build locally and drag-drop while prototyping.
+- **Functions have execution limits** — same serverless shape as everywhere: fine for API calls, wrong for long-running work.
+- **Overage behavior matters:** know whether hitting a limit pauses the site or bills you, and configure accordingly. Check the pricing page rather than assuming.
+
+---
+
+## The three-platform decision rule
+
+You now know three hosts. Here's the honest map, and the interview answer it produces:
+
+<div className="bg-cyan-50 border border-cyan-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-cyan-800 mb-2">Which platform, when</p>
+  <p className="text-cyan-700 text-sm"><strong>Netlify or Vercel</strong> for frontends and light serverless — between the two it's mostly taste and ecosystem: Vercel if you're deep in Next.js, Netlify for the gentlest workflow and built-in forms. <strong><a href="/aideveloperguide/render" className="underline">Render</a></strong> the moment you need a persistent server, database, or background jobs. Split deployments (frontend on one, backend on Render) are normal, not a hack — being able to say <em>why each piece lives where it does</em> is the actual skill.</p>
+</div>
+
+Employers reading "deployed on Netlify" on a resume aren't impressed by the noun — they're listening for the workflow vocabulary (previews, redirects, build settings, environment separation) and the reasoning. You now have both.
+
+---
+
+## Check yourself
+
+Done when you can state, from memory: the one free-tier limit most likely to bite you, the fix for the SPA refresh 404 and why it works, and your own one-sentence version of the three-platform rule.

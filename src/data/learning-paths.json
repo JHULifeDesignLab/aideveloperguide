@@ -313,5 +313,80 @@
         "totalHours": "1-2"
       }
     ]
+  },
+  "netlify": {
+    "steps": [
+      {
+        "id": "first-deploy",
+        "title": "Step 1 \u00b7 Your First Deploy",
+        "description": "Two ways to go live \u2014 drag-and-drop and git-connected \u2014 plus the preview-deploy workflow.",
+        "modules": 3,
+        "totalHours": "1"
+      },
+      {
+        "id": "real-features",
+        "title": "Step 2 \u00b7 The Features That Make It Real",
+        "description": "Redirects for single-page apps, environment variables, forms, and serverless functions.",
+        "modules": 4,
+        "totalHours": "1-2"
+      },
+      {
+        "id": "limits-judgment",
+        "title": "Step 3 \u00b7 Limits & Judgment",
+        "description": "Free-tier boundaries, cost surprises, and how Netlify compares to Vercel and Render.",
+        "modules": 3,
+        "totalHours": "1"
+      }
+    ]
+  },
+  "mcp": {
+    "steps": [
+      {
+        "id": "what-mcp-is",
+        "title": "Step 1 \u00b7 What MCP Actually Is",
+        "description": "The problem it solves, the client-server architecture, and the vocabulary \u2014 tools, resources, prompts.",
+        "modules": 4,
+        "totalHours": "1-2"
+      },
+      {
+        "id": "use-servers",
+        "title": "Step 2 \u00b7 Use Existing Servers",
+        "description": "Connect ready-made MCP servers to Claude Code or your editor and feel tool-use working.",
+        "modules": 4,
+        "totalHours": "1-2"
+      },
+      {
+        "id": "build-server",
+        "title": "Step 3 \u00b7 Build Your Own Server",
+        "description": "Write, test, and debug a small MCP server with the official SDK \u2014 the resume-worthy part.",
+        "modules": 4,
+        "totalHours": "2-4"
+      }
+    ]
+  },
+  "github-copilot": {
+    "steps": [
+      {
+        "id": "setup-free",
+        "title": "Step 1 \u00b7 Setup & the Student Pack",
+        "description": "Get Copilot free through GitHub Education and learn inline completions properly.",
+        "modules": 3,
+        "totalHours": "1"
+      },
+      {
+        "id": "chat-and-edits",
+        "title": "Step 2 \u00b7 Chat, Edits & Context",
+        "description": "Copilot Chat, multi-file edits, and controlling what context the model sees.",
+        "modules": 4,
+        "totalHours": "1-2"
+      },
+      {
+        "id": "judgment",
+        "title": "Step 3 \u00b7 Review Discipline & Judgment",
+        "description": "Working habits that keep you the engineer \u2014 and how Copilot compares to Cursor and Claude Code.",
+        "modules": 3,
+        "totalHours": "1"
+      }
+    ]
   }
 }

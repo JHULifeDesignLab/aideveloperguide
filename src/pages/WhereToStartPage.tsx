@@ -92,10 +92,33 @@ export default function WhereToStartPage() {
         {/* Step 3 — Pick your path */}
         <StepCard number="03" title="Pick your path" color="purple">
           <p className="text-sm leading-relaxed text-gray-700">
-            Now build something. Pick the track that matches what you want to make — each one ends with a
-            project you can put on your resume:
+            <strong>First, get the lay of the land.</strong> There are two ways to use AI in software
+            engineering, and the homepage's two overviews explain them in about ten minutes total. Read both
+            before choosing — they're the fundamentals everything below builds on:
           </p>
           <div className="grid grid-cols-1 gap-3 mt-4 sm:grid-cols-2">
+            <Link to="/ai-tools" className="block overflow-hidden transition-all bg-white border border-indigo-200 rounded-xl hover:shadow-md hover:-translate-y-0.5">
+              <div className="h-1 bg-indigo-500" />
+              <div className="px-4 py-3">
+                <p className="text-sm font-semibold text-indigo-900">🛠️ Building with AI-Assisted Tools</p>
+                <p className="text-xs text-gray-500 mt-0.5">The coding assistants, the market, and the best practices.</p>
+              </div>
+            </Link>
+            <Link to="/agents" className="block overflow-hidden transition-all bg-white border border-rose-200 rounded-xl hover:shadow-md hover:-translate-y-0.5">
+              <div className="h-1 bg-rose-500" />
+              <div className="px-4 py-3">
+                <p className="text-sm font-semibold text-rose-900">🤖 Building with Agents</p>
+                <p className="text-xs text-gray-500 mt-0.5">What agents are and how the pieces fit together.</p>
+              </div>
+            </Link>
+          </div>
+
+          <p className="mt-5 text-sm leading-relaxed text-gray-700">
+            <strong>Then pick a track and go deep.</strong> These two are the classic starters — each ends with a
+            project you can put on your resume. And every card on the homepage now opens a full guide, so if
+            Vercel, MCP, or Copilot is what excites you, follow that instead:
+          </p>
+          <div className="grid grid-cols-1 gap-3 mt-3 sm:grid-cols-2">
             <Link to="/rag" className="block px-4 py-3 transition-all bg-white border border-gray-200 rounded-xl hover:shadow-md hover:-translate-y-0.5">
               <p className="text-sm font-semibold text-gray-900">Build an AI app → RAG</p>
               <p className="text-xs text-gray-500 mt-0.5">Ground an LLM in your own data — the most common first AI project.</p>
