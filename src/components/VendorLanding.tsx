@@ -75,9 +75,9 @@ export default function VendorLanding({ vendor }: VendorLandingProps) {
           </div>
         </div>
 
-        {/* Steps Grid (show only first two steps on landing pages) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 max-w-5xl mx-auto">
-          {vendorData.steps.slice(0, 2).map((step: any, index: number) => {
+        {/* Steps Grid — all steps, three across on large screens */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 max-w-6xl mx-auto">
+          {vendorData.steps.map((step: any, index: number) => {
             const isPrereq = vendor === 'claude-code' && index === 0
             const cardConfig = isPrereq
               ? { bgColor: 'bg-slate-500', textColor: 'text-slate-500' }

@@ -1,0 +1,72 @@
+---
+title: "The Lang-Family, Untangled"
+vendor: "langchain"
+slug: "/langchain/family"
+lastReviewed: "2026-08-10"
+---
+
+## Goal
+LangChain, LangGraph, LangFlow — three names, one vendor family, and a lot of confusion. Students conflate them in interviews; this page is the split, so you never do.
+
+---
+
+## The comparison at a glance
+
+| | LangChain | LangGraph | LangFlow |
+|---|---|---|---|
+| **What it is** | Library of model, tool, and retrieval abstractions plus a prebuilt agent | Low-level runtime for stateful, multi-step graphs | Visual drag-and-drop builder that exports a runnable flow |
+| **Built by** | LangChain (company) | LangChain (company) | Logspace, now IBM (via DataStax) |
+| **You write** | Python or JS calling composable components | Python or JS defining nodes, edges, and shared state | Almost no code; you wire boxes on a canvas |
+| **Control flow** | Linear, mostly implicit | Explicit graph: branches, loops, parallel fan-out | Implicit — whatever the canvas produces |
+| **State** | Passed through the chain | First-class, typed, checkpointed to a store | Hidden from you |
+| **Good for** | RAG pipelines, single-shot agents, provider swapping | Agents that loop, retry, branch, pause for a human, resume later | Prototyping, demos, showing a non-engineer what you mean |
+| **Bad for** | Anything needing loops, retries, or durable state | Simple "retrieve then answer" flows — it's overhead | Production, code review, version control, debugging |
+
+---
+
+## Why two frameworks exist
+
+LangChain's core pattern is the **chain** from [Step 1](/aideveloperguide/langchain/step-1): compose steps, pipe output to input, run once. That models a pipeline beautifully — and models an *agent* badly. Agent behavior is a loop: call a tool, look at the result, decide what to do next, maybe ask the user, try again. Hiding that loop inside a chain means losing the ability to see or interrupt what it's doing.
+
+**LangGraph** is the answer to the loop problem. Instead of a pipe, you declare a graph — nodes are functions that read and write a shared state object, edges decide what runs next — and the runtime checkpoints state after every node. That buys three things chains can't give you:
+
+1. **Cycles** — an agent can return to a node it already visited. That's the agent loop, made explicit.
+2. **Durability** — state is checkpointed, so a run can crash or pause for human approval and resume from the same node. (This is the agency–control tradeoff from the [agents overview](/aideveloperguide/agents), implemented.)
+3. **Inspectability** — you can draw the graph, and when a run goes wrong you know which node it died in.
+
+The tradeoff: LangGraph is more verbose for simple work. A retrieve-format-generate RAG chain doesn't need typed state and edge conditions. **Reach for the graph when you have branching or a loop — not before.**
+
+<div className="bg-teal-50 border border-teal-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-teal-800 mb-2">You'll still see LangChain inside LangGraph code</p>
+  <p className="text-teal-700 text-sm">LangGraph imports <code>langchain-core</code> for messages, tool definitions, and the model interface — so a LangGraph agent still contains <code>HumanMessage</code>, <code>@tool</code>, and <code>init_chat_model</code>. That's shared plumbing, not chains running underneath. And the direction reversed in LangChain 1.0 (October 2025): the prebuilt <code>create_agent</code> is now implemented <em>on top of</em> LangGraph — use it and you're running a graph whether you know it or not.</p>
+</div>
+
+---
+
+## Where LangFlow fits
+
+[LangFlow](https://www.langflow.org/) is a canvas: drag a model node, a retriever node, and a prompt node, connect them, hit run. It's genuinely useful for two things — seeing the shape of a pipeline before you commit to code, and showing a stakeholder a working demo in an afternoon.
+
+It is **not a portfolio project on its own**. A recruiter can't read a `.json` flow export in a diff, and you can't explain design decisions you didn't make. Two ways to use it honestly:
+
+- **Sketch, then rewrite.** Build the flow visually to settle the architecture, then implement it in LangGraph and put *that* in the repo.
+- **Name it as a tool, not a skill.** "Prototyped in LangFlow, shipped in LangGraph" reads as judgment. "Built with LangFlow" reads as no-code.
+
+If you want a visual tool inside the LangChain ecosystem proper, [LangGraph Studio](https://langchain-ai.github.io/langgraph/concepts/langgraph_studio/) is the closer fit: it renders the graph you actually wrote and lets you step through state.
+
+---
+
+## Picking one
+
+- Retrieval, one model call, one answer → **LangChain**
+- The model needs to decide what to do next, possibly more than once → **LangGraph**
+- You need a picture by Thursday → **LangFlow**, then rewrite it
+
+---
+
+## Check yourself
+
+- State one thing LangGraph does that a LangChain chain cannot — without using the word "agent"
+- Open a LangGraph example and point to the imports that come from `langchain-core`
+- Take the chain you wrote in [Step 2](/aideveloperguide/langchain/step-2) and name the nodes, state keys, and edges it would become
+- Explain why "built with LangFlow" is weaker on a resume than "prototyped in LangFlow, shipped in LangGraph"

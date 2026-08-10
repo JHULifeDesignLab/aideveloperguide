@@ -419,6 +419,16 @@
         "href": "/",
         "label": "Back to Home"
       }
+    },
+    "family": {
+      "back": {
+        "href": "/langchain/step-3",
+        "label": "Back to Step 3"
+      },
+      "forward": {
+        "href": "/langchain/resources",
+        "label": "Next: Resources"
+      }
     }
   },
   "cursor": {
