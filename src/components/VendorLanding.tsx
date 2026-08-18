@@ -70,7 +70,7 @@ export default function VendorLanding({ vendor }: VendorLandingProps) {
         {/* Header Section */}
         <div className="px-8 py-12 mb-8">
           <div className="text-center">
-            <h2 className="text-3xl font-bold mb-2 text-gray-900">{config.name}</h2>
+            <h2 className="text-3xl font-bold mb-2 text-gray-900">{config.landingName ?? config.name}</h2>
             <p className="text-xl text-gray-600">Complete Learning Path</p>
           </div>
         </div>

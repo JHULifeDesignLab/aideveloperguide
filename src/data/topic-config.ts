@@ -13,6 +13,8 @@ export interface PageConfig {
 
 export interface TopicConfig extends ColorConfig {
   name: string
+  /** Longer title for the landing-page hero. Breadcrumbs and nav keep using `name`. */
+  landingName?: string
   pages?: Record<string, PageConfig>
 }
 
@@ -58,6 +60,7 @@ export const topicConfigs: Record<string, TopicConfig> = {
   },
   rag: {
     name: 'RAG Development',
+    landingName: 'RAG — Retrieval-Augmented Generation',
     bgColor: 'bg-green-600',
     textColor: 'text-green-600',
     borderColor: 'border-green-600',

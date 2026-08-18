@@ -6,6 +6,15 @@ lastReviewed: "2026-03-30"
 ordinal: 1
 ---
 
+## What RAG stands for
+
+RAG is short for **Retrieval-Augmented Generation**. It is a technique for building LLM applications that answer questions using a specific set of documents you provide. The name describes the two halves of the process: your application first *retrieves* (looks up) the documents most relevant to the user's question, then an LLM *generates* an answer grounded in those documents. The result is a chatbot or search tool that can answer questions about material the model never saw during training — your class notes, a company's internal wiki, a product manual.
+
+<div className="bg-green-50 border border-green-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-green-800 mb-1">💼 Why students should know RAG</p>
+  <p className="text-green-700 text-sm">RAG is one of the most common LLM application patterns companies actually ship — customer-support bots, internal document search, and "chat with our docs" features are all RAG under the hood, and it shows up by name in entry-level AI job postings. It is also learnable in a weekend: a working pipeline over your own documents makes a strong portfolio project, and building one teaches you embeddings and vector search — concepts that transfer to almost every other AI application you will touch. In an interview, being able to explain <em>why</em> retrieval quality matters more than the model sets you apart from candidates who have only called a chat API.</p>
+</div>
+
 ## Goal
 Understand the problem RAG solves and the full pipeline — conceptually — before writing any code.
 
