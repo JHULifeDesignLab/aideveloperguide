@@ -38,7 +38,7 @@ export default function Layout({ children }: LayoutProps) {
               </div>
               <Link to="/" className="flex flex-col leading-tight group">
                 <span className="text-xl font-bold text-gray-900">
-                  <span className="text-blue-600 transition-colors group-hover:text-blue-500">AI</span> Developer Guide
+                  <span className="text-blue-600 transition-colors group-hover:text-blue-500">AI</span> Developer Starter Guide
                 </span>
                 <span className="text-[11px] font-medium tracking-wide text-gray-500">
                   Learn · Build · Get Hired
@@ -49,10 +49,9 @@ export default function Layout({ children }: LayoutProps) {
               {[
                 { label: 'Resume',    to: '/resources/resume' },
                 { label: 'LinkedIn',  to: '/resources/linkedin' },
-                { label: 'Projects',  to: '/resources/projects' },
-                { label: 'Learning',  to: '/resources/learning' },
                 { label: 'GitHub',    to: '/resources/github' },
-                { label: 'Community', to: '/resources/community' },
+                { label: 'Projects',  to: '/resources/projects' },
+                { label: 'Resources', to: '/resources' },
               ].map(({ label, to }) => (
                 <Link
                   key={to}

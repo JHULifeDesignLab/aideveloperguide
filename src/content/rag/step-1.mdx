@@ -46,6 +46,11 @@ The problems:
 
 Fine-tuning is for changing the model's style, tone, or task specialization. RAG is for giving it access to specific information at query time.
 
+<div className="bg-amber-50 border border-amber-200 rounded-lg p-5 my-6">
+  <p className="font-semibold text-amber-800 mb-1">⚠️ Check this before you build: does your data even need RAG?</p>
+  <p className="text-amber-700 text-sm">RAG is built for unstructured text — documents, notes, manuals. If your data already lives in a structured database, keep it there and have the model write SQL queries against it (a pattern called <strong>text-to-SQL</strong>). Moving clean rows into a vector store adds cost and randomness to something that already worked. The same judgment applies to math: pull calculations out of the model and into code, where the answer is right every time. Reaching for an LLM first is the most common beginner mistake — engineers keep deterministic work (anything with one predictable correct output) deterministic, and use the LLM only for the parts that need it. <a href="/aideveloperguide/rag/step-3">Step 3</a> has the fuller list of cases where RAG is the wrong tool.</p>
+</div>
+
 ---
 
 ## The RAG pipeline

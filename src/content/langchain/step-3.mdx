@@ -23,6 +23,10 @@ If you did this guide's [where-to-start track](/aideveloperguide/where-to-start)
 
 Simple agent loops break down when workflows need branching, human approval steps, or memory that survives restarts. **[LangGraph](https://langchain-ai.github.io/langgraph/)** models the workflow as an explicit graph — nodes are steps, edges are transitions — with state checkpointing built in. It's the part of the ecosystem most heavily used in industry for serious agent work, and worth knowing by name even if your first project doesn't need it. (Confused about how LangChain, LangGraph, and LangFlow relate? [The Lang-Family, Untangled](/aideveloperguide/langchain/family) is the five-minute disambiguation — interviewers notice who has it straight.)
 
+### Harness or custom build?
+
+There are two ways to stand up an agent, and LangGraph is one side of the tradeoff. A general-purpose **harness** like [Claude Code](/aideveloperguide/claude-code) with a skill file gets an agent running in an afternoon — at the price of carrying tools your task never uses and giving you less control over what reaches the model. A **custom workflow** in LangGraph takes longer to build and hands you exact control over what context reaches each node. Which one fits depends on the job: a GitHub Action built on the Claude SDK that automatically fixes trivially broken tests is a perfect harness-sized task, while a pipeline with approval gates and audited state earns LangGraph's structure. When an interviewer asks which you'd learn, "it depends on the use case, and here's the axis it depends on" is the strong answer — speed of setup against control over context.
+
 ---
 
 ## LangSmith: seeing what the pipeline did

@@ -10,12 +10,11 @@ function ScrollToTop() {
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 import TopicPage from './pages/TopicPage'
-import LearningPage from './pages/resources/LearningPage'
 import GitHubPage from './pages/resources/GitHubPage'
 import ToolsPage from './pages/resources/ToolsPage'
-import CommunityPage from './pages/resources/CommunityPage'
 import ResumePage from './pages/resources/ResumePage'
 import LinkedInPage from './pages/resources/LinkedInPage'
+import ResourcesPage from './pages/resources/ResourcesPage'
 import KeywordsIndexPage from './pages/KeywordsIndexPage'
 import WhereToStartPage from './pages/WhereToStartPage'
 import LlmBasicsPage from './pages/LlmBasicsPage'
@@ -35,13 +34,15 @@ function App() {
         <Route path="/llm-basics" element={<LlmBasicsPage />} />
         <Route path="/ai-tools" element={<AiToolsPage />} />
         <Route path="/agents" element={<AgentsPage />} />
-        <Route path="/resources" element={<Navigate to="/resources/resume" replace />} />
+        <Route path="/resources" element={<ResourcesPage />} />
         <Route path="/resources/resume" element={<ResumePage />} />
         <Route path="/resources/linkedin" element={<LinkedInPage />} />
         <Route path="/resources/projects" element={<ToolsPage />} />
-        <Route path="/resources/learning" element={<LearningPage />} />
         <Route path="/resources/github" element={<GitHubPage />} />
-        <Route path="/resources/community" element={<CommunityPage />} />
+        {/* Old standalone pages now live on the combined /resources page */}
+        <Route path="/resources/learning" element={<Navigate to="/resources" replace />} />
+        <Route path="/resources/community" element={<Navigate to="/resources" replace />} />
+        <Route path="/resources/hopkins" element={<Navigate to="/resources" replace />} />
 
         {/* Dynamic topic routes — all vendor landing pages and their sub-pages */}
         <Route path="/:vendor" element={<TopicPage />} />

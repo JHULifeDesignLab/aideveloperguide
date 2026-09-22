@@ -21,6 +21,8 @@ In your CS classes, the same input produces the same output, every time. LLMs br
 
 **The core challenge of agent engineering is achieving reliable outcomes from unreliable components.** That's what makes it a genuine engineering discipline rather than prompt-typing, and it's why the operational problems below dominate real agent work: hallucination, prompt sensitivity, inconsistent output length, latency, and the difficulty of explaining why the model did what it did.
 
+You can design around the variation. The broader and more open-ended the prompt, the more the output varies — so be specific about the structure and angle you want, give more context, and keep each workflow narrow. A narrow task has fewer acceptable answers, which makes consistent output easier to hit. If a coding assistant gives you a different answer the second time you ask the same question, this is why: the variation is built into how these models work, and seeing it doesn't mean you prompted wrong.
+
 ---
 
 ## The agency–control tradeoff
@@ -30,7 +32,33 @@ The most important design decision in any agent is how much autonomy to grant:
 - **High agency:** the system turns intent into action on its own ("chat-to-book" a hotel end to end)
 - **High control:** the system suggests, and a human approves each step
 
+Customer support shows the whole spectrum inside one product: an agent can route the ticket to the right team, draft a reply for a human to send, or handle the conversation end to end. Each is a valid operating point — you choose based on what happens when the system gets it wrong.
+
 These trade off against each other — and the rule is: **only relinquish control as your trust in the system's measured reliability increases.** High-stakes domains (medicine, finance, insurance) demand maximum control and strict guardrails; a demo that drafts your morning brief can run free. Real teams start with a small, high-control version, deploy it to a few users, study the failure modes, recalibrate prompts and tools, and only *then* increase autonomy — most of the work happens after the first deployment, not before.
+
+---
+
+## Model routing: matching each call to the right model
+
+An agent finishing one task might make two hundred model calls. Planning the approach takes hard reasoning; calling a tool, checking whether a test passed, and formatting a result are routine. Most agents send every call to the same model because that's the SDK default — so you either overpay for the easy calls or underperform on the hard ones.
+
+A **model router** sits between your agent and a pool of models and picks one per call: a cheap, fast model for routine turns, a frontier model (the largest, most capable tier) when the work gets hard. Routers decide from some combination of three signals — what the request looks like, how the model is behaving (repeated errors and retries suggest difficulty), and system conditions like price and latency. The simplest useful pattern is **escalation**: start every session on the cheap model and move up only when the work stalls.
+
+Routing is easy to confuse with orchestration, so keep the two jobs straight: an orchestrator decides which step happens next and which component handles it, while a router decides which model serves a call that's already happening. An agent can have both.
+
+**Read the second number.** Published results (as of August 2026) show routing can cut cost by more than half — alongside an accuracy drop of a few points. Whether that trade is acceptable depends on what your agent does. And routing only pays when there's a real price gap between your models, because the routing decision itself costs something.
+
+Build your first agent without it. Once something works, look at what it cost, then decide whether routing earns its place. If you do try it, measure both versions on the same tasks and report the accuracy change alongside the savings — that comparison is the strongest artifact for your portfolio and the story to tell in an interview.
+
+- **[Switchyard](https://github.com/NVIDIA-NeMo/Switchyard)** — NVIDIA's open-source routing library (released August 2026); current docs and the routing algorithms it ships with
+- **[LangChain's Switchyard benchmark](https://langchain.com/blog/switchyard-agent-routing-benchmark)** — independent cost and accuracy numbers, plus the math on when routing pays
+- **[LiteLLM](https://docs.litellm.ai/)** — open-source proxy with routing, fallbacks, and spend caps across providers; the practical one to try on a student project
+
+---
+
+## What agent work looks like at a real company
+
+Most agent engineering in large companies happens on top of systems that have run for decades — SAP, Salesforce, ServiceNow, and home-grown databases with primitive but stable integrations. Nobody is replacing those. The realistic architecture layers an agent over what already exists: the reliable business logic stays behind specific tool calls, and the agent's job is deciding which tools to call and what information to pass them. Expect internship work to look like this too — greenfield projects (building a system from scratch) are rare, and showing you understand that is worth something in an interview.
 
 ---
 

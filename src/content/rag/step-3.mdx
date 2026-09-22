@@ -102,6 +102,8 @@ The chunk is still small; the context summary is generated once per chunk at ing
 
 ## Evaluating RAG (the part most tutorials skip)
 
+First, why evals exist at all. With regular code you can read the logic and check that it's correct. With an LLM you can't inspect why it produced a particular answer, so you measure the outcome instead — that's all an **eval** is: a repeatable check of outputs against what you expected. The errors you're catching are also silent ones. Normal software fails loudly with a stack trace; a RAG pipeline happily returns a confident wrong answer, and without a measurement in place you'll never notice.
+
 You cannot improve what you don't measure. The three metrics that matter:
 
 **Faithfulness**: does the answer contain only information present in the retrieved chunks? Unfaithful answers mix in hallucinated knowledge.
@@ -131,6 +133,8 @@ print(results)
 
 Run RAGAS on a representative test set before shipping. Low context recall means you need better retrieval; low faithfulness means your prompt isn't grounding the model tightly enough.
 
+**One trap to watch**: it's tempting to have another model rewrite your prompts and tool descriptions until your scores pass. Done blindly, you end up overfitting to your own eval set — a pipeline that aces your specific test cases and fails on anything new. Keep a handful of held-out questions the tuning process never sees, and check against those before you call it improved.
+
 ---
 
 ## Common failure modes
@@ -153,7 +157,7 @@ Run RAGAS on a representative test set before shipping. Low context recall means
 
 **Strict citations**: RAG gives you the retrieved chunks, but the generated answer doesn't inherently cite which chunk each fact came from. If you need verifiable citations, you need to build attribution on top.
 
-**Complex multi-hop reasoning**: RAG retrieves one round of chunks. Queries like "find all employees who joined after the policy change date" require structured queries, not semantic retrieval.
+**Complex multi-hop reasoning**: RAG retrieves one round of chunks. Queries like "find all employees who joined after the policy change date" are database questions — the better pattern is **text-to-SQL**: let the model write a structured query against the original database instead of retrieving chunks.
 
 <ResumeTip>
   Most RAG tutorials stop at Step 2. If you've implemented hybrid search, added a reranker, and measured your pipeline with RAGAS, you're operating at a level most junior developers haven't reached. Being able to say "I identified that my context recall was 0.6 and fixed it by adding hybrid search, which brought it to 0.85" is the kind of quantitative, diagnostic thinking that stands out.

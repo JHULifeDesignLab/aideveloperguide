@@ -97,12 +97,14 @@ const sectionStyles = {
 
 function CategorySection({
   title,
+  description,
   color,
   items,
   extras,
   delay,
 }: {
   title: string
+  description: string
   color: keyof typeof sectionStyles
   items: Item[]
   extras: Item[]
@@ -118,7 +120,8 @@ function CategorySection({
     >
       <div className={`h-1 ${s.bar}`} />
       <div className="p-3.5">
-        <h2 className={`mb-3 text-base font-bold ${s.heading}`}>{title}</h2>
+        <h2 className={`mb-1 text-base font-bold ${s.heading}`}>{title}</h2>
+        <p className="mb-3 text-xs leading-relaxed text-gray-600">{description}</p>
         <div className="space-y-2">
           {items.map((item) => (
             <CategoryCard key={item.name} {...item} />
@@ -178,7 +181,7 @@ export default function HomePage() {
             JHU Life Design Lab
           </p>
           <h1 className="mt-2 text-4xl font-bold tracking-tight text-gray-900">
-            AI Development Guide
+            AI Developer Starter Guide
           </h1>
           <p className="max-w-md mt-3 text-sm text-gray-600">
             Get started with generative AI and software development. Build real
@@ -281,9 +284,30 @@ export default function HomePage() {
       </div>
 
       <div className="grid grid-cols-1 gap-5 mt-4 sm:grid-cols-3">
-        <CategorySection title="Product Stack" color="blue" items={productStackItems} extras={productStackExtras} delay={0} />
-        <CategorySection title="Dev Tools +" color="purple" items={devToolsItems} extras={devToolsExtras} delay={120} />
-        <CategorySection title="Deployment" color="teal" items={deploymentItems} extras={deploymentExtras} delay={240} />
+        <CategorySection
+          title="Product Stack"
+          description="What your app is built from — the AI techniques, frameworks, and protocols that give it its smarts."
+          color="blue"
+          items={productStackItems}
+          extras={productStackExtras}
+          delay={0}
+        />
+        <CategorySection
+          title="Dev Tools +"
+          description="AI assistants that help you write the code itself, working alongside you in your editor or terminal."
+          color="purple"
+          items={devToolsItems}
+          extras={devToolsExtras}
+          delay={120}
+        />
+        <CategorySection
+          title="Deployment"
+          description="How your finished app gets on the internet — hosting services that make your project live for anyone to use."
+          color="teal"
+          items={deploymentItems}
+          extras={deploymentExtras}
+          delay={240}
+        />
       </div>
     </div>
   )

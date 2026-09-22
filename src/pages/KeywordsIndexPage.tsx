@@ -41,6 +41,21 @@ export default function KeywordsIndexPage() {
             </p>
           </div>
 
+          <div className="flex flex-wrap items-center gap-3 px-4 py-3 mt-5 border border-blue-100 bg-blue-50 rounded-xl">
+            <p className="flex-1 min-w-[16rem] text-sm text-blue-900">
+              <strong>Studying for interviews?</strong> Every term below is also a Quizlet flashcard deck — drill them
+              until the definitions come without thinking.
+            </p>
+            <a
+              href="https://quizlet.com/1212144864/ai-developer-starter-guide-interview-keywords-jhu-life-design-lab-flash-cards/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-5 py-2 text-sm font-semibold text-white bg-blue-600 rounded-xl shadow-sm hover:bg-blue-500 hover:shadow-md hover:-translate-y-0.5 transition-all"
+            >
+              🃏 Practice on Quizlet
+            </a>
+          </div>
+
           <p className="mt-5 text-xs leading-relaxed text-gray-500">
             ⭐ marks links to <strong className="text-gray-700">official sources</strong> — documentation or announcements
             from the company or organization behind the term. Unstarred links point to community resources (like wikis)

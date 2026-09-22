@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import ResourcePageLayout from '../../components/ResourcePageLayout'
 
 interface Project {
@@ -165,6 +166,55 @@ function ProjectCard({ project, color }: { project: Project; color: Category['co
   )
 }
 
+function DesignDecisionsPanel() {
+  const [expanded, setExpanded] = useState(false)
+  return (
+    <div className="px-5 py-3.5 mt-5 border border-blue-100 bg-blue-50 rounded-xl">
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className="flex items-center justify-between w-full gap-3 text-left"
+      >
+        <span>
+          <span className="text-base font-bold text-blue-900">Two design decisions that set your project apart</span>
+          <span className="block mt-0.5 text-xs text-blue-700/70">
+            Choose your interface and your data source on purpose — both make strong interview answers.
+          </span>
+        </span>
+        <span
+          className={`shrink-0 text-blue-400 transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}
+        >
+          ⇓
+        </span>
+      </button>
+      <div
+        className={`grid transition-all duration-300 ease-in-out ${
+          expanded ? 'grid-rows-[1fr] opacity-100 mt-3' : 'grid-rows-[0fr] opacity-0 mt-0'
+        }`}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <ul className="space-y-2.5 text-sm leading-relaxed text-gray-700">
+            <li>
+              <strong className="text-gray-900">Does it need to be a chatbot?</strong> Chat earns its place when it
+              removes real friction — long, repetitive intake forms are the classic win (one company cut a two-hour
+              medical intake process to about thirty minutes this way). Turning a simple five-field form into an agent
+              that asks one question at a time is worse design than the form. Choose your interface on purpose and be
+              ready to defend the choice.
+            </li>
+            <li>
+              <strong className="text-gray-900">Where does the data come from?</strong> If you can't get real data
+              (common in health, finance, and anything regulated), treat access as a range: scrubbed or partial data,
+              related records like billing, and metadata all get you closer than nothing. If you generate synthetic
+              data, ground it in the real environment — actual schemas, realistic procedures, deliberate edge cases —
+              and state your assumptions in the README. A realistic synthetic dataset with documented assumptions reads
+              far stronger to a recruiter than another run at a generic public dataset.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function ToolsPage() {
   return (
     <ResourcePageLayout
@@ -180,6 +230,8 @@ export default function ToolsPage() {
           the descriptions are starting points, and the starred <strong>example projects</strong> are ones we're
           building ourselves so you can follow along with the code and a step-by-step guide.
         </p>
+
+        <DesignDecisionsPanel />
 
         <div className="px-5 py-4 mt-5 border border-gray-200 bg-gray-50 rounded-xl">
           <h2 className="text-base font-bold text-gray-900">Minimum deliverables (one-pager README + artifacts)</h2>
