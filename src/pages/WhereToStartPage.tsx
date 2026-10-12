@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 
 const agentRows = [
-  { label: 'Best for', claude: 'Agentic, multi-file tasks in terminal', cursor: 'In-editor AI with strong autocomplete', copilot: 'Inline suggestions in VS Code / JetBrains' },
-  { label: 'Pricing', claude: 'Usage-based or $20/mo Pro', cursor: '$20/mo Pro', copilot: '$10/mo, free for students' },
-  { label: 'Strengths', claude: 'Deep reasoning, runs bash, reads your whole repo', cursor: 'Slick UX, fast inline edits, good chat', copilot: 'Lowest friction, familiar IDE feel' },
-  { label: 'Weaknesses', claude: 'Can get expensive on large sessions; terminal-first', cursor: 'Proprietary, model quality varies by tier', copilot: 'Shallower reasoning, less useful for complex tasks' },
-  { label: "Who it's for", claude: 'Devs comfortable in terminal who want an autonomous agent', cursor: 'Anyone who wants AI baked into their editor', copilot: 'Beginners, or anyone already deep in VS Code' },
+  { label: 'Best for', claude: 'Agentic, multi-file tasks in terminal', cursor: 'In-editor AI with strong autocomplete', copilot: 'Inline suggestions in VS Code / JetBrains', bob: 'Modernizing legacy enterprise code (COBOL, PL/I, RPG, Java)', q: 'Existing AWS-centric work, including COBOL-to-Java mainframe modernization' },
+  { label: 'Pricing', claude: 'Usage-based or $20/mo Pro', cursor: '$20/mo Pro', copilot: '$10/mo, free for students', bob: 'Free trial with 40 Bobcoins; plans from $20–$200 based on Bobcoins', q: 'Free tier and Pro at $19/user/month, with 4,000 lines of code per month for Java upgrades' },
+  { label: 'Strengths', claude: 'Deep reasoning, runs bash, reads your whole repo', cursor: 'Slick UX, fast inline edits, good chat', copilot: 'Lowest friction, familiar IDE feel', bob: 'Governance and cost tracking (Bobalytics), mainframe and IBM i modernization, self-hosted or air-gapped deployment', q: 'Admin dashboard and per-user reports, mainframe modernization agents, free tier' },
+  { label: 'Weaknesses', claude: 'Can get expensive on large sessions; terminal-first', cursor: 'Proprietary, model quality varies by tier', copilot: 'Shallower reasoning, less useful for complex tasks', bob: 'Usage priced in Bobcoins, with premium packages extra; named models and OpenShift unverified; enterprise-focused', q: 'IDE plugins reach end of support April 30, 2027, new signups ended May 15, 2026, and the latest models are Kiro-only' },
+  { label: "Who it's for", claude: 'Devs comfortable in terminal who want an autonomous agent', cursor: 'Anyone who wants AI baked into their editor', copilot: 'Beginners, or anyone already deep in VS Code', bob: 'Enterprise or consulting teams with legacy systems and compliance needs', q: 'Existing AWS users only; weak pick for new projects' },
 ]
 
 function StepCard({
@@ -148,6 +148,8 @@ export default function WhereToStartPage() {
                   <th className="px-4 py-3 text-xs font-semibold tracking-wide text-left text-purple-600 uppercase">Claude Code</th>
                   <th className="px-4 py-3 text-xs font-semibold tracking-wide text-left text-blue-600 uppercase">Cursor</th>
                   <th className="px-4 py-3 text-xs font-semibold tracking-wide text-left text-gray-600 uppercase">GitHub Copilot</th>
+                  <th className="px-4 py-3 text-xs font-semibold tracking-wide text-left text-sky-700 uppercase">IBM Bob</th>
+                  <th className="px-4 py-3 text-xs font-semibold tracking-wide text-left text-orange-600 uppercase">Amazon Q Developer</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
@@ -157,6 +159,8 @@ export default function WhereToStartPage() {
                     <td className="px-4 py-3 text-gray-700">{row.claude}</td>
                     <td className="px-4 py-3 text-gray-700">{row.cursor}</td>
                     <td className="px-4 py-3 text-gray-700">{row.copilot}</td>
+                    <td className="px-4 py-3 text-gray-700">{row.bob}</td>
+                    <td className="px-4 py-3 text-gray-700">{row.q}</td>
                   </tr>
                 ))}
               </tbody>
@@ -166,6 +170,7 @@ export default function WhereToStartPage() {
           <p className="mt-4 text-sm leading-relaxed text-gray-700">
             No single tool wins for everyone. If you're comfortable in the terminal, Claude Code pays off fast.
             If you want something that just works inside your editor from day one, start with Cursor or Copilot.
+            If you want to try something new based on project specifics, take a look at IBM Bob or Amazon Q Developer.
           </p>
         </StepCard>
       </div>
