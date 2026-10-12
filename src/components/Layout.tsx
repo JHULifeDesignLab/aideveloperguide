@@ -35,9 +35,14 @@ export default function Layout({ children }: LayoutProps) {
                 <div className="hidden bg-blue-900 text-white px-3 py-1 rounded font-bold text-sm">
                   JHU
                 </div>
+                <div className="flex flex-col ml-2 leading-tight">
+                  <span className="text-sm font-bold tracking-wide text-[#002D72]">JOHNS HOPKINS</span>
+                  <span className="text-[10px] font-medium tracking-[0.2em] text-[#002D72]">UNIVERSITY</span>
+                </div>
               </div>
+              <div className="h-8 border-l border-slate-300" />
               <Link to="/" className="flex flex-col leading-tight group">
-                <span className="text-xl font-bold text-gray-900">
+                <span className="text-lg font-bold text-gray-900">
                   <span className="text-blue-600 transition-colors group-hover:text-blue-500">AI</span> Developer Starter Guide
                 </span>
                 <span className="text-[11px] font-medium tracking-wide text-gray-500">
@@ -75,9 +80,17 @@ export default function Layout({ children }: LayoutProps) {
       <footer className="bg-white border-t mt-12">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="text-gray-600 mb-3">
-              Provided by the JHU Life Design Lab
-            </p>
+            <div className="flex items-center justify-center mb-3 space-x-2">
+              <img
+                src="/aideveloperguide/jhu-shield.png"
+                alt="Johns Hopkins University"
+                className="h-9 w-auto"
+              />
+              <div className="flex flex-col leading-tight text-left">
+                <span className="text-sm font-bold tracking-wide text-[#002D72]">JOHNS HOPKINS</span>
+                <span className="text-[10px] font-medium tracking-[0.2em] text-[#002D72]">UNIVERSITY</span>
+              </div>
+            </div>
             <a 
               href="https://forms.office.com/Pages/ResponsePage.aspx?id=OPSkn-axO0eAP4b4rt8N7DQ1jmk83SBMnsReHYqtIqpURVJNVUY2N1U5VU1WQ01XSDJPVDNNQVhRWC4u"
               target="_blank"

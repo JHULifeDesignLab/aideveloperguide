@@ -174,44 +174,31 @@ export default function HomePage() {
 
   return (
     <div className="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
-      {/* Hero: centered content on the left 3/4, image slot on the right 1/4 */}
-      <div className="grid items-center grid-cols-1 gap-6 py-4 md:grid-cols-4">
-        <div className="flex flex-col items-center text-center md:col-span-3">
-          <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase">
-            JHU Life Design Lab
-          </p>
-          <h1 className="mt-2 text-4xl font-bold tracking-tight text-gray-900">
-            AI Developer Starter Guide
-          </h1>
-          <p className="max-w-md mt-3 text-sm text-gray-600">
-            Get started with generative AI and software development. Build real
-            experience you can put on your resume!
-          </p>
-          <Link to="/where-to-start" className="inline-block px-5 py-2 mt-4 text-sm font-medium text-white transition-colors bg-slate-500 rounded-xl hover:bg-slate-400">
-            I don't know where to start →
-          </Link>
-        </div>
-
-        <div className="flex-col items-center hidden md:flex">
-          <div className="float-bob">
-            <img
-              src={`${import.meta.env.BASE_URL}coding-bird.png`}
-              alt="Coding bluejay mascot"
-              className="w-full max-w-[220px] h-auto md:-translate-x-2"
-            />
-          </div>
-          <Link
-            to="/keywords"
-            className="relative px-3 py-1.5 mt-3 bg-white border border-gray-200 rounded-full shadow-sm bubble-pop hover:shadow-md transition-shadow md:-translate-x-2"
-            onMouseEnter={(e) => handleMouseEnter(dailyKw, e)}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={() => setHoveredKw(null)}
-          >
-            <span className="absolute w-3 h-3 rotate-45 -translate-x-1/2 bg-white border-t border-l border-gray-200 -top-1.5 left-1/2" />
-            <span className="relative text-xs text-gray-500">Word of the day: </span>
-            <span className="relative text-xs font-bold text-blue-500">{dailyKw.term}</span>
-          </Link>
-        </div>
+      {/* Hero: single centered column */}
+      <div className="flex flex-col items-center py-6 text-center">
+        <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase">
+          JHU Life Design Lab
+        </p>
+        <h1 className="mt-2 text-4xl font-bold tracking-tight text-gray-900">
+          AI Developer Starter Guide
+        </h1>
+        <p className="max-w-md mt-3 text-sm text-gray-600">
+          Get started with generative AI and software development. Build real
+          experience you can put on your resume!
+        </p>
+        <Link to="/where-to-start" className="inline-block px-5 py-2 mt-4 text-sm font-medium text-white transition-colors bg-slate-500 rounded-xl hover:bg-slate-400">
+          I don't know where to start →
+        </Link>
+        <Link
+          to="/keywords"
+          className="px-3 py-1.5 mt-4 bg-white border border-gray-200 rounded-full shadow-sm bubble-pop hover:shadow-md transition-shadow"
+          onMouseEnter={(e) => handleMouseEnter(dailyKw, e)}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={() => setHoveredKw(null)}
+        >
+          <span className="text-xs text-gray-500">Word of the day: </span>
+          <span className="text-xs font-bold text-blue-500">{dailyKw.term}</span>
+        </Link>
       </div>
 
       {/* ticker, insert back for spring launch
