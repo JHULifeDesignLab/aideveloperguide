@@ -14,32 +14,12 @@ export default function Layout({ children }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-14">
             <div className="flex items-center space-x-3">
-              {/* Johns Hopkins Logo */}
-              <div className="flex items-center">
-                <img
-                  src="/aideveloperguide/jhu-shield.png"
-                  alt="Johns Hopkins University"
-                  className="h-9 w-auto"
-                  onError={(e) => {
-                    // Try alternative paths if the first one fails
-                    const img = e.currentTarget as HTMLImageElement;
-                    if (img.src.includes('/aideveloperguide/')) {
-                      img.src = '/jhu-shield.png';
-                    } else {
-                      img.style.display = 'none';
-                      const fallback = img.nextElementSibling as HTMLElement;
-                      if (fallback) fallback.style.display = 'block';
-                    }
-                  }}
-                />
-                <div className="hidden bg-blue-900 text-white px-3 py-1 rounded font-bold text-sm">
-                  JHU
-                </div>
-                <div className="flex flex-col ml-2 leading-tight">
-                  <span className="text-sm font-bold tracking-wide text-[#002D72]">JOHNS HOPKINS</span>
-                  <span className="text-[10px] font-medium tracking-[0.2em] text-[#002D72]">UNIVERSITY</span>
-                </div>
-              </div>
+              {/* Official Johns Hopkins / Life Design Lab lockup */}
+              <img
+                src={`${import.meta.env.BASE_URL}jhu-lifedesign-logo.png`}
+                alt="Johns Hopkins University — Integrative Learning and Life Design, Life Design Lab"
+                className="w-auto h-10"
+              />
               <div className="h-8 border-l border-slate-300" />
               <Link to="/" className="flex flex-col leading-tight group">
                 <span className="text-lg font-bold text-gray-900">
@@ -80,16 +60,12 @@ export default function Layout({ children }: LayoutProps) {
       <footer className="bg-white border-t mt-12">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="flex items-center justify-center mb-3 space-x-2">
+            <div className="flex justify-center mb-3">
               <img
-                src="/aideveloperguide/jhu-shield.png"
-                alt="Johns Hopkins University"
-                className="h-9 w-auto"
+                src={`${import.meta.env.BASE_URL}jhu-lifedesign-logo.png`}
+                alt="Johns Hopkins University — Integrative Learning and Life Design, Life Design Lab"
+                className="w-auto h-12"
               />
-              <div className="flex flex-col leading-tight text-left">
-                <span className="text-sm font-bold tracking-wide text-[#002D72]">JOHNS HOPKINS</span>
-                <span className="text-[10px] font-medium tracking-[0.2em] text-[#002D72]">UNIVERSITY</span>
-              </div>
             </div>
             <a 
               href="https://forms.office.com/Pages/ResponsePage.aspx?id=OPSkn-axO0eAP4b4rt8N7DQ1jmk83SBMnsReHYqtIqpURVJNVUY2N1U5VU1WQ01XSDJPVDNNQVhRWC4u"
